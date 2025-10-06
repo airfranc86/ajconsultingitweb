@@ -951,3 +951,33 @@ body {
     outline: 2px solid var(--secondary-color);
     outline-offset: 2px;
 }
+
+/* ===== TARJETAS DE CONTACTO CLICKEABLES ===== */
+.contact-card-clickable {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.contact-card-clickable:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(39, 174, 96, 0.3);
+    background: linear-gradient(135deg, rgba(39, 174, 96, 0.1), rgba(39, 174, 96, 0.05));
+}
+
+.contact-card-clickable:focus {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 2px;
+}
+
+.contact-card-clickable .contact-link {
+    color: var(--secondary-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.contact-card-clickable:hover .contact-link {
+    color: #2ecc71;
+}
