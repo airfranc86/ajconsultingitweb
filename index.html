@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- HEAD: Metadatos y configuraciones del documento -->
+
+<head>
+    <!-- Codificación de caracteres UTF-8 para soporte de acentos -->
+    <meta charset="UTF-8">
+    <!-- Viewport responsive para móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TÍTULO SEO OPTIMIZADO -->
+    <title>A&J Consulting IT - Business Intelligence para Clínicas</title>
+
+    <!-- META DESCRIPCIÓN SEO -->
+    <meta name="description"
+        content="A&J Consulting IT: Especialistas en Business Intelligence para clínicas médicas. Dashboard de KPIs en tiempo real, análisis predictivo y gestión clínica inteligente. Transformamos datos médicos en decisiones estratégicas.">
+
+    <!-- KEYWORDS SEO -->
+    <meta name="keywords"
+        content="business intelligence clínicas, dashboard médico, KPIs clínicos, gestión clínica, análisis predictivo salud, software médico, transformación digital salud, BI médico, dashboard hospitalario, analytics clínico">
+
+    <!-- AUTOR Y COPYRIGHT -->
+    <meta name="author" content="A&J Consulting IT">
+    <meta name="copyright" content="© 2025 A&J Consulting IT">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    <!-- CANONICAL URL -->
+    <link rel="canonical" href="https://ajconsulting.com">
+
+    <!-- FAVICON SIMPLIFICADO -->
+    <link rel="icon" type="image/png" href="assets/AJLOGO.png">
+    <link rel="shortcut icon" href="assets/AJLOGO.png">
+    <link rel="apple-touch-icon" href="assets/AJLOGO.png">
+
+    <!-- OPEN GRAPH OPTIMIZADO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="A&J Consulting IT - Business Intelligence para Clínicas">
+    <meta property="og:description"
+        content="Especialistas en Business Intelligence para clínicas. Dashboard de KPIs médicos, análisis predictivo y gestión clínica inteligente. Transformamos datos en decisiones estratégicas.">
+    <meta property="og:image" content="https://ajconsulting.com/assets/AJLOGO.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="A&J Consulting IT - Business Intelligence para Clínicas">
+    <meta property="og:url" content="https://ajconsulting.com">
+    <meta property="og:site_name" content="A&J Consulting IT">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="A&J Consulting IT - Business Intelligence para Clínicas">
+    <meta name="twitter:description"
+        content="Especialistas en Business Intelligence para clínicas. Dashboard de KPIs médicos y análisis predictivo.">
+    <meta name="twitter:image" content="https://ajconsulting.com/assets/AJLOGO.png">
+    <meta name="twitter:image:alt" content="A&J Consulting IT - Business Intelligence para Clínicas">
+
+    <!-- SCHEMA.ORG STRUCTURED DATA -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "A&J Consulting IT",
+        "alternateName": "A&J Consulting",
+        "url": "https://ajconsulting.com",
+        "logo": "https://ajconsulting.com/assets/AJLOGO.png",
+        "description": "Especialistas en Business Intelligence para clínicas médicas. Dashboard de KPIs en tiempo real, análisis predictivo y gestión clínica inteligente.",
+        "foundingDate": "2025",
+        "industry": "Healthcare Technology",
+        "areaServed": "España",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+34-XXX-XXX-XXX",
+            "contactType": "customer service",
+            "email": "franciscoaucar@ajconsultingit.com",
+            "availableLanguage": "Spanish"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/company/a-j-consultingit-software/about/"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "ES"
+        },
+        "service": {
+            "@type": "Service",
+            "name": "Business Intelligence para Clínicas",
+            "description": "Dashboard de KPIs médicos, análisis predictivo y gestión clínica inteligente",
+            "provider": {
+                "@type": "Organization",
+                "name": "A&J Consulting IT"
+            }
+        }
+    }
+    </script>
+
+    <!-- Preconexión a Google Fonts para mayor velocidad -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Importación de la fuente Inter desde Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Importación de Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- VERCEL ANALYTICS: Script de seguimiento optimizado -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <!-- VERCEL SPEED INSIGHTS: Monitoreo de rendimiento -->
+    <script>
+        window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+
+
+    <style>
+        /* ===== VARIABLES CSS: Colores y configuraciones globales ===== */
+        :root {
+            /* Colores principales: Negro, Blanco, Verde */
+            --primary-color: #000000;
+            /* Negro principal */
+            --primary-hover: #333333;
+            /* Negro para hover */
+            --secondary-color: #27ae60;
+            /* Verde principal */
+            --accent-color: #2ecc71;
+            /* Verde claro accent */
+            --dark-bg: #000000;
+            /* Fondo oscuro */
+            --text-dark: #000000;
+            /* Texto negro */
+            --text-light: #ffffff;
+            /* Texto blanco */
+            --text-muted: #666666;
+            /* Texto gris */
+            --card-bg: rgba(255, 255, 255, 0.95);
+            /* Fondo tarjetas */
+            /* Sombras y efectos */
+            --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 8px 32px rgba(0, 0, 0, 0.15);
+            --border-radius: 16px;
+            /* Radio de bordes */
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Transición suave */
+        }
+
+        /* ===== RESET CSS: Eliminar estilos predeterminados ===== */
+        * {
+            margin: 0;
+            /* Sin márgenes */
+            padding: 0;
+            /* Sin espaciado interno */
+            box-sizing: border-box;
+            /* Incluir bordes en el tamaño */
+        }
+
+        /* ===== HTML: Configuración de scroll suave ===== */
+        html {
+            scroll-behavior: smooth;
+            /* Scroll suave entre secciones */
+        }
+
+        /* ===== BODY: Tipografía y configuración base ===== */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            /* Fuente principal */
+            line-height: 1.7;
+            /* Espaciado entre líneas */
+            color: var(--text-dark);
+            /* Color de texto predeterminado */
+            overflow-x: hidden;
+            /* Ocultar scroll horizontal */
+        }
+
+        /* ===== FONDO DE PARTÍCULAS: Efecto visual de fondo ===== */
+        #particles-js {
+            position: fixed;
+            /* Fijo en pantalla */
+            top: 0;
+            /* Desde arriba */
+            left: 0;
+            /* Desde la izquierda */
+            width: 100vw;
+            /* Ancho completo */
+            height: 100vh;
+            /* Alto completo */
+            z-index: -1;
+            /* Detrás de todo el contenido */
+            /* Degradado de fondo negro a verde */
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #27ae60 100%);
+        }
+
+        /* ===== HEADER: Navegación fija superior ===== */
+        .header {
+            position: fixed;
+            /* Fijo en la parte superior */
+            top: 0;
+            /* Pegado arriba */
+            left: 0;
+            /* Desde la izquierda */
+            right: 0;
+            /* Hasta la derecha */
+            z-index: 1000;
+            /* Por encima de otros elementos */
+            background: rgba(255, 255, 255, 0.95);
+            /* Fondo blanco transparente */
+            backdrop-filter: blur(20px);
+            /* Efecto de desenfoque */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            /* Borde inferior sutil */
+            transition: var(--transition);
+            /* Transición suave */
+        }
+
+        /* ===== CONTENEDOR DE NAVEGACIÓN: Layout del header ===== */
+        .nav-container {
+            max-width: 1200px;
+            /* Ancho máximo */
+            margin: 0 auto;
+            /* Centrado */
+            padding: 1rem 2rem;
+            /* Espaciado interno */
+            display: flex;
+            /* Layout flexbox */
+            justify-content: space-between;
+            /* Separar elementos */
+            align-items: center;
+            /* Centrar verticalmente */
+        }
+
+        /* ===== LOGO DE NAVEGACIÓN: Marca en el header ===== */
+        .logo-nav {
+            display: flex;
+            /* Layout flexbox */
+            align-items: center;
+            /* Centrar verticalmente */
+            gap: 0.75rem;
+            /* Espacio entre elementos */
+            font-weight: 800;
+            /* Texto muy grueso */
+            font-size: 1.5rem;
+            /* Tamaño de fuente */
+            color: var(--secondary-color);
+            /* Color verde */
+            text-decoration: none;
+            /* Sin subrayado */
+        }
+
+        /* ===== ICONO DEL LOGO: Estilo del icono en navegación ===== */
+        .logo-nav i {
+            font-size: 2rem;
+            /* Tamaño del icono */
+            color: var(--secondary-color);
+            /* Color verde */
+        }
+
+        /* ===== MENÚ DE NAVEGACIÓN: Lista de enlaces ===== */
+        .nav-menu {
+            display: flex;
+            /* Layout flexbox */
+            list-style: none;
+            /* Sin viñetas */
+            gap: 2rem;
+            /* Espacio entre elementos */
+        }
+
+        /* ===== ENLACES DE NAVEGACIÓN: Estilo de los links ===== */
+        .nav-menu a {
+            color: var(--text-dark);
+            /* Color negro */
+            text-decoration: none;
+            /* Sin subrayado */
+            font-weight: 500;
+            /* Peso medio */
+            transition: var(--transition);
+            /* Transición suave */
+            padding: 0.5rem 1rem;
+            /* Espaciado interno */
+            border-radius: 8px;
+            /* Bordes redondeados */
+        }
+
+        /* ===== HOVER EN NAVEGACIÓN: Efecto al pasar el mouse ===== */
+        .nav-menu a:hover {
+            color: var(--secondary-color);
+            /* Cambiar a verde */
+            background: rgba(39, 174, 96, 0.1);
+            /* Fondo verde transparente */
+        }
+
+        /* ===== CONTENEDOR PRINCIPAL: Wrapper del contenido ===== */
+        .main-container {
+            position: relative;
+            /* Posición relativa */
+            z-index: 2;
+            /* Por encima del fondo */
+            padding-top: 100px;
+            /* Espacio para el header fijo */
+        }
+
+        /* ===== SECCIÓN HERO: Pantalla principal ===== */
+        .hero-section {
+            min-height: 100vh;
+            /* Altura mínima de pantalla completa */
+            display: flex;
+            /* Layout flexbox */
+            align-items: center;
+            /* Centrar verticalmente */
+            justify-content: center;
+            /* Centrar horizontalmente */
+            text-align: center;
+            /* Texto centrado */
+            padding: 2rem;
+            /* Espaciado interno */
+            position: relative;
+            /* Posición relativa */
+        }
+
+        /* ===== CONTENIDO HERO: Wrapper del contenido principal ===== */
+        .hero-content {
+            max-width: 900px;
+            /* Ancho máximo */
+            margin: 0 auto;
+            /* Centrado */
+        }
+
+        /* ===== LOGO HERO: Contenedor del logo principal ===== */
+        .hero-logo {
+            display: flex;
+            /* Layout flexbox */
+            align-items: center;
+            /* Centrar verticalmente */
+            justify-content: center;
+            /* Centrar horizontalmente */
+            margin-bottom: 3rem;
+            /* Margen inferior */
+            position: relative;
+            /* Posición relativa */
+        }
+
+        /* ===== LOGO FLOTANTE: Imagen del logo con animación ===== */
+        .floating-logo {
+            width: 180px;
+            /* Ancho fijo */
+            height: auto;
+            /* Alto automático */
+            animation: floatLogo 4s ease-in-out infinite;
+            /* Animación flotante */
+            filter: drop-shadow(0 10px 30px rgba(39, 174, 96, 0.3));
+            /* Sombra verde */
+            border-radius: 20px;
+            /* Bordes redondeados */
+        }
+
+        /* ===== ANIMACIÓN FLOTANTE: Movimiento del logo ===== */
+        @keyframes floatLogo {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+                /* Posición inicial */
+            }
+
+            50% {
+                transform: translateY(-15px) scale(1.05);
+                /* Movimiento hacia arriba y escala */
+            }
+        }
+
+        /* ===== TEXTO DEL LOGO: Título principal ===== */
+        .logo-text {
+            font-size: 4rem;
+            /* Tamaño grande */
+            font-weight: 900;
+            /* Muy grueso */
+            letter-spacing: -2px;
+            /* Espaciado entre letras */
+            color: white;
+            /* Color blanco */
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            /* Sombra de texto */
+            margin: 2rem 0 1rem 0;
+            /* Márgenes */
+            text-align: center;
+            /* Centrado */
+        }
+
+        /* ===== SUBTÍTULO DEL LOGO: Descripción bajo el título ===== */
+        .logo-subtitle {
+            font-size: 1.2rem;
+            /* Tamaño medio */
+            color: var(--secondary-color);
+            /* Color verde */
+            font-weight: 600;
+            /* Semi-grueso */
+            letter-spacing: 4px;
+            /* Espaciado entre letras */
+            text-transform: uppercase;
+            /* Mayúsculas */
+            margin-bottom: 2rem;
+            /* Margen inferior */
+            text-align: center;
+            /* Centrado */
+            text-shadow: 0 2px 10px rgba(39, 174, 96, 0.3);
+            /* Sombra verde */
+        }
+
+        /* ===== DESCRIPCIÓN HERO: Texto descriptivo principal ===== */
+        .hero-description {
+            font-size: 1.5rem;
+            /* Tamaño mediano */
+            color: rgba(255, 255, 255, 0.95);
+            /* Blanco casi opaco */
+            margin-bottom: 2rem;
+            /* Margen inferior */
+            font-weight: 400;
+            /* Peso normal */
+        }
+
+        /* ===== TAGLINE HERO: Eslogan principal ===== */
+        .hero-tagline {
+            font-size: 1.8rem;
+            /* Tamaño grande */
+            color: white;
+            /* Color blanco */
+            margin-bottom: 3rem;
+            /* Margen inferior */
+            font-weight: 600;
+            /* Semi-grueso */
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            /* Sombra de texto */
+        }
+
+        /* ===== BOTONES HERO: Contenedor de botones de acción ===== */
+        .hero-buttons {
+            display: flex;
+            /* Layout flexbox */
+            gap: 1.5rem;
+            /* Espacio entre botones */
+            justify-content: center;
+            /* Centrar */
+            flex-wrap: wrap;
+            /* Permitir salto de línea */
+            margin-top: 3rem;
+            /* Margen superior */
+        }
+
+        /* ===== BOTÓN BASE: Estilo base para todos los botones ===== */
+        .btn {
+            padding: 1rem 2rem;
+            /* Espaciado interno */
+            border: none;
+            /* Sin borde */
+            border-radius: 50px;
+            /* Muy redondeado */
+            font-size: 1.1rem;
+            /* Tamaño de fuente */
+            font-weight: 600;
+            /* Semi-grueso */
+            cursor: pointer;
+            /* Cursor de mano */
+            transition: var(--transition);
+            /* Transición suave */
+            text-decoration: none;
+            /* Sin subrayado */
+            display: inline-flex;
+            /* Flexbox en línea */
+            align-items: center;
+            /* Centrar verticalmente */
+            gap: 0.75rem;
+            /* Espacio entre elementos */
+            min-width: 180px;
+            /* Ancho mínimo */
+            justify-content: center;
+            /* Centrar contenido */
+        }
+
+        /* ===== BOTÓN PRIMARIO: Botón principal verde ===== */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            /* Degradado verde */
+            color: white;
+            /* Texto blanco */
+            box-shadow: var(--shadow-light);
+            /* Sombra */
+        }
+
+        /* ===== HOVER BOTÓN PRIMARIO: Efecto al pasar el mouse ===== */
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            /* Mover hacia arriba */
+            box-shadow: var(--shadow-medium);
+            /* Sombra más intensa */
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            /* Degradado invertido */
+        }
+
+        /* ===== BOTÓN SECUNDARIO: Botón transparente ===== */
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            /* Fondo transparente */
+            color: white;
+            /* Texto blanco */
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            /* Borde transparente */
+            backdrop-filter: blur(10px);
+            /* Efecto blur */
+        }
+
+        /* ===== HOVER BOTÓN SECUNDARIO: Efecto al pasar el mouse ===== */
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            /* Más opaco */
+            transform: translateY(-2px);
+            /* Mover hacia arriba */
+        }
+
+        /* ===== SECCIONES DE CONTENIDO: Contenedor general de secciones ===== */
+        .content-section {
+            padding: 5rem 2rem;
+            /* Espaciado interno amplio */
+            max-width: 1200px;
+            /* Ancho máximo */
+            margin: 0 auto;
+            /* Centrado */
+        }
+
+        /* ===== TARJETA DE SECCIÓN: Contenedor con fondo ===== */
+        .section-card {
+            background: var(--card-bg);
+            /* Fondo blanco transparente */
+            border-radius: var(--border-radius);
+            /* Bordes redondeados */
+            padding: 3rem;
+            /* Espaciado interno */
+            margin: 2rem 0;
+            /* Márgenes verticales */
+            box-shadow: var(--shadow-light);
+            /* Sombra */
+            backdrop-filter: blur(20px);
+            /* Efecto blur */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            /* Borde sutil */
+            transition: var(--transition);
+            /* Transición suave */
+        }
+
+        /* ===== HOVER TARJETA SECCIÓN: Efecto al pasar el mouse ===== */
+        .section-card:hover {
+            transform: translateY(-5px);
+            /* Mover hacia arriba */
+            box-shadow: var(--shadow-medium);
+            /* Sombra más intensa */
+        }
+
+        /* ===== TÍTULO DE SECCIÓN: Títulos principales de cada sección ===== */
+        .section-title {
+            font-size: 2.5rem;
+            /* Tamaño grande */
+            font-weight: 800;
+            /* Muy grueso */
+            color: var(--text-dark);
+            /* Color negro */
+            margin-bottom: 2rem;
+            /* Margen inferior */
+            text-align: center;
+            /* Centrado */
+            position: relative;
+            /* Posición relativa */
+        }
+
+        /* ===== LÍNEA DECORATIVA: Línea bajo los títulos ===== */
+        .section-title::after {
+            content: '';
+            /* Elemento vacío */
+            display: block;
+            /* Como bloque */
+            width: 80px;
+            /* Ancho */
+            height: 4px;
+            /* Alto */
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            /* Degradado verde */
+            margin: 1rem auto;
+            /* Margen centrado */
+            border-radius: 2px;
+            /* Bordes redondeados */
+        }
+
+        /* ===== GRID DE CARACTERÍSTICAS: Layout de tarjetas en rejilla ===== */
+        .features-grid {
+            display: grid;
+            /* Layout grid */
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            /* Columnas responsivas */
+            gap: 2rem;
+            /* Espacio entre elementos */
+            margin: 3rem 0;
+            /* Márgenes verticales */
+        }
+
+        /* ===== TARJETA DE CARACTERÍSTICA: Tarjeta individual ===== */
+        .feature-card {
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            /* Degradado sutil */
+            padding: 2.5rem;
+            /* Espaciado interno */
+            border-radius: var(--border-radius);
+            /* Bordes redondeados */
+            box-shadow: var(--shadow-light);
+            /* Sombra */
+            text-align: center;
+            /* Texto centrado */
+            transition: var(--transition);
+            /* Transición suave */
+            border-left: 4px solid var(--secondary-color);
+            /* Borde izquierdo verde */
+        }
+
+        /* ===== HOVER TARJETA CARACTERÍSTICA: Efecto al pasar el mouse ===== */
+        .feature-card:hover {
+            transform: translateY(-8px);
+            /* Mover hacia arriba */
+            box-shadow: var(--shadow-medium);
+            /* Sombra más intensa */
+            border-left-color: var(--accent-color);
+            /* Cambiar color del borde */
+        }
+
+        /* ===== ICONO DE CARACTERÍSTICA: Iconos en las tarjetas ===== */
+        .feature-icon {
+            font-size: 3rem;
+            /* Tamaño grande */
+            color: var(--secondary-color);
+            /* Color verde */
+            margin-bottom: 1.5rem;
+            /* Margen inferior */
+        }
+
+        /* ===== TÍTULO DE CARACTERÍSTICA: Título de cada tarjeta ===== */
+        .feature-title {
+            font-size: 1.4rem;
+            /* Tamaño mediano */
+            font-weight: 700;
+            /* Grueso */
+            margin-bottom: 1rem;
+            /* Margen inferior */
+            color: var(--text-dark);
+            /* Color negro */
+        }
+
+        /* ===== DESCRIPCIÓN DE CARACTERÍSTICA: Texto descriptivo ===== */
+        .feature-description {
+            color: var(--text-muted);
+            /* Color gris */
+            line-height: 1.6;
+            /* Espaciado entre líneas */
+        }
+
+        /* ===== GRID DE ESTADÍSTICAS: Layout de métricas ===== */
+        .stats-grid {
+            display: grid;
+            /* Layout grid */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            /* Columnas responsivas */
+            gap: 2rem;
+            /* Espacio entre elementos */
+            margin: 3rem 0;
+            /* Márgenes verticales */
+        }
+
+        /* ===== TARJETA DE ESTADÍSTICA: Tarjeta individual con métrica ===== */
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            /* Degradado negro a verde */
+            color: white;
+            /* Texto blanco */
+            padding: 2.5rem 2rem;
+            /* Espaciado interno */
+            border-radius: var(--border-radius);
+            /* Bordes redondeados */
+            text-align: center;
+            /* Texto centrado */
+            box-shadow: var(--shadow-light);
+            /* Sombra */
+            transition: var(--transition);
+            /* Transición suave */
+        }
+
+        /* ===== HOVER ESTADÍSTICA: Efecto al pasar el mouse ===== */
+        .stat-card:hover {
+            transform: translateY(-5px);
+            /* Mover hacia arriba */
+            box-shadow: var(--shadow-medium);
+            /* Sombra más intensa */
+        }
+
+        /* ===== NÚMERO DE ESTADÍSTICA: Número principal ===== */
+        .stat-number {
+            font-size: 3rem;
+            /* Tamaño muy grande */
+            font-weight: 900;
+            /* Muy grueso */
+            margin-bottom: 0.5rem;
+            /* Margen inferior */
+        }
+
+        /* ===== ETIQUETA DE ESTADÍSTICA: Descripción del número ===== */
+        .stat-label {
+            font-size: 1rem;
+            /* Tamaño normal */
+            opacity: 0.9;
+            /* Ligeramente transparente */
+            font-weight: 500;
+            /* Peso medio */
+        }
+
+        /* ===== INFORMACIÓN DE CONTACTO: Grid de contactos ===== */
+        .contact-info {
+            display: grid;
+            /* Layout grid */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            /* Columnas responsivas */
+            gap: 2rem;
+            /* Espacio entre elementos */
+            margin: 3rem 0;
+            /* Márgenes verticales */
+        }
+
+        /* ===== TARJETA DE CONTACTO: Tarjeta individual de contacto ===== */
+        .contact-card {
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            /* Degradado sutil */
+            padding: 2rem;
+            /* Espaciado interno */
+            border-radius: var(--border-radius);
+            /* Bordes redondeados */
+            box-shadow: var(--shadow-light);
+            /* Sombra */
+            text-align: center;
+            /* Texto centrado */
+            transition: var(--transition);
+            /* Transición suave */
+            border: 1px solid rgba(39, 174, 96, 0.1);
+            /* Borde verde sutil */
+        }
+
+        /* ===== HOVER CONTACTO: Efecto al pasar el mouse ===== */
+        .contact-card:hover {
+            transform: translateY(-5px);
+            /* Mover hacia arriba */
+            box-shadow: var(--shadow-medium);
+            /* Sombra más intensa */
+            border-color: var(--secondary-color);
+            /* Borde verde más intenso */
+        }
+
+        /* ===== ICONO DE CONTACTO: Iconos de medios de contacto ===== */
+        .contact-icon {
+            font-size: 2.5rem;
+            /* Tamaño grande */
+            color: var(--secondary-color);
+            /* Color verde */
+            margin-bottom: 1rem;
+            /* Margen inferior */
+        }
+
+        /* ===== TEXTO DE CONTACTO: Etiqueta de contacto ===== */
+        .contact-text {
+            font-size: 1.1rem;
+            /* Tamaño ligeramente grande */
+            font-weight: 600;
+            /* Semi-grueso */
+            color: var(--text-dark);
+            /* Color negro */
+            margin-bottom: 0.5rem;
+            /* Margen inferior */
+        }
+
+        /* ===== ENLACE DE CONTACTO: Enlaces clickeables ===== */
+        .contact-link {
+            color: var(--text-muted);
+            /* Color gris */
+            text-decoration: none;
+            /* Sin subrayado */
+            transition: var(--transition);
+            /* Transición suave */
+        }
+
+        /* ===== HOVER ENLACE CONTACTO: Efecto al pasar el mouse ===== */
+        .contact-link:hover {
+            color: var(--secondary-color);
+            /* Cambiar a verde */
+        }
+
+        /* ===== FOOTER: Pie de página ===== */
+        .footer {
+            background: var(--dark-bg);
+            /* Fondo negro */
+            color: var(--text-light);
+            /* Texto blanco */
+            text-align: center;
+            /* Texto centrado */
+            padding: 3rem 2rem 2rem;
+            /* Espaciado interno */
+            margin-top: 5rem;
+            /* Margen superior */
+        }
+
+        /* ===== CONTENIDO DEL FOOTER: Wrapper del contenido ===== */
+        .footer-content {
+            max-width: 1200px;
+            /* Ancho máximo */
+            margin: 0 auto;
+            /* Centrado */
+        }
+
+        /* ===== LOGO DEL FOOTER: Marca en el pie ===== */
+        .footer-logo {
+            font-size: 2rem;
+            /* Tamaño grande */
+            font-weight: 800;
+            /* Muy grueso */
+            color: var(--secondary-color);
+            /* Color verde */
+            margin-bottom: 1rem;
+            /* Margen inferior */
+        }
+
+        /* ===== TEXTO DEL FOOTER: Descripción en el pie ===== */
+        .footer-text {
+            opacity: 0.8;
+            /* Ligeramente transparente */
+            margin-bottom: 2rem;
+            /* Margen inferior */
+        }
+
+        /* ===== ENLACES DEL FOOTER: Enlaces sociales ===== */
+        .footer-links {
+            display: flex;
+            /* Layout flexbox */
+            justify-content: center;
+            /* Centrar */
+            gap: 2rem;
+            /* Espacio entre elementos */
+            margin-bottom: 2rem;
+            /* Margen inferior */
+            flex-wrap: wrap;
+            /* Permitir salto de línea */
+        }
+
+        /* ===== ENLACES INDIVIDUALES: Estilo de cada enlace ===== */
+        .footer-links a {
+            color: var(--text-light);
+            /* Color blanco */
+            text-decoration: none;
+            /* Sin subrayado */
+            font-size: 1.5rem;
+            /* Tamaño grande */
+            transition: var(--transition);
+            /* Transición suave */
+        }
+
+        /* ===== HOVER ENLACES FOOTER: Efecto al pasar el mouse ===== */
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            /* Cambiar a verde */
+            transform: translateY(-2px);
+            /* Mover hacia arriba */
+        }
+
+        /* ===== ANIMACIONES: Definición de movimientos ===== */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            /* Posición inicial */
+            50% {
+                transform: translateY(-10px);
+            }
+
+            /* Posición elevada */
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                /* Invisible */
+                transform: translateY(30px);
+                /* Posición baja */
+            }
+
+            to {
+                opacity: 1;
+                /* Visible */
+                transform: translateY(0);
+                /* Posición normal */
+            }
+        }
+
+        /* ===== CLASE DE ANIMACIÓN: Para aplicar fadeInUp ===== */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+            /* Aplicar animación */
+        }
+
+        /* ===== BARRA DE PROGRESO: Indicador de scroll ===== */
+        .progress-bar {
+            position: fixed;
+            /* Fijo en pantalla */
+            top: 0;
+            /* Pegado arriba */
+            left: 0;
+            /* Desde la izquierda */
+            width: 0%;
+            /* Ancho inicial */
+            height: 4px;
+            /* Alto */
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            /* Degradado verde */
+            z-index: 10000;
+            /* Por encima de todo */
+            transition: width 0.1s ease;
+            /* Transición suave */
+        }
+
+        /* ===== RESPONSIVE: Adaptación para móviles ===== */
+
+        /* ===== TABLETS Y PANTALLAS MEDIANAS ===== */
+        @media (max-width: 1024px) {
+            .nav-container {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .hero-section {
+                padding: 1.5rem;
+            }
+
+            .content-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .section-card {
+                padding: 2.5rem;
+            }
+        }
+
+        /* ===== MÓVILES LARGOS ===== */
+        @media (max-width: 768px) {
+
+            /* Navegación móvil */
+            .nav-container {
+                padding: 0.5rem 1rem;
+                flex-wrap: wrap;
+            }
+
+            .logo-nav {
+                font-size: 1.3rem;
+            }
+
+            .logo-nav i {
+                font-size: 1.8rem;
+            }
+
+            /* Ocultar menú de navegación en móvil */
+            .nav-menu {
+                display: none;
+            }
+
+            /* Hero section móvil */
+            .hero-section {
+                padding: 1rem;
+                min-height: 90vh;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            /* Logo y texto principal */
+            .hero-logo {
+                flex-direction: column;
+                gap: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .logo-text {
+                font-size: 2.2rem;
+                line-height: 1.2;
+                margin: 1.5rem 0 0.5rem 0;
+            }
+
+            .floating-logo {
+                width: 100px;
+            }
+
+            .logo-subtitle {
+                font-size: 1rem;
+                letter-spacing: 2px;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.3rem;
+                margin-bottom: 2rem;
+                line-height: 1.4;
+            }
+
+            .hero-description {
+                font-size: 1.2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            /* Botones móvil */
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+
+            .btn {
+                min-width: 200px;
+                padding: 0.9rem 1.8rem;
+                font-size: 1rem;
+            }
+
+            /* Secciones de contenido */
+            .content-section {
+                padding: 3rem 1rem;
+            }
+
+            .section-card {
+                padding: 2rem 1.5rem;
+                margin: 1rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            /* Grids responsivos */
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin: 2rem 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                margin: 2rem 0;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin: 2rem 0;
+            }
+
+            /* Tarjetas individuales */
+            .feature-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .feature-icon {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .feature-title {
+                font-size: 1.2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .stat-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.9rem;
+            }
+
+            .contact-card {
+                padding: 1.5rem;
+            }
+
+            .contact-icon {
+                font-size: 2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .contact-text {
+                font-size: 1rem;
+            }
+
+            /* Footer móvil */
+            .footer {
+                padding: 2rem 1rem 1.5rem;
+            }
+
+            .footer-logo {
+                font-size: 1.5rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .footer-text {
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .footer-links {
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .footer-links a {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* ===== MÓVILES PEQUEÑOS ===== */
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0.5rem 0.8rem;
+            }
+
+            .logo-nav {
+                font-size: 1.1rem;
+            }
+
+            .logo-nav i {
+                font-size: 1.5rem;
+            }
+
+            .hero-section {
+                padding: 0.8rem;
+                min-height: 85vh;
+            }
+
+            .logo-text {
+                font-size: 1.8rem;
+                margin: 1rem 0 0.5rem 0;
+            }
+
+            .floating-logo {
+                width: 80px;
+            }
+
+            .logo-subtitle {
+                font-size: 0.9rem;
+                letter-spacing: 1px;
+            }
+
+            .hero-tagline {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .btn {
+                min-width: 160px;
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .content-section {
+                padding: 2rem 0.8rem;
+            }
+
+            .section-card {
+                padding: 1.5rem 1rem;
+                margin: 0.8rem 0;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+                margin-bottom: 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .feature-icon {
+                font-size: 2rem;
+            }
+
+            .feature-title {
+                font-size: 1.1rem;
+            }
+
+            .stat-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            .contact-card {
+                padding: 1.2rem;
+            }
+
+            .contact-icon {
+                font-size: 1.8rem;
+            }
+
+            .footer {
+                padding: 1.5rem 0.8rem 1rem;
+            }
+
+            .footer-logo {
+                font-size: 1.3rem;
+            }
+
+            .footer-text {
+                font-size: 0.8rem;
+            }
+
+            .footer-links {
+                gap: 1rem;
+            }
+
+            .footer-links a {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* ===== MÓVILES MUY PEQUEÑOS ===== */
+        @media (max-width: 320px) {
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .floating-logo {
+                width: 70px;
+            }
+
+            .hero-tagline {
+                font-size: 1rem;
+            }
+
+            .btn {
+                min-width: 140px;
+                padding: 0.7rem 1.2rem;
+                font-size: 0.8rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .feature-card,
+            .stat-card,
+            .contact-card {
+                padding: 1rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<!-- BODY: Cuerpo principal del documento -->
+
+<body>
+    <!-- BARRA DE PROGRESO: Indicador visual del scroll -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- HEADER: Navegación fija superior -->
+    <header class="header">
+        <nav class="nav-container">
+            <!-- LOGO DE NAVEGACIÓN: Marca clickeable que lleva al inicio -->
+            <a href="#home" class="logo-nav">
+                <i class="fas fa-chart-line"></i> <!-- Icono de gráfico -->
+                <span>A&J CONSULTING</span> <!-- Nombre de la empresa -->
+            </a>
+            <!-- MENÚ DE NAVEGACIÓN: Enlaces a secciones -->
+            <ul class="nav-menu">
+                <li><a href="#home">Inicio</a></li> <!-- Link al hero -->
+                <!-- Servicios removido según solicitud -->
+                <li><a href="#nosotros">Nosotros</a></li> <!-- Link a sección nosotros -->
+                <li><a href="#contacto">Contacto</a></li> <!-- Link a contacto -->
+            </ul>
+        </nav>
+    </header>
+
+    <!-- PARTÍCULAS DE FONDO: Efecto visual animado -->
+    <div id="particles-js"></div>
+
+    <!-- CONTENEDOR PRINCIPAL: Wrapper de todo el contenido -->
+    <div class="main-container">
+        <!-- SECCIÓN HERO: Pantalla principal de bienvenida -->
+        <section id="home" class="hero-section">
+            <div class="hero-content fade-in-up">
+                <!-- CONTENEDOR DEL LOGO: Logo principal flotante -->
+                <div class="hero-logo">
+                    <!-- LOGO FLOTANTE: Imagen de la empresa con animación -->
+                    <img src="assets/AJLOGO.png" alt="Consulting Logo" class="floating-logo">
+                </div>
+
+                <!-- TÍTULO PRINCIPAL: Nombre de la empresa -->
+                <h1 class="logo-text">A&J CONSULTING IT</h1>
+                <!-- SUBTÍTULO: Descripción del tipo de negocio -->
+                <p class="logo-subtitle">Business Intelligence Solutions</p>
+
+                <!-- ESLOGAN PRINCIPAL: Propuesta de valor -->
+                <h2 class="hero-tagline">Transformamos tus datos en decisiones inteligentes</h2>
+                <!-- DESCRIPCIÓN: Explicación específica del servicio -->
+                <p class="hero-description">Sistema especializado en gestión clínica con dashboard de KPIs en tiempo
+                    real</p>
+
+                <!-- BOTONES DE ACCIÓN: Llamadas a la acción principales -->
+                <div class="hero-buttons">
+                    <!-- BOTÓN PRIMARIO: Acción principal (Demo) -->
+                    <a href="#contacto" class="btn btn-primary" id="solicitar-demo-btn">
+                        <i class="fas fa-calendar-check"></i> <!-- Icono de calendario -->
+                        Solicitar Demo
+                    </a>
+                    <!-- BOTÓN SECUNDARIO: Acción secundaria (Info) -->
+                    <a href="#nosotros" class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i> <!-- Icono de información -->
+                        Conocer Más
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN NOSOTROS: Información sobre la empresa (antes era servicios) -->
+        <section id="nosotros" class="content-section">
+            <div class="section-card">
+                <!-- TÍTULO DE SECCIÓN: Encabezado principal -->
+                <h2 class="section-title">Business Intelligence para Clínicas Médicas</h2>
+                <!-- GRID DE CARACTERÍSTICAS: Layout de 3 columnas -->
+                <div class="features-grid">
+                    <!-- CARACTERÍSTICA 1: Dashboard -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-bar"></i> <!-- Icono de gráfico de barras -->
+                        </div>
+                        <h3 class="feature-title">Dashboard Inteligente</h3>
+                        <p class="feature-description">Visualización avanzada de KPIs clínicos con métricas en tiempo
+                            real y análisis predictivo.</p>
+                    </div>
+
+                    <!-- CARACTERÍSTICA 2: Seguridad -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i> <!-- Icono de escudo -->
+                        </div>
+                        <h3 class="feature-title">Seguridad Empresarial</h3>
+                        <p class="feature-description">Protección de datos con encriptación bancaria y cumplimiento de
+                            normativas de salud.</p>
+                    </div>
+
+                    <!-- CARACTERÍSTICA 3: AI -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i> <!-- Icono de cerebro -->
+                        </div>
+                        <h3 class="feature-title">Análisis Predictivo</h3>
+                        <p class="feature-description">IA avanzada para predecir tendencias y optimizar la rentabilidad
+                            de tu clínica.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE KPIs: Métricas esenciales para clínicas -->
+        <section class="content-section">
+            <div class="section-card">
+                <!-- TÍTULO: Encabezado de KPIs -->
+                <h2 class="section-title">KPIs Esenciales para Clínicas</h2>
+                <!-- GRID DE KPIs: Layout de métricas clínicas -->
+                <div class="features-grid">
+                    <!-- KPI 1: Ocupación de Agenda -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3 class="feature-title">Ocupación de Agenda</h3>
+                        <p class="feature-description">Optimización del uso de horarios disponibles y control de citas
+                            programadas vs. disponibles</p>
+                    </div>
+
+                    <!-- KPI 2: Tasa de Ausentismo -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-times"></i>
+                        </div>
+                        <h3 class="feature-title">Tasa de Ausentismo</h3>
+                        <p class="feature-description">Control de citas no asistidas y análisis de patrones de
+                            ausentismo para estrategias de recordatorios</p>
+                    </div>
+
+                    <!-- KPI 3: Ingreso Promedio por Paciente -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <h3 class="feature-title">Ingreso Promedio por Paciente</h3>
+                        <p class="feature-description">Rentabilidad por consulta y análisis de valor por paciente para
+                            optimización de precios</p>
+                    </div>
+
+                    <!-- KPI 4: Tasa de Complicaciones -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3 class="feature-title">Tasa de Complicaciones</h3>
+                        <p class="feature-description">Calidad y seguridad del tratamiento con seguimiento de
+                            complicaciones post-tratamiento</p>
+                    </div>
+
+                    <!-- KPI 5: Tasa de Retorno -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-redo"></i>
+                        </div>
+                        <h3 class="feature-title">Tasa de Retorno</h3>
+                        <p class="feature-description">Fidelización de pacientes y análisis de satisfacción para
+                            estrategias de retención</p>
+                    </div>
+
+                    <!-- KPI 6: Productividad Profesional -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3 class="feature-title">Productividad Profesional</h3>
+                        <p class="feature-description">Eficiencia del equipo médico con optimización de horarios y
+                            consultas por profesional</p>
+                    </div>
+
+                    <!-- KPI 7: Adherencia al Tratamiento -->
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <h3 class="feature-title">Adherencia al Tratamiento</h3>
+                        <p class="feature-description">Cumplimiento de indicaciones médicas y seguimiento de adherencia
+                            a tratamientos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE CONTACTO: Información de contacto -->
+        <section id="contacto" class="content-section">
+            <div class="section-card">
+                <!-- TÍTULO: Encabezado de contacto -->
+                <h2 class="section-title">Contacto A&J Consulting IT</h2>
+                <!-- GRID DE CONTACTOS: Layout de medios de contacto -->
+                <div class="contact-info">
+                    <!-- CONTACTO 1: Email -->
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i> <!-- Icono de sobre -->
+                        </div>
+                        <div class="contact-text">Email Corporativo</div> <!-- Etiqueta -->
+                        <a href="mailto:franciscoaucar@ajconsultingit.com?cc=anj11@ajconsultingit.com&subject=Consulta%20sobre%20Business%20Intelligence&body=Hola,%20estoy%20interesado%20en%20conocer%20más%20sobre%20su%20aplicación%20web%20y%20productos%20de%20Business%20Intelligence%20para%20clínicas.%20Me%20gustaría%20agendar%20una%20demostración%20personalizada.%0A%0ASaludos%20cordiales"
+                            class="contact-link">franciscoaucar@ajconsultingit.com</a>
+                        <!-- Enlace clickeable -->
+                    </div>
+
+                    <!-- CONTACTO 2: LinkedIn -->
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i> <!-- Icono de LinkedIn -->
+                        </div>
+                        <div class="contact-text">LinkedIn</div> <!-- Etiqueta -->
+                        <a href="https://www.linkedin.com/company/a-j-consultingit-software/about/" target="_blank"
+                            rel="noopener noreferrer" class="contact-link">/company/ajconsulting</a>
+                        <!-- Enlace (actualizar con URL real) -->
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER: Pie de página -->
+        <footer class="footer">
+            <div class="footer-content">
+                <!-- LOGO DEL FOOTER: Marca en el pie -->
+                <div class="footer-logo">A&J CONSULTING IT</div>
+                <!-- DESCRIPCIÓN: Texto descriptivo -->
+                <p class="footer-text">Especialistas en Transformación Digital para el Sector Salud</p>
+                <!-- ENLACES SOCIALES: Iconos clickeables -->
+                <div class="footer-links">
+                    <a
+                        href="mailto:franciscoaucar@ajconsultingit.com?cc=anj11@ajconsultingit.com&subject=Consulta%20sobre%20Business%20Intelligence&body=Hola,%20estoy%20interesado%20en%20conocer%20más%20sobre%20su%20aplicación%20web%20y%20productos%20de%20Business%20Intelligence%20para%20clínicas.%20Me%20gustaría%20agendar%20una%20demostración%20personalizada.%0A%0ASaludos%20cordiales"><i
+                            class="fas fa-envelope"></i></a> <!-- Email -->
+                    <a href="https://www.linkedin.com/company/a-j-consultingit-software/about/" target="_blank"
+                        rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a> <!-- LinkedIn -->
+                </div>
+                <!-- COPYRIGHT: Derechos reservados -->
+                <p class="footer-text">© 2025 A&J Consulting IT. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- LIBRERÍA PARTICLES.JS: Script local para efecto de partículas -->
+    <script src="js/particles.js"></script>
+
+    <!-- JAVASCRIPT PERSONALIZADO: Funcionalidades interactivas -->
+    <script>
+        // ===== CONFIGURACIÓN DE PARTICLES.JS: Efecto de fondo animado optimizado =====
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,                         // Cantidad de partículas optimizada
+                    density: {
+                        enable: true,                  // Activar densidad automática
+                        value_area: 800                // Área para calcular densidad
+                    }
+                },
+                color: {
+                    value: "#ffffff"                   // Color blanco para partículas
+                },
+                shape: {
+                    type: "circle"                     // Forma circular
+                },
+                opacity: {
+                    value: 0.4,                       // Transparencia mejorada
+                    random: false,                     // Sin variación aleatoria
+                    anim: {
+                        enable: false,                 // Sin animación de opacidad
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 4,                         // Tamaño base optimizado
+                    random: true,                     // Variación aleatoria de tamaño
+                    anim: {
+                        enable: false,                // Sin animación de tamaño
+                        speed: 40,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,                     // Activar líneas conectoras
+                    distance: 150,                    // Distancia máxima para conectar
+                    color: "#ffffff",                 // Color de líneas blanco
+                    opacity: 0.3,                     // Transparencia de líneas mejorada
+                    width: 1                          // Grosor de líneas
+                },
+                move: {
+                    enable: true,                     // Activar movimiento
+                    speed: 3,                         // Velocidad de movimiento optimizada
+                    direction: "none",                // Sin dirección específica
+                    random: false,                    // Sin movimiento aleatorio
+                    straight: false,                  // Sin movimiento recto
+                    out_mode: "out",                  // Comportamiento al salir del área
+                    attract: {
+                        enable: false,                // Sin atracción
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",                  // Detectar interacción en canvas
+                events: {
+                    onhover: {
+                        enable: true,                 // Activar efecto hover
+                        mode: "repulse"              // Modo repulsión al pasar mouse
+                    },
+                    onclick: {
+                        enable: true,                 // Activar efecto click
+                        mode: "push"                  // Modo agregar partículas al hacer click
+                    },
+                    resize: true                      // Redimensionar automáticamente
+                },
+                modes: {
+                    grab: {
+                        distance: 400,               // Distancia para agarrar
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    bubble: {
+                        distance: 400,               // Distancia para burbuja
+                        size: 40,
+                        duration: 2,
+                        opacity: 8,
+                        speed: 3
+                    },
+                    repulse: {
+                        distance: 200                // Distancia de repulsión optimizada
+                    },
+                    push: {
+                        particles_nb: 4              // Número de partículas a agregar
+                    },
+                    remove: {
+                        particles_nb: 2              // Número de partículas a remover
+                    }
+                }
+            },
+            retina_detect: true                       // Detectar pantallas retina
+        });
+
+        // ===== BARRA DE PROGRESO DE SCROLL: Indicador visual del progreso =====
+        function updateProgressBar() {
+            const scrollTop = document.documentElement.scrollTop;         // Posición actual de scroll
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight; // Altura total scrolleable
+            const scrolled = (scrollTop / scrollHeight) * 100;           // Porcentaje scrolleado
+            document.getElementById('progressBar').style.width = scrolled + '%'; // Actualizar ancho de barra
+        }
+
+        // EVENTO: Actualizar barra al hacer scroll
+        window.addEventListener('scroll', updateProgressBar);
+
+        // ===== SCROLL SUAVE: Navegación suave entre secciones =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();                    // Prevenir comportamiento por defecto
+                const targetId = this.getAttribute('href').substring(1); // Obtener ID destino
+                const targetSection = document.getElementById(targetId);  // Encontrar sección destino
+                if (targetSection) {
+                    targetSection.scrollIntoView({     // Scroll suave a la sección
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ===== EFECTO HEADER AL SCROLL: Cambiar apariencia del header =====
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {                // Si se scrolleó más de 50px
+                header.style.background = 'rgba(255, 255, 255, 0.98)'; // Fondo más opaco
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)'; // Agregar sombra
+            } else {                                   // Si está en la parte superior
+                header.style.background = 'rgba(255, 255, 255, 0.95)'; // Fondo original
+                header.style.boxShadow = 'none';       // Sin sombra
+            }
+        });
+
+        // ===== ANIMACIÓN DE APARICIÓN: Efecto fade-in al hacer scroll =====
+        const observerOptions = {
+            threshold: 0.1,                           // Activar cuando 10% sea visible
+            rootMargin: '0px 0px -50px 0px'          // Margen para activación temprana
+        };
+
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {           // Si el elemento es visible
+                    entry.target.style.opacity = '1'; // Hacer visible
+                    entry.target.style.transform = 'translateY(0)'; // Posición final
+                }
+            });
+        }, observerOptions);
+
+        // APLICAR OBSERVADOR: A todos los elementos que necesitan animación
+        document.querySelectorAll('.section-card, .feature-card, .stat-card, .contact-card').forEach(el => {
+            el.style.opacity = '0';                   // Inicialmente invisible
+            el.style.transform = 'translateY(30px)';  // Posición inicial (abajo)
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'; // Transición suave
+            observer.observe(el);                     // Observar elemento
+        });
+
+        // ===== BOTÓN DEMO: Redirigir a sección de contacto =====
+        document.getElementById('solicitar-demo-btn').onclick = function (e) {
+            e.preventDefault();
+
+            // Tracking de evento: Botón demo clickeado
+            if (typeof window.va === 'function') {
+                window.va('track', 'Demo Button Clicked', {
+                    location: 'hero_section',
+                    button_text: 'Solicitar Demo'
+                });
+            }
+
+            // Scroll suave a la sección de contacto
+            document.getElementById('contacto').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        };
+
+        // ===== TRACKING DE EVENTOS: Seguimiento de interacciones =====
+
+        // Tracking de enlaces de contacto
+        document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+            link.addEventListener('click', function () {
+                if (typeof window.va === 'function') {
+                    window.va('track', 'Email Link Clicked', {
+                        email: this.href.split('mailto:')[1].split('?')[0],
+                        location: this.closest('section')?.id || 'unknown'
+                    });
+                }
+            });
+        });
+
+        // Tracking de enlaces de LinkedIn
+        document.querySelectorAll('a[href*="linkedin.com"]').forEach(link => {
+            link.addEventListener('click', function () {
+                if (typeof window.va === 'function') {
+                    window.va('track', 'LinkedIn Link Clicked', {
+                        location: this.closest('section')?.id || 'unknown'
+                    });
+                }
+            });
+        });
+
+        // Tracking de scroll por secciones
+        const sections = ['home', 'nosotros', 'contacto'];
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (typeof window.va === 'function') {
+                        window.va('track', 'Section Viewed', {
+                            section: entry.target.id,
+                            visibility_percentage: Math.round(entry.intersectionRatio * 100)
+                        });
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        sections.forEach(sectionId => {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                sectionObserver.observe(section);
+            }
+        });
+
+        // Tracking de tiempo en página
+        let startTime = Date.now();
+        window.addEventListener('beforeunload', function () {
+            const timeOnPage = Math.round((Date.now() - startTime) / 1000);
+            if (typeof window.va === 'function') {
+                window.va('track', 'Page Time', {
+                    seconds: timeOnPage,
+                    minutes: Math.round(timeOnPage / 60)
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
