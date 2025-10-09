@@ -342,12 +342,33 @@ ${data.nombre}
     `);
 
     const mailtoLink = `mailto:franciscoaucar@ajconsultingit.com?cc=anj11@ajconsultingit.com&subject=${subject}&body=${body}`;
-
-    // Abrir cliente de email
-    window.location.href = mailtoLink;
-
-    // Mostrar mensaje de confirmación con instrucciones
-    showSuccess('¡Formulario enviado! Se abrió tu cliente de email. Por favor, haz clic en "Enviar" para completar la solicitud.');
+    
+    // Intentar abrir cliente de email con múltiples métodos
+    try {
+        // Método 1: Crear enlace temporal
+        const tempLink = document.createElement('a');
+        tempLink.href = mailtoLink;
+        tempLink.style.display = 'none';
+        document.body.appendChild(tempLink);
+        tempLink.click();
+        document.body.removeChild(tempLink);
+        
+        // Método 2: Fallback con window.open
+        setTimeout(() => {
+            window.open(mailtoLink, '_self');
+        }, 100);
+        
+        // Mostrar mensaje de confirmación
+        showSuccess('¡Formulario enviado! Se abrió tu cliente de email. Por favor, haz clic en "Enviar" para completar la solicitud.');
+        
+    } catch (error) {
+        console.error('Error abriendo cliente de email:', error);
+        // Fallback: mostrar el email en un prompt
+        const email = 'franciscoaucar@ajconsultingit.com';
+        const message = `Email: ${email}\n\nAsunto: ${decodeURIComponent(subject)}\n\nCuerpo:\n${decodeURIComponent(body)}\n\nCopia este contenido y pégalo en tu cliente de correo.`;
+        alert(message);
+        showSuccess('¡Formulario enviado! Revisa la ventana emergente para copiar los datos del email.');
+    }
 }
 
 // ===== VALIDACIÓN DE FORMULARIO: Validaciones del frontend =====
