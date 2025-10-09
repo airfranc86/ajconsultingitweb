@@ -298,16 +298,38 @@ function handleDemoSubmission(form) {
         return;
     }
 
-    console.log('Validación exitosa, enviando al backend'); // Debug log
+    console.log('Validación exitosa, redirigiendo a email'); // Debug log
+
+    // Cerrar modal
+    closeDemoModal();
+
+    // Crear enlace mailto con los datos del formulario
+    const subject = encodeURIComponent(`Solicitud de Demo - ${data.clinica}`);
+    const body = encodeURIComponent(`
+Hola,
+
+Me pongo en contacto para solicitar una demostración de su sistema de Business Intelligence para clínicas.
+
+Datos de contacto:
+- Nombre: ${data.nombre}
+- Email: ${data.email}
+- Clínica: ${data.clinica}
+- Teléfono: ${data.telefono || 'No proporcionado'}
+
+Mensaje adicional:
+${data.mensaje || 'Sin mensaje adicional'}
+
+Saludos cordiales,
+${data.nombre}
+    `);
+
+    const mailtoLink = `mailto:franciscoaucar@ajconsultingit.com?cc=anj11@ajconsultingit.com&subject=${subject}&body=${body}`;
+
+    // Abrir cliente de email
+    window.location.href = mailtoLink;
 
     // Mostrar mensaje de confirmación
-    const button = form.querySelector('button[type="submit"]');
-    const originalText = button.textContent;
-    button.textContent = 'Enviando...';
-    button.disabled = true;
-
-    // Enviar a backend
-    submitToBackend(data, button, originalText);
+    showSuccess('Redirigiendo a tu cliente de email...');
 }
 
 // ===== VALIDACIÓN DE FORMULARIO: Validaciones del frontend =====
@@ -334,64 +356,8 @@ function validateFormData(data) {
     return true;
 }
 
-// ===== ENVÍO AL BACKEND: Comunicación con API =====
-async function submitToBackend(data, button, originalText) {
-    try {
-        console.log('Enviando datos:', data); // Debug log
-
-        // URL del backend (Vercel Functions)
-        const backendUrl = '/api';
-
-        const response = await fetch(`${backendUrl}/demo-request`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        console.log('Response status:', response.status); // Debug log
-
-        let result;
-        try {
-            result = await response.json();
-        } catch (parseError) {
-            console.error('Error parseando respuesta:', parseError);
-            showError('Error en la respuesta del servidor');
-            resetButton(button, originalText);
-            return;
-        }
-
-        console.log('Response data:', result); // Debug log
-
-        if (response.ok) {
-            // Éxito
-            showSuccess(result.message || 'Solicitud enviada exitosamente');
-            closeDemoModal();
-            resetForm(button, originalText);
-
-            // Tracking de evento exitoso
-            if (typeof window.va === 'function') {
-                window.va('track', 'Demo Request Submitted', {
-                    email: data.email,
-                    clinica: data.clinica
-                });
-            }
-        } else {
-            // Error del servidor
-            const errorMessage = result.error || result.detail || 'Error al enviar la solicitud';
-            console.error('Error del servidor:', errorMessage);
-            showError(errorMessage);
-            resetButton(button, originalText);
-        }
-
-    } catch (error) {
-        console.error('Error enviando formulario:', error);
-        showError('Error de conexión. Por favor verifica tu conexión e intenta nuevamente.');
-        resetButton(button, originalText);
-    }
-}
+// ===== FUNCIÓN ELIMINADA: Ya no necesitamos envío al backend =====
+// El formulario ahora redirige directamente al email del usuario
 
 // ===== MOSTRAR ERRORES: Sistema de notificaciones =====
 function showError(message) {
