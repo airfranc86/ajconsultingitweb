@@ -195,6 +195,9 @@ function createDemoModal() {
             ">Completa el formulario y nos pondremos en contacto contigo para agendar una demostración personalizada.</p>
             
             <form id="demo-form" style="display: flex; flex-direction: column; gap: 1rem;">
+                <!-- Campo honeypot para detectar bots (oculto) -->
+                <input type="text" name="website" style="display: none !important; position: absolute; left: -9999px;" tabindex="-1" autocomplete="off">
+                
                 <input type="text" name="nombre" placeholder="Nombre completo" required style="
                     padding: 1rem;
                     border: 2px solid #eee;
@@ -264,20 +267,168 @@ function handleDemoSubmission(form) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
+    // Validaciones del frontend
+    if (!validateFormData(data)) {
+        return;
+    }
+
     // Mostrar mensaje de confirmación
     const button = form.querySelector('button[type="submit"]');
     const originalText = button.textContent;
     button.textContent = 'Enviando...';
     button.disabled = true;
 
-    // Simular envío (aquí integrarías con tu backend)
+    // Enviar a backend Python
+    submitToBackend(data, button, originalText);
+}
+
+// ===== VALIDACIÓN DE FORMULARIO: Validaciones del frontend =====
+function validateFormData(data) {
+    // Validar nombre
+    if (!data.nombre || data.nombre.trim().length < 2) {
+        showError('El nombre debe tener al menos 2 caracteres');
+        return false;
+    }
+
+    // Validar email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!data.email || !emailRegex.test(data.email)) {
+        showError('Por favor ingresa un email válido');
+        return false;
+    }
+
+    // Validar email (ahora permite todos los emails)
+    // Comentado para permitir Gmail, Hotmail, etc. para testing
+    // const personalDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'live.com'];
+    // const domain = data.email.split('@')[1].toLowerCase();
+    // if (personalDomains.includes(domain)) {
+    //     showError('Solo se permiten emails corporativos');
+    //     return false;
+    // }
+
+    // Validar clínica
+    if (!data.clinica || data.clinica.trim().length < 2) {
+        showError('El nombre de la clínica es requerido');
+        return false;
+    }
+
+    return true;
+}
+
+// ===== ENVÍO AL BACKEND: Comunicación con API Python =====
+async function submitToBackend(data, button, originalText) {
+    try {
+        // URL del backend (Vercel Functions)
+        const backendUrl = '/api';
+
+        const response = await fetch(`${backendUrl}/demo-request`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            // Éxito
+            showSuccess(result.message);
+            closeDemoModal();
+            resetForm(button, originalText);
+
+            // Tracking de evento exitoso
+            if (typeof window.va === 'function') {
+                window.va('track', 'Demo Request Submitted', {
+                    email: data.email,
+                    clinica: data.clinica
+                });
+            }
+        } else {
+            // Error del servidor
+            showError(result.detail || 'Error al enviar la solicitud');
+            resetButton(button, originalText);
+        }
+
+    } catch (error) {
+        console.error('Error enviando formulario:', error);
+        showError('Error de conexión. Por favor intenta nuevamente.');
+        resetButton(button, originalText);
+    }
+}
+
+// ===== MOSTRAR ERRORES: Sistema de notificaciones =====
+function showError(message) {
+    // Remover notificaciones anteriores
+    const existingError = document.querySelector('.form-error');
+    if (existingError) {
+        existingError.remove();
+    }
+
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'form-error';
+    errorDiv.style.cssText = `
+        background: #ffebee;
+        color: #c62828;
+        padding: 1rem;
+        border-radius: 8px;
+        margin: 1rem 0;
+        border-left: 4px solid #c62828;
+        font-size: 0.9rem;
+    `;
+    errorDiv.textContent = message;
+
+    const form = document.getElementById('demo-form');
+    form.insertBefore(errorDiv, form.firstChild);
+
+    // Auto-remover después de 5 segundos
     setTimeout(() => {
-        alert('¡Gracias por tu interés! Nos pondremos en contacto contigo en las próximas 24 horas.');
-        closeDemoModal();
-        form.reset();
-        button.textContent = originalText;
-        button.disabled = false;
-    }, 2000);
+        if (errorDiv.parentNode) {
+            errorDiv.remove();
+        }
+    }, 5000);
+}
+
+// ===== MOSTRAR ÉXITO: Notificación de éxito =====
+function showSuccess(message) {
+    const successDiv = document.createElement('div');
+    successDiv.className = 'form-success';
+    successDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #e8f5e8;
+        color: #2e7d32;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        border-left: 4px solid #2e7d32;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 10001;
+        max-width: 400px;
+    `;
+    successDiv.textContent = message;
+
+    document.body.appendChild(successDiv);
+
+    // Auto-remover después de 5 segundos
+    setTimeout(() => {
+        if (successDiv.parentNode) {
+            successDiv.remove();
+        }
+    }, 5000);
+}
+
+// ===== RESET FORMULARIO: Limpiar y resetear =====
+function resetForm(button, originalText) {
+    const form = document.getElementById('demo-form');
+    form.reset();
+    resetButton(button, originalText);
+}
+
+function resetButton(button, originalText) {
+    button.textContent = originalText;
+    button.disabled = false;
 }
 
 // Cerrar modal al hacer click fuera

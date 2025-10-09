@@ -1,49 +1,19 @@
 {
   "version": 2,
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
-      ]
-    },
-    {
-      "source": "/js/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/css/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
+  "functions": {
+    "api/demo-request.js": {
+      "maxDuration": 30
     }
-  ]
+  },
+  "env": {
+    "SUPABASE_URL": "@supabase_url",
+    "SUPABASE_SERVICE_KEY": "@supabase_service_key",
+    "GMAIL_USER": "@gmail_user",
+    "GMAIL_CLIENT_ID": "@gmail_client_id",
+    "GMAIL_CLIENT_SECRET": "@gmail_client_secret",
+    "GMAIL_REFRESH_TOKEN": "@gmail_refresh_token",
+    "GMAIL_ACCESS_TOKEN": "@gmail_access_token",
+    "ADMIN_EMAIL": "@admin_email",
+    "ENCRYPTION_KEY": "@encryption_key"
+  }
 }
