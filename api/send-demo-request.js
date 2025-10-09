@@ -38,6 +38,7 @@ export default async function handler(req, res) {
         }
 
         // Configurar transporter de Gmail
+        console.log('Configurando transporter de Gmail...');
         const transporter = nodemailer.createTransporter({
             service: 'gmail',
             auth: {
@@ -45,6 +46,11 @@ export default async function handler(req, res) {
                 pass: process.env.GMAIL_APP_PASSWORD
             }
         });
+
+        // Verificar conexión
+        console.log('Verificando conexión con Gmail...');
+        await transporter.verify();
+        console.log('Conexión con Gmail verificada exitosamente');
 
         // Configurar email
         const mailOptions = {
