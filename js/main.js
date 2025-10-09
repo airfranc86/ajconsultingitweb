@@ -125,12 +125,33 @@ document.querySelectorAll('.section-card, .feature-card, .stat-card, .contact-ca
 });
 
 // ===== ACCESO A DEMO CLÍNICA: Abrir app Streamlit con credenciales demo =====
-document.getElementById('solicitar-demo-btn').onclick = function (e) {
-    e.preventDefault();
+// ===== BOTÓN DEMO: Mostrar modal de solicitud de demo =====
+document.addEventListener('DOMContentLoaded', function () {
+    const demoButton = document.getElementById('solicitar-demo-btn');
+    if (demoButton) {
+        demoButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            console.log('Botón de demo clickeado'); // Debug log
+            showDemoModal();
+        });
+    }
 
-    // Mostrar modal de contacto para solicitar demo
-    showDemoModal();
-};
+    // ===== TRACKING DE ENLACES DE EMAIL: Solo para analytics =====
+    const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+    emailLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            console.log('Enlace de email clickeado:', this.href);
+
+            // Tracking del evento para analytics
+            if (typeof window.va === 'function') {
+                window.va('track', 'Email Link Clicked', {
+                    email: this.href.split('mailto:')[1].split('?')[0],
+                    location: this.closest('section')?.id || 'contacto'
+                });
+            }
+        });
+    });
+});
 
 // ===== MODAL DE DEMO: Mostrar formulario de solicitud =====
 function showDemoModal() {
@@ -264,13 +285,20 @@ function closeDemoModal() {
 
 // ===== MANEJAR ENVÍO: Procesar formulario de demo =====
 function handleDemoSubmission(form) {
+    console.log('Procesando envío del formulario'); // Debug log
+
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
+    console.log('Datos del formulario:', data); // Debug log
+
     // Validaciones del frontend
     if (!validateFormData(data)) {
+        console.log('Validación falló'); // Debug log
         return;
     }
+
+    console.log('Validación exitosa, enviando al backend'); // Debug log
 
     // Mostrar mensaje de confirmación
     const button = form.querySelector('button[type="submit"]');
@@ -278,7 +306,7 @@ function handleDemoSubmission(form) {
     button.textContent = 'Enviando...';
     button.disabled = true;
 
-    // Enviar a backend Python
+    // Enviar a backend
     submitToBackend(data, button, originalText);
 }
 
@@ -297,15 +325,6 @@ function validateFormData(data) {
         return false;
     }
 
-    // Validar email (ahora permite todos los emails)
-    // Comentado para permitir Gmail, Hotmail, etc. para testing
-    // const personalDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'live.com'];
-    // const domain = data.email.split('@')[1].toLowerCase();
-    // if (personalDomains.includes(domain)) {
-    //     showError('Solo se permiten emails corporativos');
-    //     return false;
-    // }
-
     // Validar clínica
     if (!data.clinica || data.clinica.trim().length < 2) {
         showError('El nombre de la clínica es requerido');
@@ -315,9 +334,11 @@ function validateFormData(data) {
     return true;
 }
 
-// ===== ENVÍO AL BACKEND: Comunicación con API Python =====
+// ===== ENVÍO AL BACKEND: Comunicación con API =====
 async function submitToBackend(data, button, originalText) {
     try {
+        console.log('Enviando datos:', data); // Debug log
+
         // URL del backend (Vercel Functions)
         const backendUrl = '/api';
 
@@ -330,11 +351,23 @@ async function submitToBackend(data, button, originalText) {
             body: JSON.stringify(data)
         });
 
-        const result = await response.json();
+        console.log('Response status:', response.status); // Debug log
+
+        let result;
+        try {
+            result = await response.json();
+        } catch (parseError) {
+            console.error('Error parseando respuesta:', parseError);
+            showError('Error en la respuesta del servidor');
+            resetButton(button, originalText);
+            return;
+        }
+
+        console.log('Response data:', result); // Debug log
 
         if (response.ok) {
             // Éxito
-            showSuccess(result.message);
+            showSuccess(result.message || 'Solicitud enviada exitosamente');
             closeDemoModal();
             resetForm(button, originalText);
 
@@ -347,13 +380,15 @@ async function submitToBackend(data, button, originalText) {
             }
         } else {
             // Error del servidor
-            showError(result.detail || 'Error al enviar la solicitud');
+            const errorMessage = result.error || result.detail || 'Error al enviar la solicitud';
+            console.error('Error del servidor:', errorMessage);
+            showError(errorMessage);
             resetButton(button, originalText);
         }
 
     } catch (error) {
         console.error('Error enviando formulario:', error);
-        showError('Error de conexión. Por favor intenta nuevamente.');
+        showError('Error de conexión. Por favor verifica tu conexión e intenta nuevamente.');
         resetButton(button, originalText);
     }
 }
@@ -513,3 +548,6 @@ document.addEventListener('DOMContentLoaded', function () {
         trapFocus(modal);
     }
 });
+
+// ===== FUNCIONES DE EMAIL ELIMINADAS =====
+// Se mantiene solo el enlace mailto: básico para simplicidad

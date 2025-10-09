@@ -109,9 +109,16 @@ function checkRateLimit(ip) {
     return true;
 }
 
-// Función para validar email (permite todos los emails)
+// Función para validar email (permite todos los emails para testing)
 function isCorporateEmail(email) {
+    // Para testing, permitir todos los emails
+    // En producción, descomentar la validación de dominios corporativos
     return true;
+
+    // Validación estricta de emails corporativos (comentada para testing)
+    // const personalDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'live.com'];
+    // const domain = email.split('@')[1]?.toLowerCase();
+    // return domain && !personalDomains.includes(domain);
 }
 
 // Función para sanitizar input
