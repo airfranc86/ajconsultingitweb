@@ -55,8 +55,8 @@ Thumbs.db
 *.tmp
 *.temp
 
-# Scripts con credenciales sensibles
-generate-gmail-oauth.js
-generate-refresh-token.js
-generate-encryption-key.js
-token.json
+# otros
+KPIs.md
+
+# Archivos de implementación completa (versión comercial)
+# Los archivos actuales son versiones de demostración

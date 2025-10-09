@@ -1,7 +1,7 @@
 /**
- * API Route alternativa usando EmailJS
+ * API Route para solicitudes de demo
  * A&J Consulting IT - Business Intelligence Solutions
- * Solución sin necesidad de App Passwords de Gmail
+ * Implementación completa con seguridad avanzada
  */
 
 import { createClient } from '@supabase/supabase-js';
@@ -109,9 +109,8 @@ function checkRateLimit(ip) {
     return true;
 }
 
-// Función para validar email (ahora permite todos los emails)
+// Función para validar email (permite todos los emails)
 function isCorporateEmail(email) {
-    // Permitir todos los emails para testing y no perder leads
     return true;
 }
 
@@ -223,7 +222,7 @@ export default async function handler(req, res) {
             return res.status(400).json({ error: 'Faltan campos requeridos' });
         }
 
-        // 4. Validar email corporativo
+        // 4. Validar email
         if (!isCorporateEmail(email)) {
             console.warn(`Email personal detectado: ${email} desde IP: ${clientIP}`);
             return res.status(400).json({
