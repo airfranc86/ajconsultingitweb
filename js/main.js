@@ -326,10 +326,12 @@ async function handleDemoSubmission(form) {
 
     // Enviar al backend
     try {
+        console.log('Enviando datos al API:', data);
         const response = await fetch('/api/send-demo-request', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Cache-Control': 'no-cache'
             },
             body: JSON.stringify(data)
         });
