@@ -54,3 +54,9 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# Scripts con credenciales sensibles
+generate-gmail-oauth.js
+generate-refresh-token.js
+generate-encryption-key.js
+token.json
