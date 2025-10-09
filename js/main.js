@@ -136,18 +136,36 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ===== TRACKING DE ENLACES DE EMAIL: Solo para analytics =====
+    // ===== MANEJAR ENLACES DE EMAIL: Mejorar funcionalidad mailto =====
     const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
     emailLinks.forEach(link => {
         link.addEventListener('click', function (e) {
             console.log('Enlace de email clickeado:', this.href);
-
+            
             // Tracking del evento para analytics
             if (typeof window.va === 'function') {
                 window.va('track', 'Email Link Clicked', {
                     email: this.href.split('mailto:')[1].split('?')[0],
                     location: this.closest('section')?.id || 'contacto'
                 });
+            }
+
+            // Intentar abrir el cliente de email
+            try {
+                // Crear un enlace temporal y hacer clic en él
+                const tempLink = document.createElement('a');
+                tempLink.href = this.href;
+                tempLink.style.display = 'none';
+                document.body.appendChild(tempLink);
+                tempLink.click();
+                document.body.removeChild(tempLink);
+                
+                console.log('Cliente de email abierto correctamente');
+            } catch (error) {
+                console.error('Error abriendo cliente de email:', error);
+                // Fallback: mostrar el email en un alert
+                const email = this.href.split('mailto:')[1].split('?')[0];
+                alert(`Email: ${email}\n\nCopia este email y pégalo en tu cliente de correo.`);
             }
         });
     });
