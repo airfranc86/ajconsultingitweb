@@ -302,7 +302,7 @@ function closeDemoModal() {
 }
 
 // ===== MANEJAR ENVÍO: Procesar formulario de demo =====
-async async function handleDemoSubmission(form) {
+async function handleDemoSubmission(form) {
     console.log('Procesando envío del formulario'); // Debug log
 
     const formData = new FormData(form);
