@@ -15,9 +15,26 @@ export default async function handler(req, res) {
     try {
         const { nombre, email, clinica, telefono, mensaje } = req.body;
 
+        // Debug: Verificar variables de entorno
+        console.log('Variables de entorno:', {
+            GMAIL_USER: process.env.GMAIL_USER ? 'Configurado' : 'NO CONFIGURADO',
+            GMAIL_APP_PASSWORD: process.env.GMAIL_APP_PASSWORD ? 'Configurado' : 'NO CONFIGURADO'
+        });
+
         // Validaciones básicas
         if (!nombre || !email || !clinica) {
             return res.status(400).json({ error: 'Faltan campos requeridos' });
+        }
+
+        // Verificar que las variables de entorno estén configuradas
+        if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+            console.error('Variables de entorno faltantes:', {
+                GMAIL_USER: !!process.env.GMAIL_USER,
+                GMAIL_APP_PASSWORD: !!process.env.GMAIL_APP_PASSWORD
+            });
+            return res.status(500).json({ 
+                error: 'Configuración del servidor incompleta. Contacta al administrador.' 
+            });
         }
 
         // Configurar transporter de Gmail
