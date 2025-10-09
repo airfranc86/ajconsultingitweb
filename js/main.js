@@ -346,8 +346,8 @@ ${data.nombre}
     // Abrir cliente de email
     window.location.href = mailtoLink;
 
-    // Mostrar mensaje de confirmación
-    showSuccess('Redirigiendo a tu cliente de email...');
+    // Mostrar mensaje de confirmación con instrucciones
+    showSuccess('¡Formulario enviado! Se abrió tu cliente de email. Por favor, haz clic en "Enviar" para completar la solicitud.');
 }
 
 // ===== VALIDACIÓN DE FORMULARIO: Validaciones del frontend =====
