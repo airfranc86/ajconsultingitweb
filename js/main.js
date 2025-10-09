@@ -302,7 +302,7 @@ function closeDemoModal() {
 }
 
 // ===== MANEJAR ENVÍO: Procesar formulario de demo =====
-function handleDemoSubmission(form) {
+async async function handleDemoSubmission(form) {
     console.log('Procesando envío del formulario'); // Debug log
 
     const formData = new FormData(form);
@@ -316,58 +316,41 @@ function handleDemoSubmission(form) {
         return;
     }
 
-    console.log('Validación exitosa, redirigiendo a email'); // Debug log
+    console.log('Validación exitosa, enviando al backend'); // Debug log
 
-    // Cerrar modal
-    closeDemoModal();
+    // Mostrar estado de envío
+    const button = form.querySelector('button[type="submit"]');
+    const originalText = button.textContent;
+    button.textContent = 'Enviando...';
+    button.disabled = true;
 
-    // Crear enlace mailto con los datos del formulario
-    const subject = encodeURIComponent(`Solicitud de Demo - ${data.clinica}`);
-    const body = encodeURIComponent(`
-Hola,
-
-Me pongo en contacto para solicitar una demostración de su sistema de Business Intelligence para clínicas.
-
-Datos de contacto:
-- Nombre: ${data.nombre}
-- Email: ${data.email}
-- Clínica: ${data.clinica}
-- Teléfono: ${data.telefono || 'No proporcionado'}
-
-Mensaje adicional:
-${data.mensaje || 'Sin mensaje adicional'}
-
-Saludos cordiales,
-${data.nombre}
-    `);
-
-    const mailtoLink = `mailto:franciscoaucar@ajconsultingit.com?cc=anj11@ajconsultingit.com&subject=${subject}&body=${body}`;
-    
-    // Intentar abrir cliente de email con múltiples métodos
+    // Enviar al backend
     try {
-        // Método 1: Crear enlace temporal
-        const tempLink = document.createElement('a');
-        tempLink.href = mailtoLink;
-        tempLink.style.display = 'none';
-        document.body.appendChild(tempLink);
-        tempLink.click();
-        document.body.removeChild(tempLink);
-        
-        // Método 2: Fallback con window.open
-        setTimeout(() => {
-            window.open(mailtoLink, '_self');
-        }, 100);
-        
-        // Mostrar mensaje de confirmación
-        showSuccess('¡Formulario enviado! Se abrió tu cliente de email. Por favor, haz clic en "Enviar" para completar la solicitud.');
-        
+        const response = await fetch('/api/send-demo-request', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            // Éxito
+            showSuccess(result.message || 'Solicitud enviada exitosamente');
+            closeDemoModal();
+            resetForm(button, originalText);
+        } else {
+            // Error del servidor
+            showError(result.error || 'Error al enviar la solicitud');
+            resetButton(button, originalText);
+        }
+
     } catch (error) {
-        console.error('Error abriendo cliente de email:', error);
-        // Fallback: mostrar el email en un prompt
-        const email = 'franciscoaucar@ajconsultingit.com';
-        const message = `Email: ${email}\n\nAsunto: ${decodeURIComponent(subject)}\n\nCuerpo:\n${decodeURIComponent(body)}\n\nCopia este contenido y pégalo en tu cliente de correo.`;
-        alert(message);
-        showSuccess('¡Formulario enviado! Revisa la ventana emergente para copiar los datos del email.');
+        console.error('Error enviando formulario:', error);
+        showError('Error de conexión. Por favor intenta nuevamente.');
+        resetButton(button, originalText);
     }
 }
 
@@ -395,8 +378,21 @@ function validateFormData(data) {
     return true;
 }
 
-// ===== FUNCIÓN ELIMINADA: Ya no necesitamos envío al backend =====
-// El formulario ahora redirige directamente al email del usuario
+// ===== FUNCIONES AUXILIARES: Para manejo del formulario =====
+function resetForm(button, originalText) {
+    button.textContent = originalText;
+    button.disabled = false;
+    // Limpiar formulario
+    const form = button.closest('form');
+    if (form) {
+        form.reset();
+    }
+}
+
+function resetButton(button, originalText) {
+    button.textContent = originalText;
+    button.disabled = false;
+}
 
 // ===== MOSTRAR ERRORES: Sistema de notificaciones =====
 function showError(message) {
