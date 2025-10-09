@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
     emailLinks.forEach(link => {
         link.addEventListener('click', function (e) {
             console.log('Enlace de email clickeado:', this.href);
-            
+
             // Tracking del evento para analytics
             if (typeof window.va === 'function') {
                 window.va('track', 'Email Link Clicked', {
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.body.appendChild(tempLink);
                 tempLink.click();
                 document.body.removeChild(tempLink);
-                
+
                 console.log('Cliente de email abierto correctamente');
             } catch (error) {
                 console.error('Error abriendo cliente de email:', error);

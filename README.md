@@ -1,10 +1,5 @@
 # 🏥 A&J Consulting IT - Business Intelligence para Clínicas
 
-[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?style=for-the-badge&logo=vercel)](https://ajconsulting.com)
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-
 ## 📋 Descripción del Proyecto
 
 **A&J Consulting IT** es una empresa especializada en **Business Intelligence para clínicas médicas**. Nuestro sitio web corporativo presenta nuestras soluciones de dashboard de KPIs en tiempo real, análisis predictivo y gestión clínica inteligente.
@@ -72,7 +67,6 @@ Transformamos datos médicos en decisiones estratégicas mediante:
 - Tarjetas con hover effects
 
 ### 📊 **Resultados Comprobados**
-- 4 métricas clave de rendimiento
 - Diseño de tarjetas con gradientes
 - Animaciones de aparición
 
@@ -103,9 +97,9 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 ## 📞 Contacto
 
 **A&J Consulting IT**
-- 📧 Email: [franciscoaucar@ajconsultingit.com](mailto:franciscoaucar@ajconsultingit.com?cc=anj11@ajconsultingit.com&subject=Consulta%20sobre%20Business%20Intelligence&body=Hola,%20estoy%20interesado%20en%20conocer%20más%20sobre%20su%20aplicación%20web%20y%20productos%20de%20Business%20Intelligence%20para%20clínicas.%20Me%20gustaría%20agendar%20una%20demostración%20personalizada.%0A%0ASaludos%20cordiales)
+- 📧 Email: [franciscoaucar@ajconsultingit.com]
 - 💼 LinkedIn: [A&J Consulting IT](https://www.linkedin.com/company/a-j-consultingit-software/about/)
-- 🌐 Website: [ajconsulting.com](https://ajconsulting.com)
+- 🌐 Website: [ajconsulting.com]
 
 ## 🙏 Agradecimientos
 
