@@ -73,10 +73,10 @@ Thumbs.db
 *.temp
 
 # otros
+docs/
 KPIs.md
-
-# Archivos de implementación completa (versión comercial)
-# Los archivos actuales son versiones de demostración
+PRD.md
+SOLUCION_FORMULARIO.md
 
 # Archivos de credenciales y claves
 *.pem
@@ -113,3 +113,31 @@ tests/
 README_SECRETOS.md
 INSTALACION_COMPLETA.md
 *_PRIVADO.md
+
+# Archivos de configuración de Vercel
+.vercel/project.json
+.vercel/.gitignore
+
+# Archivos de debugging y logs
+debug.log
+error.log
+*.log
+
+# Archivos de configuración de email
+email-config.json
+smtp-config.json
+mail-config.json
+
+# Archivos de base de datos local
+*.db
+*.sqlite
+*.sqlite3
+
+# Archivos de backup
+*.backup
+*.bak
+*.old
+
+# Archivos de testing con datos sensibles
+test-data.json
+test-credentials.json
