@@ -150,23 +150,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
 
-            // Intentar abrir el cliente de email
-            try {
-                // Crear un enlace temporal y hacer clic en él
-                const tempLink = document.createElement('a');
-                tempLink.href = this.href;
-                tempLink.style.display = 'none';
-                document.body.appendChild(tempLink);
-                tempLink.click();
-                document.body.removeChild(tempLink);
-
-                console.log('Cliente de email abierto correctamente');
-            } catch (error) {
-                console.error('Error abriendo cliente de email:', error);
-                // Fallback: mostrar el email en un alert
-                const email = this.href.split('mailto:')[1].split('?')[0];
-                alert(`Email: ${email}\n\nCopia este email y pégalo en tu cliente de correo.`);
-            }
+            // Permitir que el navegador maneje el mailto: naturalmente
+            // No intentar abrir programáticamente para evitar el error de "user gesture required"
+            console.log('Abriendo cliente de email...');
         });
     });
 });
@@ -345,7 +331,9 @@ async function handleDemoSubmission(form) {
             resetForm(button, originalText);
         } else {
             // Error del servidor
-            showError(result.error || 'Error al enviar la solicitud');
+            const errorMessage = result.error || 'Error al enviar la solicitud';
+            console.error('Error del servidor:', result);
+            showError(errorMessage);
             resetButton(button, originalText);
         }
 
