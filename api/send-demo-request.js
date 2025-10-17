@@ -75,7 +75,7 @@ export default async function handler(req, res) {
         const mailOptions = {
             from: process.env.GMAIL_USER,
             to: 'franciscoaucar@ajconsultingit.com',
-            cc: 'anj11@ajconsultingit.com',
+            cc: 'andresnj11@ajconsultingit.com',
             subject: `Solicitud de Demo - ${clinica}`,
             html: `
                 <h2>Nueva Solicitud de Demo</h2>
