@@ -1,4 +1,4 @@
-# 🏥 A&J Consulting IT - Business Intelligence para Clínicas
+#  A&J Consulting IT - Business Intelligence para Clínicas
 
 ## 📋 Descripción del Proyecto
 
@@ -98,8 +98,9 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 **A&J Consulting IT**
 - 📧 Email: [franciscoaucar@ajconsultingit.com]
+- 📧 Email: [andresnj11@ajconsultingit.com]
 - 💼 LinkedIn: [A&J Consulting IT](https://www.linkedin.com/company/a-j-consultingit-software/about/)
-- 🌐 Website: [https://ajconsultingitwebv2.vercel.app/]
+
 
 ## 🙏 Agradecimientos
 
