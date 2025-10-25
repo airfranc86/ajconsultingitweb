@@ -288,6 +288,31 @@
             /* Fondo verde transparente */
         }
 
+        /* ===== GLOW MENU TRIGGER: Botón para activar el menú avanzado ===== */
+        .glow-menu-trigger {
+            display: none; /* Oculto por defecto en desktop */
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            border: none;
+            border-radius: 12px;
+            padding: 0.75rem;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glow-menu-trigger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
+        }
+
+        .glow-menu-trigger:active {
+            transform: translateY(0);
+        }
+
         /* ===== CONTENEDOR PRINCIPAL: Wrapper del contenido ===== */
         .main-container {
             position: relative;
@@ -970,6 +995,11 @@
                 display: none;
             }
 
+            /* Mostrar botón glow menu en móvil */
+            .glow-menu-trigger {
+                display: block;
+            }
+
             /* Hero section móvil */
             .hero-section {
                 padding: 1rem;
@@ -1302,6 +1332,11 @@
                 <li><a href="#nosotros">Nosotros</a></li> <!-- Link a sección nosotros -->
                 <li><a href="#contacto">Contacto</a></li> <!-- Link a contacto -->
             </ul>
+
+            <!-- BOTÓN GLOW MENU: Menú avanzado con efectos visuales -->
+            <button id="glow-menu-trigger" class="glow-menu-trigger" title="Menú Avanzado">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
 
@@ -1523,6 +1558,9 @@
     <!-- LIBRERÍA PARTICLES.JS: Script local para efecto de partículas -->
     <script src="js/particles.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- GLOW MENU: Componente de menú avanzado con efectos visuales -->
+    <script src="js/glow-menu.js"></script>
 
     <!-- JAVASCRIPT PERSONALIZADO: Funcionalidades interactivas -->
     <!-- Todo el JavaScript está en js/main.js para evitar duplicación -->
