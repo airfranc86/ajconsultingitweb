@@ -3,18 +3,21 @@
     "version": "1.0.0",
     "description": "A&J Consulting IT - Business Intelligence para Clínicas",
     "main": "index.html",
+    "packageManager": "pnpm@10.17.1",
     "scripts": {
-        "dev": "vercel dev",
+        "start": "pnpm exec http-server . -p 3000 -o",
+        "serve": "pnpm exec http-server . -p 3000 -o",
         "build": "echo 'Build completed'",
         "deploy": "vercel --prod"
     },
     "dependencies": {
         "@supabase/supabase-js": "^2.38.0",
         "googleapis": "^128.0.0",
-        "nodemailer": "^6.9.7"
+        "nodemailer": "^7.0.10"
     },
     "devDependencies": {
-        "vercel": "^32.0.0"
+        "http-server": "^14.1.1",
+        "vercel": "^48.8.2"
     },
     "keywords": [
         "business-intelligence",
