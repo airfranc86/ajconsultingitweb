@@ -1,0 +1,87 @@
+.contactSection {
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.sectionCard {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  padding: 3rem 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+}
+
+.demoButtonContainer {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.contactInfo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.contactCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 1.5rem;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.6), rgba(248, 249, 250, 0.6));
+  backdrop-filter: blur(2px) saturate(80%);
+  -webkit-backdrop-filter: blur(2px) saturate(80%);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  text-decoration: none;
+  color: var(--text-dark);
+  transition: var(--transition);
+  border-left: 4px solid var(--secondary-color);
+}
+
+.contactCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-left-color: var(--accent-color);
+}
+
+.contactCard:focus {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
+.contactIcon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+  border-radius: 50%;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.contactText {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .contactSection {
+    padding: 3rem 1rem;
+  }
+
+  .sectionCard {
+    padding: 2rem 1.5rem;
+  }
+
+  .contactInfo {
+    grid-template-columns: 1fr;
+  }
+}
+

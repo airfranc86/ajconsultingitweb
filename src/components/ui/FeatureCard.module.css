@@ -1,0 +1,27 @@
+.icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+  border-radius: 50%;
+  color: white;
+  font-size: 2rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+  font-family: 'Poppins', sans-serif;
+}
+
+.description {
+  color: var(--text-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
