@@ -6,15 +6,15 @@
     const PROGRESS_ID = 'loader-progress';
     const BODY_LOADING_ATTR = 'data-loading';
     const LOADER_IMG_ID = 'loader-logo-img';
-    
+
     // Detectar móviles
     const isMobile = /Mobile|Android|iPhone|iPad/i.test(navigator.userAgent) || window.innerWidth <= 768;
-    
+
     // DESHABILITAR LOADER EN MÓVILES: Ocultar inmediatamente
     if (isMobile) {
         const body = document.body;
         const loader = document.getElementById(LOADER_ID);
-        
+
         // Ocultar loader inmediatamente en móviles
         if (loader) {
             loader.style.display = 'none';
@@ -25,7 +25,7 @@
         }
         return; // Salir temprano - no ejecutar el resto del código del loader
     }
-    
+
     // Tiempos de carga para desktop
     const MIN_LOAD_TIME_MS = 2000;
     const MAX_LOAD_TIME_MS = 4000;
@@ -258,19 +258,27 @@ function updateProgressBar() {
 // EVENTO: Actualizar barra al hacer scroll
 window.addEventListener('scroll', updateProgressBar);
 
+// ===== CÓDIGO MIGRADO A REACT - COMENTADO PARA REFERENCIA =====
+// La siguiente funcionalidad está ahora manejada por React:
+// - Navegación y scroll suave: src/components/layout/Header.tsx + hooks
+// - Detección de sección activa: src/hooks/useActiveSection.ts
+// - Logo clickeable: src/components/layout/Header.tsx
+// - Efecto header al scroll: src/components/layout/Header.tsx
+//
+// Este código se puede eliminar después de validar que React funciona correctamente.
+
+/*
 // ===== SCROLL SUAVE: Navegación suave entre secciones =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();                    // Prevenir comportamiento por defecto
-        const targetId = this.getAttribute('href').substring(1); // Obtener ID destino
-        const targetSection = document.getElementById(targetId);  // Encontrar sección destino
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
         if (targetSection) {
-            targetSection.scrollIntoView({     // Scroll suave a la sección
+            targetSection.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
-            
-            // Actualizar estado activo en navegación
             updateActiveNavLink(targetId);
         }
     });
@@ -278,12 +286,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // ===== ACTUALIZAR NAVEGACIÓN ACTIVA: Indicar sección actual =====
 function updateActiveNavLink(sectionId) {
-    // Remover clase active de todos los enlaces
     document.querySelectorAll('.nav-menu a').forEach(link => {
         link.classList.remove('active');
     });
-    
-    // Agregar clase active al enlace correspondiente
     const activeLink = document.querySelector(`.nav-menu a[href="#${sectionId}"]`);
     if (activeLink) {
         activeLink.classList.add('active');
@@ -294,20 +299,15 @@ function updateActiveNavLink(sectionId) {
 function updateActiveSectionOnScroll() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
-    
     let currentSection = '';
-    
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        const scrollPosition = window.scrollY + 150; // Offset para activación temprana
-        
+        const scrollPosition = window.scrollY + 150;
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
             currentSection = section.getAttribute('id');
         }
     });
-    
-    // Actualizar enlaces de navegación
     navLinks.forEach(link => {
         link.classList.remove('active');
         const href = link.getAttribute('href').substring(1);
@@ -317,18 +317,14 @@ function updateActiveSectionOnScroll() {
     });
 }
 
-// Actualizar al hacer scroll
 let scrollTimeout;
 window.addEventListener('scroll', function() {
     clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(updateActiveSectionOnScroll, 100); // Throttle para performance
+    scrollTimeout = setTimeout(updateActiveSectionOnScroll, 100);
 });
 
-// Actualizar al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
     updateActiveSectionOnScroll();
-    
-    // Marcar "Inicio" como activo si estamos en la parte superior
     if (window.scrollY < 100) {
         updateActiveNavLink('home');
     }
@@ -339,41 +335,33 @@ document.addEventListener('DOMContentLoaded', function () {
     const logoWrapper = document.querySelector('.logo-wrapper');
     if (logoWrapper) {
         logoWrapper.addEventListener('click', function (e) {
-            e.preventDefault();                    // Prevenir comportamiento por defecto
-            e.stopPropagation();                  // Evitar propagación del evento
-            
-            // Buscar sección home o hacer scroll al inicio
+            e.preventDefault();
+            e.stopPropagation();
             const homeSection = document.getElementById('home');
             if (homeSection) {
-                homeSection.scrollIntoView({      // Scroll suave a la sección home
+                homeSection.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
             } else {
-                // Si no hay sección home, hacer scroll al inicio de la página
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
                 });
             }
         });
-        
-        // También manejar el click en el enlace interno del logo
         const logoNav = logoWrapper.querySelector('.logo-nav');
         if (logoNav) {
             logoNav.addEventListener('click', function (e) {
-                e.preventDefault();               // Prevenir comportamiento por defecto
-                e.stopPropagation();              // Evitar propagación del evento
-                
-                // Buscar sección home o hacer scroll al inicio
+                e.preventDefault();
+                e.stopPropagation();
                 const homeSection = document.getElementById('home');
                 if (homeSection) {
-                    homeSection.scrollIntoView({  // Scroll suave a la sección home
+                    homeSection.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
                     });
                 } else {
-                    // Si no hay sección home, hacer scroll al inicio de la página
                     window.scrollTo({
                         top: 0,
                         behavior: 'smooth'
@@ -387,22 +375,21 @@ document.addEventListener('DOMContentLoaded', function () {
 // ===== EFECTO HEADER AL SCROLL: Cambiar apariencia del header =====
 window.addEventListener('scroll', function () {
     const header = document.querySelector('.header');
-    if (window.scrollY > 50) {                // Si se scrolleó más de 50px
-        // Usar gradiente con mayor transparencia - sin blur
+    if (window.scrollY > 50) {
         header.style.background = 'linear-gradient(to bottom, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.30) 25%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.20) 75%, rgba(255, 255, 255, 0.15) 100%)';
         header.style.backdropFilter = 'none';
         header.style.webkitBackdropFilter = 'none';
-        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)'; // Agregar sombra
-        header.classList.add('header-scrolled'); // Agregar clase para estilos adicionales
-    } else {                                   // Si está en la parte superior
-        // Restaurar gradiente original con mayor transparencia - sin blur
+        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+        header.classList.add('header-scrolled');
+    } else {
         header.style.background = 'linear-gradient(to bottom, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.20) 25%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.10) 75%, rgba(255, 255, 255, 0.05) 100%)';
         header.style.backdropFilter = 'none';
         header.style.webkitBackdropFilter = 'none';
-        header.style.boxShadow = 'none';       // Sin sombra
-        header.classList.remove('header-scrolled'); // Remover clase
+        header.style.boxShadow = 'none';
+        header.classList.remove('header-scrolled');
     }
 });
+*/
 
 // ===== ANIMACIÓN DE APARICIÓN: Efecto fade-in al hacer scroll =====
 // Respetar prefers-reduced-motion
@@ -483,9 +470,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+// ===== CÓDIGO MIGRADO A REACT - COMENTADO PARA REFERENCIA =====
+// El modal de demo está ahora manejado por React:
+// - src/components/forms/DemoModal.tsx
+// - src/components/forms/DemoForm.tsx
+// - src/components/ui/Modal.tsx
+// - src/hooks/useDemoModal.ts
+//
+// React expone window.showDemoModal() para compatibilidad.
+// Este código se puede eliminar después de validar que React funciona correctamente.
+
+/*
 // ===== MODAL DE DEMO: Mostrar formulario de solicitud =====
 function showDemoModal() {
-    // Crear modal si no existe
     let modal = document.getElementById('demo-modal');
     if (!modal) {
         modal = createDemoModal();
@@ -807,6 +804,7 @@ document.addEventListener('click', function (e) {
         closeDemoModal();
     }
 });
+*/
 
 // ===== OPTIMIZACIONES DE RENDIMIENTO =====
 // Lazy loading para imágenes
@@ -886,19 +884,26 @@ document.addEventListener('DOMContentLoaded', function () {
 // ===== FUNCIONES DE EMAIL ELIMINADAS =====
 // Se mantiene solo el enlace mailto: básico para simplicidad
 
+// ===== CÓDIGO MIGRADO A REACT - COMENTADO PARA REFERENCIA =====
+// La animación typing está ahora manejada por React:
+// - src/components/sections/HeroSection.tsx
+// - src/hooks/useTypingAnimation.ts
+//
+// Versión React simplificada (sin rotación de fuentes según auditoría).
+// Este código se puede eliminar después de validar que React funciona correctamente.
+
+/*
 // ===== TYPING ANIMATION: Animación de escritura en hero tagline con loop infinito, rotación de textos y fuentes =====
 document.addEventListener('DOMContentLoaded', function () {
     const heroTagline = document.querySelector('.hero-tagline');
     if (!heroTagline) return;
 
-    // Array de textos que rotarán
     const texts = [
         'Transformando datos en decisiones inteligentes',
         'Anímate a pegar el salto al mundo digital',
         'Potencia tu negocio con inteligencia artificial'
     ];
 
-    // Configuración de fuentes (3 fuentes que rotarán)
     const fonts = [
         'Inter, sans-serif',
         'Poppins, sans-serif',
@@ -909,24 +914,21 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentFontIndex = 0;
     let currentCharIndex = 0;
     let displayedText = '';
-    let isTyping = true; // true = escribiendo, false = borrando
-    let typeSpeed = 70; // Velocidad de escritura (ms por carácter)
-    let deleteSpeed = 40; // Velocidad de borrado (doble de rápida)
-    let pauseAfterComplete = 3000; // Pausa de 3 segundos con cursor parpadeando antes de borrar
-    let pauseAfterDelete = 500; // Pausa corta después de borrar antes de cambiar fuente
+    let isTyping = true;
+    let typeSpeed = 70;
+    let deleteSpeed = 40;
+    let pauseAfterComplete = 3000;
+    let pauseAfterDelete = 500;
     let animationTimeout = null;
 
-    // Función para obtener el texto actual
     function getCurrentText() {
         return texts[currentTextIndex];
     }
 
-    // Función para aplicar la fuente actual
     function applyCurrentFont() {
         heroTagline.style.fontFamily = fonts[currentFontIndex];
     }
 
-    // Función para escribir texto carácter por carácter
     function typeText() {
         const currentText = getCurrentText();
         if (currentCharIndex < currentText.length) {
@@ -935,7 +937,6 @@ document.addEventListener('DOMContentLoaded', function () {
             currentCharIndex++;
             animationTimeout = setTimeout(typeText, typeSpeed);
         } else {
-            // Texto completo, pausar 3 segundos con cursor parpadeando antes de borrar
             animationTimeout = setTimeout(() => {
                 isTyping = false;
                 deleteText();
@@ -943,7 +944,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Función para borrar texto carácter por carácter
     function deleteText() {
         if (currentCharIndex > 0) {
             const currentText = getCurrentText();
@@ -952,9 +952,8 @@ document.addEventListener('DOMContentLoaded', function () {
             currentCharIndex--;
             animationTimeout = setTimeout(deleteText, deleteSpeed);
         } else {
-            // Texto borrado completamente, cambiar texto y fuente, luego volver a escribir
-            currentTextIndex = (currentTextIndex + 1) % texts.length; // Rotar al siguiente texto
-            currentFontIndex = (currentFontIndex + 1) % fonts.length; // Rotar a la siguiente fuente
+            currentTextIndex = (currentTextIndex + 1) % texts.length;
+            currentFontIndex = (currentFontIndex + 1) % fonts.length;
             applyCurrentFont();
             animationTimeout = setTimeout(() => {
                 isTyping = true;
@@ -963,16 +962,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Iniciar animación solo si el elemento está en el viewport
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Limpiar texto inicial y comenzar animación
                 heroTagline.textContent = '';
                 currentCharIndex = 0;
                 displayedText = '';
                 isTyping = true;
-                applyCurrentFont(); // Aplicar primera fuente
+                applyCurrentFont();
                 typeText();
                 observer.disconnect();
             }
@@ -981,10 +978,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     observer.observe(heroTagline);
 
-    // Limpiar timeout si el componente se desmonta (opcional, para evitar memory leaks)
     window.addEventListener('beforeunload', () => {
         if (animationTimeout) {
             clearTimeout(animationTimeout);
         }
     });
 });
+*/

@@ -2052,19 +2052,19 @@
     <script>
         (function () {
             'use strict';
-            
+
             const LOADER_ID = 'page-loader';
             const BODY_LOADING_ATTR = 'data-loading';
             const MIN_LOAD_TIME_MS = 2000;
             const MAX_LOAD_TIME_MS = 5000; // Reducido para producción
-            
+
             // Detectar móviles
             const isMobile = /Mobile|Android|iPhone|iPad/i.test(navigator.userAgent) || (window.innerWidth && window.innerWidth <= 768);
 
             function hideLoader() {
                 const loader = document.getElementById(LOADER_ID);
                 const body = document.body;
-                
+
                 if (loader) {
                     loader.classList.add('hidden');
                     if (body) {
@@ -2093,7 +2093,7 @@
 
             function checkAndHide() {
                 if (loaderHidden) return;
-                
+
                 if (minTimeElapsed && resourcesReady) {
                     loaderHidden = true;
                     hideLoader();
@@ -2210,9 +2210,9 @@
                 <!-- CONTENEDOR DEL LOGO: Logo principal flotante -->
                 <div class="hero-logo">
                     <!-- LOGO FLOTANTE: Imagen de la empresa con animación -->
-                    <img src="/assets/logo-200x200.png" srcset="/assets/logo-200x200.png 1x, /assets/logo-500x500.png 2x"
-                        alt="A&J Consulting IT Logo" class="floating-logo" width="200" height="200"
-                        fetchpriority="high">
+                    <img src="/assets/logo-200x200.png"
+                        srcset="/assets/logo-200x200.png 1x, /assets/logo-500x500.png 2x" alt="A&J Consulting IT Logo"
+                        class="floating-logo" width="200" height="200" fetchpriority="high">
                 </div>
 
                 <!-- TÍTULO PRINCIPAL: Nombre de la empresa -->
@@ -2566,8 +2566,8 @@
                 <!-- CONTENIDO CENTRADO: Logo y texto en una línea -->
                 <div class="footer-content-center">
                     <!-- LOGO DEL FOOTER: Logo oficial compacto y alineado -->
-                    <img src="/assets/logo-22x22.png" alt="A&J Consulting IT Logo" class="footer-logo-img" loading="lazy"
-                        width="22" height="22" aria-label="Logo A&J Consulting IT">
+                    <img src="/assets/logo-22x22.png" alt="A&J Consulting IT Logo" class="footer-logo-img"
+                        loading="lazy" width="22" height="22" aria-label="Logo A&J Consulting IT">
 
                     <!-- TEXTO DEL FOOTER: Copyright y información -->
                     <span class="footer-text" role="contentinfo">
@@ -2683,7 +2683,8 @@
     <script defer src="js/main.js?v=2.2.0"></script>
 
     <!-- SCROLL REVEAL: Animaciones controladas por scroll (diferido) -->
-    <script defer src="js/scroll-reveal.js"></script>
+    <!-- CÓDIGO MIGRADO A REACT - src/hooks/useScrollReveal.ts -->
+    <!-- <script defer src="js/scroll-reveal.js"></script> -->
 
     <!-- PROYECTOS DE VENTA: Renderizado dinámico de proyectos (diferido) -->
     <script defer src="js/proyectos-venta.js"></script>
@@ -2695,7 +2696,8 @@
     <script defer src="js/animations.js"></script>
 
     <!-- GLOW MENU: Componente de menú avanzado con efectos visuales (diferido) -->
-    <script defer src="js/glow-menu.js"></script>
+    <!-- CÓDIGO MIGRADO A REACT - src/components/layout/GlowMenu.tsx -->
+    <!-- <script defer src="js/glow-menu.js"></script> -->
 
     <!-- JavaScript para sección de rubros (diferido) -->
     <script defer src="js/rubros.js"></script>
@@ -2868,7 +2870,7 @@
 
     <!-- JAVASCRIPT PERSONALIZADO: Funcionalidades interactivas -->
     <!-- Todo el JavaScript está en js/main.js para evitar duplicación -->
-    
+
     <!-- REACT ROOT: Contenedor para componentes React (migración incremental) -->
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
