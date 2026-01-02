@@ -391,42 +391,57 @@ window.addEventListener('scroll', function () {
 });
 */
 
+// ===== CÓDIGO MIGRADO A REACT - COMENTADO PARA REFERENCIA =====
+// La animación de aparición (scroll reveal) está ahora manejada por React:
+// - src/hooks/useScrollReveal.ts
+// - Componentes React usan este hook para animaciones al scroll
+//
+// Este código se puede eliminar después de validar que React funciona correctamente.
+
+/*
 // ===== ANIMACIÓN DE APARICIÓN: Efecto fade-in al hacer scroll =====
 // Respetar prefers-reduced-motion
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if (!prefersReducedMotion && window.IntersectionObserver) {
     const observerOptions = {
-        threshold: 0.25,                      // Entre 0.2 y 0.5 como especificado
-        rootMargin: '0px 0px -50px 0px'      // Margen para activación temprana
+        threshold: 0.25,
+        rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {       // Si el elemento es visible
-                entry.target.style.opacity = '1'; // Hacer visible
-                entry.target.style.transform = 'translateY(0)'; // Posición final
-                // Una sola vez por scroll - dejar de observar
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // APLICAR OBSERVADOR: A todos los elementos que necesitan animación
     document.querySelectorAll('.section-card, .feature-card, .stat-card, .contact-card, .hero-buttons').forEach(el => {
-        el.style.opacity = '0';               // Inicialmente invisible
-        el.style.transform = 'translateY(20px)'; // Posición inicial (translate leve)
-        el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out'; // < 500ms como especificado
-        observer.observe(el);                  // Observar elemento
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+        observer.observe(el);
     });
 } else {
-    // Si no hay soporte o prefiere movimiento reducido, mostrar todo inmediatamente
     document.querySelectorAll('.section-card, .feature-card, .stat-card, .contact-card, .hero-buttons').forEach(el => {
         el.style.opacity = '1';
         el.style.transform = 'none';
     });
 }
+*/
 
+// ===== CÓDIGO MIGRADO A REACT - COMENTADO PARA REFERENCIA =====
+// Los botones de demo están ahora manejados por React:
+// - src/components/sections/HeroSection.tsx (botón principal)
+// - src/components/sections/ContactSection.tsx (botón en contacto)
+// - React expone window.showDemoModal() para compatibilidad
+//
+// Este código se puede eliminar después de validar que React funciona correctamente.
+
+/*
 // ===== ACCESO A DEMO CLÍNICA: Abrir app Streamlit con credenciales demo =====
 // ===== BOTÓN DEMO: Mostrar modal de solicitud de demo =====
 document.addEventListener('DOMContentLoaded', function () {
@@ -434,41 +449,55 @@ document.addEventListener('DOMContentLoaded', function () {
     if (demoButton) {
         demoButton.addEventListener('click', function (e) {
             e.preventDefault();
-            console.log('Botón de demo clickeado'); // Debug log
-            showDemoModal();
+            console.log('Botón de demo clickeado');
+            // Usar función global de React si está disponible
+            if (typeof window.showDemoModal === 'function') {
+                window.showDemoModal();
+            } else {
+                showDemoModal();
+            }
         });
     }
 
-    // Botón de demo en sección de contacto
     const demoButtonContacto = document.getElementById('solicitar-demo-contacto-btn');
     if (demoButtonContacto) {
         demoButtonContacto.addEventListener('click', function (e) {
             e.preventDefault();
-            console.log('Botón de demo en contacto clickeado'); // Debug log
-            showDemoModal();
+            console.log('Botón de demo en contacto clickeado');
+            // Usar función global de React si está disponible
+            if (typeof window.showDemoModal === 'function') {
+                window.showDemoModal();
+            } else {
+                showDemoModal();
+            }
         });
     }
+*/
 
     // ===== MANEJAR ENLACES DE EMAIL: Mejorar funcionalidad mailto =====
+    // NOTA: Los enlaces de email en React también manejan tracking (ContactSection.tsx)
+    // Este código se mantiene para enlaces de email que puedan estar fuera de React
     const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
     emailLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            console.log('Enlace de email clickeado:', this.href);
+        // Solo agregar listener si no está dentro de un componente React
+        if (!link.closest('#root')) {
+            link.addEventListener('click', function (e) {
+                console.log('Enlace de email clickeado:', this.href);
 
-            // Tracking del evento para analytics
-            if (typeof window.va === 'function') {
-                window.va('track', 'Email Link Clicked', {
-                    email: this.href.split('mailto:')[1].split('?')[0],
-                    location: this.closest('section')?.id || 'contacto'
-                });
-            }
+                // Tracking del evento para analytics
+                if (typeof window.va === 'function') {
+                    window.va('track', 'Email Link Clicked', {
+                        email: this.href.split('mailto:')[1].split('?')[0],
+                        location: this.closest('section')?.id || 'contacto'
+                    });
+                }
 
-            // Permitir que el navegador maneje el mailto: naturalmente
-            // No intentar abrir programáticamente para evitar el error de "user gesture required"
-            console.log('Abriendo cliente de email...');
-        });
+                console.log('Abriendo cliente de email...');
+            });
+        }
     });
 });
+*/
 
 // ===== CÓDIGO MIGRADO A REACT - COMENTADO PARA REFERENCIA =====
 // El modal de demo está ahora manejado por React:
