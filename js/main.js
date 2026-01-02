@@ -1,3 +1,187 @@
+// ===== LOADER INICIAL: Gestor de pantalla de carga (Optimizado para Android) =====
+(function () {
+    'use strict';
+
+    const LOADER_ID = 'page-loader';
+    const PROGRESS_ID = 'loader-progress';
+    const BODY_LOADING_ATTR = 'data-loading';
+    const LOADER_IMG_ID = 'loader-logo-img';
+    
+    // Detectar móviles
+    const isMobile = /Mobile|Android|iPhone|iPad/i.test(navigator.userAgent) || window.innerWidth <= 768;
+    
+    // DESHABILITAR LOADER EN MÓVILES: Ocultar inmediatamente
+    if (isMobile) {
+        const body = document.body;
+        const loader = document.getElementById(LOADER_ID);
+        
+        // Ocultar loader inmediatamente en móviles
+        if (loader) {
+            loader.style.display = 'none';
+            loader.remove();
+        }
+        if (body) {
+            body.removeAttribute(BODY_LOADING_ATTR);
+        }
+        return; // Salir temprano - no ejecutar el resto del código del loader
+    }
+    
+    // Tiempos de carga para desktop
+    const MIN_LOAD_TIME_MS = 2000;
+    const MAX_LOAD_TIME_MS = 4000;
+    const IMAGE_TIMEOUT_MS = 3000;
+    const PROGRESS_RADIUS = 90;
+    const CIRCUMFERENCE = 2 * Math.PI * PROGRESS_RADIUS;
+
+    const body = document.body;
+    const loader = document.getElementById(LOADER_ID);
+    const progressCircle = document.getElementById(PROGRESS_ID);
+    const loaderImg = document.getElementById(LOADER_IMG_ID);
+
+    if (!body || !loader || !progressCircle) {
+        return;
+    }
+
+    let simulatedProgress = 0;
+    let progressTimerId;
+    let minTimeElapsed = false;
+    let resourcesReady = false;
+    let imageLoaded = false;
+    let finalizeCalled = false;
+
+    progressCircle.style.strokeDasharray = `${CIRCUMFERENCE}`;
+    progressCircle.style.strokeDashoffset = `${CIRCUMFERENCE}`;
+
+    function setProgress(value) {
+        const boundedValue = Math.max(0, Math.min(100, value));
+        const offset = CIRCUMFERENCE - (boundedValue / 100) * CIRCUMFERENCE;
+        progressCircle.style.strokeDashoffset = `${offset}`;
+    }
+
+    function simulateProgress() {
+        progressTimerId = window.setInterval(() => {
+            simulatedProgress = Math.min(simulatedProgress + Math.random() * 12, 92);
+            setProgress(simulatedProgress);
+            if (resourcesReady && minTimeElapsed && imageLoaded) {
+                clearInterval(progressTimerId);
+            }
+        }, 220);
+    }
+
+    function markImageLoaded() {
+        if (imageLoaded) return;
+        imageLoaded = true;
+        checkFinalize();
+    }
+
+    function markResourceReady() {
+        if (resourcesReady) return;
+        resourcesReady = true;
+        checkFinalize();
+    }
+
+    function checkFinalize() {
+        if (resourcesReady && minTimeElapsed && imageLoaded && !finalizeCalled) {
+            finalizeLoader();
+        }
+    }
+
+    function finalizeLoader() {
+        if (finalizeCalled) {
+            return;
+        }
+
+        finalizeCalled = true;
+        clearInterval(progressTimerId);
+        setProgress(100);
+
+        // Usar setTimeout en lugar de requestAnimationFrame para mejor compatibilidad Android
+        window.setTimeout(() => {
+            if (loader) {
+                loader.classList.add('hidden');
+            }
+            if (body) {
+                body.removeAttribute(BODY_LOADING_ATTR);
+            }
+            window.setTimeout(() => {
+                if (loader && loader.parentNode) {
+                    loader.remove();
+                }
+            }, 600);
+        }, 50);
+    }
+
+    // Verificar carga de imagen del loader (solo desktop)
+    if (loaderImg) {
+        if (loaderImg.complete && loaderImg.naturalHeight !== 0) {
+            markImageLoaded();
+        } else {
+            loaderImg.addEventListener('load', markImageLoaded);
+            loaderImg.addEventListener('error', markImageLoaded);
+
+            window.setTimeout(function () {
+                if (!imageLoaded) {
+                    markImageLoaded();
+                }
+            }, IMAGE_TIMEOUT_MS);
+        }
+    } else {
+        // Si no hay imagen, marcar como cargada inmediatamente
+        imageLoaded = true;
+    }
+
+    simulateProgress();
+
+    // Estrategia múltiple para marcar recursos como listos
+    function tryMarkResourceReady() {
+        // Verificar estado del documento
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+            markResourceReady();
+            return true;
+        }
+        return false;
+    }
+
+    // Intentar inmediatamente
+    if (!tryMarkResourceReady()) {
+        // Si no está listo, agregar listeners
+        window.addEventListener('load', markResourceReady);
+        document.addEventListener('DOMContentLoaded', markResourceReady);
+    }
+
+    // Timeout mínimo
+    window.setTimeout(() => {
+        minTimeElapsed = true;
+        checkFinalize();
+    }, MIN_LOAD_TIME_MS);
+
+    // Timeout máximo (fallback de seguridad) - REDUCIDO para evitar bloqueos
+    window.setTimeout(() => {
+        if (!finalizeCalled) {
+            // Forzar todo a true y finalizar
+            console.warn('Loader: Timeout máximo alcanzado, forzando cierre');
+            resourcesReady = true;
+            minTimeElapsed = true;
+            imageLoaded = true;
+            finalizeLoader();
+        }
+    }, MAX_LOAD_TIME_MS);
+
+    // Fallback adicional: Si después de 5 segundos el loader sigue visible, forzar cierre
+    window.setTimeout(() => {
+        const loaderStillVisible = document.getElementById(LOADER_ID);
+        if (loaderStillVisible && !loaderStillVisible.classList.contains('hidden')) {
+            console.error('Loader: Fallback de emergencia activado');
+            if (loaderStillVisible.parentNode) {
+                loaderStillVisible.remove();
+            }
+            if (body) {
+                body.removeAttribute(BODY_LOADING_ATTR);
+            }
+        }
+    }, 5000);
+})();
+
 // ===== CONFIGURACIÓN DE PARTICLES.JS: Efecto de fondo animado =====
 particlesJS('particles-js', {
     particles: {
@@ -85,44 +269,176 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 behavior: 'smooth',
                 block: 'start'
             });
+            
+            // Actualizar estado activo en navegación
+            updateActiveNavLink(targetId);
         }
     });
+});
+
+// ===== ACTUALIZAR NAVEGACIÓN ACTIVA: Indicar sección actual =====
+function updateActiveNavLink(sectionId) {
+    // Remover clase active de todos los enlaces
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.classList.remove('active');
+    });
+    
+    // Agregar clase active al enlace correspondiente
+    const activeLink = document.querySelector(`.nav-menu a[href="#${sectionId}"]`);
+    if (activeLink) {
+        activeLink.classList.add('active');
+    }
+}
+
+// ===== DETECTAR SECCIÓN ACTIVA AL SCROLL: Actualizar navegación automáticamente =====
+function updateActiveSectionOnScroll() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+    
+    let currentSection = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        const scrollPosition = window.scrollY + 150; // Offset para activación temprana
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+    
+    // Actualizar enlaces de navegación
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href').substring(1);
+        if (href === currentSection) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Actualizar al hacer scroll
+let scrollTimeout;
+window.addEventListener('scroll', function() {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(updateActiveSectionOnScroll, 100); // Throttle para performance
+});
+
+// Actualizar al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    updateActiveSectionOnScroll();
+    
+    // Marcar "Inicio" como activo si estamos en la parte superior
+    if (window.scrollY < 100) {
+        updateActiveNavLink('home');
+    }
+});
+
+// ===== LOGO CLICKEABLE: Retornar al inicio al hacer click en el logo =====
+document.addEventListener('DOMContentLoaded', function () {
+    const logoWrapper = document.querySelector('.logo-wrapper');
+    if (logoWrapper) {
+        logoWrapper.addEventListener('click', function (e) {
+            e.preventDefault();                    // Prevenir comportamiento por defecto
+            e.stopPropagation();                  // Evitar propagación del evento
+            
+            // Buscar sección home o hacer scroll al inicio
+            const homeSection = document.getElementById('home');
+            if (homeSection) {
+                homeSection.scrollIntoView({      // Scroll suave a la sección home
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            } else {
+                // Si no hay sección home, hacer scroll al inicio de la página
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        });
+        
+        // También manejar el click en el enlace interno del logo
+        const logoNav = logoWrapper.querySelector('.logo-nav');
+        if (logoNav) {
+            logoNav.addEventListener('click', function (e) {
+                e.preventDefault();               // Prevenir comportamiento por defecto
+                e.stopPropagation();              // Evitar propagación del evento
+                
+                // Buscar sección home o hacer scroll al inicio
+                const homeSection = document.getElementById('home');
+                if (homeSection) {
+                    homeSection.scrollIntoView({  // Scroll suave a la sección home
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                } else {
+                    // Si no hay sección home, hacer scroll al inicio de la página
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
+    }
 });
 
 // ===== EFECTO HEADER AL SCROLL: Cambiar apariencia del header =====
 window.addEventListener('scroll', function () {
     const header = document.querySelector('.header');
     if (window.scrollY > 50) {                // Si se scrolleó más de 50px
-        header.style.background = 'rgba(255, 255, 255, 0.98)'; // Fondo más opaco
+        // Usar gradiente con mayor transparencia - sin blur
+        header.style.background = 'linear-gradient(to bottom, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.30) 25%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.20) 75%, rgba(255, 255, 255, 0.15) 100%)';
+        header.style.backdropFilter = 'none';
+        header.style.webkitBackdropFilter = 'none';
         header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)'; // Agregar sombra
+        header.classList.add('header-scrolled'); // Agregar clase para estilos adicionales
     } else {                                   // Si está en la parte superior
-        header.style.background = 'rgba(255, 255, 255, 0.95)'; // Fondo original
+        // Restaurar gradiente original con mayor transparencia - sin blur
+        header.style.background = 'linear-gradient(to bottom, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.20) 25%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.10) 75%, rgba(255, 255, 255, 0.05) 100%)';
+        header.style.backdropFilter = 'none';
+        header.style.webkitBackdropFilter = 'none';
         header.style.boxShadow = 'none';       // Sin sombra
+        header.classList.remove('header-scrolled'); // Remover clase
     }
 });
 
 // ===== ANIMACIÓN DE APARICIÓN: Efecto fade-in al hacer scroll =====
-const observerOptions = {
-    threshold: 0.1,                           // Activar cuando 10% sea visible
-    rootMargin: '0px 0px -50px 0px'          // Margen para activación temprana
-};
+// Respetar prefers-reduced-motion
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const observer = new IntersectionObserver(function (entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {           // Si el elemento es visible
-            entry.target.style.opacity = '1'; // Hacer visible
-            entry.target.style.transform = 'translateY(0)'; // Posición final
-        }
+if (!prefersReducedMotion && window.IntersectionObserver) {
+    const observerOptions = {
+        threshold: 0.25,                      // Entre 0.2 y 0.5 como especificado
+        rootMargin: '0px 0px -50px 0px'      // Margen para activación temprana
+    };
+
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {       // Si el elemento es visible
+                entry.target.style.opacity = '1'; // Hacer visible
+                entry.target.style.transform = 'translateY(0)'; // Posición final
+                // Una sola vez por scroll - dejar de observar
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // APLICAR OBSERVADOR: A todos los elementos que necesitan animación
+    document.querySelectorAll('.section-card, .feature-card, .stat-card, .contact-card, .hero-buttons').forEach(el => {
+        el.style.opacity = '0';               // Inicialmente invisible
+        el.style.transform = 'translateY(20px)'; // Posición inicial (translate leve)
+        el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out'; // < 500ms como especificado
+        observer.observe(el);                  // Observar elemento
     });
-}, observerOptions);
-
-// APLICAR OBSERVADOR: A todos los elementos que necesitan animación
-document.querySelectorAll('.section-card, .feature-card, .stat-card, .contact-card').forEach(el => {
-    el.style.opacity = '0';                   // Inicialmente invisible
-    el.style.transform = 'translateY(30px)';  // Posición inicial (abajo)
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'; // Transición suave
-    observer.observe(el);                     // Observar elemento
-});
+} else {
+    // Si no hay soporte o prefiere movimiento reducido, mostrar todo inmediatamente
+    document.querySelectorAll('.section-card, .feature-card, .stat-card, .contact-card, .hero-buttons').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+    });
+}
 
 // ===== ACCESO A DEMO CLÍNICA: Abrir app Streamlit con credenciales demo =====
 // ===== BOTÓN DEMO: Mostrar modal de solicitud de demo =====
@@ -132,6 +448,16 @@ document.addEventListener('DOMContentLoaded', function () {
         demoButton.addEventListener('click', function (e) {
             e.preventDefault();
             console.log('Botón de demo clickeado'); // Debug log
+            showDemoModal();
+        });
+    }
+
+    // Botón de demo en sección de contacto
+    const demoButtonContacto = document.getElementById('solicitar-demo-contacto-btn');
+    if (demoButtonContacto) {
+        demoButtonContacto.addEventListener('click', function (e) {
+            e.preventDefault();
+            console.log('Botón de demo en contacto clickeado'); // Debug log
             showDemoModal();
         });
     }
@@ -271,9 +597,26 @@ function createDemoModal() {
     `;
 
     // Manejar envío del formulario
-    modal.querySelector('#demo-form').addEventListener('submit', function (e) {
+    const form = modal.querySelector('#demo-form');
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
         handleDemoSubmission(this);
+    });
+    
+    // Validación en tiempo real
+    const inputs = form.querySelectorAll('input[required], textarea');
+    inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            validateField(this);
+        });
+        input.addEventListener('input', function() {
+            // Limpiar error al empezar a escribir
+            const errorMsg = this.parentElement.querySelector('.error-message');
+            if (errorMsg) {
+                errorMsg.remove();
+            }
+            this.style.borderColor = '#eee';
+        });
     });
 
     return modal;
@@ -542,3 +885,106 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // ===== FUNCIONES DE EMAIL ELIMINADAS =====
 // Se mantiene solo el enlace mailto: básico para simplicidad
+
+// ===== TYPING ANIMATION: Animación de escritura en hero tagline con loop infinito, rotación de textos y fuentes =====
+document.addEventListener('DOMContentLoaded', function () {
+    const heroTagline = document.querySelector('.hero-tagline');
+    if (!heroTagline) return;
+
+    // Array de textos que rotarán
+    const texts = [
+        'Transformando datos en decisiones inteligentes',
+        'Anímate a pegar el salto al mundo digital',
+        'Potencia tu negocio con inteligencia artificial'
+    ];
+
+    // Configuración de fuentes (3 fuentes que rotarán)
+    const fonts = [
+        'Inter, sans-serif',
+        'Poppins, sans-serif',
+        'Raleway, sans-serif'
+    ];
+
+    let currentTextIndex = 0;
+    let currentFontIndex = 0;
+    let currentCharIndex = 0;
+    let displayedText = '';
+    let isTyping = true; // true = escribiendo, false = borrando
+    let typeSpeed = 70; // Velocidad de escritura (ms por carácter)
+    let deleteSpeed = 40; // Velocidad de borrado (doble de rápida)
+    let pauseAfterComplete = 3000; // Pausa de 3 segundos con cursor parpadeando antes de borrar
+    let pauseAfterDelete = 500; // Pausa corta después de borrar antes de cambiar fuente
+    let animationTimeout = null;
+
+    // Función para obtener el texto actual
+    function getCurrentText() {
+        return texts[currentTextIndex];
+    }
+
+    // Función para aplicar la fuente actual
+    function applyCurrentFont() {
+        heroTagline.style.fontFamily = fonts[currentFontIndex];
+    }
+
+    // Función para escribir texto carácter por carácter
+    function typeText() {
+        const currentText = getCurrentText();
+        if (currentCharIndex < currentText.length) {
+            displayedText = currentText.substring(0, currentCharIndex + 1);
+            heroTagline.textContent = displayedText;
+            currentCharIndex++;
+            animationTimeout = setTimeout(typeText, typeSpeed);
+        } else {
+            // Texto completo, pausar 3 segundos con cursor parpadeando antes de borrar
+            animationTimeout = setTimeout(() => {
+                isTyping = false;
+                deleteText();
+            }, pauseAfterComplete);
+        }
+    }
+
+    // Función para borrar texto carácter por carácter
+    function deleteText() {
+        if (currentCharIndex > 0) {
+            const currentText = getCurrentText();
+            displayedText = currentText.substring(0, currentCharIndex - 1);
+            heroTagline.textContent = displayedText;
+            currentCharIndex--;
+            animationTimeout = setTimeout(deleteText, deleteSpeed);
+        } else {
+            // Texto borrado completamente, cambiar texto y fuente, luego volver a escribir
+            currentTextIndex = (currentTextIndex + 1) % texts.length; // Rotar al siguiente texto
+            currentFontIndex = (currentFontIndex + 1) % fonts.length; // Rotar a la siguiente fuente
+            applyCurrentFont();
+            animationTimeout = setTimeout(() => {
+                isTyping = true;
+                typeText();
+            }, pauseAfterDelete);
+        }
+    }
+
+    // Iniciar animación solo si el elemento está en el viewport
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Limpiar texto inicial y comenzar animación
+                heroTagline.textContent = '';
+                currentCharIndex = 0;
+                displayedText = '';
+                isTyping = true;
+                applyCurrentFont(); // Aplicar primera fuente
+                typeText();
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.1 });
+
+    observer.observe(heroTagline);
+
+    // Limpiar timeout si el componente se desmonta (opcional, para evitar memory leaks)
+    window.addEventListener('beforeunload', () => {
+        if (animationTimeout) {
+            clearTimeout(animationTimeout);
+        }
+    });
+});

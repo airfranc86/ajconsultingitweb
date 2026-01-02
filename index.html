@@ -2048,26 +2048,88 @@
 <!-- BODY: Cuerpo principal del documento -->
 
 <body data-loading="true">
-    <!-- SCRIPT INLINE: Ocultar loader en móviles inmediatamente (antes de cargar JS externo) -->
+    <!-- SCRIPT INLINE: Gestor de loader robusto (funciona incluso si los scripts externos fallan) -->
     <script>
         (function () {
             'use strict';
+            
+            const LOADER_ID = 'page-loader';
+            const BODY_LOADING_ATTR = 'data-loading';
+            const MIN_LOAD_TIME_MS = 2000;
+            const MAX_LOAD_TIME_MS = 5000; // Reducido para producción
+            
             // Detectar móviles
             const isMobile = /Mobile|Android|iPhone|iPad/i.test(navigator.userAgent) || (window.innerWidth && window.innerWidth <= 768);
 
-            if (isMobile) {
-                // Ocultar loader inmediatamente en móviles
-                const loader = document.getElementById('page-loader');
+            function hideLoader() {
+                const loader = document.getElementById(LOADER_ID);
                 const body = document.body;
-
+                
                 if (loader) {
-                    loader.style.display = 'none';
-                    loader.remove();
-                }
-                if (body) {
-                    body.removeAttribute('data-loading');
+                    loader.classList.add('hidden');
+                    if (body) {
+                        body.removeAttribute(BODY_LOADING_ATTR);
+                    }
+                    window.setTimeout(function () {
+                        if (loader && loader.parentNode) {
+                            loader.remove();
+                        }
+                    }, 600);
+                } else if (body) {
+                    body.removeAttribute(BODY_LOADING_ATTR);
                 }
             }
+
+            if (isMobile) {
+                // Ocultar loader inmediatamente en móviles
+                hideLoader();
+                return;
+            }
+
+            // Para desktop: esperar tiempo mínimo y luego ocultar
+            let minTimeElapsed = false;
+            let resourcesReady = false;
+            let loaderHidden = false;
+
+            function checkAndHide() {
+                if (loaderHidden) return;
+                
+                if (minTimeElapsed && resourcesReady) {
+                    loaderHidden = true;
+                    hideLoader();
+                }
+            }
+
+            // Marcar recursos como listos
+            function markResourcesReady() {
+                if (resourcesReady) return;
+                resourcesReady = true;
+                checkAndHide();
+            }
+
+            // Verificar estado del documento
+            if (document.readyState === 'complete' || document.readyState === 'interactive') {
+                markResourcesReady();
+            } else {
+                window.addEventListener('load', markResourcesReady);
+                document.addEventListener('DOMContentLoaded', markResourcesReady);
+            }
+
+            // Timeout mínimo
+            window.setTimeout(function () {
+                minTimeElapsed = true;
+                checkAndHide();
+            }, MIN_LOAD_TIME_MS);
+
+            // Timeout máximo (fallback de seguridad) - CRÍTICO para producción
+            window.setTimeout(function () {
+                if (!loaderHidden) {
+                    loaderHidden = true;
+                    minTimeElapsed = true;
+                    resourcesReady = true;
+                    hideLoader();
+                }
+            }, MAX_LOAD_TIME_MS);
         })();
     </script>
 
@@ -2717,7 +2779,7 @@
     <script defer src="js/config.js"></script>
     <script defer src="js/config-loader.js"></script>
     <script defer src="js/particles.js"></script>
-    <script defer src="js/main.js?v=2.1.0"></script>
+    <script defer src="js/main.js?v=2.2.0"></script>
 
     <!-- SCROLL REVEAL: Animaciones controladas por scroll (diferido) -->
     <script defer src="js/scroll-reveal.js"></script>
