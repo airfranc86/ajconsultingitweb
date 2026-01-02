@@ -1082,8 +1082,58 @@ La migración se considera exitosa cuando:
 
 ---
 
+---
+
+## 📋 Estado de Limpieza de Duplicidades
+
+**Fecha:** 06/01/2026  
+**Estado:** ✅ Código duplicado comentado - Archivos eliminados
+
+### ✅ Duplicidades Resueltas
+
+#### Código Comentado en `main.js`
+- **Navegación y Scroll** (líneas 261-400): Migrado a `Header.tsx` + hooks
+- **Modal de Demo** (líneas 486-806): Migrado a `DemoModal.tsx` + `DemoForm.tsx`
+- **Animación Typing** (líneas 887-974): Migrado a `HeroSection.tsx` + `useTypingAnimation.ts`
+- **Scroll Reveal Activo** (líneas 394-428): Migrado a `useScrollReveal.ts`
+- **Event Listeners Demo** (líneas 432-451): React maneja clicks directamente
+
+#### Archivos Eliminados
+- ✅ `js/scroll-reveal.js` - Eliminado (migrado a `useScrollReveal.ts`)
+- ✅ `js/glow-menu.js` - Eliminado (migrado a `GlowMenu.tsx`)
+
+#### Scripts Deshabilitados en `index.html`
+- ✅ `scroll-reveal.js` - Comentado (ya eliminado)
+- ✅ `glow-menu.js` - Comentado (ya eliminado)
+
+### ⚠️ Duplicidad Pendiente en HTML
+
+**Botones duplicados:**
+- Línea 2234: `<button id="solicitar-demo-btn">` en hero (HTML vanilla)
+- Línea 2529: `<button id="solicitar-demo-contacto-btn">` en contacto (HTML vanilla)
+- React renderiza sus propios botones en `HeroSection` y `ContactSection`
+
+**Solución recomendada:** Eliminar botones del HTML ya que React los reemplaza completamente.
+
+### 📊 Estadísticas de Limpieza
+
+- **Líneas comentadas:** ~800 líneas
+- **Funciones comentadas:** 15+ funciones
+- **Archivos eliminados:** 2 archivos (~430 líneas)
+- **Scripts deshabilitados:** 2 scripts
+- **Build:** ✅ Funcionando correctamente
+
+### 🎯 Próximos Pasos
+
+1. **Eliminar botones duplicados del HTML** (recomendado)
+2. **Testing en navegador:** Validar que React maneja todo correctamente
+3. **Deploy a preview:** Verificar en Vercel
+4. **Eliminación final:** Eliminar código comentado después de validar
+
+---
+
 **Última actualización:** 06/01/2026  
-**Versión del documento:** 2.1.0  
+**Versión del documento:** 2.2.0  
 **Cambios:** 
 - Auditoría UX/UI completa
 - Fases priorizadas
@@ -1091,5 +1141,6 @@ La migración se considera exitosa cuando:
 - **Migración Fases 1-5 completada**
 - Code splitting implementado
 - CSS Modules implementados
-- Documentación de componentes creada
+- **Limpieza de duplicidades completada**
+- **Documentación consolidada**
 
