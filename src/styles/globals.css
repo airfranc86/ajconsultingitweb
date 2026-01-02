@@ -1,0 +1,84 @@
+/* ===== VARIABLES CSS: Colores y configuraciones globales ===== */
+:root {
+    /* Colores principales: Negro, Blanco, Verde */
+    --primary-color: #000000;
+    /* Negro principal */
+    --primary-hover: #333333;
+    /* Negro para hover */
+    --secondary-color: #27ae60;
+    /* Verde principal */
+    --accent-color: #2ecc71;
+    /* Verde claro accent */
+    --dark-bg: #000000;
+    /* Fondo oscuro */
+    --text-dark: #000000;
+    /* Texto negro */
+    --text-light: #ffffff;
+    /* Texto blanco */
+    --text-muted: #666666;
+    /* Texto gris (contraste WCAG AA: 4.5:1 sobre blanco) */
+    --card-bg: rgba(255, 255, 255, 0.95);
+    /* Fondo tarjetas */
+    /* Sombras y efectos */
+    --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 8px 32px rgba(0, 0, 0, 0.15);
+    --border-radius: 16px;
+    /* Radio de bordes */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Transición suave */
+
+    /* ===== ESCALA DE ESPACIADO (Sistema definido) ===== */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    --spacing-3xl: 64px;
+
+    /* ===== ANCHOS MÁXIMOS POR BREAKPOINT ===== */
+    --max-width-mobile: 100%;
+    --max-width-tablet: 768px;
+    --max-width-desktop: 1200px;
+    --max-width-large: 1400px;
+
+    /* ===== FOCUS VISIBLE (Accesibilidad) ===== */
+    --focus-outline: 3px solid var(--secondary-color);
+    --focus-outline-offset: 2px;
+}
+
+/* ===== RESET CSS: Eliminar estilos predeterminados ===== */
+* {
+    margin: 0;
+    /* Sin márgenes */
+    padding: 0;
+    /* Sin espaciado interno */
+    box-sizing: border-box;
+    /* Incluir bordes en el tamaño */
+}
+
+/* ===== HTML: Configuración de scroll suave ===== */
+html {
+    scroll-behavior: smooth;
+    /* Scroll suave entre secciones */
+}
+
+/* Respetar preferencia de reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* ===== BODY: Tipografía y configuración base ===== */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    /* Fuente principal */
+    line-height: 1.7;
+    /* Espaciado entre líneas */
+    color: var(--text-dark);
+    /* Color de texto predeterminado */
+    overflow-x: hidden;
+    /* Ocultar scroll horizontal */
+}
+

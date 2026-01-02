@@ -1,0 +1,330 @@
+/* ===== ESTILOS PARA SECCIÓN RUBROS ===== */
+
+/* Grid de rubros */
+.rubros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+/* Card de rubro - Igual que feature-card */
+.rubro-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.6), rgba(248, 249, 250, 0.6));
+    /* Fondo semi-transparente igual que feature-card */
+    backdrop-filter: blur(2px) saturate(80%);
+    /* Efecto glass sutil con blur mínimo y saturación moderada */
+    -webkit-backdrop-filter: blur(2px) saturate(80%);
+    /* Soporte para Safari */
+    padding: 2rem 1.75rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Transición suave igual que feature-card */
+    border-left: 4px solid var(--secondary-color);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    isolation: isolate;
+    /* Crear nuevo contexto de apilamiento para el border-beam */
+}
+
+/* Estados para animación de entrada (solo para cards fuera del Swiper) */
+.rubro-card-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.rubro-card-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* ===== BORDER BEAM: Efecto de rayo animado en el borde (Magic UI) - Igual que feature-card ===== */
+.rubro-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(90deg, transparent, var(--secondary-color), var(--accent-color), transparent);
+    background-size: 200% 100%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: border-beam 6s linear infinite;
+    z-index: 1;
+    /* Asegurar que esté sobre el fondo pero bajo el contenido */
+}
+
+.rubro-card:hover::before {
+    opacity: 1;
+}
+
+@keyframes border-beam {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 200% 0%;
+    }
+}
+
+.rubro-card:hover {
+    transform: translateY(-10px) !important;
+    /* Mover hacia arriba igual que feature-card - !important para sobreescribir Swiper y estilos inline */
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12) !important;
+    /* Sombra más intensa y suave igual que feature-card */
+    border-left-color: var(--accent-color) !important;
+    /* Cambiar color del borde igual que feature-card */
+}
+
+/* Asegurar que el hover funcione dentro del Swiper y sobre cualquier transformación */
+.swiper-rubros .swiper-slide-active .rubro-card:hover,
+.swiper-rubros .rubro-card:hover {
+    transform: translateY(-10px) !important;
+    opacity: 1 !important;
+}
+
+/* Icono del rubro */
+.rubro-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.25);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+    /* Asegurar que esté sobre el border-beam */
+}
+
+.rubro-icon iconify-icon {
+    width: 36px !important;
+    height: 36px !important;
+    color: white !important;
+    display: block;
+    flex-shrink: 0;
+}
+
+.rubro-icon span[class*="icon-"] {
+    width: 36px !important;
+    height: 36px !important;
+    color: white !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.rubro-icon span[class*="icon-"] svg {
+    width: 36px !important;
+    height: 36px !important;
+    display: block;
+    flex-shrink: 0;
+}
+
+.rubro-card:hover .rubro-icon {
+    transform: scale(1.05);
+    /* Efecto similar a feature-card pero manteniendo el estilo circular */
+    box-shadow: 0 8px 20px rgba(39, 174, 96, 0.35);
+}
+
+/* Mantener compatibilidad con SVG si se usan */
+.rubro-icon svg {
+    width: 36px !important;
+    height: 36px !important;
+    max-width: 36px;
+    max-height: 36px;
+    stroke: white;
+    stroke-width: 2.5;
+    fill: none;
+    display: block;
+}
+
+/* Título del rubro */
+.rubro-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-dark);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    position: relative;
+    z-index: 2;
+    /* Asegurar que esté sobre el border-beam */
+}
+
+/* Descripción del rubro */
+.rubro-description {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Features tags */
+.rubro-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.rubro-feature-tag {
+    background: rgba(39, 174, 96, 0.08);
+    color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: 1px solid rgba(39, 174, 96, 0.15);
+    transition: all 0.2s ease;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.rubro-feature-tag:hover {
+    background: rgba(39, 174, 96, 0.12);
+    border-color: rgba(39, 174, 96, 0.25);
+    transform: translateY(-1px);
+}
+
+/* Botones del rubro */
+.rubro-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+.btn-rubro {
+    min-width: 150px;
+    font-size: 0.95rem;
+    padding: 0.875rem 1.75rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: all 0.2s ease;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.btn-rubro:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Sección intro */
+.section-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    /* Color negro para mejor legibilidad */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .rubros-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .rubros-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .rubro-card {
+        padding: 1.75rem 1.5rem;
+    }
+
+    .rubro-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1.25rem;
+    }
+
+    .rubro-icon iconify-icon {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .rubro-icon svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    .rubro-title {
+        font-size: 1.25rem;
+    }
+
+    .rubro-description {
+        font-size: 0.9rem;
+    }
+
+    .rubro-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .btn-rubro {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .rubro-card {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .rubro-icon {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 1rem;
+    }
+
+    .rubro-icon iconify-icon {
+        width: 28px !important;
+        height: 28px !important;
+    }
+
+    .rubro-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .rubro-title {
+        font-size: 1.15rem;
+    }
+
+    .rubro-description {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+    }
+}
+

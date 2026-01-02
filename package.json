@@ -5,19 +5,33 @@
     "main": "index.html",
     "packageManager": "pnpm@10.17.1",
     "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
         "start": "pnpm exec http-server . -p 3000 -o",
         "serve": "pnpm exec http-server . -p 3000 -o",
-        "build": "echo 'Build completed'",
-        "deploy": "vercel --prod"
+        "deploy": "pnpm run build && vercel --prod",
+        "deploy:preview": "pnpm run build && vercel",
+        "deploy:local": "vercel --yes"
     },
     "dependencies": {
         "@supabase/supabase-js": "^2.38.0",
+        "animejs": "^4.2.2",
+        "clsx": "^2.1.1",
         "googleapis": "^128.0.0",
-        "nodemailer": "^7.0.10"
+        "nodemailer": "^7.0.10",
+        "react": "^19.2.3",
+        "react-dom": "^19.2.3"
     },
     "devDependencies": {
+        "@types/node": "^25.0.3",
+        "@types/react": "^19.2.7",
+        "@types/react-dom": "^19.2.3",
+        "@vitejs/plugin-react": "^5.1.2",
         "http-server": "^14.1.1",
-        "vercel": "^48.8.2"
+        "typescript": "^5.9.3",
+        "vercel": "^48.8.2",
+        "vite": "^7.3.0"
     },
     "keywords": [
         "business-intelligence",

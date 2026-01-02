@@ -25,18 +25,56 @@ export default async function handler(req, res) {
     try {
         const { nombre, email, clinica, telefono, mensaje } = req.body;
 
-        // Debug: Verificar variables de entorno
-        console.log('=== INICIO DE SOLICITUD DE DEMO ===');
-        console.log('Variables de entorno:', {
-            GMAIL_USER: process.env.GMAIL_USER ? 'Configurado' : 'NO CONFIGURADO',
-            GMAIL_APP_PASSWORD: process.env.GMAIL_APP_PASSWORD ? 'Configurado' : 'NO CONFIGURADO',
-            NODE_ENV: process.env.NODE_ENV || 'undefined'
-        });
-        console.log('Datos recibidos:', { nombre, email, clinica, telefono: telefono ? 'Proporcionado' : 'No proporcionado' });
+        // Debug: Verificar variables de entorno (solo en desarrollo)
+        if (process.env.NODE_ENV === 'development') {
+            console.log('=== INICIO DE SOLICITUD DE DEMO ===');
+            console.log('Variables de entorno:', {
+                GMAIL_USER: process.env.GMAIL_USER ? 'Configurado' : 'NO CONFIGURADO',
+                GMAIL_APP_PASSWORD: process.env.GMAIL_APP_PASSWORD ? 'Configurado' : 'NO CONFIGURADO',
+                CONTACT_EMAIL_PRIMARY: process.env.CONTACT_EMAIL_PRIMARY ? 'Configurado' : 'NO CONFIGURADO',
+                CONTACT_EMAIL_SECONDARY: process.env.CONTACT_EMAIL_SECONDARY ? 'Configurado' : 'NO CONFIGURADO',
+            });
+        }
 
         // Validaciones básicas
         if (!nombre || !email || !clinica) {
             return res.status(400).json({ error: 'Faltan campos requeridos' });
+        }
+
+        // Sanitización y validación de inputs
+        const sanitizeString = (str, maxLength = 500) => {
+            if (!str || typeof str !== 'string') return '';
+            return str.trim().slice(0, maxLength).replace(/[<>]/g, '');
+        };
+
+        const validateEmail = (email) => {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email) && email.length <= 254;
+        };
+
+        // Sanitizar y validar datos
+        const sanitizedNombre = sanitizeString(nombre, 100);
+        const sanitizedEmail = email.trim().toLowerCase().slice(0, 254);
+        const sanitizedClinica = sanitizeString(clinica, 200);
+        const sanitizedTelefono = telefono ? sanitizeString(telefono, 20) : '';
+        const sanitizedMensaje = mensaje ? sanitizeString(mensaje, 1000) : '';
+
+        // Validaciones adicionales
+        if (sanitizedNombre.length < 2) {
+            return res.status(400).json({ error: 'El nombre debe tener al menos 2 caracteres' });
+        }
+
+        if (!validateEmail(sanitizedEmail)) {
+            return res.status(400).json({ error: 'Email inválido' });
+        }
+
+        if (sanitizedClinica.length < 2) {
+            return res.status(400).json({ error: 'El nombre de la clínica debe tener al menos 2 caracteres' });
+        }
+
+        // Validar formato de teléfono si se proporciona
+        if (sanitizedTelefono && !/^[\d\s\-\+\(\)]+$/.test(sanitizedTelefono)) {
+            return res.status(400).json({ error: 'Formato de teléfono inválido' });
         }
 
         // Verificar que las variables de entorno estén configuradas
@@ -49,6 +87,10 @@ export default async function handler(req, res) {
                 error: 'Configuración del servidor incompleta. Contacta al administrador.'
             });
         }
+
+        // Verificar emails destinatarios
+        const toEmail = process.env.CONTACT_EMAIL_PRIMARY || 'franciscoaucar@ajconsultingit.com';
+        const ccEmail = process.env.CONTACT_EMAIL_SECONDARY || 'andresnj11@ajconsultingit.com';
 
         // Configurar transporter de Gmail para Vercel
         console.log('Configurando transporter de Gmail...');
@@ -71,22 +113,23 @@ export default async function handler(req, res) {
         await transporter.verify();
         console.log('Conexión con Gmail verificada exitosamente');
 
-        // Configurar email
+        // Configurar email (usar datos sanitizados)
         const mailOptions = {
             from: process.env.GMAIL_USER,
-            to: 'franciscoaucar@ajconsultingit.com',
-            cc: 'andresnj11@ajconsultingit.com',
-            subject: `Solicitud de Demo - ${clinica}`,
+            to: toEmail,
+            cc: ccEmail,
+            subject: `Solicitud de Demo - ${sanitizedClinica}`,
             html: `
                 <h2>Nueva Solicitud de Demo</h2>
-                <p><strong>Nombre:</strong> ${nombre}</p>
-                <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Clínica:</strong> ${clinica}</p>
-                <p><strong>Teléfono:</strong> ${telefono || 'No proporcionado'}</p>
+                <p><strong>Nombre:</strong> ${sanitizedNombre}</p>
+                <p><strong>Email:</strong> ${sanitizedEmail}</p>
+                <p><strong>Clínica:</strong> ${sanitizedClinica}</p>
+                <p><strong>Teléfono:</strong> ${sanitizedTelefono || 'No proporcionado'}</p>
                 <p><strong>Mensaje:</strong></p>
-                <p>${mensaje || 'Sin mensaje adicional'}</p>
+                <p>${sanitizedMensaje || 'Sin mensaje adicional'}</p>
                 <hr>
                 <p><em>Enviado desde el formulario web de A&J Consulting IT</em></p>
+                <p><small>Fecha: ${new Date().toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires' })}</small></p>
             `
         };
 
@@ -129,11 +172,18 @@ export default async function handler(req, res) {
             statusCode = 401;
         }
 
-        return res.status(statusCode).json({
+        // No exponer detalles sensibles en producción
+        const response = {
             error: errorMessage,
-            code: error.code,
-            details: process.env.NODE_ENV === 'development' ? error.message : undefined,
             timestamp: new Date().toISOString()
-        });
+        };
+
+        // Solo incluir código y detalles en desarrollo
+        if (process.env.NODE_ENV === 'development') {
+            response.code = error.code;
+            response.details = error.message;
+        }
+
+        return res.status(statusCode).json(response);
     }
 }

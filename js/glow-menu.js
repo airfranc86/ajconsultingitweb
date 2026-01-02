@@ -113,23 +113,6 @@ function createGlowMenu() {
                 <span>Rubros</span>
             </a>
             
-            <a href="#especializacion" class="glow-link" 
-                aria-label="Ir a sección Especialización"
-                style="
-                display: flex;
-                align-items: center;
-                gap: 0.75rem;
-                padding: 0.75rem 1rem;
-                color: #ffffff;
-                text-decoration: none;
-                border-radius: 10px;
-                transition: all 0.3s ease;
-                background: rgba(39, 174, 96, 0.1);
-                min-height: 44px;
-            ">
-                <iconify-icon icon="mdi:chart-line" width="24" height="24" style="color: #27ae60;" aria-hidden="true"></iconify-icon>
-                <span>Especialización</span>
-            </a>
             
             <a href="#proyectos-venta" class="glow-link" 
                 aria-label="Ir a sección Proyectos"

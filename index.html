@@ -36,16 +36,16 @@
     <link rel="canonical" href="https://ajconsultingitwebv2.vercel.app/">
 
     <!-- FAVICON SIMPLIFICADO -->
-    <link rel="icon" type="image/png" href="assets/logo-500x500.png">
-    <link rel="shortcut icon" href="assets/logo-500x500.png">
-    <link rel="apple-touch-icon" href="assets/logo-500x500.png">
+    <link rel="icon" type="image/png" href="/assets/logo-500x500.png">
+    <link rel="shortcut icon" href="/assets/logo-500x500.png">
+    <link rel="apple-touch-icon" href="/assets/logo-500x500.png">
 
     <!-- OPEN GRAPH OPTIMIZADO -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="A&J Consulting IT - KPIs e IA para tu Negocio">
     <meta property="og:description"
         content="Transformamos datos en decisiones inteligentes. Consultora especializada en KPIs, Inteligencia Artificial y Business Intelligence para múltiples rubros.">
-    <meta property="og:image" content="assets/logo-500x500.png">
+    <meta property="og:image" content="/assets/logo-500x500.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="A&J Consulting IT - Business Intelligence para Clínicas">
@@ -58,7 +58,7 @@
     <meta name="twitter:title" content="A&J Consulting IT - KPIs e IA para tu Negocio">
     <meta name="twitter:description"
         content="Transformamos datos en decisiones inteligentes. Consultora especializada en KPIs e IA para múltiples rubros.">
-    <meta name="twitter:image" content="assets/logo-500x500.png">
+    <meta name="twitter:image" content="/assets/logo-500x500.png">
     <meta name="twitter:image:alt" content="A&J Consulting IT - Business Intelligence para Clínicas">
 
     <!-- SCHEMA.ORG STRUCTURED DATA -->
@@ -69,7 +69,7 @@
         "name": "A&J Consulting IT",
         "alternateName": "A&J Consulting",
         "url": "https://ajconsulting.com",
-        "logo": "assets/AJLOGO.png",
+        "logo": "/assets/AJLOGO-80x80.png",
         "description": "Consultora especializada en KPIs, Inteligencia Artificial y Business Intelligence. Transformamos datos en decisiones inteligentes para múltiples rubros.",
         "foundingDate": "2025",
         "industry": "Business Intelligence & AI Consulting",
@@ -147,9 +147,9 @@
     </noscript>
 
     <!-- Preload de imágenes críticas (logo principal del hero optimizado) -->
-    <link rel="preload" as="image" href="assets/logo-200x200.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/logo-200x200.png" type="image/png">
     <!-- Preload de imagen del loader (crítica para Android) -->
-    <link rel="preload" as="image" href="assets/AJLOGO-80x80.png" type="image/png">
+    <link rel="preload" as="image" href="/assets/AJLOGO-80x80.png" type="image/png">
 
     <!-- VERCEL ANALYTICS: Script de seguimiento optimizado -->
     <script>
@@ -2137,7 +2137,7 @@
     <div id="page-loader" role="status" aria-live="polite" aria-label="Cargando A&J Consulting IT">
         <div class="loader-progress-container">
             <div class="loader-logo">
-                <img src="assets/AJLOGO-80x80.png" alt="Logo A&J Consulting IT" id="loader-logo-img" width="80"
+                <img src="/assets/AJLOGO-80x80.png" alt="Logo A&J Consulting IT" id="loader-logo-img" width="80"
                     height="80" loading="eager">
             </div>
             <svg class="loader-progress-svg" viewBox="0 0 200 200">
@@ -2186,7 +2186,6 @@
             <ul class="nav-menu">
                 <li><a href="#home">Inicio</a></li> <!-- Link al hero -->
                 <li><a href="#rubros">Rubros</a></li> <!-- Link a sección rubros -->
-                <li><a href="#especializacion">Especialización</a></li> <!-- Link a especialización -->
                 <li><a href="#proyectos-venta">Proyectos</a></li> <!-- Link a proyectos -->
                 <li><a href="#equipo">Equipo</a></li> <!-- Link a equipo -->
                 <li><a href="#contacto">Contacto</a></li> <!-- Link a contacto -->
@@ -2211,7 +2210,7 @@
                 <!-- CONTENEDOR DEL LOGO: Logo principal flotante -->
                 <div class="hero-logo">
                     <!-- LOGO FLOTANTE: Imagen de la empresa con animación -->
-                    <img src="assets/logo-200x200.png" srcset="assets/logo-200x200.png 1x, assets/logo-500x500.png 2x"
+                    <img src="/assets/logo-200x200.png" srcset="/assets/logo-200x200.png 1x, /assets/logo-500x500.png 2x"
                         alt="A&J Consulting IT Logo" class="floating-logo" width="200" height="200"
                         fetchpriority="high">
                 </div>
@@ -2238,104 +2237,6 @@
                             style="vertical-align: middle;" aria-hidden="true"></iconify-icon>
                         Solicitar Demo
                     </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN ESPECIALIZACIÓN: KPIs e IA -->
-        <section id="especializacion" class="content-section" aria-labelledby="especializacion-title">
-            <div class="section-card">
-                <!-- TÍTULO DE SECCIÓN: Encabezado principal -->
-                <h2 class="section-title" id="especializacion-title">Nuestra Especialización</h2>
-
-                <!-- SWIPER CONTAINER: Contenedor principal del carrusel -->
-                <div class="swiper swiper-especializacion">
-                    <!-- SWIPER WRAPPER: Wrapper para los slides -->
-                    <div class="swiper-wrapper">
-                        <!-- CARACTERÍSTICA 1: KPIs -->
-                        <div class="swiper-slide">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M3 3v18h18" />
-                                        <path d="M18 17V9" />
-                                        <path d="M13 17V5" />
-                                        <path d="M8 17v-3" />
-                                    </svg>
-                                </div>
-                                <h3 class="feature-title">KPIs (Índices Clave)</h3>
-                                <p class="feature-description">Generación de métricas personalizadas adaptadas a tu
-                                    rubro para
-                                    medir lo que realmente importa.</p>
-                            </div>
-                        </div>
-
-                        <!-- CARACTERÍSTICA 2: IA -->
-                        <div class="swiper-slide">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <iconify-icon icon="mingcute:code-line" width="32" height="32"
-                                        style="color: currentColor;"></iconify-icon>
-                                </div>
-                                <h3 class="feature-title">Inteligencia Artificial</h3>
-                                <p class="feature-description">Análisis predictivo y machine learning para anticipar
-                                    tendencias
-                                    y optimizar decisiones.</p>
-                            </div>
-                        </div>
-
-                        <!-- CARACTERÍSTICA 3: Dashboards -->
-                        <div class="swiper-slide">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <iconify-icon icon="ic:baseline-trending-up" width="32" height="32"
-                                        style="color: currentColor;"></iconify-icon>
-                                </div>
-                                <h3 class="feature-title">Dashboards Inteligentes</h3>
-                                <p class="feature-description">Visualización avanzada de datos en tiempo real con
-                                    análisis
-                                    interactivo.</p>
-                            </div>
-                        </div>
-
-                        <!-- CARACTERÍSTICA 4: Soluciones por Rubro -->
-                        <div class="swiper-slide">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="3" y="3" width="7" height="7" rx="1" />
-                                        <rect x="14" y="3" width="7" height="7" rx="1" />
-                                        <rect x="3" y="14" width="7" height="7" rx="1" />
-                                        <rect x="14" y="14" width="7" height="7" rx="1" />
-                                    </svg>
-                                </div>
-                                <h3 class="feature-title">Soluciones por Rubro</h3>
-                                <p class="feature-description">Adaptadas a cada industria: Clínicas, Obras Viales,
-                                    Restaurantes
-                                    y más.</p>
-                            </div>
-                        </div>
-
-                        <!-- CARACTERÍSTICA 5: Seguridad -->
-                        <div class="swiper-slide">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <iconify-icon icon="ic:baseline-security" width="32" height="32"
-                                        style="color: currentColor;"></iconify-icon>
-                                </div>
-                                <h3 class="feature-title">Seguridad en Datos</h3>
-                                <p class="feature-description">Brindamos seguridad en todos los despliegues y
-                                    manipulación de
-                                    datos para proteger tu información.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- NAVEGACIÓN: Botones anterior/siguiente -->
-                    <div class="swiper-button-prev" role="button" aria-label="Slide anterior" tabindex="0"></div>
-                    <div class="swiper-button-next" role="button" aria-label="Slide siguiente" tabindex="0"></div>
                 </div>
             </div>
         </section>
@@ -2665,7 +2566,7 @@
                 <!-- CONTENIDO CENTRADO: Logo y texto en una línea -->
                 <div class="footer-content-center">
                     <!-- LOGO DEL FOOTER: Logo oficial compacto y alineado -->
-                    <img src="assets/logo-22x22.png" alt="A&J Consulting IT Logo" class="footer-logo-img" loading="lazy"
+                    <img src="/assets/logo-22x22.png" alt="A&J Consulting IT Logo" class="footer-logo-img" loading="lazy"
                         width="22" height="22" aria-label="Logo A&J Consulting IT">
 
                     <!-- TEXTO DEL FOOTER: Copyright y información -->
@@ -2967,6 +2868,10 @@
 
     <!-- JAVASCRIPT PERSONALIZADO: Funcionalidades interactivas -->
     <!-- Todo el JavaScript está en js/main.js para evitar duplicación -->
+    
+    <!-- REACT ROOT: Contenedor para componentes React (migración incremental) -->
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
 </body>
 
 </html>

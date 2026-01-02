@@ -13,7 +13,7 @@
             nombre: 'Santa Barba CBA',
             tipo: 'Servicios Locales',
             url: 'https://santa-barba-cba.vercel.app/',
-            logo: 'assets/ClientesWeb/SantaBarbaCba/santabarba-logo.png',
+            logo: '/assets/ClientesWeb/SantaBarbaCba/santabarba-logo.png',
             descripcion: 'Sitio comercial orientado a contacto directo y presencia local',
             caracteristicas: ['Responsive', 'Formulario de contacto', 'Optimizado SEO'],
             enfoque: 'contacto-directo'
@@ -23,7 +23,7 @@
             nombre: 'VineWatch Consulting',
             tipo: 'Consultoría',
             url: 'https://vinewatchconsulting.vercel.app/',
-            logo: 'assets/ClientesWeb/VineWatch/vinewatch-logo.png',
+            logo: '/assets/ClientesWeb/VineWatch/vinewatch-logo.png',
             descripcion: 'Presentación profesional de servicios con foco en claridad y posicionamiento',
             caracteristicas: ['Diseño profesional', 'Navegación clara', 'Responsive'],
             enfoque: 'posicionamiento'
@@ -33,7 +33,7 @@
             nombre: 'SkyPulse AR',
             tipo: 'Dashboard',
             url: 'https://skypulse-ar.vercel.app/dashboard',
-            logo: 'assets/ClientesWeb/SkyPulse-ar/skypulsear-logo.png',
+            logo: '/assets/ClientesWeb/SkyPulse-ar/skypulsear-logo.png',
             descripcion: 'Web con visualización técnica, métricas y lectura analítica',
             caracteristicas: ['Dashboard integrado', 'Visualización de datos', 'Tiempo real'],
             enfoque: 'analitica'
@@ -43,7 +43,7 @@
             nombre: 'AeroMet ARG',
             tipo: 'Educativo',
             url: 'https://aerometarg.vercel.app/',
-            logo: 'assets/ClientesWeb/aerometarg/aeromet-logo.png',
+            logo: '/assets/ClientesWeb/aerometarg/aeromet-logo.png',
             descripcion: 'Sitio de contenido especializado con estructura clara y autoridad temática',
             caracteristicas: ['Contenido especializado', 'Estructura clara', 'SEO optimizado'],
             enfoque: 'educacion'
@@ -53,7 +53,7 @@
             nombre: 'Fenix CBA',
             tipo: 'Sistema Operativo',
             url: 'https://fenixcba.vercel.app/',
-            logo: 'assets/ClientesWeb/fenixcba/Fenix-logo.png',
+            logo: '/assets/ClientesWeb/fenixcba/Fenix-logo.png',
             descripcion: 'Plataforma con lógica funcional integrada al frontend',
             caracteristicas: ['Lógica funcional', 'Sistema integrado', 'Operativo'],
             enfoque: 'sistema'
