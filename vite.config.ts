@@ -11,10 +11,15 @@ export default defineConfig({
       input: {
         main: './index.html',
       },
+      // Copiar assets estáticos
+      output: {
+        assetFileNames: 'assets/[name].[ext]',
+      },
     },
     // Permitir coexistencia con archivos estáticos
-    copyPublicDir: true,
+    copyPublicDir: false, // Los assets están en /assets, no en public/
   },
+  publicDir: 'assets', // Usar /assets como directorio público para que Vite lo copie
   server: {
     port: 3000,
     open: true,

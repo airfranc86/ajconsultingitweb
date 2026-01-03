@@ -2174,6 +2174,9 @@
     <!-- HEADER: Navegación fija superior -->
     <!-- HEADER ELIMINADO: Migrado a React (src/components/layout/Header.tsx) -->
 
+    <!-- REACT ROOT: Contenedor para componentes React (debe estar al inicio para orden correcto) -->
+    <div id="root"></div>
+
     <!-- PARTÍCULAS DE FONDO: Efecto visual animado -->
     <div id="particles-js"></div>
 
@@ -2413,10 +2416,14 @@
             </div>
         </section>
 
+        <!-- REACT PORTAL: Methodology y Contact se renderizan aquí (después de rubros, proyectos, equipo) -->
+        <div id="react-sections-portal"></div>
+
         <!-- SECCIÓN DE CONTACTO ELIMINADA: Migrada a React -->
         <!-- #contacto: Migrado a src/components/sections/ContactSection.tsx -->
 
-        <!-- FOOTER ELIMINADO: Migrado a React (src/components/layout/Footer.tsx) -->
+        <!-- FOOTER PORTAL: Footer se renderiza aquí con React Portal -->
+        <div id="react-footer-portal"></div>
     </div>
 
     <!-- SWIPER: Script principal (cargar solo cuando sea necesario, lazy load) -->
@@ -2712,8 +2719,7 @@
     <!-- JAVASCRIPT PERSONALIZADO: Funcionalidades interactivas -->
     <!-- Todo el JavaScript está en js/main.js para evitar duplicación -->
 
-    <!-- REACT ROOT: Contenedor para componentes React (migración incremental) -->
-    <div id="root"></div>
+    <!-- REACT SCRIPT: Cargar React después del contenido HTML -->
     <script type="module" src="/src/main.tsx"></script>
 </body>
 

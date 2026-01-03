@@ -1,4 +1,5 @@
 import React, { useEffect, Suspense, lazy } from 'react';
+import { createPortal } from 'react-dom';
 import { DemoModal } from './components/forms/DemoModal';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
@@ -29,23 +30,38 @@ const App: React.FC = () => {
     };
   }, [openModal, closeModal]);
 
+  // Portals para renderizar secciones en el orden correcto
+  const sectionsPortal = typeof document !== 'undefined' ? document.getElementById('react-sections-portal') : null;
+  const footerPortal = typeof document !== 'undefined' ? document.getElementById('react-footer-portal') : null;
+
   return (
     <>
       {/* Header - Migrado a React */}
       <Header />
 
-      {/* Secciones migradas a React con lazy loading */}
+      {/* Hero Section - Renderizado en root */}
       <Suspense fallback={<div style={{ minHeight: '100vh', paddingTop: '80px' }}>Cargando...</div>}>
         <HeroSection />
-        <MethodologySection />
-        <ContactSection />
       </Suspense>
+
+      {/* Methodology y Contact - Renderizados con Portal después de secciones HTML (rubros, proyectos, equipo) */}
+      {sectionsPortal && (
+        <Suspense fallback={null}>
+          {createPortal(
+            <>
+              <MethodologySection />
+              <ContactSection />
+            </>,
+            sectionsPortal
+          )}
+        </Suspense>
+      )}
 
       {/* Modal de Demo - Migrado a React */}
       <DemoModal isOpen={isOpen} onClose={closeModal} />
 
-      {/* Footer - Migrado a React */}
-      <Footer />
+      {/* Footer - Renderizado con Portal al final */}
+      {footerPortal && createPortal(<Footer />, footerPortal)}
     </>
   );
 };

@@ -163,9 +163,9 @@ Si algo falla:
 
 ## ✅ Criterios de Éxito
 
-- [ ] No hay contenido duplicado visible
-- [ ] React renderiza todas las secciones migradas
-- [ ] Navegación funciona correctamente
+- [x] No hay contenido duplicado visible
+- [x] React renderiza todas las secciones migradas
+- [x] Navegación funciona correctamente
 - [ ] Build funciona sin errores
 - [ ] No hay errores en consola
 - [ ] SEO correcto (sin duplicados)
