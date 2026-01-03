@@ -19,7 +19,7 @@ export default defineConfig({
     // Permitir coexistencia con archivos estáticos
     copyPublicDir: false, // Los assets están en /assets, no en public/
   },
-  publicDir: 'assets', // Usar /assets como directorio público para que Vite lo copie
+  publicDir: false, // No usar public/, los assets están en /assets y se copian con script
   server: {
     port: 3000,
     open: true,
