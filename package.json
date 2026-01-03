@@ -6,7 +6,7 @@
     "packageManager": "pnpm@10.17.1",
     "scripts": {
         "dev": "vite",
-        "build": "tsc && vite build && node scripts/copy-assets.js && node scripts/fix-html-script-order.js",
+        "build": "tsc && vite build && node scripts/copy-assets.js",
         "preview": "vite preview",
         "start": "pnpm exec http-server . -p 3000 -o",
         "serve": "pnpm exec http-server . -p 3000 -o",
