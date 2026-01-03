@@ -128,10 +128,10 @@ Restaurar y mejorar la experiencia de usuario (UX) y la interfaz (UI) que se per
 **Objetivo:** Asegurar que todos los componentes React usan variables CSS globales
 
 **Acciones:**
-- [ ] Verificar que `src/styles/globals.css` se importa en `main.tsx`
-- [ ] Revisar cada CSS Module para asegurar uso de variables
-- [ ] Reemplazar valores hardcodeados por variables CSS
-- [ ] Verificar colores, espaciado, sombras, transiciones
+- [x] Verificar que `src/styles/globals.css` se importa en `main.tsx`
+- [x] Revisar cada CSS Module para asegurar uso de variables
+- [x] Reemplazar valores hardcodeados por variables CSS
+- [x] Verificar colores, espaciado, sombras, transiciones
 
 **Archivos a revisar:**
 - `src/components/layout/Header.module.css`
@@ -151,11 +151,13 @@ Restaurar y mejorar la experiencia de usuario (UX) y la interfaz (UI) que se per
 **Objetivo:** Asegurar que todos los breakpoints funcionan correctamente
 
 **Acciones:**
-- [ ] Comparar media queries originales (`css/styles.css`) con CSS Modules
-- [ ] Agregar media queries faltantes a cada componente
-- [ ] Verificar breakpoints: 320px, 480px, 768px, 1024px, 1280px
-- [ ] Probar en diferentes tamaños de pantalla
-- [ ] Verificar que no hay scroll horizontal
+- [x] Comparar media queries originales (`css/styles.css`) con CSS Modules
+- [x] Agregar media queries faltantes a cada componente
+- [x] Verificar breakpoints: 320px, 480px, 768px, 1024px, 1280px
+- [x] Agregar breakpoints faltantes (480px, 1024px)
+- [x] Agregar soporte para `prefers-reduced-motion`
+- [ ] Probar en diferentes tamaños de pantalla (pendiente verificación)
+- [ ] Verificar que no hay scroll horizontal (pendiente verificación)
 
 **Breakpoints a verificar:**
 - `@media (max-width: 320px)` - Móvil muy pequeño
@@ -176,11 +178,12 @@ Restaurar y mejorar la experiencia de usuario (UX) y la interfaz (UI) que se per
 **Objetivo:** Asegurar que animaciones funcionan como antes
 
 **Acciones:**
-- [ ] Verificar que `prefers-reduced-motion` se respeta
-- [ ] Restaurar animaciones de scroll reveal
-- [ ] Verificar transiciones de hover/focus
-- [ ] Asegurar que animaciones no bloquean render
-- [ ] Verificar que animaciones son GPU-friendly (transform, opacity)
+- [x] Verificar que `prefers-reduced-motion` se respeta (agregado en CSS Modules)
+- [x] Restaurar animaciones de scroll reveal (ya implementado en useScrollReveal)
+- [x] Verificar transiciones de hover/focus (usando var(--transition))
+- [x] Agregar soporte para `prefers-reduced-motion` en animaciones CSS
+- [x] Verificar que animaciones son GPU-friendly (transform, opacity)
+- [ ] Probar animaciones en navegador (pendiente verificación)
 
 **Animaciones a verificar:**
 - Scroll reveal en secciones
