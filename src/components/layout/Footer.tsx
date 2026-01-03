@@ -3,7 +3,7 @@ import styles from './Footer.module.css';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} role="contentinfo" aria-label="Pie de página">
       <div className={styles.footerContent}>
         <div className={styles.footerContentCenter}>
           <img
@@ -13,9 +13,9 @@ export const Footer: React.FC = () => {
             loading="lazy"
             width="22"
             height="22"
-            aria-label="Logo A&J Consulting IT"
+            aria-hidden="true"
           />
-          <span className={styles.footerText} role="contentinfo">
+          <span className={styles.footerText}>
             © 2025 A&J Consulting IT | Transformando datos en decisiones inteligentes
           </span>
         </div>

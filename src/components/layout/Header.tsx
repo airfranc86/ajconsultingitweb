@@ -69,53 +69,60 @@ export const Header: React.FC = () => {
           </div>
 
           {/* Menú de navegación */}
-          <ul className={styles.navMenu}>
-            <li>
-              <a
-                href="#home"
-                className={activeSection === 'home' ? styles.active : ''}
-                onClick={(e) => handleNavClick(e, 'home')}
-              >
-                Inicio
-              </a>
-            </li>
-            <li>
-              <a
-                href="#rubros"
-                className={activeSection === 'rubros' ? styles.active : ''}
-                onClick={(e) => handleNavClick(e, 'rubros')}
-              >
-                Rubros
-              </a>
-            </li>
-            <li>
-              <a
-                href="#proyectos-venta"
-                className={activeSection === 'proyectos-venta' ? styles.active : ''}
-                onClick={(e) => handleNavClick(e, 'proyectos-venta')}
-              >
-                Proyectos
-              </a>
-            </li>
-            <li>
-              <a
-                href="#equipo"
-                className={activeSection === 'equipo' ? styles.active : ''}
-                onClick={(e) => handleNavClick(e, 'equipo')}
-              >
-                Equipo
-              </a>
-            </li>
-            <li>
-              <a
-                href="#contacto"
-                className={activeSection === 'contacto' ? styles.active : ''}
-                onClick={(e) => handleNavClick(e, 'contacto')}
-              >
-                Contacto
-              </a>
-            </li>
-          </ul>
+          <nav aria-label="Navegación principal">
+            <ul className={styles.navMenu} role="list">
+              <li role="none">
+                <a
+                  href="#home"
+                  className={activeSection === 'home' ? styles.active : ''}
+                  onClick={(e) => handleNavClick(e, 'home')}
+                  aria-label="Ir a inicio"
+                >
+                  Inicio
+                </a>
+              </li>
+              <li role="none">
+                <a
+                  href="#rubros"
+                  className={activeSection === 'rubros' ? styles.active : ''}
+                  onClick={(e) => handleNavClick(e, 'rubros')}
+                  aria-label="Ir a rubros"
+                >
+                  Rubros
+                </a>
+              </li>
+              <li role="none">
+                <a
+                  href="#proyectos-venta"
+                  className={activeSection === 'proyectos-venta' ? styles.active : ''}
+                  onClick={(e) => handleNavClick(e, 'proyectos-venta')}
+                  aria-label="Ir a proyectos"
+                >
+                  Proyectos
+                </a>
+              </li>
+              <li role="none">
+                <a
+                  href="#equipo"
+                  className={activeSection === 'equipo' ? styles.active : ''}
+                  onClick={(e) => handleNavClick(e, 'equipo')}
+                  aria-label="Ir a equipo"
+                >
+                  Equipo
+                </a>
+              </li>
+              <li role="none">
+                <a
+                  href="#contacto"
+                  className={activeSection === 'contacto' ? styles.active : ''}
+                  onClick={(e) => handleNavClick(e, 'contacto')}
+                  aria-label="Ir a contacto"
+                >
+                  Contacto
+                </a>
+              </li>
+            </ul>
+          </nav>
 
           {/* Botón menú móvil */}
           <button

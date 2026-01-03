@@ -2,6 +2,7 @@ import React from 'react';
 import { FeatureCard } from '../ui/FeatureCard';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { METHODOLOGY_STEPS } from '../../utils/constants';
+import sectionStyles from '../../styles/components/section-common.module.css';
 import styles from './MethodologySection.module.css';
 
 export const MethodologySection: React.FC = () => {
@@ -14,11 +15,11 @@ export const MethodologySection: React.FC = () => {
       aria-labelledby="metodologia-title"
       ref={sectionRef}
     >
-      <div className={styles.sectionCard}>
-        <h2 className={styles.sectionTitle} id="metodologia-title">
+      <div className={sectionStyles.sectionCard}>
+        <h2 className={sectionStyles.sectionTitle} id="metodologia-title">
           Cómo Trabajamos
         </h2>
-        <p className={styles.sectionIntro}>
+        <p className={sectionStyles.sectionIntro}>
           Un proceso claro y transparente para garantizar resultados
         </p>
 

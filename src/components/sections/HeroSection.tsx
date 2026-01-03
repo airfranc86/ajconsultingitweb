@@ -74,6 +74,7 @@ export const HeroSection: React.FC = () => {
                         variant="primary"
                         onClick={handleDemoClick}
                         aria-label="Solicitar demostración de servicios de A&J Consulting IT"
+                        type="button"
                     >
                         {React.createElement('iconify-icon', {
                             icon: 'mdi:monitor-dashboard',

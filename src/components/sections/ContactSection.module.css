@@ -1,15 +1,7 @@
+/* Estilos específicos de ContactSection */
 .contactSection {
   padding: var(--spacing-2xl) var(--spacing-md);
   position: relative;
-}
-
-.sectionCard {
-  max-width: var(--max-width-desktop);
-  margin: 0 auto;
-  background: var(--card-bg);
-  padding: var(--spacing-xl) var(--spacing-md);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-light);
 }
 
 .demoButtonContainer {
@@ -86,10 +78,6 @@
 
 /* Responsive - Tablet */
 @media (max-width: 1024px) {
-  .sectionCard {
-    padding: var(--spacing-lg) var(--spacing-md);
-  }
-
   .contactInfo {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
@@ -97,14 +85,6 @@
 
 /* Responsive - Mobile */
 @media (max-width: 768px) {
-  .contactSection {
-    padding: var(--spacing-xl) var(--spacing-md);
-  }
-
-  .sectionCard {
-    padding: var(--spacing-lg) var(--spacing-md);
-  }
-
   .contactInfo {
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
@@ -113,14 +93,6 @@
 
 /* Responsive - Mobile pequeño */
 @media (max-width: 480px) {
-  .contactSection {
-    padding: var(--spacing-lg) var(--spacing-sm);
-  }
-
-  .sectionCard {
-    padding: var(--spacing-md) var(--spacing-sm);
-  }
-
   .contactCard {
     padding: var(--spacing-md) var(--spacing-sm);
   }

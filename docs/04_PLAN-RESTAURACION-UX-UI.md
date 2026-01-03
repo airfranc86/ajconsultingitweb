@@ -206,10 +206,10 @@ Restaurar y mejorar la experiencia de usuario (UX) y la interfaz (UI) que se per
 **Objetivo:** Reducir tamaño de bundle y mejorar carga
 
 **Acciones:**
-- [ ] Revisar duplicación de estilos entre CSS Modules
-- [ ] Extraer estilos comunes a archivo compartido
-- [ ] Optimizar selectores CSS
-- [ ] Verificar que CSS crítico se carga primero
+- [x] Revisar duplicación de estilos entre CSS Modules
+- [x] Extraer estilos comunes a archivo compartido (section-common.module.css)
+- [x] Optimizar selectores CSS (usando variables CSS)
+- [x] Verificar que CSS crítico se carga primero (globals.css importado en main.tsx)
 
 ---
 
@@ -217,11 +217,13 @@ Restaurar y mejorar la experiencia de usuario (UX) y la interfaz (UI) que se per
 **Objetivo:** Asegurar que componentes React son accesibles
 
 **Acciones:**
-- [ ] Verificar ARIA labels en todos los componentes
-- [ ] Verificar navegación por teclado
-- [ ] Verificar contraste de colores (WCAG AA)
-- [ ] Verificar focus visible en todos los elementos interactivos
-- [ ] Probar con screen reader
+- [x] Verificar ARIA labels en todos los componentes (agregados donde faltaban)
+- [x] Mejorar navegación por teclado (role="list", role="none", aria-label)
+- [x] Verificar contraste de colores (WCAG AA - usando variables definidas)
+- [x] Verificar focus visible en todos los elementos interactivos (usando var(--focus-outline))
+- [x] Agregar labels a formularios (DemoForm mejorado con labels)
+- [x] Mejorar estructura semántica (nav, role="contentinfo", etc.)
+- [ ] Probar con screen reader (pendiente verificación manual)
 
 ---
 
@@ -229,10 +231,10 @@ Restaurar y mejorar la experiencia de usuario (UX) y la interfaz (UI) que se per
 **Objetivo:** Crear guía clara para futuros desarrollos
 
 **Acciones:**
-- [ ] Documentar variables CSS disponibles
-- [ ] Documentar breakpoints y media queries
-- [ ] Documentar componentes y sus estilos
-- [ ] Crear guía de uso de CSS Modules
+- [x] Documentar variables CSS disponibles (en 00_SISTEMA-DISEÑO.md)
+- [x] Documentar breakpoints y media queries (en 00_SISTEMA-DISEÑO.md y 05_GUIA-CSS-MODULES.md)
+- [x] Documentar componentes y sus estilos (en 05_GUIA-CSS-MODULES.md)
+- [x] Crear guía de uso de CSS Modules (05_GUIA-CSS-MODULES.md creado)
 
 ---
 

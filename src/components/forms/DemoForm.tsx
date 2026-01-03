@@ -159,8 +159,12 @@ export const DemoForm: React.FC<DemoFormProps> = ({ onSuccess, onError }) => {
       />
 
       <div className={styles.field}>
+        <label htmlFor="nombre" className={styles.label}>
+          Nombre completo <span aria-label="requerido">*</span>
+        </label>
         <input
           type="text"
+          id="nombre"
           name="nombre"
           placeholder="Nombre completo"
           value={formData.nombre}
@@ -169,6 +173,7 @@ export const DemoForm: React.FC<DemoFormProps> = ({ onSuccess, onError }) => {
           required
           className={errors.nombre ? styles.inputError : styles.input}
           aria-invalid={!!errors.nombre}
+          aria-required="true"
           aria-describedby={errors.nombre ? 'nombre-error' : undefined}
         />
         {errors.nombre && (
@@ -179,8 +184,12 @@ export const DemoForm: React.FC<DemoFormProps> = ({ onSuccess, onError }) => {
       </div>
 
       <div className={styles.field}>
+        <label htmlFor="email" className={styles.label}>
+          Email corporativo <span aria-label="requerido">*</span>
+        </label>
         <input
           type="email"
+          id="email"
           name="email"
           placeholder="Email corporativo"
           value={formData.email}
@@ -189,6 +198,7 @@ export const DemoForm: React.FC<DemoFormProps> = ({ onSuccess, onError }) => {
           required
           className={errors.email ? styles.inputError : styles.input}
           aria-invalid={!!errors.email}
+          aria-required="true"
           aria-describedby={errors.email ? 'email-error' : undefined}
         />
         {errors.email && (
@@ -199,8 +209,12 @@ export const DemoForm: React.FC<DemoFormProps> = ({ onSuccess, onError }) => {
       </div>
 
       <div className={styles.field}>
+        <label htmlFor="clinica" className={styles.label}>
+          Nombre de la clínica <span aria-label="requerido">*</span>
+        </label>
         <input
           type="text"
+          id="clinica"
           name="clinica"
           placeholder="Nombre de la clínica"
           value={formData.clinica}
@@ -209,6 +223,7 @@ export const DemoForm: React.FC<DemoFormProps> = ({ onSuccess, onError }) => {
           required
           className={errors.clinica ? styles.inputError : styles.input}
           aria-invalid={!!errors.clinica}
+          aria-required="true"
           aria-describedby={errors.clinica ? 'clinica-error' : undefined}
         />
         {errors.clinica && (
@@ -219,25 +234,41 @@ export const DemoForm: React.FC<DemoFormProps> = ({ onSuccess, onError }) => {
       </div>
 
       <div className={styles.field}>
+        <label htmlFor="telefono" className={styles.label}>
+          Teléfono de contacto
+        </label>
         <input
           type="tel"
+          id="telefono"
           name="telefono"
           placeholder="Teléfono de contacto"
           value={formData.telefono}
           onChange={handleChange}
           className={styles.input}
+          aria-describedby="telefono-hint"
         />
+        <span id="telefono-hint" className={styles.hint} aria-live="polite">
+          Opcional
+        </span>
       </div>
 
       <div className={styles.field}>
+        <label htmlFor="mensaje" className={styles.label}>
+          Mensaje
+        </label>
         <textarea
+          id="mensaje"
           name="mensaje"
           placeholder="Cuéntanos sobre tu clínica y necesidades específicas"
           rows={4}
           value={formData.mensaje}
           onChange={handleChange}
           className={styles.textarea}
+          aria-describedby="mensaje-hint"
         />
+        <span id="mensaje-hint" className={styles.hint} aria-live="polite">
+          Opcional
+        </span>
       </div>
 
       <button

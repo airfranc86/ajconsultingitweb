@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '../ui/Button';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { CONTACT_EMAIL, LINKEDIN_URL } from '../../utils/constants';
+import sectionStyles from '../../styles/components/section-common.module.css';
 import styles from './ContactSection.module.css';
 
 export const ContactSection: React.FC = () => {
@@ -30,7 +31,7 @@ export const ContactSection: React.FC = () => {
             aria-label="Sección de contacto"
             ref={sectionRef}
         >
-            <div className={styles.sectionCard}>
+            <div className={sectionStyles.sectionCard}>
                 {/* Botón para solicitar demo */}
                 <div className={styles.demoButtonContainer}>
                     <Button

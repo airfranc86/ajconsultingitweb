@@ -1,32 +1,14 @@
+/* Estilos específicos de MethodologySection */
 .methodologySection {
     padding: var(--spacing-2xl) var(--spacing-md);
     position: relative;
 }
 
-.sectionCard {
-    max-width: var(--max-width-desktop);
-    margin: 0 auto;
-    background: var(--card-bg);
-    padding: var(--spacing-xl) var(--spacing-md);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-light);
-}
-
-.sectionTitle {
-    font-size: clamp(2rem, 4vw, 2.5rem);
-    font-weight: 700;
-    color: var(--text-dark);
-    text-align: center;
-    margin-bottom: var(--spacing-md);
-    font-family: 'Poppins', sans-serif;
-}
-
-.sectionIntro {
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 1.125rem;
-    margin-bottom: var(--spacing-xl);
-    line-height: 1.7;
+.featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
 }
 
 .featuresGrid {
@@ -38,10 +20,6 @@
 
 /* Responsive - Tablet */
 @media (max-width: 1024px) {
-    .sectionCard {
-        padding: var(--spacing-lg) var(--spacing-md);
-    }
-
     .featuresGrid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: var(--spacing-md);
@@ -50,31 +28,8 @@
 
 /* Responsive - Mobile */
 @media (max-width: 768px) {
-    .methodologySection {
-        padding: var(--spacing-xl) var(--spacing-md);
-    }
-
-    .sectionCard {
-        padding: var(--spacing-lg) var(--spacing-md);
-    }
-
     .featuresGrid {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
-    }
-}
-
-/* Responsive - Mobile pequeño */
-@media (max-width: 480px) {
-    .methodologySection {
-        padding: var(--spacing-lg) var(--spacing-sm);
-    }
-
-    .sectionCard {
-        padding: var(--spacing-md) var(--spacing-sm);
-    }
-
-    .sectionTitle {
-        font-size: clamp(1.5rem, 5vw, 2rem);
     }
 }
