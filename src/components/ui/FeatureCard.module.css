@@ -1,27 +1,55 @@
 .icon {
   width: 70px;
   height: 70px;
-  margin: 0 auto 1.5rem;
+  min-width: 44px;
+  min-height: 44px;
+  margin: 0 auto var(--spacing-lg);
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
   border-radius: 50%;
-  color: white;
+  color: var(--text-light);
   font-size: 2rem;
 }
 
 .title {
   font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-md);
   color: var(--text-dark);
   font-family: 'Poppins', sans-serif;
 }
 
 .description {
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.7;
   flex: 1;
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .title {
+    font-size: 1.125rem;
+  }
+}
+
+/* Responsive - Mobile pequeño */
+@media (max-width: 480px) {
+  .icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .title {
+    font-size: 1rem;
+  }
 }
 

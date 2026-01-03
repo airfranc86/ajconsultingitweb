@@ -1,16 +1,17 @@
 .button {
-  padding: 1rem 2rem;
+  padding: var(--spacing-md) var(--spacing-lg);
   border: none;
-  border-radius: 50px;
+  border-radius: var(--border-radius);
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
   min-height: 44px;
+  min-width: 180px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: var(--spacing-xs);
   font-family: inherit;
 }
 
@@ -31,7 +32,18 @@
 
 .primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+  box-shadow: var(--shadow-medium);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+
+  .primary:hover:not(:disabled),
+  .secondary:active:not(:disabled) {
+    transform: none;
+  }
 }
 
 .primary:active:not(:disabled) {
@@ -51,5 +63,13 @@
 
 .secondary:active:not(:disabled) {
   transform: scale(0.98);
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .button {
+    min-width: 44px;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
 }
 
