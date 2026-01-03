@@ -31,8 +31,30 @@ const App: React.FC = () => {
   }, [openModal, closeModal]);
 
   // Portals para renderizar secciones en el orden correcto
-  const sectionsPortal = typeof document !== 'undefined' ? document.getElementById('react-sections-portal') : null;
-  const footerPortal = typeof document !== 'undefined' ? document.getElementById('react-footer-portal') : null;
+  // Usar useEffect para asegurar que los portals existen antes de renderizar
+  const [sectionsPortal, setSectionsPortal] = React.useState<HTMLElement | null>(null);
+  const [footerPortal, setFooterPortal] = React.useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    // Buscar portals después de que React haya montado
+    const sections = document.getElementById('react-sections-portal');
+    const footer = document.getElementById('react-footer-portal');
+    
+    if (sections) setSectionsPortal(sections);
+    if (footer) setFooterPortal(footer);
+    
+    // Si no se encuentran, intentar de nuevo después de un breve delay
+    if (!sections || !footer) {
+      const timeout = setTimeout(() => {
+        const sectionsRetry = document.getElementById('react-sections-portal');
+        const footerRetry = document.getElementById('react-footer-portal');
+        if (sectionsRetry) setSectionsPortal(sectionsRetry);
+        if (footerRetry) setFooterPortal(footerRetry);
+      }, 100);
+      
+      return () => clearTimeout(timeout);
+    }
+  }, []);
 
   return (
     <>

@@ -30,10 +30,24 @@ function copyRecursiveSync(src, dest) {
 }
 
 if (fs.existsSync(assetsDir)) {
-  console.log('Copiando assets a dist/assets...');
-  copyRecursiveSync(assetsDir, distAssetsDir);
-  console.log('Assets copiados correctamente.');
+  console.log('📦 Copiando assets a dist/assets...');
+  try {
+    // Limpiar directorio destino si existe
+    if (fs.existsSync(distAssetsDir)) {
+      fs.rmSync(distAssetsDir, { recursive: true, force: true });
+    }
+    
+    // Copiar assets
+    copyRecursiveSync(assetsDir, distAssetsDir);
+    
+    // Verificar que se copiaron archivos
+    const copiedFiles = fs.readdirSync(distAssetsDir);
+    console.log(`✅ Assets copiados correctamente. ${copiedFiles.length} elementos en dist/assets`);
+  } catch (error) {
+    console.error('❌ Error al copiar assets:', error.message);
+    process.exit(1);
+  }
 } else {
-  console.warn('Directorio assets no encontrado.');
+  console.warn('⚠️  Directorio assets no encontrado en:', assetsDir);
 }
 

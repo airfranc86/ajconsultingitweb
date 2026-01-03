@@ -105,11 +105,35 @@
         container.innerHTML = proyectosHTML;
     }
 
+    // Inicializar cuando el DOM esté listo y React haya renderizado
+    function initProyectos() {
+        // Esperar a que el contenedor exista y esté visible
+        const container = document.getElementById('proyectos-venta-grid');
+        if (!container) {
+            // Si no existe, esperar un poco más (React puede estar renderizando)
+            setTimeout(initProyectos, 100);
+            return;
+        }
+        
+        // Verificar que el contenedor está en el DOM y visible
+        if (container.offsetParent === null) {
+            setTimeout(initProyectos, 100);
+            return;
+        }
+        
+        // Renderizar proyectos
+        renderProyectos();
+    }
+
     // Inicializar cuando el DOM esté listo
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', renderProyectos);
+        document.addEventListener('DOMContentLoaded', () => {
+            // Esperar un poco más para que React termine de renderizar
+            setTimeout(initProyectos, 500);
+        });
     } else {
-        renderProyectos();
+        // DOM ya está listo, pero esperar a que React renderice
+        setTimeout(initProyectos, 500);
     }
 
     // Exportar para uso externo si es necesario

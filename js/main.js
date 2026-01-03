@@ -474,9 +474,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 */
 
-    // ===== MANEJAR ENLACES DE EMAIL: Mejorar funcionalidad mailto =====
-    // NOTA: Los enlaces de email en React también manejan tracking (ContactSection.tsx)
-    // Este código se mantiene para enlaces de email que puedan estar fuera de React
+// ===== MANEJAR ENLACES DE EMAIL: Mejorar funcionalidad mailto =====
+// NOTA: Los enlaces de email en React también manejan tracking (ContactSection.tsx)
+// Este código se mantiene para enlaces de email que puedan estar fuera de React
+document.addEventListener('DOMContentLoaded', function () {
     const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
     emailLinks.forEach(link => {
         // Solo agregar listener si no está dentro de un componente React
@@ -497,7 +498,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-*/
 
 // ===== CÓDIGO MIGRADO A REACT - COMENTADO PARA REFERENCIA =====
 // El modal de demo está ahora manejado por React:
