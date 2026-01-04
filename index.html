@@ -140,11 +140,7 @@
         <link rel="stylesheet" href="css/styles.css?v=2.0.6">
     </noscript>
 
-    <!-- Estilos para sección de rubros (diferido - no crítico) -->
-    <link rel="preload" href="css/rubros.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="css/rubros.css">
-    </noscript>
+    <!-- Estilos para sección de rubros y casos unificada (integrado en styles.css) -->
 
     <!-- Preload de imágenes críticas (logo principal del hero optimizado) -->
     <link rel="preload" as="image" href="/assets/logo-200x200.png" type="image/png">
@@ -1044,212 +1040,6 @@
             /* Márgenes verticales */
         }
 
-        /* ===== SWIPER ESPECIALIZACIÓN: Estilos para el carrusel ===== */
-        .swiper-especializacion {
-            width: 100%;
-            padding: 2rem 0 4rem 0;
-            /* Padding superior e inferior para botones de navegación */
-            max-width: 500px;
-            /* Ancho máximo del contenedor */
-            margin: 0 auto;
-            /* Centrar el contenedor */
-        }
-
-        .swiper-especializacion .swiper-wrapper {
-            height: auto;
-            /* Altura automática */
-            min-height: 300px;
-            /* Altura mínima para evitar saltos */
-        }
-
-        .swiper-especializacion .swiper-slide {
-            height: auto;
-            /* Altura automática para adaptarse al contenido */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
-            /* Padding interno para evitar que las cards toquen los bordes */
-            box-sizing: border-box;
-        }
-
-        .swiper-especializacion .feature-card {
-            width: 100%;
-            max-width: 100%;
-            /* Usar todo el ancho disponible del slide */
-            margin: 0 auto;
-            /* Centrar la card */
-            transform-style: preserve-3d;
-            /* Preservar transformaciones 3D */
-            backface-visibility: hidden;
-            /* Ocultar la parte trasera durante la rotación */
-            will-change: transform;
-            /* Optimización de rendimiento */
-        }
-
-        /* ===== NAVEGACIÓN SWIPER: Estilos para botones anterior/siguiente ===== */
-        .swiper-especializacion .swiper-button-prev,
-        .swiper-especializacion .swiper-button-next {
-            color: var(--secondary-color);
-            /* Color verde */
-            width: 30px;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.7);
-            /* Opacidad 70% en el fondo */
-            opacity: 0.7;
-            /* Opacidad general del 70% */
-            border-radius: 60%;
-            box-shadow: var(--shadow-light);
-            transition: var(--transition);
-        }
-
-        .swiper-especializacion .swiper-button-prev:hover,
-        .swiper-especializacion .swiper-button-next:hover {
-            background: var(--secondary-color);
-            color: white;
-            opacity: 1;
-            /* Opacidad completa al pasar el mouse */
-            transform: scale(1.1);
-        }
-
-        .swiper-especializacion .swiper-button-prev::after,
-        .swiper-especializacion .swiper-button-next::after {
-            font-size: 10px;
-            font-weight: bold;
-        }
-
-        /* ===== EFECTO FLIP: Ajustes para el efecto flip ===== */
-        .swiper-especializacion {
-            perspective: 1200px;
-            /* Perspectiva 3D más suave para el efecto flip */
-            perspective-origin: center center;
-            /* Origen de perspectiva centrado */
-        }
-
-        .swiper-especializacion .swiper-slide {
-            transform-style: preserve-3d;
-            /* Preservar transformaciones 3D en los slides */
-        }
-
-        /* ===== SOMBRAS DESHABILITADAS: Sin sombras en el efecto flip ===== */
-        .swiper-especializacion .swiper-slide-shadow-left,
-        .swiper-especializacion .swiper-slide-shadow-right,
-        .swiper-especializacion .swiper-slide-shadow-top,
-        .swiper-especializacion .swiper-slide-shadow-bottom {
-            display: none !important;
-            /* Ocultar completamente las sombras */
-        }
-
-        /* ===== PREVENIR DEFORMACIONES: Asegurar que las cards mantengan su forma ===== */
-        .swiper-especializacion .swiper-slide-active .feature-card {
-            transform: scale(1);
-            /* Mantener escala normal en el slide activo */
-        }
-
-        .swiper-especializacion .swiper-slide .feature-card {
-            transition: transform 0.3s ease;
-            /* Transición suave para transformaciones */
-        }
-
-        /* ===== SWIPER RUBROS: Estilos para el carrusel de rubros ===== */
-        .swiper-rubros {
-            width: 100%;
-            padding: 2rem 0 4rem 0;
-            max-width: 600px;
-            margin: 0 auto;
-            overflow: hidden;
-            /* Ocultar slides no visibles */
-        }
-
-        .swiper-rubros .swiper-wrapper {
-            height: auto;
-            min-height: 400px;
-        }
-
-        .swiper-rubros .swiper-slide {
-            height: auto;
-            /* Altura automática para adaptarse al contenido - IGUAL QUE feature-card */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
-            /* Padding interno para evitar que las cards toquen los bordes - IGUAL QUE feature-card */
-            box-sizing: border-box;
-        }
-
-        .swiper-rubros .rubro-card {
-            width: 100%;
-            max-width: 100%;
-            /* Usar todo el ancho disponible del slide - IGUAL QUE feature-card */
-            margin: 0 auto;
-            /* Centrar la card - IGUAL QUE feature-card */
-            transform-style: preserve-3d;
-            /* Preservar transformaciones 3D - IGUAL QUE feature-card */
-            backface-visibility: hidden;
-            /* Ocultar la parte trasera durante la rotación - IGUAL QUE feature-card */
-            will-change: transform;
-            /* Optimización de rendimiento - IGUAL QUE feature-card */
-        }
-
-        /* Navegación swiper rubros */
-        .swiper-rubros .swiper-button-prev,
-        .swiper-rubros .swiper-button-next {
-            color: var(--secondary-color);
-            width: 30px;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.7);
-            opacity: 0.7;
-            border-radius: 60%;
-            box-shadow: var(--shadow-light);
-            transition: var(--transition);
-        }
-
-        .swiper-rubros .swiper-button-prev:hover,
-        .swiper-rubros .swiper-button-next:hover {
-            background: var(--secondary-color);
-            color: white;
-            opacity: 1;
-            transform: scale(1.1);
-        }
-
-        .swiper-rubros .swiper-button-prev::after,
-        .swiper-rubros .swiper-button-next::after {
-            font-size: 10px;
-            font-weight: bold;
-        }
-
-        /* ===== EFECTO FLIP: Ajustes para el efecto flip - IGUAL QUE swiper-especializacion ===== */
-        .swiper-rubros {
-            perspective: 1200px;
-            /* Perspectiva 3D más suave para el efecto flip - IGUAL QUE swiper-especializacion */
-            perspective-origin: center center;
-            /* Origen de perspectiva centrado - IGUAL QUE swiper-especializacion */
-        }
-
-        .swiper-rubros .swiper-slide {
-            transform-style: preserve-3d;
-            /* Preservar transformaciones 3D en los slides - IGUAL QUE swiper-especializacion */
-        }
-
-        /* ===== SOMBRAS DESHABILITADAS: Sin sombras en el efecto flip - IGUAL QUE swiper-especializacion ===== */
-        .swiper-rubros .swiper-slide-shadow-left,
-        .swiper-rubros .swiper-slide-shadow-right,
-        .swiper-rubros .swiper-slide-shadow-top,
-        .swiper-rubros .swiper-slide-shadow-bottom {
-            display: none !important;
-            /* Ocultar completamente las sombras - IGUAL QUE swiper-especializacion */
-        }
-
-        /* ===== PREVENIR DEFORMACIONES: Asegurar que las cards mantengan su forma - IGUAL QUE swiper-especializacion ===== */
-        .swiper-rubros .swiper-slide-active .rubro-card {
-            transform: scale(1);
-            /* Mantener escala normal en el slide activo - IGUAL QUE swiper-especializacion */
-        }
-
-        .swiper-rubros .swiper-slide .rubro-card {
-            transition: transform 0.3s ease;
-            /* Transición suave para transformaciones - IGUAL QUE swiper-especializacion */
-        }
 
         /* ===== TARJETA DE CARACTERÍSTICA: Tarjeta individual ===== */
         .feature-card {
@@ -1752,18 +1542,6 @@
                 margin: 2rem 0;
             }
 
-            /* Swiper responsive: Ocultar navegación en móviles pequeños */
-            .swiper-especializacion .swiper-button-prev,
-            .swiper-especializacion .swiper-button-next {
-                display: none;
-                /* Ocultar botones en móviles muy pequeños */
-            }
-
-            .swiper-rubros .swiper-button-prev,
-            .swiper-rubros .swiper-button-next {
-                display: none;
-                /* Ocultar botones en móviles muy pequeños */
-            }
 
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -2180,13 +1958,12 @@
                     <iconify-icon icon="mdi:package-variant" width="32" height="32"
                         style="color: var(--secondary-color);"></iconify-icon> <!-- Icono empresarial -->
                 </a>
-                <span class="logo-text">A&J CONSULTING IT</span> <!-- Nombre de la empresa (no linkeable) -->
+                <span class="logo-text">A&J</span> <!-- Nombre de la empresa (no linkeable) -->
             </div>
             <!-- MENÚ DE NAVEGACIÓN: Enlaces a secciones -->
             <ul class="nav-menu">
                 <li><a href="#home">Inicio</a></li> <!-- Link al hero -->
-                <li><a href="#rubros">Rubros</a></li> <!-- Link a sección rubros -->
-                <li><a href="#especializacion">Especialización</a></li> <!-- Link a especialización -->
+                <li><a href="#rubros-casos">Rubros y Resultados</a></li> <!-- Link a sección rubros y casos unificada -->
                 <li><a href="#proyectos-venta">Proyectos</a></li> <!-- Link a proyectos -->
                 <li><a href="#equipo">Equipo</a></li> <!-- Link a equipo -->
                 <li><a href="#contacto">Contacto</a></li> <!-- Link a contacto -->
@@ -2217,7 +1994,7 @@
                 </div>
 
                 <!-- TÍTULO PRINCIPAL: Nombre de la empresa -->
-                <h1 class="logo-text">A&J CONSULTING IT</h1>
+                <h1 class="logo-text">A&J</h1>
                 <!-- SUBTÍTULO: Descripción del tipo de negocio -->
                 <p class="logo-subtitle">Business Intelligence Solutions</p>
 
@@ -2238,104 +2015,6 @@
                             style="vertical-align: middle;" aria-hidden="true"></iconify-icon>
                         Solicitar Demo
                     </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN ESPECIALIZACIÓN: KPIs e IA -->
-        <section id="especializacion" class="content-section" aria-labelledby="especializacion-title">
-            <div class="section-card">
-                <!-- TÍTULO DE SECCIÓN: Encabezado principal -->
-                <h2 class="section-title" id="especializacion-title">Nuestra Especialización</h2>
-
-                <!-- SWIPER CONTAINER: Contenedor principal del carrusel -->
-                <div class="swiper swiper-especializacion">
-                    <!-- SWIPER WRAPPER: Wrapper para los slides -->
-                    <div class="swiper-wrapper">
-                        <!-- CARACTERÍSTICA 1: KPIs -->
-                        <div class="swiper-slide">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M3 3v18h18" />
-                                        <path d="M18 17V9" />
-                                        <path d="M13 17V5" />
-                                        <path d="M8 17v-3" />
-                                    </svg>
-                                </div>
-                                <h3 class="feature-title">KPIs (Índices Clave)</h3>
-                                <p class="feature-description">Generación de métricas personalizadas adaptadas a tu
-                                    rubro para
-                                    medir lo que realmente importa.</p>
-                            </div>
-                        </div>
-
-                        <!-- CARACTERÍSTICA 2: IA -->
-                        <div class="swiper-slide">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <iconify-icon icon="mingcute:code-line" width="32" height="32"
-                                        style="color: currentColor;"></iconify-icon>
-                                </div>
-                                <h3 class="feature-title">Inteligencia Artificial</h3>
-                                <p class="feature-description">Análisis predictivo y machine learning para anticipar
-                                    tendencias
-                                    y optimizar decisiones.</p>
-                            </div>
-                        </div>
-
-                        <!-- CARACTERÍSTICA 3: Dashboards -->
-                        <div class="swiper-slide">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <iconify-icon icon="ic:baseline-trending-up" width="32" height="32"
-                                        style="color: currentColor;"></iconify-icon>
-                                </div>
-                                <h3 class="feature-title">Dashboards Inteligentes</h3>
-                                <p class="feature-description">Visualización avanzada de datos en tiempo real con
-                                    análisis
-                                    interactivo.</p>
-                            </div>
-                        </div>
-
-                        <!-- CARACTERÍSTICA 4: Soluciones por Rubro -->
-                        <div class="swiper-slide">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="3" y="3" width="7" height="7" rx="1" />
-                                        <rect x="14" y="3" width="7" height="7" rx="1" />
-                                        <rect x="3" y="14" width="7" height="7" rx="1" />
-                                        <rect x="14" y="14" width="7" height="7" rx="1" />
-                                    </svg>
-                                </div>
-                                <h3 class="feature-title">Soluciones por Rubro</h3>
-                                <p class="feature-description">Adaptadas a cada industria: Clínicas, Obras Viales,
-                                    Restaurantes
-                                    y más.</p>
-                            </div>
-                        </div>
-
-                        <!-- CARACTERÍSTICA 5: Seguridad -->
-                        <div class="swiper-slide">
-                            <div class="feature-card">
-                                <div class="feature-icon">
-                                    <iconify-icon icon="ic:baseline-security" width="32" height="32"
-                                        style="color: currentColor;"></iconify-icon>
-                                </div>
-                                <h3 class="feature-title">Seguridad en Datos</h3>
-                                <p class="feature-description">Brindamos seguridad en todos los despliegues y
-                                    manipulación de
-                                    datos para proteger tu información.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- NAVEGACIÓN: Botones anterior/siguiente -->
-                    <div class="swiper-button-prev" role="button" aria-label="Slide anterior" tabindex="0"></div>
-                    <div class="swiper-button-next" role="button" aria-label="Slide siguiente" tabindex="0"></div>
                 </div>
             </div>
         </section>
@@ -2390,160 +2069,152 @@
             </div>
         </section>
 
-        <!-- SECCIÓN RUBROS: Cards de diferentes rubros -->
-        <section id="rubros" class="content-section" aria-labelledby="rubros-title">
+        <!-- SECCIÓN RUBROS Y CASOS: Sección unificada integrando rubros con resultados comprobados -->
+        <section id="rubros-casos" class="content-section" aria-labelledby="rubros-casos-title">
             <div class="section-card">
-                <!-- TÍTULO DE SECCIÓN: Encabezado principal -->
-                <h2 class="section-title" id="rubros-title">Nuestros Rubros</h2>
+                <!-- TÍTULO DE SECCIÓN: Encabezado principal unificado -->
+                <h2 class="section-title" id="rubros-casos-title">Nuestros Rubros y Resultados</h2>
                 <p class="section-intro">
-                    No importa tu rubro, siempre podemos ayudar con procesamiento de datos y análisis predictivo
+                    No importa tu rubro, siempre podemos ayudar con procesamiento de datos y análisis predictivo.
+                    Soluciones que generan valor real para nuestros clientes.
                 </p>
-                <!-- SWIPER RUBROS: Contenedor principal del carrusel -->
-                <div class="swiper swiper-rubros">
-                    <!-- SWIPER WRAPPER: Wrapper para los slides -->
-                    <div class="swiper-wrapper">
-                        <!-- RUBRO 1: Clínicas de Salud -->
-                        <div class="swiper-slide">
-                            <div class="rubro-card">
-                                <div class="rubro-icon">
-                                    <iconify-icon icon="la:heart" width="36" height="36"
-                                        style="color: white;"></iconify-icon>
+
+                <!-- GRID UNIFICADO: Cards que integran rubro + caso de éxito -->
+                <div class="rubros-casos-grid" style="margin-top: 3rem;">
+                    <!-- CARD 1: Clínicas de Salud -->
+                    <article class="rubro-caso-card" aria-labelledby="rubro-clinicas-title">
+                        <div class="rubro-caso-header">
+                            <div class="rubro-caso-icon">
+                                <iconify-icon icon="la:heart" width="40" height="40" style="color: white;"></iconify-icon>
+                            </div>
+                            <h3 class="rubro-caso-title" id="rubro-clinicas-title">Clínicas de Salud</h3>
+                        </div>
+                        
+                        <div class="rubro-caso-content">
+                            <div class="rubro-caso-description">
+                                <p>Dashboards de KPIs médicos, análisis predictivo y gestión clínica inteligente para optimizar la atención y rentabilidad.</p>
+                            </div>
+                            
+                            <div class="rubro-caso-features">
+                                <span class="rubro-caso-feature-tag">KPIs personalizados</span>
+                                <span class="rubro-caso-feature-tag">Análisis predictivo</span>
+                                <span class="rubro-caso-feature-tag">Dashboard inteligente</span>
+                                <span class="rubro-caso-feature-tag">Alertas</span>
+                                <span class="rubro-caso-feature-tag">Resumen ejecutivo</span>
+                            </div>
+
+                            <div class="rubro-caso-resultado">
+                                <div class="rubro-caso-resultado-icon">
+                                    <iconify-icon icon="mdi:chart-line" width="24" height="24" style="color: white;"></iconify-icon>
                                 </div>
-                                <h3 class="rubro-title">Clínicas de Salud</h3>
-                                <p class="rubro-description">Dashboards de KPIs médicos, análisis predictivo y gestión
-                                    clínica
-                                    inteligente para optimizar la atención y rentabilidad.</p>
-                                <div class="rubro-features">
-                                    <span class="rubro-feature-tag">KPIs personalizados</span>
-                                    <span class="rubro-feature-tag">Análisis predictivo</span>
-                                    <span class="rubro-feature-tag">Dashboard inteligente</span>
-                                    <span class="rubro-feature-tag">Alertas</span>
-                                    <span class="rubro-feature-tag">Resumen ejecutivo</span>
-                                </div>
-                                <div class="rubro-buttons">
-                                    <a href="javascript:void(0);"
-                                        class="streamlit-dashboard-url btn btn-primary btn-rubro"
-                                        onclick="event.preventDefault(); return false;"
-                                        style="cursor: not-allowed; opacity: 0.7;"
-                                        title="Función deshabilitada temporalmente">
-                                        Ver Demo
-                                    </a>
-                                    <a href="#sectores/clinicas" class="btn btn-secondary btn-rubro">
-                                        Más información
-                                    </a>
+                                <div class="rubro-caso-resultado-text">
+                                    <strong>Mejora en toma de decisiones:</strong> Dashboards de KPIs médicos que reducen tiempo de análisis en un 70%.
                                 </div>
                             </div>
                         </div>
 
-                        <!-- RUBRO 2: Obras Viales -->
-                        <div class="swiper-slide">
-                            <div class="rubro-card">
-                                <div class="rubro-icon">
-                                    <iconify-icon icon="la:building" width="36" height="36"
-                                        style="color: white;"></iconify-icon>
+                        <div class="rubro-caso-actions">
+                            <a href="javascript:void(0);"
+                                class="streamlit-dashboard-url btn btn-primary btn-rubro-caso"
+                                onclick="event.preventDefault(); return false;"
+                                style="cursor: not-allowed; opacity: 0.7;"
+                                title="Función deshabilitada temporalmente"
+                                aria-disabled="true">
+                                Ver Demo
+                            </a>
+                            <a href="#sectores/clinicas" class="btn btn-secondary btn-rubro-caso">
+                                Más información
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- CARD 2: Obras Viales -->
+                    <article class="rubro-caso-card" aria-labelledby="rubro-obras-title">
+                        <div class="rubro-caso-header">
+                            <div class="rubro-caso-icon">
+                                <iconify-icon icon="la:building" width="40" height="40" style="color: white;"></iconify-icon>
+                            </div>
+                            <h3 class="rubro-caso-title" id="rubro-obras-title">Obras Viales</h3>
+                        </div>
+                        
+                        <div class="rubro-caso-content">
+                            <div class="rubro-caso-description">
+                                <p>Sistema de monitoreo de avance en tiempo real, análisis topográfico y seguimiento de KPIs de construcción.</p>
+                            </div>
+                            
+                            <div class="rubro-caso-features">
+                                <span class="rubro-caso-feature-tag">Monitoreo en tiempo real</span>
+                                <span class="rubro-caso-feature-tag">Análisis topográfico</span>
+                                <span class="rubro-caso-feature-tag">KPIs de construcción</span>
+                                <span class="rubro-caso-feature-tag">Previsión Meteorológica</span>
+                                <span class="rubro-caso-feature-tag">Gestión de inventario</span>
+                            </div>
+
+                            <div class="rubro-caso-resultado">
+                                <div class="rubro-caso-resultado-icon">
+                                    <iconify-icon icon="mdi:road" width="24" height="24" style="color: white;"></iconify-icon>
                                 </div>
-                                <h3 class="rubro-title">Obras Viales</h3>
-                                <p class="rubro-description">Sistema de monitoreo de avance en tiempo real, análisis
-                                    topográfico
-                                    y seguimiento de KPIs de construcción.</p>
-                                <div class="rubro-features">
-                                    <span class="rubro-feature-tag">Monitoreo en tiempo real</span>
-                                    <span class="rubro-feature-tag">Análisis topográfico</span>
-                                    <span class="rubro-feature-tag">KPIs de construcción</span>
-                                    <span class="rubro-feature-tag">Previsión Meteorológica</span>
-                                    <span class="rubro-feature-tag">Gestión de inventario</span>
-                                </div>
-                                <div class="rubro-buttons">
-                                    <a href="javascript:void(0);"
-                                        class="monitoreo-obra-vial-url btn btn-primary btn-rubro"
-                                        onclick="event.preventDefault(); return false;"
-                                        style="cursor: not-allowed; opacity: 0.7;"
-                                        title="Función deshabilitada temporalmente">
-                                        Ver Demo
-                                    </a>
-                                    <a href="" class="monitoreo-obra-vial-url btn btn-secondary btn-rubro"
-                                        target="_blank" rel="noopener noreferrer">
-                                        Más información
-                                    </a>
+                                <div class="rubro-caso-resultado-text">
+                                    <strong>Monitoreo en tiempo real:</strong> Sistemas de seguimiento que optimizan recursos y plazos.
                                 </div>
                             </div>
                         </div>
 
-                        <!-- RUBRO 3: Restaurantes y Bares -->
-                        <div class="swiper-slide">
-                            <div class="rubro-card">
-                                <div class="rubro-icon">
-                                    <iconify-icon icon="tabler:burger" width="36" height="36"
-                                        style="color: white;"></iconify-icon>
+                        <div class="rubro-caso-actions">
+                            <a href="javascript:void(0);"
+                                class="monitoreo-obra-vial-url btn btn-primary btn-rubro-caso"
+                                onclick="event.preventDefault(); return false;"
+                                style="cursor: not-allowed; opacity: 0.7;"
+                                title="Función deshabilitada temporalmente"
+                                aria-disabled="true">
+                                Ver Demo
+                            </a>
+                            <a href="" class="monitoreo-obra-vial-url btn btn-secondary btn-rubro-caso"
+                                target="_blank" rel="noopener noreferrer">
+                                Más información
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- CARD 3: Restaurantes y Bares -->
+                    <article class="rubro-caso-card" aria-labelledby="rubro-restaurantes-title">
+                        <div class="rubro-caso-header">
+                            <div class="rubro-caso-icon">
+                                <iconify-icon icon="tabler:burger" width="40" height="40" style="color: white;"></iconify-icon>
+                            </div>
+                            <h3 class="rubro-caso-title" id="rubro-restaurantes-title">Restaurantes y Bares</h3>
+                        </div>
+                        
+                        <div class="rubro-caso-content">
+                            <div class="rubro-caso-description">
+                                <p>KPIs de rentabilidad, análisis de menú, optimización de inventario y predicción de demanda para maximizar resultados.</p>
+                            </div>
+                            
+                            <div class="rubro-caso-features">
+                                <span class="rubro-caso-feature-tag">KPIs de rentabilidad</span>
+                                <span class="rubro-caso-feature-tag">Análisis de menú</span>
+                                <span class="rubro-caso-feature-tag">Optimización de inventario</span>
+                                <span class="rubro-caso-feature-tag">Resumen ejecutivo Inteligente</span>
+                            </div>
+
+                            <div class="rubro-caso-resultado">
+                                <div class="rubro-caso-resultado-icon">
+                                    <iconify-icon icon="mdi:store" width="24" height="24" style="color: white;"></iconify-icon>
                                 </div>
-                                <h3 class="rubro-title">Restaurantes y Bares</h3>
-                                <p class="rubro-description">KPIs de rentabilidad, análisis de menú, optimización de
-                                    inventario
-                                    y predicción de demanda para maximizar resultados.</p>
-                                <div class="rubro-features">
-                                    <span class="rubro-feature-tag">KPIs de rentabilidad</span>
-                                    <span class="rubro-feature-tag">Análisis de menú</span>
-                                    <span class="rubro-feature-tag">Optimización de inventario</span>
-                                    <span class="rubro-feature-tag">Resumen ejecutivo Inteligente</span>
-                                </div>
-                                <div class="rubro-buttons">
-                                    <button class="btn btn-primary btn-rubro" disabled
-                                        style="background: linear-gradient(135deg, #27ae60, #2ecc71) !important; color: white !important; opacity: 0.7 !important; cursor: not-allowed !important;"
-                                        aria-label="Servicio próximamente disponible" aria-disabled="true">
-                                        Próximamente
-                                    </button>
+                                <div class="rubro-caso-resultado-text">
+                                    <strong>Análisis de rentabilidad:</strong> KPIs de menú e inventario que mejoran márgenes operativos.
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- NAVEGACIÓN: Botones anterior/siguiente -->
-                    <div class="swiper-button-prev" role="button" aria-label="Slide anterior" tabindex="0"></div>
-                    <div class="swiper-button-next" role="button" aria-label="Slide siguiente" tabindex="0"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN CASOS: Validación y resultados -->
-        <section id="casos" class="content-section" aria-labelledby="casos-title">
-            <div class="section-card">
-                <h2 class="section-title" id="casos-title">Resultados Comprobados</h2>
-                <p class="section-intro">Soluciones que generan valor real para nuestros clientes</p>
-
-                <div class="features-grid" style="margin-top: 3rem;">
-                    <div class="feature-card">
-                        <div class="feature-icon" style="background: linear-gradient(135deg, #27ae60, #2ecc71);">
-                            <iconify-icon icon="mdi:chart-line" width="32" height="32"
-                                style="color: white;"></iconify-icon>
+                        <div class="rubro-caso-actions">
+                            <button class="btn btn-primary btn-rubro-caso" disabled
+                                style="background: linear-gradient(135deg, #27ae60, #2ecc71) !important; color: white !important; opacity: 0.7 !important; cursor: not-allowed !important;"
+                                aria-label="Servicio próximamente disponible" aria-disabled="true">
+                                Próximamente
+                            </button>
                         </div>
-                        <h3 class="feature-title">Clínicas de Salud</h3>
-                        <p class="feature-description">
-                            <strong>Mejora en toma de decisiones:</strong> Dashboards de KPIs médicos que reducen tiempo
-                            de análisis en un 70%.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon" style="background: linear-gradient(135deg, #27ae60, #2ecc71);">
-                            <iconify-icon icon="mdi:road" width="32" height="32" style="color: white;"></iconify-icon>
-                        </div>
-                        <h3 class="feature-title">Obras Viales</h3>
-                        <p class="feature-description">
-                            <strong>Monitoreo en tiempo real:</strong> Sistemas de seguimiento que optimizan recursos y
-                            plazos.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon" style="background: linear-gradient(135deg, #27ae60, #2ecc71);">
-                            <iconify-icon icon="mdi:store" width="32" height="32" style="color: white;"></iconify-icon>
-                        </div>
-                        <h3 class="feature-title">Restaurantes</h3>
-                        <p class="feature-description">
-                            <strong>Análisis de rentabilidad:</strong> KPIs de menú e inventario que mejoran márgenes
-                            operativos.
-                        </p>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -2659,6 +2330,16 @@
             </div>
         </section>
 
+        <!-- BOTÓN FLOTANTE DE CONTACTO: Botón siempre visible para consultas -->
+        <a href="#contacto" 
+           id="floating-contact-btn" 
+           class="floating-contact-btn"
+           aria-label="Ir a sección de contacto para consultas"
+           title="Consultas por email">
+            <iconify-icon icon="mdi:email" width="24" height="24" style="color: white;"></iconify-icon>
+            <span class="floating-contact-tooltip">Consultas</span>
+        </a>
+
         <!-- FOOTER: Pie de página -->
         <footer class="footer">
             <div class="footer-content">
@@ -2691,87 +2372,7 @@
                 }
             }
 
-            // Cargar Swiper solo cuando se necesite (lazy load)
-            function loadSwiper() {
-                loadSwiperCSS(); // Cargar CSS primero
-
-                const hasEspecializacion = document.querySelector('.swiper-especializacion');
-                const hasRubros = document.querySelector('.swiper-rubros');
-
-                if ((hasEspecializacion || hasRubros) && !window.Swiper) {
-                    const script = document.createElement('script');
-                    script.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
-                    script.defer = true;
-                    document.body.appendChild(script);
-
-                    // Inicializar Swiper cuando esté cargado
-                    script.onload = function () {
-                        if (typeof window.initializeSwiper === 'function') {
-                            window.initializeSwiper();
-                        }
-                        if (typeof window.initializeSwiperRubros === 'function') {
-                            window.initializeSwiperRubros();
-                        }
-                    };
-                } else if (window.Swiper) {
-                    if (typeof window.initializeSwiper === 'function') {
-                        window.initializeSwiper();
-                    }
-                    if (typeof window.initializeSwiperRubros === 'function') {
-                        window.initializeSwiperRubros();
-                    }
-                }
-            }
-
-            // Cargar Swiper cuando se acerque a las secciones (Intersection Observer)
-            if ('IntersectionObserver' in window) {
-                const swiperObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            loadSwiper();
-                            swiperObserver.disconnect();
-                        }
-                    });
-                }, { rootMargin: '200px' });
-
-                const swiperEspecializacion = document.querySelector('.swiper-especializacion');
-                const swiperRubros = document.querySelector('.swiper-rubros');
-
-                if (swiperEspecializacion) {
-                    swiperObserver.observe(swiperEspecializacion);
-                }
-                if (swiperRubros) {
-                    swiperObserver.observe(swiperRubros);
-                }
-
-                if (!swiperEspecializacion && !swiperRubros) {
-                    // Si no encuentra las secciones, intentar después de un delay
-                    setTimeout(function () {
-                        const swiperEspecializacion = document.querySelector('.swiper-especializacion');
-                        const swiperRubros = document.querySelector('.swiper-rubros');
-                        if (swiperEspecializacion) {
-                            swiperObserver.observe(swiperEspecializacion);
-                        }
-                        if (swiperRubros) {
-                            swiperObserver.observe(swiperRubros);
-                        }
-                    }, 500);
-                }
-            } else {
-                // Fallback: cargar en DOMContentLoaded
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', loadSwiper);
-                } else {
-                    loadSwiper();
-                }
-            }
-        }
-
-        // Inicializar cuando el DOM esté listo
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initSwiperLoader);
-        } else {
-            initSwiperLoader();
+            // Swiper ya no es necesario - sección unificada usa grid
         }
     </script>
 
@@ -2796,174 +2397,7 @@
     <!-- GLOW MENU: Componente de menú avanzado con efectos visuales (diferido) -->
     <script defer src="js/glow-menu.js"></script>
 
-    <!-- JavaScript para sección de rubros (diferido) -->
-    <script defer src="js/rubros.js"></script>
-
-    <!-- SWIPER ESPECIALIZACIÓN: Inicialización del carrusel con efecto Flip -->
-    <script>
-        // Hacer la función global para que esté disponible desde otros scripts
-        window.initializeSwiper = function initializeSwiper() {
-            if (!window.Swiper || !document.querySelector('.swiper-especializacion')) {
-                console.log('Swiper no disponible o sección no encontrada');
-                return;
-            }
-
-            // Verificar si ya está inicializado
-            if (document.querySelector('.swiper-especializacion').swiper) {
-                console.log('Swiper ya está inicializado');
-                return;
-            }
-
-            console.log('Inicializando Swiper...');
-
-            // Inicializar Swiper con efecto Flip
-            const swiperEspecializacion = new Swiper('.swiper-especializacion', {
-                // Efecto Flip
-                effect: 'flip',
-                flipEffect: {
-                    slideShadows: false,       // Deshabilitar sombras en los slides
-                    limitRotation: true,       // Limitar rotación de slides en los bordes
-                },
-
-                // Configuración básica
-                slidesPerView: 1,              // Mostrar 1 slide a la vez
-                spaceBetween: 0,               // Sin espacio entre slides para mejor efecto flip
-                speed: 600,                    // Velocidad de transición
-                grabCursor: true,              // Cursor de agarre al pasar el mouse
-                loop: true,                    // Loop infinito
-                loopAdditionalSlides: 2,       // Slides adicionales para loop suave
-
-                // Navegación
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-
-                // Autoplay
-                autoplay: {
-                    delay: 5000,              // Cambiar slide cada 5 segundos
-                    disableOnInteraction: false, // Continuar autoplay después de interacción
-                    pauseOnMouseEnter: true,   // Pausar cuando el mouse está sobre el carrusel
-                },
-
-                // Responsive breakpoints (spaceBetween debe ser 0 para efecto flip)
-                breakpoints: {
-                    640: {
-                        slidesPerView: 1,
-                        spaceBetween: 0, // Flip requiere 0 espacio
-                    },
-                    768: {
-                        slidesPerView: 1,
-                        spaceBetween: 0, // Flip requiere 0 espacio
-                    },
-                    1024: {
-                        slidesPerView: 1,
-                        spaceBetween: 0, // Flip requiere 0 espacio
-                    },
-                },
-
-                // Accesibilidad
-                a11y: {
-                    prevSlideMessage: 'Slide anterior',
-                    nextSlideMessage: 'Slide siguiente',
-                    firstSlideMessage: 'Este es el primer slide',
-                    lastSlideMessage: 'Este es el último slide',
-                },
-            });
-
-            console.log('Swiper inicializado correctamente');
-        };
-
-        // Intentar inicializar inmediatamente si Swiper ya está cargado
-        if (window.Swiper && document.querySelector('.swiper-especializacion')) {
-            setTimeout(function () {
-                window.initializeSwiper();
-            }, 100);
-        }
-    </script>
-
-    <!-- SWIPER RUBROS: Inicialización del carrusel de rubros con efecto Flip -->
-    <script>
-        // Hacer la función global para que esté disponible desde otros scripts
-        window.initializeSwiperRubros = function initializeSwiperRubros() {
-            if (!window.Swiper || !document.querySelector('.swiper-rubros')) {
-                console.log('Swiper rubros: Swiper no disponible o sección no encontrada');
-                return;
-            }
-
-            // Verificar si ya está inicializado
-            if (document.querySelector('.swiper-rubros').swiper) {
-                console.log('Swiper rubros: ya está inicializado');
-                return;
-            }
-
-            console.log('Inicializando Swiper rubros...');
-
-            // Inicializar Swiper con efecto Flip
-            const swiperRubros = new Swiper('.swiper-rubros', {
-                // Efecto Flip - IGUAL QUE swiper-especializacion
-                effect: 'flip',
-                flipEffect: {
-                    slideShadows: false,       // Deshabilitar sombras - IGUAL QUE swiper-especializacion
-                    limitRotation: true,       // Limitar rotación de slides en los bordes - IGUAL QUE swiper-especializacion
-                },
-
-                // Configuración básica - IGUAL QUE swiper-especializacion
-                slidesPerView: 1,
-                spaceBetween: 0,               // Flip requiere 0 espacio - IGUAL QUE swiper-especializacion
-                speed: 600,                    // Velocidad de transición - IGUAL QUE swiper-especializacion
-                grabCursor: true,
-                loop: true,
-                loopAdditionalSlides: 2,
-
-                // Navegación (selectores corregidos - Swiper busca dentro del contenedor)
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-
-                // Autoplay
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true,
-                },
-
-                // Responsive breakpoints (spaceBetween debe ser 0 para efecto flip) - IGUAL QUE swiper-especializacion
-                breakpoints: {
-                    640: {
-                        slidesPerView: 1,
-                        spaceBetween: 0, // Flip requiere 0 espacio
-                    },
-                    768: {
-                        slidesPerView: 1,
-                        spaceBetween: 0, // Flip requiere 0 espacio
-                    },
-                    1024: {
-                        slidesPerView: 1,
-                        spaceBetween: 0, // Flip requiere 0 espacio
-                    },
-                },
-
-                // Accesibilidad
-                a11y: {
-                    prevSlideMessage: 'Rubro anterior',
-                    nextSlideMessage: 'Rubro siguiente',
-                    firstSlideMessage: 'Este es el primer rubro',
-                    lastSlideMessage: 'Este es el último rubro',
-                },
-            });
-
-            console.log('Swiper rubros inicializado correctamente');
-        };
-
-        // Intentar inicializar inmediatamente si Swiper ya está cargado
-        if (window.Swiper && document.querySelector('.swiper-rubros')) {
-            setTimeout(function () {
-                window.initializeSwiperRubros();
-            }, 100);
-        }
-    </script>
+    <!-- JavaScript para sección de rubros y casos unificada (integrado en main.js) -->
 
     <!-- JAVASCRIPT PERSONALIZADO: Funcionalidades interactivas -->
     <!-- Todo el JavaScript está en js/main.js para evitar duplicación -->

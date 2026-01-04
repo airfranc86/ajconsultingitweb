@@ -426,7 +426,7 @@ if (!prefersReducedMotion && window.IntersectionObserver) {
     }, observerOptions);
 
     // APLICAR OBSERVADOR: A todos los elementos que necesitan animación
-    document.querySelectorAll('.section-card, .feature-card, .stat-card, .contact-card, .hero-buttons').forEach(el => {
+    document.querySelectorAll('.section-card, .feature-card, .rubro-caso-card, .stat-card, .contact-card, .hero-buttons').forEach(el => {
         el.style.opacity = '0';               // Inicialmente invisible
         el.style.transform = 'translateY(20px)'; // Posición inicial (translate leve)
         el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out'; // < 500ms como especificado
@@ -434,7 +434,7 @@ if (!prefersReducedMotion && window.IntersectionObserver) {
     });
 } else {
     // Si no hay soporte o prefiere movimiento reducido, mostrar todo inmediatamente
-    document.querySelectorAll('.section-card, .feature-card, .stat-card, .contact-card, .hero-buttons').forEach(el => {
+    document.querySelectorAll('.section-card, .feature-card, .rubro-caso-card, .stat-card, .contact-card, .hero-buttons').forEach(el => {
         el.style.opacity = '1';
         el.style.transform = 'none';
     });
@@ -987,4 +987,54 @@ document.addEventListener('DOMContentLoaded', function () {
             clearTimeout(animationTimeout);
         }
     });
+});
+
+// ===== BOTÓN FLOTANTE DE CONTACTO: Scroll suave a sección de contacto =====
+document.addEventListener('DOMContentLoaded', function () {
+    const floatingContactBtn = document.getElementById('floating-contact-btn');
+    
+    if (floatingContactBtn) {
+        floatingContactBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const contactoSection = document.getElementById('contacto');
+            
+            if (contactoSection) {
+                // Scroll suave a la sección de contacto
+                contactoSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Opcional: Agregar clase para destacar la sección brevemente
+                contactoSection.classList.add('highlight-section');
+                setTimeout(() => {
+                    contactoSection.classList.remove('highlight-section');
+                }, 2000);
+            }
+        });
+        
+        // Mostrar/ocultar botón según scroll (opcional - solo mostrar cuando no esté en contacto)
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function () {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const contactoSection = document.getElementById('contacto');
+            
+            if (contactoSection) {
+                const contactoTop = contactoSection.offsetTop;
+                const contactoBottom = contactoTop + contactoSection.offsetHeight;
+                
+                // Ocultar botón si estamos en la sección de contacto
+                if (scrollTop >= contactoTop - 100 && scrollTop <= contactoBottom) {
+                    floatingContactBtn.style.opacity = '0.5';
+                    floatingContactBtn.style.pointerEvents = 'none';
+                } else {
+                    floatingContactBtn.style.opacity = '1';
+                    floatingContactBtn.style.pointerEvents = 'auto';
+                }
+            }
+            
+            lastScrollTop = scrollTop;
+        }, { passive: true });
+    }
 });
