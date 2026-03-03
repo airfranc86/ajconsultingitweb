@@ -158,7 +158,6 @@
     // Timeout máximo (fallback de seguridad) - REDUCIDO para evitar bloqueos
     window.setTimeout(() => {
         if (!finalizeCalled) {
-            // Forzar todo a true y finalizar
             console.warn('Loader: Timeout máximo alcanzado, forzando cierre');
             resourcesReady = true;
             minTimeElapsed = true;
@@ -182,95 +181,96 @@
     }, 5000);
 })();
 
-// ===== CONFIGURACIÓN DE PARTICLES.JS: Efecto de fondo animado =====
-particlesJS('particles-js', {
-    particles: {
-        number: {
-            value: 60,                          // Cantidad de partículas
-            density: {
-                enable: true,                   // Activar densidad automática
-                value_area: 800                 // Área para calcular densidad
+// ===== CONFIGURACIÓN DE PARTICLES.JS: Solo si la librería está disponible =====
+// FIX: Guard agregado — particlesJS fue eliminado del HTML y causaba ReferenceError
+// que detenía la ejecución de todo el script (incluyendo el theme toggle)
+if (typeof particlesJS !== 'undefined') {
+    particlesJS('particles-js', {
+        particles: {
+            number: {
+                value: 60,
+                density: {
+                    enable: true,
+                    value_area: 800
+                }
+            },
+            color: {
+                value: "#ffffff"
+            },
+            shape: {
+                type: "circle"
+            },
+            opacity: {
+                value: 0.3,
+                random: false
+            },
+            size: {
+                value: 3,
+                random: true
+            },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: "#ffffff",
+                opacity: 0.2,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 2,
+                direction: "none",
+                random: false,
+                straight: false,
+                out_mode: "out"
             }
         },
-        color: {
-            value: "#ffffff"                    // Color blanco para partículas
-        },
-        shape: {
-            type: "circle"                      // Forma circular
-        },
-        opacity: {
-            value: 0.3,                        // Transparencia
-            random: false                       // Sin variación aleatoria
-        },
-        size: {
-            value: 3,                          // Tamaño base
-            random: true                       // Variación aleatoria de tamaño
-        },
-        line_linked: {
-            enable: true,                      // Activar líneas conectoras
-            distance: 150,                     // Distancia máxima para conectar
-            color: "#ffffff",                  // Color de líneas blanco
-            opacity: 0.2,                      // Transparencia de líneas
-            width: 1                           // Grosor de líneas
-        },
-        move: {
-            enable: true,                      // Activar movimiento
-            speed: 2,                          // Velocidad de movimiento
-            direction: "none",                 // Sin dirección específica
-            random: false,                     // Sin movimiento aleatorio
-            straight: false,                   // Sin movimiento recto
-            out_mode: "out"                    // Comportamiento al salir del área
-        }
-    },
-    interactivity: {
-        detect_on: "canvas",                   // Detectar interacción en canvas
-        events: {
-            onhover: {
-                enable: true,                  // Activar efecto hover
-                mode: "repulse"               // Modo repulsión al pasar mouse
+        interactivity: {
+            detect_on: "canvas",
+            events: {
+                onhover: {
+                    enable: true,
+                    mode: "repulse"
+                },
+                onclick: {
+                    enable: true,
+                    mode: "push"
+                },
+                resize: true
             },
-            onclick: {
-                enable: true,                  // Activar efecto click
-                mode: "push"                   // Modo agregar partículas al hacer click
-            },
-            resize: true                       // Redimensionar automáticamente
-        },
-        modes: {
-            repulse: {
-                distance: 100                  // Distancia de repulsión
-            },
-            push: {
-                particles_nb: 4                // Número de partículas a agregar
+            modes: {
+                repulse: {
+                    distance: 100
+                },
+                push: {
+                    particles_nb: 4
+                }
             }
-        }
-    },
-    retina_detect: true                        // Detectar pantallas retina
-});
+        },
+        retina_detect: true
+    });
+}
 
 // ===== BARRA DE PROGRESO DE SCROLL: Indicador visual del progreso =====
 function updateProgressBar() {
-    const scrollTop = document.documentElement.scrollTop;         // Posición actual de scroll
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight; // Altura total scrolleable
-    const scrolled = (scrollTop / scrollHeight) * 100;           // Porcentaje scrolleado
-    document.getElementById('progressBar').style.width = scrolled + '%'; // Actualizar ancho de barra
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (scrollTop / scrollHeight) * 100;
+    document.getElementById('progressBar').style.width = scrolled + '%';
 }
 
-// EVENTO: Actualizar barra al hacer scroll
 window.addEventListener('scroll', updateProgressBar);
 
 // ===== SCROLL SUAVE: Navegación suave entre secciones =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();                    // Prevenir comportamiento por defecto
-        const targetId = this.getAttribute('href').substring(1); // Obtener ID destino
-        const targetSection = document.getElementById(targetId);  // Encontrar sección destino
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
         if (targetSection) {
-            targetSection.scrollIntoView({     // Scroll suave a la sección
+            targetSection.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
-            
-            // Actualizar estado activo en navegación
             updateActiveNavLink(targetId);
         }
     });
@@ -278,19 +278,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // ===== ACTUALIZAR NAVEGACIÓN ACTIVA: Indicar sección actual =====
 function updateActiveNavLink(sectionId) {
-    // Remover clase active de todos los enlaces
     document.querySelectorAll('.nav-menu a').forEach(link => {
         link.classList.remove('active');
     });
-    
-    // Agregar clase active al enlace correspondiente
     const activeLink = document.querySelector(`.nav-menu a[href="#${sectionId}"]`);
     if (activeLink) {
         activeLink.classList.add('active');
     }
 }
 
-// ===== DETECTAR SECCIÓN ACTIVA AL SCROLL: Actualizar navegación automáticamente =====
+// ===== DETECTAR SECCIÓN ACTIVA AL SCROLL =====
 function updateActiveSectionOnScroll() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
@@ -300,14 +297,13 @@ function updateActiveSectionOnScroll() {
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        const scrollPosition = window.scrollY + 150; // Offset para activación temprana
+        const scrollPosition = window.scrollY + 150;
         
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
             currentSection = section.getAttribute('id');
         }
     });
     
-    // Actualizar enlaces de navegación
     navLinks.forEach(link => {
         link.classList.remove('active');
         const href = link.getAttribute('href').substring(1);
@@ -317,175 +313,134 @@ function updateActiveSectionOnScroll() {
     });
 }
 
-// Actualizar al hacer scroll
 let scrollTimeout;
 window.addEventListener('scroll', function() {
     clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(updateActiveSectionOnScroll, 100); // Throttle para performance
+    scrollTimeout = setTimeout(updateActiveSectionOnScroll, 100);
 });
 
-// Actualizar al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
     updateActiveSectionOnScroll();
-    
-    // Marcar "Inicio" como activo si estamos en la parte superior
     if (window.scrollY < 100) {
         updateActiveNavLink('home');
     }
 });
 
-// ===== LOGO CLICKEABLE: Retornar al inicio al hacer click en el logo =====
+// ===== LOGO CLICKEABLE: Retornar al inicio =====
 document.addEventListener('DOMContentLoaded', function () {
     const logoWrapper = document.querySelector('.logo-wrapper');
     if (logoWrapper) {
         logoWrapper.addEventListener('click', function (e) {
-            e.preventDefault();                    // Prevenir comportamiento por defecto
-            e.stopPropagation();                  // Evitar propagación del evento
-            
-            // Buscar sección home o hacer scroll al inicio
+            e.preventDefault();
+            e.stopPropagation();
             const homeSection = document.getElementById('home');
             if (homeSection) {
-                homeSection.scrollIntoView({      // Scroll suave a la sección home
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                homeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             } else {
-                // Si no hay sección home, hacer scroll al inicio de la página
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         });
         
-        // También manejar el click en el enlace interno del logo
         const logoNav = logoWrapper.querySelector('.logo-nav');
         if (logoNav) {
             logoNav.addEventListener('click', function (e) {
-                e.preventDefault();               // Prevenir comportamiento por defecto
-                e.stopPropagation();              // Evitar propagación del evento
-                
-                // Buscar sección home o hacer scroll al inicio
+                e.preventDefault();
+                e.stopPropagation();
                 const homeSection = document.getElementById('home');
                 if (homeSection) {
-                    homeSection.scrollIntoView({  // Scroll suave a la sección home
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    homeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 } else {
-                    // Si no hay sección home, hacer scroll al inicio de la página
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
             });
         }
     }
 });
 
-// ===== EFECTO HEADER AL SCROLL: Cambiar apariencia del header =====
+// ===== EFECTO HEADER AL SCROLL =====
 window.addEventListener('scroll', function () {
     const header = document.querySelector('.header');
-    if (window.scrollY > 50) {                // Si se scrolleó más de 50px
-        // Usar gradiente con mayor transparencia - sin blur
+    if (window.scrollY > 50) {
         header.style.background = 'linear-gradient(to bottom, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.30) 25%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.20) 75%, rgba(255, 255, 255, 0.15) 100%)';
         header.style.backdropFilter = 'none';
         header.style.webkitBackdropFilter = 'none';
-        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)'; // Agregar sombra
-        header.classList.add('header-scrolled'); // Agregar clase para estilos adicionales
-    } else {                                   // Si está en la parte superior
-        // Restaurar gradiente original con mayor transparencia - sin blur
+        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+        header.classList.add('header-scrolled');
+    } else {
         header.style.background = 'linear-gradient(to bottom, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.20) 25%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.10) 75%, rgba(255, 255, 255, 0.05) 100%)';
         header.style.backdropFilter = 'none';
         header.style.webkitBackdropFilter = 'none';
-        header.style.boxShadow = 'none';       // Sin sombra
-        header.classList.remove('header-scrolled'); // Remover clase
+        header.style.boxShadow = 'none';
+        header.classList.remove('header-scrolled');
     }
 });
 
-// ===== ANIMACIÓN DE APARICIÓN: Efecto fade-in al hacer scroll =====
-// Respetar prefers-reduced-motion
+// ===== ANIMACIÓN DE APARICIÓN: Fade-in al hacer scroll =====
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if (!prefersReducedMotion && window.IntersectionObserver) {
     const observerOptions = {
-        threshold: 0.25,                      // Entre 0.2 y 0.5 como especificado
-        rootMargin: '0px 0px -50px 0px'      // Margen para activación temprana
+        threshold: 0.25,
+        rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {       // Si el elemento es visible
-                entry.target.style.opacity = '1'; // Hacer visible
-                entry.target.style.transform = 'translateY(0)'; // Posición final
-                // Una sola vez por scroll - dejar de observar
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // APLICAR OBSERVADOR: A todos los elementos que necesitan animación
     document.querySelectorAll('.section-card, .feature-card, .rubro-caso-card, .stat-card, .contact-card, .hero-buttons').forEach(el => {
-        el.style.opacity = '0';               // Inicialmente invisible
-        el.style.transform = 'translateY(20px)'; // Posición inicial (translate leve)
-        el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out'; // < 500ms como especificado
-        observer.observe(el);                  // Observar elemento
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+        observer.observe(el);
     });
 } else {
-    // Si no hay soporte o prefiere movimiento reducido, mostrar todo inmediatamente
     document.querySelectorAll('.section-card, .feature-card, .rubro-caso-card, .stat-card, .contact-card, .hero-buttons').forEach(el => {
         el.style.opacity = '1';
         el.style.transform = 'none';
     });
 }
 
-// ===== ACCESO A DEMO CLÍNICA: Abrir app Streamlit con credenciales demo =====
 // ===== BOTÓN DEMO: Mostrar modal de solicitud de demo =====
 document.addEventListener('DOMContentLoaded', function () {
     const demoButton = document.getElementById('solicitar-demo-btn');
     if (demoButton) {
         demoButton.addEventListener('click', function (e) {
             e.preventDefault();
-            console.log('Botón de demo clickeado'); // Debug log
             showDemoModal();
         });
     }
 
-    // Botón de demo en sección de contacto
     const demoButtonContacto = document.getElementById('solicitar-demo-contacto-btn');
     if (demoButtonContacto) {
         demoButtonContacto.addEventListener('click', function (e) {
             e.preventDefault();
-            console.log('Botón de demo en contacto clickeado'); // Debug log
             showDemoModal();
         });
     }
 
-    // ===== MANEJAR ENLACES DE EMAIL: Mejorar funcionalidad mailto =====
+    // ===== MANEJAR ENLACES DE EMAIL =====
     const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
     emailLinks.forEach(link => {
         link.addEventListener('click', function (e) {
-            console.log('Enlace de email clickeado:', this.href);
-
-            // Tracking del evento para analytics
             if (typeof window.va === 'function') {
                 window.va('track', 'Email Link Clicked', {
                     email: this.href.split('mailto:')[1].split('?')[0],
                     location: this.closest('section')?.id || 'contacto'
                 });
             }
-
-            // Permitir que el navegador maneje el mailto: naturalmente
-            // No intentar abrir programáticamente para evitar el error de "user gesture required"
-            console.log('Abriendo cliente de email...');
         });
     });
 });
 
-// ===== MODAL DE DEMO: Mostrar formulario de solicitud =====
+// ===== MODAL DE DEMO =====
 function showDemoModal() {
-    // Crear modal si no existe
     let modal = document.getElementById('demo-modal');
     if (!modal) {
         modal = createDemoModal();
@@ -494,7 +449,6 @@ function showDemoModal() {
     modal.style.display = 'flex';
 }
 
-// ===== CREAR MODAL DE DEMO: Generar HTML del modal =====
 function createDemoModal() {
     const modal = document.createElement('div');
     modal.id = 'demo-modal';
@@ -546,7 +500,6 @@ function createDemoModal() {
             ">Completa el formulario y nos pondremos en contacto contigo para agendar una demostración personalizada.</p>
             
             <form id="demo-form" style="display: flex; flex-direction: column; gap: 1rem;">
-                <!-- Campo honeypot para detectar bots (oculto) -->
                 <input type="text" name="website" style="display: none !important; position: absolute; left: -9999px;" tabindex="-1" autocomplete="off">
                 
                 <input type="text" name="nombre" placeholder="Nombre completo" required style="
@@ -596,33 +549,15 @@ function createDemoModal() {
         </div>
     `;
 
-    // Manejar envío del formulario
     const form = modal.querySelector('#demo-form');
     form.addEventListener('submit', function (e) {
         e.preventDefault();
         handleDemoSubmission(this);
     });
-    
-    // Validación en tiempo real
-    const inputs = form.querySelectorAll('input[required], textarea');
-    inputs.forEach(input => {
-        input.addEventListener('blur', function() {
-            validateField(this);
-        });
-        input.addEventListener('input', function() {
-            // Limpiar error al empezar a escribir
-            const errorMsg = this.parentElement.querySelector('.error-message');
-            if (errorMsg) {
-                errorMsg.remove();
-            }
-            this.style.borderColor = '#eee';
-        });
-    });
 
     return modal;
 }
 
-// ===== CERRAR MODAL: Ocultar modal de demo =====
 function closeDemoModal() {
     const modal = document.getElementById('demo-modal');
     if (modal) {
@@ -630,32 +565,18 @@ function closeDemoModal() {
     }
 }
 
-// ===== MANEJAR ENVÍO: Procesar formulario de demo =====
 async function handleDemoSubmission(form) {
-    console.log('Procesando envío del formulario'); // Debug log
-
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
-    console.log('Datos del formulario:', data); // Debug log
+    if (!validateFormData(data)) return;
 
-    // Validaciones del frontend
-    if (!validateFormData(data)) {
-        console.log('Validación falló'); // Debug log
-        return;
-    }
-
-    console.log('Validación exitosa, enviando al backend'); // Debug log
-
-    // Mostrar estado de envío
     const button = form.querySelector('button[type="submit"]');
     const originalText = button.textContent;
     button.textContent = 'Enviando...';
     button.disabled = true;
 
-    // Enviar al backend
     try {
-        console.log('Enviando datos al API:', data);
         const response = await fetch('/api/send-demo-request', {
             method: 'POST',
             headers: {
@@ -668,18 +589,13 @@ async function handleDemoSubmission(form) {
         const result = await response.json();
 
         if (response.ok) {
-            // Éxito
             showSuccess(result.message || 'Solicitud enviada exitosamente');
             closeDemoModal();
             resetForm(button, originalText);
         } else {
-            // Error del servidor
-            const errorMessage = result.error || 'Error al enviar la solicitud';
-            console.error('Error del servidor:', result);
-            showError(errorMessage);
+            showError(result.error || 'Error al enviar la solicitud');
             resetButton(button, originalText);
         }
-
     } catch (error) {
         console.error('Error enviando formulario:', error);
         showError('Error de conexión. Por favor intenta nuevamente.');
@@ -687,39 +603,27 @@ async function handleDemoSubmission(form) {
     }
 }
 
-// ===== VALIDACIÓN DE FORMULARIO: Validaciones del frontend =====
 function validateFormData(data) {
-    // Validar nombre
     if (!data.nombre || data.nombre.trim().length < 2) {
         showError('El nombre debe tener al menos 2 caracteres');
         return false;
     }
-
-    // Validar email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!data.email || !emailRegex.test(data.email)) {
         showError('Por favor ingresa un email válido');
         return false;
     }
-
-    // Validar clínica
     if (!data.clinica || data.clinica.trim().length < 2) {
         showError('El nombre de la clínica es requerido');
         return false;
     }
-
     return true;
 }
 
-// ===== FUNCIONES AUXILIARES: Para manejo del formulario =====
 function resetForm(button, originalText) {
-    button.textContent = originalText;
-    button.disabled = false;
-    // Limpiar formulario
-    const form = button.closest('form');
-    if (form) {
-        form.reset();
-    }
+    const form = document.getElementById('demo-form');
+    if (form) form.reset();
+    resetButton(button, originalText);
 }
 
 function resetButton(button, originalText) {
@@ -727,13 +631,9 @@ function resetButton(button, originalText) {
     button.disabled = false;
 }
 
-// ===== MOSTRAR ERRORES: Sistema de notificaciones =====
 function showError(message) {
-    // Remover notificaciones anteriores
     const existingError = document.querySelector('.form-error');
-    if (existingError) {
-        existingError.remove();
-    }
+    if (existingError) existingError.remove();
 
     const errorDiv = document.createElement('div');
     errorDiv.className = 'form-error';
@@ -749,17 +649,13 @@ function showError(message) {
     errorDiv.textContent = message;
 
     const form = document.getElementById('demo-form');
-    form.insertBefore(errorDiv, form.firstChild);
+    if (form) form.insertBefore(errorDiv, form.firstChild);
 
-    // Auto-remover después de 5 segundos
     setTimeout(() => {
-        if (errorDiv.parentNode) {
-            errorDiv.remove();
-        }
+        if (errorDiv.parentNode) errorDiv.remove();
     }, 5000);
 }
 
-// ===== MOSTRAR ÉXITO: Notificación de éxito =====
 function showSuccess(message) {
     const successDiv = document.createElement('div');
     successDiv.className = 'form-success';
@@ -777,39 +673,20 @@ function showSuccess(message) {
         max-width: 400px;
     `;
     successDiv.textContent = message;
-
     document.body.appendChild(successDiv);
 
-    // Auto-remover después de 5 segundos
     setTimeout(() => {
-        if (successDiv.parentNode) {
-            successDiv.remove();
-        }
+        if (successDiv.parentNode) successDiv.remove();
     }, 5000);
-}
-
-// ===== RESET FORMULARIO: Limpiar y resetear =====
-function resetForm(button, originalText) {
-    const form = document.getElementById('demo-form');
-    form.reset();
-    resetButton(button, originalText);
-}
-
-function resetButton(button, originalText) {
-    button.textContent = originalText;
-    button.disabled = false;
 }
 
 // Cerrar modal al hacer click fuera
 document.addEventListener('click', function (e) {
     const modal = document.getElementById('demo-modal');
-    if (e.target === modal) {
-        closeDemoModal();
-    }
+    if (e.target === modal) closeDemoModal();
 });
 
-// ===== OPTIMIZACIONES DE RENDIMIENTO =====
-// Lazy loading para imágenes
+// ===== OPTIMIZACIONES DE RENDIMIENTO: Lazy loading =====
 if ('IntersectionObserver' in window) {
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -827,7 +704,6 @@ if ('IntersectionObserver' in window) {
     });
 }
 
-// Preload de recursos críticos
 function preloadCriticalResources() {
     const criticalImages = ['assets/AJLOGO.png'];
     criticalImages.forEach(src => {
@@ -839,18 +715,13 @@ function preloadCriticalResources() {
     });
 }
 
-// Ejecutar preload cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', preloadCriticalResources);
 
-// ===== MEJORAS DE ACCESIBILIDAD =====
-// Navegación por teclado mejorada
+// ===== ACCESIBILIDAD: Navegación por teclado =====
 document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-        closeDemoModal();
-    }
+    if (e.key === 'Escape') closeDemoModal();
 });
 
-// Focus management para modales
 function trapFocus(element) {
     const focusableElements = element.querySelectorAll(
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
@@ -875,30 +746,22 @@ function trapFocus(element) {
     });
 }
 
-// Aplicar trap focus cuando se crea el modal
 document.addEventListener('DOMContentLoaded', function () {
     const modal = document.getElementById('demo-modal');
-    if (modal) {
-        trapFocus(modal);
-    }
+    if (modal) trapFocus(modal);
 });
 
-// ===== FUNCIONES DE EMAIL ELIMINADAS =====
-// Se mantiene solo el enlace mailto: básico para simplicidad
-
-// ===== TYPING ANIMATION: Animación de escritura en hero tagline con loop infinito, rotación de textos y fuentes =====
+// ===== TYPING ANIMATION: Animación de escritura en hero tagline =====
 document.addEventListener('DOMContentLoaded', function () {
     const heroTagline = document.querySelector('.hero-tagline');
     if (!heroTagline) return;
 
-    // Array de textos que rotarán
     const texts = [
         'Transformando datos en decisiones inteligentes',
         'Anímate a pegar el salto al mundo digital',
         'Potencia tu negocio con inteligencia artificial'
     ];
 
-    // Configuración de fuentes (3 fuentes que rotarán)
     const fonts = [
         'Inter, sans-serif',
         'Poppins, sans-serif',
@@ -908,34 +771,28 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentTextIndex = 0;
     let currentFontIndex = 0;
     let currentCharIndex = 0;
-    let displayedText = '';
-    let isTyping = true; // true = escribiendo, false = borrando
-    let typeSpeed = 70; // Velocidad de escritura (ms por carácter)
-    let deleteSpeed = 40; // Velocidad de borrado (doble de rápida)
-    let pauseAfterComplete = 3000; // Pausa de 3 segundos con cursor parpadeando antes de borrar
-    let pauseAfterDelete = 500; // Pausa corta después de borrar antes de cambiar fuente
+    let isTyping = true;
+    const typeSpeed = 70;
+    const deleteSpeed = 40;
+    const pauseAfterComplete = 3000;
+    const pauseAfterDelete = 500;
     let animationTimeout = null;
 
-    // Función para obtener el texto actual
     function getCurrentText() {
         return texts[currentTextIndex];
     }
 
-    // Función para aplicar la fuente actual
     function applyCurrentFont() {
         heroTagline.style.fontFamily = fonts[currentFontIndex];
     }
 
-    // Función para escribir texto carácter por carácter
     function typeText() {
         const currentText = getCurrentText();
         if (currentCharIndex < currentText.length) {
-            displayedText = currentText.substring(0, currentCharIndex + 1);
-            heroTagline.textContent = displayedText;
+            heroTagline.textContent = currentText.substring(0, currentCharIndex + 1);
             currentCharIndex++;
             animationTimeout = setTimeout(typeText, typeSpeed);
         } else {
-            // Texto completo, pausar 3 segundos con cursor parpadeando antes de borrar
             animationTimeout = setTimeout(() => {
                 isTyping = false;
                 deleteText();
@@ -943,18 +800,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Función para borrar texto carácter por carácter
     function deleteText() {
         if (currentCharIndex > 0) {
             const currentText = getCurrentText();
-            displayedText = currentText.substring(0, currentCharIndex - 1);
-            heroTagline.textContent = displayedText;
+            heroTagline.textContent = currentText.substring(0, currentCharIndex - 1);
             currentCharIndex--;
             animationTimeout = setTimeout(deleteText, deleteSpeed);
         } else {
-            // Texto borrado completamente, cambiar texto y fuente, luego volver a escribir
-            currentTextIndex = (currentTextIndex + 1) % texts.length; // Rotar al siguiente texto
-            currentFontIndex = (currentFontIndex + 1) % fonts.length; // Rotar a la siguiente fuente
+            currentTextIndex = (currentTextIndex + 1) % texts.length;
+            currentFontIndex = (currentFontIndex + 1) % fonts.length;
             applyCurrentFont();
             animationTimeout = setTimeout(() => {
                 isTyping = true;
@@ -963,16 +817,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Iniciar animación solo si el elemento está en el viewport
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Limpiar texto inicial y comenzar animación
                 heroTagline.textContent = '';
                 currentCharIndex = 0;
-                displayedText = '';
                 isTyping = true;
-                applyCurrentFont(); // Aplicar primera fuente
+                applyCurrentFont();
                 typeText();
                 observer.disconnect();
             }
@@ -981,15 +832,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     observer.observe(heroTagline);
 
-    // Limpiar timeout si el componente se desmonta (opcional, para evitar memory leaks)
     window.addEventListener('beforeunload', () => {
-        if (animationTimeout) {
-            clearTimeout(animationTimeout);
-        }
+        if (animationTimeout) clearTimeout(animationTimeout);
     });
 });
 
-// ===== BOTÓN FLOTANTE DE CONTACTO: Scroll suave a sección de contacto =====
+// ===== BOTÓN FLOTANTE DE CONTACTO =====
 document.addEventListener('DOMContentLoaded', function () {
     const floatingContactBtn = document.getElementById('floating-contact-btn');
     
@@ -998,23 +846,13 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             
             const contactoSection = document.getElementById('contacto');
-            
             if (contactoSection) {
-                // Scroll suave a la sección de contacto
-                contactoSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                
-                // Opcional: Agregar clase para destacar la sección brevemente
+                contactoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 contactoSection.classList.add('highlight-section');
-                setTimeout(() => {
-                    contactoSection.classList.remove('highlight-section');
-                }, 2000);
+                setTimeout(() => contactoSection.classList.remove('highlight-section'), 2000);
             }
         });
         
-        // Mostrar/ocultar botón según scroll (opcional - solo mostrar cuando no esté en contacto)
         let lastScrollTop = 0;
         window.addEventListener('scroll', function () {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -1024,7 +862,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 const contactoTop = contactoSection.offsetTop;
                 const contactoBottom = contactoTop + contactoSection.offsetHeight;
                 
-                // Ocultar botón si estamos en la sección de contacto
                 if (scrollTop >= contactoTop - 100 && scrollTop <= contactoBottom) {
                     floatingContactBtn.style.opacity = '0.5';
                     floatingContactBtn.style.pointerEvents = 'none';
@@ -1038,6 +875,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }, { passive: true });
     }
 });
+
 /* ===================================================
    THEME TOGGLE — Light / Dark / System
    A&J Consulting IT
@@ -1048,7 +886,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var STORAGE_KEY = 'aj-theme';
     var html = document.documentElement;
 
-    /* ---- Resolución de tema ---- */
     function getSystemTheme() {
         return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
     }
@@ -1065,7 +902,6 @@ document.addEventListener('DOMContentLoaded', function () {
         updateParticlesColor(resolved);
     }
 
-    /* ---- Actualizar estado visual de botones ---- */
     function updateButtons(activeMode) {
         var btns = document.querySelectorAll('.theme-toggle-btn');
         btns.forEach(function (btn) {
@@ -1075,7 +911,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    /* ---- Adaptar color de partículas si existe el canvas ---- */
     function updateParticlesColor(resolved) {
         var canvas = document.querySelector('#particles-js canvas');
         if (!canvas) return;
@@ -1086,7 +921,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    /* ---- Inicialización ---- */
     function init() {
         var toggle = document.getElementById('theme-toggle');
         if (!toggle) return;
@@ -1094,7 +928,6 @@ document.addEventListener('DOMContentLoaded', function () {
         var stored = localStorage.getItem(STORAGE_KEY) || 'dark';
         applyTheme(stored);
 
-        /* Eventos en cada botón del grupo */
         toggle.addEventListener('click', function (e) {
             var btn = e.target.closest('.theme-toggle-btn');
             if (!btn) return;
@@ -1102,14 +935,12 @@ document.addEventListener('DOMContentLoaded', function () {
             if (mode) applyTheme(mode);
         });
 
-        /* Escuchar cambio de preferencia del sistema */
         window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function () {
             var current = localStorage.getItem(STORAGE_KEY) || 'dark';
             if (current === 'system') applyTheme('system');
         });
     }
 
-    /* Esperar DOM listo */
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
