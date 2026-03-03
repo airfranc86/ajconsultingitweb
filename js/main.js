@@ -1,949 +1,203 @@
-// ===== LOADER INICIAL: Gestor de pantalla de carga (Optimizado para Android) =====
+// ===== LOADER INICIAL =====
 (function () {
     'use strict';
-
-    const LOADER_ID = 'page-loader';
-    const PROGRESS_ID = 'loader-progress';
-    const BODY_LOADING_ATTR = 'data-loading';
-    const LOADER_IMG_ID = 'loader-logo-img';
-    
-    // Detectar móviles
     const isMobile = /Mobile|Android|iPhone|iPad/i.test(navigator.userAgent) || window.innerWidth <= 768;
-    
-    // DESHABILITAR LOADER EN MÓVILES: Ocultar inmediatamente
     if (isMobile) {
-        const body = document.body;
-        const loader = document.getElementById(LOADER_ID);
-        
-        // Ocultar loader inmediatamente en móviles
-        if (loader) {
-            loader.style.display = 'none';
-            loader.remove();
-        }
-        if (body) {
-            body.removeAttribute(BODY_LOADING_ATTR);
-        }
-        return; // Salir temprano - no ejecutar el resto del código del loader
-    }
-    
-    // Tiempos de carga para desktop
-    const MIN_LOAD_TIME_MS = 2000;
-    const MAX_LOAD_TIME_MS = 4000;
-    const IMAGE_TIMEOUT_MS = 3000;
-    const PROGRESS_RADIUS = 90;
-    const CIRCUMFERENCE = 2 * Math.PI * PROGRESS_RADIUS;
-
-    const body = document.body;
-    const loader = document.getElementById(LOADER_ID);
-    const progressCircle = document.getElementById(PROGRESS_ID);
-    const loaderImg = document.getElementById(LOADER_IMG_ID);
-
-    if (!body || !loader || !progressCircle) {
+        const loader = document.getElementById('page-loader');
+        if (loader) { loader.style.display = 'none'; loader.remove(); }
+        document.body && document.body.removeAttribute('data-loading');
         return;
     }
-
-    let simulatedProgress = 0;
-    let progressTimerId;
-    let minTimeElapsed = false;
-    let resourcesReady = false;
-    let imageLoaded = false;
-    let finalizeCalled = false;
-
+    const MIN_LOAD_TIME_MS = 2000, MAX_LOAD_TIME_MS = 4000, IMAGE_TIMEOUT_MS = 3000;
+    const CIRCUMFERENCE = 2 * Math.PI * 90;
+    const body = document.body, loader = document.getElementById('page-loader');
+    const progressCircle = document.getElementById('loader-progress');
+    const loaderImg = document.getElementById('loader-logo-img');
+    if (!body || !loader || !progressCircle) return;
+    let simulatedProgress = 0, progressTimerId, minTimeElapsed = false, resourcesReady = false, imageLoaded = false, finalizeCalled = false;
     progressCircle.style.strokeDasharray = `${CIRCUMFERENCE}`;
     progressCircle.style.strokeDashoffset = `${CIRCUMFERENCE}`;
-
-    function setProgress(value) {
-        const boundedValue = Math.max(0, Math.min(100, value));
-        const offset = CIRCUMFERENCE - (boundedValue / 100) * CIRCUMFERENCE;
-        progressCircle.style.strokeDashoffset = `${offset}`;
-    }
-
-    function simulateProgress() {
-        progressTimerId = window.setInterval(() => {
-            simulatedProgress = Math.min(simulatedProgress + Math.random() * 12, 92);
-            setProgress(simulatedProgress);
-            if (resourcesReady && minTimeElapsed && imageLoaded) {
-                clearInterval(progressTimerId);
-            }
-        }, 220);
-    }
-
-    function markImageLoaded() {
-        if (imageLoaded) return;
-        imageLoaded = true;
-        checkFinalize();
-    }
-
-    function markResourceReady() {
-        if (resourcesReady) return;
-        resourcesReady = true;
-        checkFinalize();
-    }
-
-    function checkFinalize() {
-        if (resourcesReady && minTimeElapsed && imageLoaded && !finalizeCalled) {
-            finalizeLoader();
-        }
-    }
-
+    function setProgress(v) { progressCircle.style.strokeDashoffset = `${CIRCUMFERENCE - (Math.max(0,Math.min(100,v)) / 100) * CIRCUMFERENCE}`; }
+    function markImageLoaded() { if (imageLoaded) return; imageLoaded = true; checkFinalize(); }
+    function markResourceReady() { if (resourcesReady) return; resourcesReady = true; checkFinalize(); }
+    function checkFinalize() { if (resourcesReady && minTimeElapsed && imageLoaded && !finalizeCalled) finalizeLoader(); }
     function finalizeLoader() {
-        if (finalizeCalled) {
-            return;
-        }
-
-        finalizeCalled = true;
-        clearInterval(progressTimerId);
-        setProgress(100);
-
-        // Usar setTimeout en lugar de requestAnimationFrame para mejor compatibilidad Android
+        if (finalizeCalled) return; finalizeCalled = true; clearInterval(progressTimerId); setProgress(100);
         window.setTimeout(() => {
-            if (loader) {
-                loader.classList.add('hidden');
-            }
-            if (body) {
-                body.removeAttribute(BODY_LOADING_ATTR);
-            }
-            window.setTimeout(() => {
-                if (loader && loader.parentNode) {
-                    loader.remove();
-                }
-            }, 600);
+            loader.classList.add('hidden'); body.removeAttribute('data-loading');
+            window.setTimeout(() => { if (loader.parentNode) loader.remove(); }, 600);
         }, 50);
     }
-
-    // Verificar carga de imagen del loader (solo desktop)
+    function simulateProgress() {
+        progressTimerId = window.setInterval(() => {
+            simulatedProgress = Math.min(simulatedProgress + Math.random() * 12, 92); setProgress(simulatedProgress);
+        }, 220);
+    }
     if (loaderImg) {
-        if (loaderImg.complete && loaderImg.naturalHeight !== 0) {
-            markImageLoaded();
-        } else {
-            loaderImg.addEventListener('load', markImageLoaded);
-            loaderImg.addEventListener('error', markImageLoaded);
-
-            window.setTimeout(function () {
-                if (!imageLoaded) {
-                    markImageLoaded();
-                }
-            }, IMAGE_TIMEOUT_MS);
-        }
-    } else {
-        // Si no hay imagen, marcar como cargada inmediatamente
-        imageLoaded = true;
-    }
-
+        if (loaderImg.complete && loaderImg.naturalHeight !== 0) markImageLoaded();
+        else { loaderImg.addEventListener('load', markImageLoaded); loaderImg.addEventListener('error', markImageLoaded); window.setTimeout(() => { if (!imageLoaded) markImageLoaded(); }, IMAGE_TIMEOUT_MS); }
+    } else { imageLoaded = true; }
     simulateProgress();
-
-    // Estrategia múltiple para marcar recursos como listos
-    function tryMarkResourceReady() {
-        // Verificar estado del documento
-        if (document.readyState === 'complete' || document.readyState === 'interactive') {
-            markResourceReady();
-            return true;
-        }
-        return false;
-    }
-
-    // Intentar inmediatamente
-    if (!tryMarkResourceReady()) {
-        // Si no está listo, agregar listeners
-        window.addEventListener('load', markResourceReady);
-        document.addEventListener('DOMContentLoaded', markResourceReady);
-    }
-
-    // Timeout mínimo
-    window.setTimeout(() => {
-        minTimeElapsed = true;
-        checkFinalize();
-    }, MIN_LOAD_TIME_MS);
-
-    // Timeout máximo (fallback de seguridad) - REDUCIDO para evitar bloqueos
-    window.setTimeout(() => {
-        if (!finalizeCalled) {
-            console.warn('Loader: Timeout máximo alcanzado, forzando cierre');
-            resourcesReady = true;
-            minTimeElapsed = true;
-            imageLoaded = true;
-            finalizeLoader();
-        }
-    }, MAX_LOAD_TIME_MS);
-
-    // Fallback adicional: Si después de 5 segundos el loader sigue visible, forzar cierre
-    window.setTimeout(() => {
-        const loaderStillVisible = document.getElementById(LOADER_ID);
-        if (loaderStillVisible && !loaderStillVisible.classList.contains('hidden')) {
-            console.error('Loader: Fallback de emergencia activado');
-            if (loaderStillVisible.parentNode) {
-                loaderStillVisible.remove();
-            }
-            if (body) {
-                body.removeAttribute(BODY_LOADING_ATTR);
-            }
-        }
-    }, 5000);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') markResourceReady();
+    else { window.addEventListener('load', markResourceReady); document.addEventListener('DOMContentLoaded', markResourceReady); }
+    window.setTimeout(() => { minTimeElapsed = true; checkFinalize(); }, MIN_LOAD_TIME_MS);
+    window.setTimeout(() => { if (!finalizeCalled) { resourcesReady = imageLoaded = minTimeElapsed = true; finalizeLoader(); } }, MAX_LOAD_TIME_MS);
+    window.setTimeout(() => { const s = document.getElementById('page-loader'); if (s && !s.classList.contains('hidden')) { s.remove(); body.removeAttribute('data-loading'); } }, 5000);
 })();
 
-// ===== CONFIGURACIÓN DE PARTICLES.JS: Solo si la librería está disponible =====
-// FIX: Guard agregado — particlesJS fue eliminado del HTML y causaba ReferenceError
-// que detenía la ejecución de todo el script (incluyendo el theme toggle)
-if (typeof particlesJS !== 'undefined') {
-    particlesJS('particles-js', {
-        particles: {
-            number: {
-                value: 60,
-                density: {
-                    enable: true,
-                    value_area: 800
-                }
-            },
-            color: {
-                value: "#ffffff"
-            },
-            shape: {
-                type: "circle"
-            },
-            opacity: {
-                value: 0.3,
-                random: false
-            },
-            size: {
-                value: 3,
-                random: true
-            },
-            line_linked: {
-                enable: true,
-                distance: 150,
-                color: "#ffffff",
-                opacity: 0.2,
-                width: 1
-            },
-            move: {
-                enable: true,
-                speed: 2,
-                direction: "none",
-                random: false,
-                straight: false,
-                out_mode: "out"
-            }
-        },
-        interactivity: {
-            detect_on: "canvas",
-            events: {
-                onhover: {
-                    enable: true,
-                    mode: "repulse"
-                },
-                onclick: {
-                    enable: true,
-                    mode: "push"
-                },
-                resize: true
-            },
-            modes: {
-                repulse: {
-                    distance: 100
-                },
-                push: {
-                    particles_nb: 4
-                }
-            }
-        },
-        retina_detect: true
-    });
-}
-
-// ===== BARRA DE PROGRESO DE SCROLL: Indicador visual del progreso =====
+// ===== BARRA DE PROGRESO DE SCROLL =====
 function updateProgressBar() {
-    const scrollTop = document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (scrollTop / scrollHeight) * 100;
-    document.getElementById('progressBar').style.width = scrolled + '%';
+    const sh = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const bar = document.getElementById('progressBar');
+    if (bar) bar.style.width = (sh > 0 ? (document.documentElement.scrollTop / sh) * 100 : 0) + '%';
 }
+window.addEventListener('scroll', updateProgressBar, { passive: true });
 
-window.addEventListener('scroll', updateProgressBar);
-
-// ===== SCROLL SUAVE: Navegación suave entre secciones =====
+// ===== SCROLL SUAVE =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-            targetSection.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-            updateActiveNavLink(targetId);
-        }
+        const id = this.getAttribute('href').substring(1);
+        const target = document.getElementById(id);
+        if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); updateActiveNavLink(id); }
     });
 });
 
-// ===== ACTUALIZAR NAVEGACIÓN ACTIVA: Indicar sección actual =====
+// ===== NAVEGACION ACTIVA =====
 function updateActiveNavLink(sectionId) {
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.classList.remove('active');
-    });
-    const activeLink = document.querySelector(`.nav-menu a[href="#${sectionId}"]`);
-    if (activeLink) {
-        activeLink.classList.add('active');
-    }
+    document.querySelectorAll('.nav-menu a').forEach(l => l.classList.remove('active'));
+    const link = document.querySelector(`.nav-menu a[href="#${sectionId}"]`);
+    if (link) link.classList.add('active');
 }
-
-// ===== DETECTAR SECCIÓN ACTIVA AL SCROLL =====
 function updateActiveSectionOnScroll() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
-    
-    let currentSection = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        const scrollPosition = window.scrollY + 150;
-        
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            currentSection = section.getAttribute('id');
-        }
+    let current = '';
+    document.querySelectorAll('section[id]').forEach(s => {
+        if (window.scrollY + 150 >= s.offsetTop && window.scrollY + 150 < s.offsetTop + s.clientHeight) current = s.id;
     });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        const href = link.getAttribute('href').substring(1);
-        if (href === currentSection) {
-            link.classList.add('active');
-        }
+    document.querySelectorAll('.nav-menu a[href^="#"]').forEach(l => {
+        l.classList.remove('active');
+        if (l.getAttribute('href').substring(1) === current) l.classList.add('active');
     });
 }
-
 let scrollTimeout;
-window.addEventListener('scroll', function() {
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(updateActiveSectionOnScroll, 100);
-});
+window.addEventListener('scroll', () => { clearTimeout(scrollTimeout); scrollTimeout = setTimeout(updateActiveSectionOnScroll, 100); }, { passive: true });
+document.addEventListener('DOMContentLoaded', () => { updateActiveSectionOnScroll(); if (window.scrollY < 100) updateActiveNavLink('home'); });
 
-document.addEventListener('DOMContentLoaded', function() {
-    updateActiveSectionOnScroll();
-    if (window.scrollY < 100) {
-        updateActiveNavLink('home');
-    }
-});
-
-// ===== LOGO CLICKEABLE: Retornar al inicio =====
+// ===== LOGO CLICKEABLE =====
 document.addEventListener('DOMContentLoaded', function () {
     const logoWrapper = document.querySelector('.logo-wrapper');
-    if (logoWrapper) {
-        logoWrapper.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const homeSection = document.getElementById('home');
-            if (homeSection) {
-                homeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        });
-        
-        const logoNav = logoWrapper.querySelector('.logo-nav');
-        if (logoNav) {
-            logoNav.addEventListener('click', function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                const homeSection = document.getElementById('home');
-                if (homeSection) {
-                    homeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                } else {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            });
-        }
-    }
+    if (!logoWrapper) return;
+    function scrollToHome(e) { e.preventDefault(); e.stopPropagation(); const s = document.getElementById('home'); if (s) s.scrollIntoView({ behavior: 'smooth', block: 'start' }); else window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    logoWrapper.addEventListener('click', scrollToHome);
+    const logoNav = logoWrapper.querySelector('.logo-nav'); if (logoNav) logoNav.addEventListener('click', scrollToHome);
 });
 
 // ===== EFECTO HEADER AL SCROLL =====
+// IMPORTANTE: Solo se agrega/quita la clase CSS .header-scrolled
+// NUNCA se escribe header.style.background — eso pisaria el tema activo.
+// El CSS en index.html define [data-theme="dark/light"] .header.header-scrolled
 window.addEventListener('scroll', function () {
     const header = document.querySelector('.header');
-    if (window.scrollY > 50) {
-        header.style.background = 'linear-gradient(to bottom, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.30) 25%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.20) 75%, rgba(255, 255, 255, 0.15) 100%)';
-        header.style.backdropFilter = 'none';
-        header.style.webkitBackdropFilter = 'none';
-        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
-        header.classList.add('header-scrolled');
-    } else {
-        header.style.background = 'linear-gradient(to bottom, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.20) 25%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.10) 75%, rgba(255, 255, 255, 0.05) 100%)';
-        header.style.backdropFilter = 'none';
-        header.style.webkitBackdropFilter = 'none';
-        header.style.boxShadow = 'none';
-        header.classList.remove('header-scrolled');
-    }
-});
+    if (header) header.classList.toggle('header-scrolled', window.scrollY > 50);
+}, { passive: true });
 
-// ===== ANIMACIÓN DE APARICIÓN: Fade-in al hacer scroll =====
+// ===== ANIMACION FADE-IN =====
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
 if (!prefersReducedMotion && window.IntersectionObserver) {
-    const observerOptions = {
-        threshold: 0.25,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function (entries) {
+    const fadeObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
-            }
+            if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; fadeObserver.unobserve(entry.target); }
         });
-    }, observerOptions);
-
-    document.querySelectorAll('.section-card, .feature-card, .rubro-caso-card, .stat-card, .contact-card, .hero-buttons').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
-        observer.observe(el);
+    }, { threshold: 0.25, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.section-card,.feature-card,.rubro-caso-card,.stat-card,.contact-card,.hero-buttons').forEach(el => {
+        el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out'; fadeObserver.observe(el);
     });
 } else {
-    document.querySelectorAll('.section-card, .feature-card, .rubro-caso-card, .stat-card, .contact-card, .hero-buttons').forEach(el => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-    });
+    document.querySelectorAll('.section-card,.feature-card,.rubro-caso-card,.stat-card,.contact-card,.hero-buttons').forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
 }
 
-// ===== BOTÓN DEMO: Mostrar modal de solicitud de demo =====
-document.addEventListener('DOMContentLoaded', function () {
-    const demoButton = document.getElementById('solicitar-demo-btn');
-    if (demoButton) {
-        demoButton.addEventListener('click', function (e) {
-            e.preventDefault();
-            showDemoModal();
-        });
-    }
-
-    const demoButtonContacto = document.getElementById('solicitar-demo-contacto-btn');
-    if (demoButtonContacto) {
-        demoButtonContacto.addEventListener('click', function (e) {
-            e.preventDefault();
-            showDemoModal();
-        });
-    }
-
-    // ===== MANEJAR ENLACES DE EMAIL =====
-    const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
-    emailLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            if (typeof window.va === 'function') {
-                window.va('track', 'Email Link Clicked', {
-                    email: this.href.split('mailto:')[1].split('?')[0],
-                    location: this.closest('section')?.id || 'contacto'
-                });
-            }
-        });
-    });
-});
-
-// ===== MODAL DE DEMO =====
-function showDemoModal() {
-    let modal = document.getElementById('demo-modal');
-    if (!modal) {
-        modal = createDemoModal();
-        document.body.appendChild(modal);
-    }
-    modal.style.display = 'flex';
-}
-
-function createDemoModal() {
-    const modal = document.createElement('div');
-    modal.id = 'demo-modal';
-    modal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 10000;
-        backdrop-filter: blur(5px);
-    `;
-
-    modal.innerHTML = `
-        <div style="
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            position: relative;
-        ">
-            <button onclick="closeDemoModal()" style="
-                position: absolute;
-                top: 1rem;
-                right: 1rem;
-                background: none;
-                border: none;
-                font-size: 1.5rem;
-                cursor: pointer;
-                color: #666;
-            ">×</button>
-            
-            <h2 style="
-                color: #27ae60;
-                margin-bottom: 1rem;
-                text-align: center;
-            ">Solicitar Demo</h2>
-            
-            <p style="
-                color: #666;
-                margin-bottom: 2rem;
-                text-align: center;
-            ">Completa el formulario y nos pondremos en contacto contigo para agendar una demostración personalizada.</p>
-            
-            <form id="demo-form" style="display: flex; flex-direction: column; gap: 1rem;">
-                <input type="text" name="website" style="display: none !important; position: absolute; left: -9999px;" tabindex="-1" autocomplete="off">
-                
-                <input type="text" name="nombre" placeholder="Nombre completo" required style="
-                    padding: 1rem;
-                    border: 2px solid #eee;
-                    border-radius: 8px;
-                    font-size: 1rem;
-                ">
-                <input type="email" name="email" placeholder="Email corporativo" required style="
-                    padding: 1rem;
-                    border: 2px solid #eee;
-                    border-radius: 8px;
-                    font-size: 1rem;
-                ">
-                <input type="text" name="clinica" placeholder="Nombre de la clínica" required style="
-                    padding: 1rem;
-                    border: 2px solid #eee;
-                    border-radius: 8px;
-                    font-size: 1rem;
-                ">
-                <input type="tel" name="telefono" placeholder="Teléfono de contacto" style="
-                    padding: 1rem;
-                    border: 2px solid #eee;
-                    border-radius: 8px;
-                    font-size: 1rem;
-                ">
-                <textarea name="mensaje" placeholder="Cuéntanos sobre tu clínica y necesidades específicas" rows="4" style="
-                    padding: 1rem;
-                    border: 2px solid #eee;
-                    border-radius: 8px;
-                    font-size: 1rem;
-                    resize: vertical;
-                "></textarea>
-                
-                <button type="submit" style="
-                    background: linear-gradient(135deg, #27ae60, #2ecc71);
-                    color: white;
-                    padding: 1rem 2rem;
-                    border: none;
-                    border-radius: 50px;
-                    font-size: 1.1rem;
-                    font-weight: 600;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                ">Solicitar Demo</button>
-            </form>
-        </div>
-    `;
-
-    const form = modal.querySelector('#demo-form');
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        handleDemoSubmission(this);
-    });
-
-    return modal;
-}
-
-function closeDemoModal() {
-    const modal = document.getElementById('demo-modal');
-    if (modal) {
-        modal.style.display = 'none';
-    }
-}
-
-async function handleDemoSubmission(form) {
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
-
-    if (!validateFormData(data)) return;
-
-    const button = form.querySelector('button[type="submit"]');
-    const originalText = button.textContent;
-    button.textContent = 'Enviando...';
-    button.disabled = true;
-
-    try {
-        const response = await fetch('/api/send-demo-request', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Cache-Control': 'no-cache'
-            },
-            body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-            showSuccess(result.message || 'Solicitud enviada exitosamente');
-            closeDemoModal();
-            resetForm(button, originalText);
-        } else {
-            showError(result.error || 'Error al enviar la solicitud');
-            resetButton(button, originalText);
-        }
-    } catch (error) {
-        console.error('Error enviando formulario:', error);
-        showError('Error de conexión. Por favor intenta nuevamente.');
-        resetButton(button, originalText);
-    }
-}
-
-function validateFormData(data) {
-    if (!data.nombre || data.nombre.trim().length < 2) {
-        showError('El nombre debe tener al menos 2 caracteres');
-        return false;
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!data.email || !emailRegex.test(data.email)) {
-        showError('Por favor ingresa un email válido');
-        return false;
-    }
-    if (!data.clinica || data.clinica.trim().length < 2) {
-        showError('El nombre de la clínica es requerido');
-        return false;
-    }
-    return true;
-}
-
-function resetForm(button, originalText) {
-    const form = document.getElementById('demo-form');
-    if (form) form.reset();
-    resetButton(button, originalText);
-}
-
-function resetButton(button, originalText) {
-    button.textContent = originalText;
-    button.disabled = false;
-}
-
-function showError(message) {
-    const existingError = document.querySelector('.form-error');
-    if (existingError) existingError.remove();
-
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'form-error';
-    errorDiv.style.cssText = `
-        background: #ffebee;
-        color: #c62828;
-        padding: 1rem;
-        border-radius: 8px;
-        margin: 1rem 0;
-        border-left: 4px solid #c62828;
-        font-size: 0.9rem;
-    `;
-    errorDiv.textContent = message;
-
-    const form = document.getElementById('demo-form');
-    if (form) form.insertBefore(errorDiv, form.firstChild);
-
-    setTimeout(() => {
-        if (errorDiv.parentNode) errorDiv.remove();
-    }, 5000);
-}
-
-function showSuccess(message) {
-    const successDiv = document.createElement('div');
-    successDiv.className = 'form-success';
-    successDiv.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: #e8f5e8;
-        color: #2e7d32;
-        padding: 1rem 2rem;
-        border-radius: 8px;
-        border-left: 4px solid #2e7d32;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        z-index: 10001;
-        max-width: 400px;
-    `;
-    successDiv.textContent = message;
-    document.body.appendChild(successDiv);
-
-    setTimeout(() => {
-        if (successDiv.parentNode) successDiv.remove();
-    }, 5000);
-}
-
-// Cerrar modal al hacer click fuera
-document.addEventListener('click', function (e) {
-    const modal = document.getElementById('demo-modal');
-    if (e.target === modal) closeDemoModal();
-});
-
-// ===== OPTIMIZACIONES DE RENDIMIENTO: Lazy loading =====
+// ===== LAZY LOADING =====
 if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
-            }
-        });
+    const imgObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => { if (entry.isIntersecting) { const img = entry.target; img.src = img.dataset.src; img.classList.remove('lazy'); obs.unobserve(img); } });
     });
-
-    document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
-    });
+    document.querySelectorAll('img[data-src]').forEach(img => imgObserver.observe(img));
 }
-
-function preloadCriticalResources() {
-    const criticalImages = ['assets/AJLOGO.png'];
-    criticalImages.forEach(src => {
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.as = 'image';
-        link.href = src;
-        document.head.appendChild(link);
-    });
-}
-
-document.addEventListener('DOMContentLoaded', preloadCriticalResources);
-
-// ===== ACCESIBILIDAD: Navegación por teclado =====
-document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeDemoModal();
+document.addEventListener('DOMContentLoaded', () => {
+    ['assets/AJLOGO.png'].forEach(src => { const l = document.createElement('link'); l.rel = 'preload'; l.as = 'image'; l.href = src; document.head.appendChild(l); });
 });
 
-function trapFocus(element) {
-    const focusableElements = element.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    );
-    const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
+// ===== ACCESIBILIDAD =====
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { const m = document.getElementById('demo-modal'); if (m) m.style.display = 'none'; } });
 
-    element.addEventListener('keydown', function (e) {
-        if (e.key === 'Tab') {
-            if (e.shiftKey) {
-                if (document.activeElement === firstElement) {
-                    lastElement.focus();
-                    e.preventDefault();
-                }
-            } else {
-                if (document.activeElement === lastElement) {
-                    firstElement.focus();
-                    e.preventDefault();
-                }
-            }
-        }
-    });
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    const modal = document.getElementById('demo-modal');
-    if (modal) trapFocus(modal);
-});
-
-// ===== TYPING ANIMATION: Animación de escritura en hero tagline =====
+// ===== TYPING ANIMATION =====
 document.addEventListener('DOMContentLoaded', function () {
     const heroTagline = document.querySelector('.hero-tagline');
     if (!heroTagline) return;
-
-    const texts = [
-        'Transformando datos en decisiones inteligentes',
-        'Anímate a pegar el salto al mundo digital',
-        'Potencia tu negocio con inteligencia artificial'
-    ];
-
-    const fonts = [
-        'Inter, sans-serif',
-        'Poppins, sans-serif',
-        'Raleway, sans-serif'
-    ];
-
-    let currentTextIndex = 0;
-    let currentFontIndex = 0;
-    let currentCharIndex = 0;
-    let isTyping = true;
-    const typeSpeed = 70;
-    const deleteSpeed = 40;
-    const pauseAfterComplete = 3000;
-    const pauseAfterDelete = 500;
-    let animationTimeout = null;
-
-    function getCurrentText() {
-        return texts[currentTextIndex];
-    }
-
-    function applyCurrentFont() {
-        heroTagline.style.fontFamily = fonts[currentFontIndex];
-    }
-
-    function typeText() {
-        const currentText = getCurrentText();
-        if (currentCharIndex < currentText.length) {
-            heroTagline.textContent = currentText.substring(0, currentCharIndex + 1);
-            currentCharIndex++;
-            animationTimeout = setTimeout(typeText, typeSpeed);
-        } else {
-            animationTimeout = setTimeout(() => {
-                isTyping = false;
-                deleteText();
-            }, pauseAfterComplete);
-        }
-    }
-
-    function deleteText() {
-        if (currentCharIndex > 0) {
-            const currentText = getCurrentText();
-            heroTagline.textContent = currentText.substring(0, currentCharIndex - 1);
-            currentCharIndex--;
-            animationTimeout = setTimeout(deleteText, deleteSpeed);
-        } else {
-            currentTextIndex = (currentTextIndex + 1) % texts.length;
-            currentFontIndex = (currentFontIndex + 1) % fonts.length;
-            applyCurrentFont();
-            animationTimeout = setTimeout(() => {
-                isTyping = true;
-                typeText();
-            }, pauseAfterDelete);
-        }
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                heroTagline.textContent = '';
-                currentCharIndex = 0;
-                isTyping = true;
-                applyCurrentFont();
-                typeText();
-                observer.disconnect();
-            }
-        });
-    }, { threshold: 0.1 });
-
-    observer.observe(heroTagline);
-
-    window.addEventListener('beforeunload', () => {
-        if (animationTimeout) clearTimeout(animationTimeout);
-    });
+    const texts = ['Transformando datos en decisiones inteligentes', 'Animate a pegar el salto al mundo digital', 'Potencia tu negocio con inteligencia artificial'];
+    const fonts = ['Inter, sans-serif', 'Poppins, sans-serif', 'Raleway, sans-serif'];
+    let ti = 0, fi = 0, ci = 0, t = null;
+    function typeText() { const txt = texts[ti]; if (ci < txt.length) { heroTagline.textContent = txt.substring(0, ++ci); t = setTimeout(typeText, 70); } else { t = setTimeout(deleteText, 3000); } }
+    function deleteText() { if (ci > 0) { heroTagline.textContent = texts[ti].substring(0, --ci); t = setTimeout(deleteText, 40); } else { ti = (ti + 1) % texts.length; fi = (fi + 1) % fonts.length; heroTagline.style.fontFamily = fonts[fi]; t = setTimeout(typeText, 500); } }
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { heroTagline.textContent = ''; ci = 0; heroTagline.style.fontFamily = fonts[0]; typeText(); obs.disconnect(); } }); }, { threshold: 0.1 });
+    obs.observe(heroTagline);
+    window.addEventListener('beforeunload', () => { if (t) clearTimeout(t); });
 });
 
-// ===== BOTÓN FLOTANTE DE CONTACTO =====
+// ===== BOTON FLOTANTE DE CONTACTO =====
 document.addEventListener('DOMContentLoaded', function () {
-    const floatingContactBtn = document.getElementById('floating-contact-btn');
-    
-    if (floatingContactBtn) {
-        floatingContactBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            
-            const contactoSection = document.getElementById('contacto');
-            if (contactoSection) {
-                contactoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                contactoSection.classList.add('highlight-section');
-                setTimeout(() => contactoSection.classList.remove('highlight-section'), 2000);
-            }
-        });
-        
-        let lastScrollTop = 0;
-        window.addEventListener('scroll', function () {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const contactoSection = document.getElementById('contacto');
-            
-            if (contactoSection) {
-                const contactoTop = contactoSection.offsetTop;
-                const contactoBottom = contactoTop + contactoSection.offsetHeight;
-                
-                if (scrollTop >= contactoTop - 100 && scrollTop <= contactoBottom) {
-                    floatingContactBtn.style.opacity = '0.5';
-                    floatingContactBtn.style.pointerEvents = 'none';
-                } else {
-                    floatingContactBtn.style.opacity = '1';
-                    floatingContactBtn.style.pointerEvents = 'auto';
-                }
-            }
-            
-            lastScrollTop = scrollTop;
-        }, { passive: true });
-    }
+    const btn = document.getElementById('floating-contact-btn'); if (!btn) return;
+    btn.addEventListener('click', e => { e.preventDefault(); const s = document.getElementById('contacto'); if (s) { s.scrollIntoView({ behavior: 'smooth', block: 'start' }); s.classList.add('highlight-section'); setTimeout(() => s.classList.remove('highlight-section'), 2000); } });
+    window.addEventListener('scroll', () => {
+        const s = document.getElementById('contacto'); if (!s) return;
+        const st = window.pageYOffset; const near = st >= s.offsetTop - 100 && st <= s.offsetTop + s.offsetHeight;
+        btn.style.opacity = near ? '0.5' : '1'; btn.style.pointerEvents = near ? 'none' : 'auto';
+    }, { passive: true });
 });
 
-/* ===================================================
+/* =============================================================
    THEME TOGGLE — Light / Dark / System
-   A&J Consulting IT
-   =================================================== */
+   -------------------------------------------------------------
+   El THEME INIT en <head> ya aplico data-theme antes del
+   primer paint. Este bloque solo sincroniza los botones
+   y escucha clics para cambiar el tema.
+============================================================= */
 (function () {
     'use strict';
-
     var STORAGE_KEY = 'aj-theme';
     var html = document.documentElement;
 
     function getSystemTheme() {
         return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
     }
-
-    function resolveTheme(mode) {
-        return mode === 'system' ? getSystemTheme() : mode;
-    }
-
+    function resolveTheme(mode) { return mode === 'system' ? getSystemTheme() : mode; }
     function applyTheme(mode) {
-        var resolved = resolveTheme(mode);
-        html.setAttribute('data-theme', resolved);
+        html.setAttribute('data-theme', resolveTheme(mode));
         localStorage.setItem(STORAGE_KEY, mode);
         updateButtons(mode);
-        updateParticlesColor(resolved);
     }
-
     function updateButtons(activeMode) {
-        var btns = document.querySelectorAll('.theme-toggle-btn');
-        btns.forEach(function (btn) {
+        document.querySelectorAll('.theme-toggle-btn').forEach(function (btn) {
             var isActive = btn.getAttribute('data-mode') === activeMode;
             btn.classList.toggle('active', isActive);
             btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
         });
     }
-
-    function updateParticlesColor(resolved) {
-        var canvas = document.querySelector('#particles-js canvas');
-        if (!canvas) return;
-        if (resolved === 'light') {
-            canvas.style.filter = 'brightness(1.8) saturate(0.6)';
-        } else {
-            canvas.style.filter = '';
-        }
-    }
-
     function init() {
         var toggle = document.getElementById('theme-toggle');
         if (!toggle) return;
-
-        var stored = localStorage.getItem(STORAGE_KEY) || 'dark';
-        applyTheme(stored);
-
+        // data-theme ya esta en <html> desde el head. Solo reflejar en botones:
+        updateButtons(localStorage.getItem(STORAGE_KEY) || 'dark');
         toggle.addEventListener('click', function (e) {
             var btn = e.target.closest('.theme-toggle-btn');
             if (!btn) return;
             var mode = btn.getAttribute('data-mode');
             if (mode) applyTheme(mode);
         });
-
         window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function () {
-            var current = localStorage.getItem(STORAGE_KEY) || 'dark';
-            if (current === 'system') applyTheme('system');
+            if ((localStorage.getItem(STORAGE_KEY) || 'dark') === 'system') applyTheme('system');
         });
     }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
-    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
 })();
