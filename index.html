@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-<!-- HEAD: Metadatos y configuraciones del documento -->
-
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WHJ1861P7R"></script>
@@ -9,51 +7,41 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-WHJ1861P7R');
     </script>
-    <!-- Codificación de caracteres UTF-8 para soporte de acentos -->
+
     <meta charset="UTF-8">
-    <!-- Viewport responsive para móviles -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- TÍTULO SEO OPTIMIZADO -->
     <title>A&J Consulting IT - KPIs e IA para tu Negocio</title>
-
-    <!-- META DESCRIPCIÓN SEO -->
-    <meta name="description"
-        content="Transformamos datos en decisiones inteligentes. Consultora especializada en KPIs, Inteligencia Artificial y Business Intelligence para Clínicas, Obras Viales, Restaurantes y más. Soluciones adaptadas a cada rubro.">
-
-    <!-- AUTOR Y COPYRIGHT -->
+    <meta name="description" content="Transformamos datos en decisiones inteligentes. Consultora especializada en KPIs, Inteligencia Artificial y Business Intelligence para Clínicas, Obras Viales, Restaurantes y más. Soluciones adaptadas a cada rubro.">
     <meta name="author" content="A&J Consulting IT">
     <meta name="copyright" content="© 2025 A&J Consulting IT">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-
-    <!-- CANONICAL URL -->
     <link rel="canonical" href="https://ajconsultingit.com/">
-
-    <!-- FAVICON OPTIMIZADO (22x22 - sin desperdiciar KB) -->
     <link rel="icon" type="image/png" href="/assets/logo-22x22.png">
     <link rel="shortcut icon" href="/assets/logo-22x22.png">
     <link rel="apple-touch-icon" href="/assets/logo-200x200.png">
 
-    <!-- THEME INIT: Bloquea flash de tema incorrecto antes del primer render -->
+    <!-- ═══════════════════════════════════════════════════════════════
+         THEME INIT — CRÍTICO: debe ejecutarse antes del primer paint.
+         Lee localStorage y pone data-theme en <html> de forma síncrona.
+         Esto evita el flash de tema incorrecto (FOUC) en cada carga.
+    ════════════════════════════════════════════════════════════════ -->
     <script>
-        (function() {
+        (function () {
             var stored = localStorage.getItem('aj-theme') || 'dark';
-            var resolved = stored;
-            if (stored === 'system') {
-                resolved = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-            }
+            var resolved = stored === 'system'
+                ? (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+                : stored;
             document.documentElement.setAttribute('data-theme', resolved);
         })();
     </script>
 
-    <!-- OPEN GRAPH OPTIMIZADO -->
+    <!-- OPEN GRAPH -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="A&J Consulting IT - KPIs e IA para tu Negocio">
-    <meta property="og:description"
-        content="Transformamos datos en decisiones inteligentes. Consultora especializada en KPIs, Inteligencia Artificial y Business Intelligence para múltiples rubros.">
-        <meta property="og:image" content="/assets/logo-500x500.png">
+    <meta property="og:description" content="Transformamos datos en decisiones inteligentes. Consultora especializada en KPIs, Inteligencia Artificial y Business Intelligence para múltiples rubros.">
+    <meta property="og:image" content="/assets/logo-500x500.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="A&J Consulting IT - Business Intelligence para Clínicas">
@@ -64,12 +52,11 @@
     <!-- TWITTER CARD -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="A&J Consulting IT - KPIs e IA para tu Negocio">
-    <meta name="twitter:description"
-        content="Transformamos datos en decisiones inteligentes. Consultora especializada en KPIs e IA para múltiples rubros.">
-        <meta name="twitter:image" content="/assets/logo-500x500.png">
+    <meta name="twitter:description" content="Transformamos datos en decisiones inteligentes. Consultora especializada en KPIs e IA para múltiples rubros.">
+    <meta name="twitter:image" content="/assets/logo-500x500.png">
     <meta name="twitter:image:alt" content="A&J Consulting IT - Business Intelligence para Clínicas">
 
-    <!-- SCHEMA.ORG STRUCTURED DATA -->
+    <!-- SCHEMA.ORG -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -78,7 +65,7 @@
         "alternateName": "A&J Consulting",
         "url": "https://ajconsultingit.com",
         "logo": "/assets/AJLOGO.png",
-        "description": "Consultora especializada en KPIs, Inteligencia Artificial y Business Intelligence. Transformamos datos en decisiones inteligentes para múltiples rubros.",
+        "description": "Consultora especializada en KPIs, Inteligencia Artificial y Business Intelligence.",
         "foundingDate": "2025",
         "industry": "Business Intelligence & AI Consulting",
         "areaServed": "Argentina",
@@ -88,1682 +75,413 @@
             "email": "franciscoaucar@ajconsultingit.com",
             "availableLanguage": "Spanish"
         },
-        "sameAs": [
-            "https://www.linkedin.com/company/a-j-consultingit-software/about/"
-        ],
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "AR"
-        },
-        "service": [
-            {
-                "@type": "Service",
-                "name": "KPIs e Inteligencia Artificial",
-                "description": "Generación de métricas personalizadas y análisis predictivo con IA"
-            },
-            {
-                "@type": "Service",
-                "name": "Business Intelligence para Clínicas",
-                "description": "Dashboard de KPIs médicos y análisis predictivo para clínicas"
-            },
-            {
-                "@type": "Service",
-                "name": "Monitoreo de Obras Viales",
-                "description": "Sistema de seguimiento y análisis de avance de obras viales"
-            },
-            {
-                "@type": "Service",
-                "name": "Soluciones para Restaurantes",
-                "description": "KPIs y análisis para optimización de restaurantes y bares"
-            }
-        ]
+        "sameAs": ["https://www.linkedin.com/company/a-j-consultingit-software/about/"],
+        "address": { "@type": "PostalAddress", "addressCountry": "AR" }
     }
     </script>
 
-    <!-- Preconexión a Google Fonts para mayor velocidad (única declaración) -->
+    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
         rel="stylesheet" media="print" onload="this.media='all'">
     <noscript>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
-            rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     </noscript>
-    <!-- ESTILOS PRINCIPALES: CSS principal de la aplicación (crítico) -->
+
+    <!-- CSS PRINCIPAL -->
     <link rel="preload" href="css/styles.css?v=2.0.6" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="css/styles.css?v=2.0.6">
-    </noscript>
+    <noscript><link rel="stylesheet" href="css/styles.css?v=2.0.6"></noscript>
 
-    <!-- Estilos para sección de rubros y casos unificada (integrado en styles.css) -->
-
-    <!-- Preload de imágenes críticas (logo principal del hero optimizado) -->
+    <!-- PRELOAD IMÁGENES CRÍTICAS -->
     <link rel="preload" as="image" href="/assets/logo-200x200.png" type="image/png">
-    <!-- Preload de imagen del loader (crítica para Android) -->
     <link rel="preload" as="image" href="/assets/AJLOGO-80x80.png" type="image/png">
 
-    <!-- VERCEL ANALYTICS: Script de seguimiento optimizado -->
-    <script>
-        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
+    <!-- VERCEL ANALYTICS -->
+    <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
     <script defer src="/_vercel/insights/script.js"></script>
-
-    <!-- VERCEL SPEED INSIGHTS: Monitoreo de rendimiento -->
-    <script>
-        window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-    </script>
+    <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
 
-    <!-- ICONIFY: Biblioteca de iconos (diferido) -->
+    <!-- ICONIFY -->
     <script defer src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
-    <!-- SWIPER: Biblioteca para carrusel con efecto Flip (diferido) -->
+    <!-- SWIPER CSS -->
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style"
         onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    </noscript>
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"></noscript>
 
     <style>
-        /* ===== VARIABLES CSS: Colores y configuraciones globales ===== */
+        /* ══════════════════════════════════════════════════
+           VARIABLES CSS BASE
+        ══════════════════════════════════════════════════ */
         :root {
-            /* Colores principales: Negro, Blanco, Verde */
             --primary-color: #000000;
-            /* Negro principal */
             --primary-hover: #333333;
-            /* Negro para hover */
             --secondary-color: #27ae60;
-            /* Verde principal */
             --accent-color: #2ecc71;
-            /* Verde claro accent */
             --dark-bg: #000000;
-            /* Fondo oscuro */
             --text-dark: #000000;
-            /* Texto negro */
             --text-light: #ffffff;
-            /* Texto blanco */
             --text-muted: #666666;
-            /* Texto gris */
             --card-bg: rgba(255, 255, 255, 0.95);
-            /* Fondo tarjetas */
-            /* Sombras y efectos */
             --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.1);
             --shadow-medium: 0 8px 32px rgba(0, 0, 0, 0.15);
             --border-radius: 16px;
-            /* Radio de bordes */
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            /* Transición suave */
         }
 
-        /* ===== RESET CSS: Eliminar estilos predeterminados ===== */
-        * {
-            margin: 0;
-            /* Sin márgenes */
-            padding: 0;
-            /* Sin espaciado interno */
-            box-sizing: border-box;
-            /* Incluir bordes en el tamaño */
-        }
-
-        /* ===== HTML: Configuración de scroll suave ===== */
-        html {
-            scroll-behavior: smooth;
-            /* Scroll suave entre secciones */
-        }
-
-        /* ===== BODY: Tipografía y configuración base ===== */
+        /* ══════════════════════════════════════════════════
+           RESET
+        ══════════════════════════════════════════════════ */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            /* Fuente principal */
             line-height: 1.7;
-            /* Espaciado entre líneas */
             color: var(--text-dark);
-            /* Color de texto predeterminado */
             overflow-x: hidden;
-            /* Ocultar scroll horizontal */
         }
 
-        /* ===== FONDO HERO: Gradiente animado CSS puro (sin JS, sin partículas) ===== */
-        #particles-js {
-            display: none; /* Deshabilitado - reemplazado por gradiente CSS */
-        }
-
-        /* ===== HEADER: Navegación fija superior ===== */
+        /* ══════════════════════════════════════════════════
+           HEADER — BASE
+           NO hay inline styles en JS. Solo se agrega/quita
+           la clase .header-scrolled. El tema controla el
+           aspecto a través de [data-theme] en <html>.
+        ══════════════════════════════════════════════════ */
         .header {
             position: fixed;
-            /* Fijo en la parte superior */
-            top: 0;
-            /* Pegado arriba */
-            left: 0;
-            /* Desde la izquierda */
-            right: 0;
-            /* Hasta la derecha */
+            top: 0; left: 0; right: 0;
             z-index: 9999;
-            /* Por encima de otros elementos - z-index alto para asegurar que esté siempre visible */
             isolation: isolate;
-            /* Crear contexto de apilamiento aislado para asegurar que esté por encima */
-            background: linear-gradient(to bottom,
-                    rgba(255, 255, 255, 0.25) 0%,
-                    rgba(255, 255, 255, 0.20) 25%,
-                    rgba(255, 255, 255, 0.15) 50%,
-                    rgba(255, 255, 255, 0.10) 75%,
-                    rgba(255, 255, 255, 0.05) 100%);
-            /* Fondo blanco transparente - sin blur */
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            /* Borde inferior sutil */
-            transition: var(--transition);
-            /* Transición suave */
+            transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+            border-bottom: 1px solid transparent;
         }
 
-        /* ===== CONTENEDOR DE NAVEGACIÓN: Layout del header ===== */
+        /* ── Dark theme (default) ── */
+        [data-theme="dark"] .header {
+            background: linear-gradient(to bottom,
+                rgba(10, 15, 25, 0.55) 0%,
+                rgba(10, 15, 25, 0.35) 60%,
+                rgba(10, 15, 25, 0.10) 100%);
+            border-bottom-color: rgba(255, 255, 255, 0.06);
+        }
+        [data-theme="dark"] .header.header-scrolled {
+            background: rgba(12, 18, 30, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+            border-bottom-color: rgba(39, 174, 96, 0.15);
+        }
+
+        /* ── Light theme ── */
+        [data-theme="light"] .header {
+            background: linear-gradient(to bottom,
+                rgba(255, 255, 255, 0.75) 0%,
+                rgba(255, 255, 255, 0.55) 60%,
+                rgba(255, 255, 255, 0.20) 100%);
+            border-bottom-color: rgba(0, 0, 0, 0.06);
+        }
+        [data-theme="light"] .header.header-scrolled {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10);
+            border-bottom-color: rgba(39, 174, 96, 0.15);
+        }
+
+        /* ══════════════════════════════════════════════════
+           NAV
+        ══════════════════════════════════════════════════ */
         .nav-container {
             max-width: 1200px;
-            /* Ancho máximo */
             margin: 0 auto;
-            /* Centrado */
             padding: 1rem 2rem;
-            /* Espaciado interno */
             display: flex;
-            /* Layout flexbox */
             justify-content: space-between;
-            /* Separar elementos */
             align-items: center;
-            /* Centrar verticalmente */
             position: relative;
-            /* Posición relativa para elementos internos */
             z-index: 10000;
-            /* Por encima del pseudo-elemento del header y de todo el contenido */
         }
-
-        /* ===== CONTENEDOR DEL LOGO: Agrupa icono y texto ===== */
-        .logo-wrapper {
-            display: flex;
-            /* Layout flexbox */
-            align-items: center;
-            /* Centrar verticalmente */
-            gap: 0.75rem;
-            /* Espacio entre icono y texto */
-        }
-
-        /* ===== LOGO DE NAVEGACIÓN: Marca clickeable que lleva al inicio ===== */
-        .logo-nav {
-            display: flex;
-            /* Layout flexbox */
-            align-items: center;
-            /* Centrar verticalmente */
-            text-decoration: none;
-            /* Sin subrayado */
-        }
-
-        /* ===== ICONO DEL LOGO: Estilo del icono en navegación ===== */
-        .logo-nav i {
-            font-size: 2rem;
-            /* Tamaño del icono */
-            color: var(--secondary-color);
-            /* Color verde */
-        }
-
-        /* Ocultar icono en todos los tamaños */
-        .logo-nav iconify-icon {
-            display: none !important;
-        }
-
-        /* ===== TEXTO DEL LOGO: Nombre de la empresa (no linkeable) ===== */
+        .logo-wrapper { display: flex; align-items: center; gap: 0.75rem; }
+        .logo-nav { display: flex; align-items: center; text-decoration: none; }
+        .logo-nav i { font-size: 2rem; color: var(--secondary-color); }
+        .logo-nav iconify-icon { display: none !important; }
         .logo-wrapper .logo-text {
-            font-weight: 800;
-            /* Texto muy grueso */
-            font-size: 1.5rem;
-            /* Tamaño de fuente */
+            font-weight: 800; font-size: 1.5rem;
             color: var(--secondary-color);
-            /* Color verde */
-            pointer-events: none;
-            /* No permite interacción (no clickeable) */
-            user-select: none;
-            /* No permite selección de texto */
+            pointer-events: none; user-select: none;
         }
-
-        /* ===== MENÚ DE NAVEGACIÓN: Lista de enlaces ===== */
-        .nav-menu {
-            display: flex;
-            /* Layout flexbox */
-            list-style: none;
-            /* Sin viñetas */
-            gap: 2rem;
-            /* Espacio entre elementos */
-        }
-
-        /* ===== ENLACES DE NAVEGACIÓN: Estilo de los links ===== */
+        .nav-menu { display: flex; list-style: none; gap: 2rem; }
         .nav-menu a {
-            color: var(--text-dark);
-            /* Color negro */
-            text-decoration: none;
-            /* Sin subrayado */
-            font-weight: 500;
-            /* Peso medio */
-            transition: var(--transition);
-            /* Transición suave */
-            padding: 0.5rem 1rem;
-            /* Espaciado interno */
-            border-radius: 8px;
-            /* Bordes redondeados */
+            color: var(--text-dark); text-decoration: none;
+            font-weight: 500; transition: var(--transition);
+            padding: 0.5rem 1rem; border-radius: 8px;
         }
-
-        /* ===== HOVER EN NAVEGACIÓN: Efecto al pasar el mouse ===== */
         .nav-menu a:hover {
             color: var(--secondary-color);
-            /* Cambiar a verde */
             background: rgba(39, 174, 96, 0.1);
-            /* Fondo verde transparente */
         }
-
-        /* ===== GLOW MENU TRIGGER: Botón para activar el menú avanzado ===== */
         .glow-menu-trigger {
             display: none;
-            /* Oculto por defecto en desktop */
             background: linear-gradient(135deg, #27ae60, #2ecc71);
-            border: none;
-            border-radius: 12px;
-            padding: 0.75rem;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
+            border: none; border-radius: 12px; padding: 0.75rem;
+            color: white; font-size: 1.2rem; cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
-            position: relative;
-            overflow: hidden;
+            position: relative; overflow: hidden;
         }
+        .glow-menu-trigger:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4); }
 
-        .glow-menu-trigger:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
-        }
+        /* ══════════════════════════════════════════════════
+           MAIN CONTAINER
+        ══════════════════════════════════════════════════ */
+        .main-container { position: relative; z-index: 1; padding-top: 100px; }
 
-        .glow-menu-trigger:active {
-            transform: translateY(0);
-        }
-
-        /* ===== CONTENEDOR PRINCIPAL: Wrapper del contenido ===== */
-        .main-container {
-            position: relative;
-            /* Posición relativa */
-            z-index: 1;
-            /* Por encima del fondo pero detrás del header (z-index: 9999) */
-            padding-top: 100px;
-            /* Espacio para el header fijo */
-        }
-
-        /* ===== SECCIÓN HERO: Pantalla principal ===== */
+        /* ══════════════════════════════════════════════════
+           HERO
+        ══════════════════════════════════════════════════ */
         .hero-section {
             min-height: 100vh;
-            /* Altura mínima de pantalla completa */
-            display: flex;
-            /* Layout flexbox */
-            align-items: center;
-            /* Centrar verticalmente */
-            justify-content: center;
-            /* Centrar horizontalmente */
-            text-align: center;
-            /* Texto centrado */
-            padding: 2rem;
-            /* Espaciado interno */
-            position: relative;
-            /* Posición relativa */
-            z-index: 1;
-            /* Asegurar que quede detrás del header */
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 2rem;
+            position: relative; z-index: 1;
         }
-
-        /* ===== CONTENIDO HERO: Wrapper del contenido principal ===== */
-        .hero-content {
-            max-width: 900px;
-            /* Ancho máximo */
-            margin: 0 auto;
-            /* Centrado */
-            position: relative;
-            /* Posición relativa */
-            z-index: 1;
-            /* Asegurar que quede detrás del header */
-        }
-
-        /* ===== LOGO HERO: Contenedor del logo principal ===== */
+        .hero-content { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
         .hero-logo {
-            display: flex;
-            /* Layout flexbox */
-            align-items: center;
-            /* Centrar verticalmente */
-            justify-content: center;
-            /* Centrar horizontalmente */
-            margin-bottom: 3rem;
-            /* Margen inferior */
-            position: relative;
-            /* Posición relativa */
-            z-index: 1;
-            /* Asegurar que quede detrás del header */
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 3rem; position: relative; z-index: 1;
         }
-
-        /* ===== LOGO FLOTANTE: Imagen del logo con animación ===== */
         .floating-logo {
-            width: 180px;
-            /* Ancho fijo */
-            height: auto;
-            /* Alto automático */
+            width: 180px; height: auto;
             animation: floatLogo 4s ease-in-out infinite;
-            /* Animación flotante */
             filter: drop-shadow(0 10px 30px rgba(39, 174, 96, 0.3));
-            /* Sombra verde */
             border-radius: 20px;
-            /* Bordes redondeados */
         }
-
-        /* ===== ANIMACIÓN FLOTANTE: Movimiento del logo ===== */
         @keyframes floatLogo {
-
-            0%,
-            100% {
-                transform: translateY(0) scale(1);
-                /* Posición inicial */
-            }
-
-            50% {
-                transform: translateY(-15px) scale(1.05);
-                /* Movimiento hacia arriba y escala */
-            }
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.05); }
         }
-
-        /* ===== TEXTO DEL LOGO: Título principal en hero ===== */
         .hero-section .logo-text {
-            font-size: 4rem;
-            /* Tamaño grande */
-            font-weight: 900;
-            /* Muy grueso */
-            letter-spacing: -2px;
-            /* Espaciado entre letras */
-            color: white;
-            /* Color blanco */
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            /* Sombra de texto */
-            margin: 2rem 0 1rem 0;
-            /* Márgenes */
-            text-align: center;
-            /* Centrado */
-            position: relative;
-            /* Posición relativa */
-            z-index: 0;
-            /* z-index 0 para asegurar que quede detrás del header (z-index: 9999) */
+            font-size: 4rem; font-weight: 900; letter-spacing: -2px;
+            color: white; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            margin: 2rem 0 1rem 0; text-align: center; position: relative; z-index: 0;
         }
-
-        /* ===== SUBTÍTULO DEL LOGO: Descripción bajo el título ===== */
         .logo-subtitle {
-            font-size: 1.2rem;
-            /* Tamaño medio */
-            color: var(--secondary-color);
-            /* Color verde */
-            font-weight: 600;
-            /* Semi-grueso */
-            letter-spacing: 4px;
-            /* Espaciado entre letras */
-            text-transform: uppercase;
-            /* Mayúsculas */
-            margin-bottom: 2rem;
-            /* Margen inferior */
-            text-align: center;
-            /* Centrado */
-            text-shadow: 0 2px 10px rgba(39, 174, 96, 0.3);
-            /* Sombra verde */
+            font-size: 1.2rem; color: var(--secondary-color); font-weight: 600;
+            letter-spacing: 4px; text-transform: uppercase; margin-bottom: 2rem;
+            text-align: center; text-shadow: 0 2px 10px rgba(39, 174, 96, 0.3);
         }
-
-        /* ===== DESCRIPCIÓN HERO: Texto descriptivo principal ===== */
         .hero-description {
-            font-size: 1.5rem;
-            /* Tamaño mediano */
-            color: rgba(255, 255, 255, 0.95);
-            /* Blanco casi opaco */
-            margin-bottom: 2rem;
-            /* Margen inferior */
-            font-weight: 400;
-            /* Peso normal */
-            position: relative;
-            /* Posición relativa */
-            z-index: 1;
-            /* Asegurar que quede detrás del header */
+            font-size: 1.5rem; color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem; font-weight: 400; position: relative; z-index: 1;
         }
-
-        /* ===== TAGLINE HERO: Eslogan principal ===== */
         .hero-tagline {
-            font-size: 1.8rem;
-            /* Tamaño grande */
-            color: white;
-            /* Color blanco */
-            margin-bottom: 3rem;
-            /* Margen inferior */
-            font-weight: 600;
-            /* Semi-grueso */
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            /* Sombra de texto */
-            position: relative;
-            /* Posición relativa */
-            z-index: 0;
-            /* z-index 0 para asegurar que quede detrás del header (z-index: 9999) */
+            font-size: 1.8rem; color: white; margin-bottom: 3rem; font-weight: 600;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); position: relative; z-index: 0;
         }
-
-        /* ===== BOTONES HERO: Contenedor de botones de acción ===== */
         .hero-buttons {
-            display: flex;
-            /* Layout flexbox */
-            gap: 1.5rem;
-            /* Espacio entre botones */
-            justify-content: center;
-            /* Centrar */
-            flex-wrap: wrap;
-            /* Permitir salto de línea */
-            margin-top: 3rem;
-            /* Margen superior */
+            display: flex; gap: 1.5rem; justify-content: center;
+            flex-wrap: wrap; margin-top: 3rem;
             transition: opacity 0.6s ease, transform 0.6s ease;
-            /* Transición suave igual que section-card */
         }
 
-        /* ===== BOTÓN BASE: Estilo base para todos los botones ===== */
+        /* ══════════════════════════════════════════════════
+           BUTTONS
+        ══════════════════════════════════════════════════ */
         .btn {
-            padding: 1rem 2rem;
-            /* Espaciado interno */
-            border: none;
-            /* Sin borde */
-            border-radius: 999px;
-            /* Forma de píldora */
-            font-size: 1.1rem;
-            /* Tamaño de fuente */
-            font-weight: 600;
-            /* Semi-grueso */
-            cursor: pointer;
-            /* Cursor de mano */
-            transition: var(--transition);
-            /* Transición suave */
-            text-decoration: none;
-            /* Sin subrayado */
-            display: inline-flex;
-            /* Flexbox en línea */
-            align-items: center;
-            /* Centrar verticalmente */
-            gap: 0.75rem;
-            /* Espacio entre elementos */
-            min-width: 180px;
-            /* Ancho mínimo */
-            justify-content: center;
-            /* Centrar contenido */
+            padding: 1rem 2rem; border: none; border-radius: 999px;
+            font-size: 1.1rem; font-weight: 600; cursor: pointer;
+            transition: var(--transition); text-decoration: none;
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            min-width: 180px; justify-content: center;
         }
-
-        /* ===== BOTÓN PRIMARIO: Botón principal verde ===== */
         .btn-primary {
             background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
-            /* Degradado verde */
-            color: white;
-            /* Texto blanco */
-            box-shadow: var(--shadow-light);
-            /* Sombra */
+            color: white; box-shadow: var(--shadow-light);
         }
-
-        /* ===== HOVER BOTÓN PRIMARIO: Efecto al pasar el mouse ===== */
         .btn-primary:hover:not(:disabled) {
-            transform: translateY(-2px);
-            /* Mover hacia arriba */
-            box-shadow: var(--shadow-medium);
-            /* Sombra más intensa */
+            transform: translateY(-2px); box-shadow: var(--shadow-medium);
             background: linear-gradient(135deg, #2ecc71, #27ae60);
-            /* Degradado invertido */
         }
-
-        /* ===== BOTÓN DISABLED: Estilo para botones deshabilitados ===== */
-        .btn-primary:disabled,
-        .btn:disabled {
-            opacity: 0.7;
-            /* Opacidad reducida */
-            cursor: not-allowed;
-            /* Cursor de no permitido */
-            pointer-events: none;
-            /* Sin interacciones */
-        }
-
-        /* ===== BOTÓN SECUNDARIO: Botón verde ===== */
+        .btn-primary:disabled, .btn:disabled { opacity: 0.7; cursor: not-allowed; pointer-events: none; }
         .btn-secondary {
             background: rgba(39, 174, 96, 0.1);
-            /* Fondo verde transparente */
-            color: var(--secondary-color);
-            /* Texto verde */
-            border: 2px solid var(--secondary-color);
-            /* Borde verde */
+            color: var(--secondary-color); border: 2px solid var(--secondary-color);
         }
-
-        /* ===== BOTÓN SHIMMER: Inspirado en MagicUI ShimmerButton ===== */
+        .btn-secondary:hover {
+            background: var(--secondary-color); color: white;
+            transform: translateY(-2px); box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+        }
         .btn-shimmer {
-            position: relative;
-            overflow: hidden;
-            /* Ocultar desbordamiento para contener el shimmer */
+            position: relative; overflow: hidden;
             background: linear-gradient(135deg, #0b3d26, #146c40);
-            /* Verde oscuro profundo para resaltar el brillo */
-            color: #ffffff;
-            border: none;
-            border-radius: 999px;
-            /* Aspecto de píldora moderno */
+            color: #ffffff; border: none; border-radius: 999px;
             box-shadow: 0 4px 14px 0 rgba(39, 174, 96, 0.39);
             transition: all 0.3s ease;
         }
-
-        /* Shimmer mejorado: Gradiente blanco con blur suave y mayor opacidad */
         .btn-shimmer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.4),
-                    rgba(255, 255, 255, 0.6),
-                    rgba(255, 255, 255, 0.8),
-                    rgba(255, 255, 255, 0.6),
-                    rgba(255, 255, 255, 0.4),
-                    transparent);
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), rgba(255,255,255,0.6), rgba(255,255,255,0.8), rgba(255,255,255,0.6), rgba(255,255,255,0.4), transparent);
             filter: blur(8px);
-            /* Blur suave para mejor visibilidad */
-            animation: shimmer-sweep 3s ease-in-out infinite;
-            pointer-events: none;
+            animation: shimmer-sweep 3s ease-in-out infinite; pointer-events: none;
         }
+        .btn-shimmer:hover { background: linear-gradient(135deg, #23a864, #35ce81); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(39, 174, 96, 0.5); }
+        .btn-shimmer:hover::before { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), rgba(255,255,255,0.3), rgba(255,255,255,0.4), rgba(255,255,255,0.3), rgba(255,255,255,0.2), transparent); animation-duration: 4s; }
+        @keyframes shimmer-sweep { 0% { left: -100%; } 50% { left: 100%; } 100% { left: 100%; } }
+        @media (prefers-reduced-motion: reduce) { .btn-shimmer::before { animation: none; } .btn-shimmer:hover { transform: translateY(-2px); } }
+        .btn-outline-white { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.7); }
+        .btn-outline-white:hover { background: rgba(255,255,255,0.15); border-color: white; transform: translateY(-2px); }
 
-        /* Hover suave: verde se aclara y shimmer se suaviza */
-        .btn-shimmer:hover {
-            background: linear-gradient(135deg, #23a864, #35ce81);
-            /* Verde más claro al pasar el mouse */
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.5);
-        }
-
-        /* Shimmer suavizado en hover: opacidad reducida y animación más lenta */
-        .btn-shimmer:hover::before {
-            background: linear-gradient(90deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.2),
-                    rgba(255, 255, 255, 0.3),
-                    rgba(255, 255, 255, 0.4),
-                    rgba(255, 255, 255, 0.3),
-                    rgba(255, 255, 255, 0.2),
-                    transparent);
-            animation-duration: 4s;
-            /* Animación más lenta en hover */
-        }
-
-        /* Animación del brillo que recorre de izquierda a derecha */
-        @keyframes shimmer-sweep {
-            0% {
-                left: -100%;
-            }
-
-            50% {
-                left: 100%;
-            }
-
-            100% {
-                left: 100%;
-            }
-        }
-
-        /* Accesibilidad */
-        @media (prefers-reduced-motion: reduce) {
-            .btn-shimmer::before {
-                animation: none;
-            }
-
-            .btn-shimmer:hover {
-                transform: translateY(-2px);
-            }
-        }
-
-        /* ===== HOVER BOTÓN SECUNDARIO: Efecto al pasar el mouse ===== */
-        .btn-secondary:hover {
-            background: var(--secondary-color);
-            /* Fondo verde sólido */
-            color: white;
-            /* Texto blanco */
-            transform: translateY(-2px);
-            /* Mover hacia arriba */
-            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
-            /* Sombra verde */
-        }
-
-        /* ===== SECCIONES DE CONTENIDO: Contenedor general de secciones ===== */
-        .content-section {
-            padding: 5rem 2rem;
-            /* Espaciado interno amplio */
-            max-width: 800px;
-            /* Ancho máximo reducido */
-            margin: 0 auto;
-            /* Centrado */
-        }
-
-        /* ===== TARJETA DE SECCIÓN: Contenedor con fondo ===== */
+        /* ══════════════════════════════════════════════════
+           CONTENT SECTIONS
+        ══════════════════════════════════════════════════ */
+        .content-section { padding: 5rem 2rem; max-width: 800px; margin: 0 auto; }
         .section-card {
             background: rgba(255, 255, 255, 0.4);
-            /* Fondo blanco semi-transparente (40% opacidad) - Glass effect */
-            backdrop-filter: blur(2px) saturate(120%);
-            /* Efecto glass muy sutil con blur mínimo y saturación moderada */
-            -webkit-backdrop-filter: blur(2px) saturate(120%);
-            /* Soporte para Safari */
-            border-radius: var(--border-radius);
-            /* Bordes redondeados */
-            padding: 3rem;
-            /* Espaciado interno */
-            margin: 2rem 0;
-            /* Márgenes verticales */
-            box-shadow: var(--shadow-light);
-            /* Sombra */
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            /* Borde sutil semi-transparente */
+            backdrop-filter: blur(2px) saturate(120%); -webkit-backdrop-filter: blur(2px) saturate(120%);
+            border-radius: var(--border-radius); padding: 3rem; margin: 2rem 0;
+            box-shadow: var(--shadow-light); border: 1px solid rgba(255, 255, 255, 0.3);
             transition: var(--transition);
-            /* Transición suave */
         }
-
-        /* ===== HOVER TARJETA SECCIÓN: Efecto al pasar el mouse ===== */
-        .section-card:hover {
-            transform: translateY(-5px);
-            /* Mover hacia arriba */
-            box-shadow: var(--shadow-medium);
-            /* Sombra más intensa */
-        }
-
-        /* ===== TÍTULO DE SECCIÓN: Títulos principales de cada sección ===== */
+        .section-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-medium); }
         .section-title {
-            font-size: 2.5rem;
-            /* Tamaño grande */
-            font-weight: 800;
-            /* Muy grueso */
-            color: var(--text-dark);
-            /* Color negro */
-            margin-bottom: 2rem;
-            /* Margen inferior */
-            text-align: center;
-            /* Centrado */
-            position: relative;
-            /* Posición relativa */
+            font-size: 2.5rem; font-weight: 800; color: var(--text-dark);
+            margin-bottom: 2rem; text-align: center; position: relative;
         }
-
-        /* ===== LÍNEA DECORATIVA: Línea bajo los títulos ===== */
         .section-title::after {
-            content: '';
-            /* Elemento vacío */
-            display: block;
-            /* Como bloque */
-            width: 80px;
-            /* Ancho */
-            height: 4px;
-            /* Alto */
+            content: ''; display: block; width: 80px; height: 4px;
             background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
-            /* Degradado verde */
-            margin: 1rem auto;
-            /* Margen centrado */
-            border-radius: 2px;
-            /* Bordes redondeados */
+            margin: 1rem auto; border-radius: 2px;
         }
-
-        /* ===== GRID DE CARACTERÍSTICAS: Layout de tarjetas en rejilla ===== */
-        .features-grid {
-            display: grid;
-            /* Layout grid */
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            /* Columnas responsivas */
-            gap: 2rem;
-            /* Espacio entre elementos */
-            margin: 3rem 0;
-            /* Márgenes verticales */
-        }
-
-
-        /* ===== TARJETA DE CARACTERÍSTICA: Tarjeta individual ===== */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin: 3rem 0; }
         .feature-card {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.6), rgba(248, 249, 250, 0.6));
-            /* Fondo semi-transparente igual que rubro-card */
-            backdrop-filter: blur(2px) saturate(80%);
-            /* Efecto glass sutil con blur mínimo y saturación moderada */
-            -webkit-backdrop-filter: blur(2px) saturate(80%);
-            /* Soporte para Safari */
-            padding: 1.5rem;
-            /* Espaciado interno reducido */
-            border-radius: var(--border-radius);
-            /* Bordes redondeados */
-            box-shadow: var(--shadow-light);
-            /* Sombra */
-            text-align: center;
-            /* Texto centrado */
-            transition: var(--transition);
-            /* Transición suave */
-            border-left: 4px solid var(--secondary-color);
-            /* Borde izquierdo verde */
+            background: linear-gradient(145deg, rgba(255,255,255,0.6), rgba(248,249,250,0.6));
+            backdrop-filter: blur(2px) saturate(80%); -webkit-backdrop-filter: blur(2px) saturate(80%);
+            padding: 1.5rem; border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light); text-align: center;
+            transition: var(--transition); border-left: 4px solid var(--secondary-color);
         }
-
-        /* ===== HOVER TARJETA CARACTERÍSTICA: Efecto al pasar el mouse ===== */
-        .feature-card:hover {
-            transform: translateY(-8px);
-            /* Mover hacia arriba */
-            box-shadow: var(--shadow-medium);
-            /* Sombra más intensa */
-            border-left-color: var(--accent-color);
-            /* Cambiar color del borde */
-        }
-
-        /* ===== ICONO DE CARACTERÍSTICA: Iconos en las tarjetas ===== */
-        .feature-icon {
-            font-size: 2rem;
-            /* Tamaño reducido */
-            color: var(--secondary-color);
-            /* Color verde */
-            margin-bottom: 1rem;
-            /* Margen inferior reducido */
-        }
-
-        /* ===== TÍTULO DE CARACTERÍSTICA: Título de cada tarjeta ===== */
-        .feature-title {
-            font-size: 1.2rem;
-            /* Tamaño reducido */
-            font-weight: 700;
-            /* Grueso */
-            margin-bottom: 0.75rem;
-            /* Margen inferior reducido */
-            color: var(--text-dark);
-            /* Color negro */
-        }
-
-        /* ===== DESCRIPCIÓN DE CARACTERÍSTICA: Texto descriptivo ===== */
-        .feature-description {
-            color: var(--text-muted);
-            /* Color gris */
-            line-height: 1.6;
-            /* Espaciado entre líneas */
-        }
-
-        /* ===== GRID DE ESTADÍSTICAS: Layout de métricas ===== */
-        .stats-grid {
-            display: grid;
-            /* Layout grid */
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            /* Columnas responsivas */
-            gap: 2rem;
-            /* Espacio entre elementos */
-            margin: 3rem 0;
-            /* Márgenes verticales */
-        }
-
-        /* ===== TARJETA DE ESTADÍSTICA: Tarjeta individual con métrica ===== */
+        .feature-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-medium); border-left-color: var(--accent-color); }
+        .feature-icon { font-size: 2rem; color: var(--secondary-color); margin-bottom: 1rem; }
+        .feature-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-dark); }
+        .feature-description { color: var(--text-muted); line-height: 1.6; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 3rem 0; }
         .stat-card {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            /* Degradado negro a verde */
-            color: white;
-            /* Texto blanco */
-            padding: 2.5rem 2rem;
-            /* Espaciado interno */
-            border-radius: var(--border-radius);
-            /* Bordes redondeados */
-            text-align: center;
-            /* Texto centrado */
-            box-shadow: var(--shadow-light);
-            /* Sombra */
-            transition: var(--transition);
-            /* Transición suave */
+            color: white; padding: 2.5rem 2rem; border-radius: var(--border-radius);
+            text-align: center; box-shadow: var(--shadow-light); transition: var(--transition);
         }
-
-        /* ===== HOVER ESTADÍSTICA: Efecto al pasar el mouse ===== */
-        .stat-card:hover {
-            transform: translateY(-5px);
-            /* Mover hacia arriba */
-            box-shadow: var(--shadow-medium);
-            /* Sombra más intensa */
-        }
-
-        /* ===== NÚMERO DE ESTADÍSTICA: Número principal ===== */
-        .stat-number {
-            font-size: 3rem;
-            /* Tamaño muy grande */
-            font-weight: 900;
-            /* Muy grueso */
-            margin-bottom: 0.5rem;
-            /* Margen inferior */
-        }
-
-        /* ===== ETIQUETA DE ESTADÍSTICA: Descripción del número ===== */
-        .stat-label {
-            font-size: 1rem;
-            /* Tamaño normal */
-            opacity: 0.9;
-            /* Ligeramente transparente */
-            font-weight: 500;
-            /* Peso medio */
-        }
-
-        /* ===== INFORMACIÓN DE CONTACTO: Grid de contactos ===== */
-        .contact-info {
-            display: grid;
-            /* Layout grid */
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            /* Columnas responsivas - reducido */
-            gap: 1rem;
-            /* Espacio entre elementos - reducido */
-            margin: 1.5rem 0;
-            /* Márgenes verticales - reducido */
-        }
-
-        /* ===== TARJETA DE CONTACTO: Tarjeta individual de contacto ===== */
+        .stat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-medium); }
+        .stat-number { font-size: 3rem; font-weight: 900; margin-bottom: 0.5rem; }
+        .stat-label { font-size: 1rem; opacity: 0.9; font-weight: 500; }
+        .contact-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
         .contact-card {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.6), rgba(248, 249, 250, 0.6));
-            /* Fondo semi-transparente con blur bajísima */
-            backdrop-filter: blur(2px) saturate(80%);
-            /* Efecto glass sutil con blur mínimo y saturación moderada */
-            -webkit-backdrop-filter: blur(2px) saturate(80%);
-            /* Soporte para Safari */
-            padding: 1rem;
-            /* Espaciado interno - reducido */
-            border-radius: var(--border-radius);
-            /* Bordes redondeados */
-            box-shadow: var(--shadow-light);
-            /* Sombra */
-            text-align: center;
-            /* Texto centrado */
-            transition: var(--transition);
-            /* Transición suave */
-            border: 1px solid rgba(39, 174, 96, 0.1);
-            /* Borde verde sutil */
+            background: linear-gradient(145deg, rgba(255,255,255,0.6), rgba(248,249,250,0.6));
+            backdrop-filter: blur(2px) saturate(80%); -webkit-backdrop-filter: blur(2px) saturate(80%);
+            padding: 1rem; border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light); text-align: center;
+            transition: var(--transition); border: 1px solid rgba(39, 174, 96, 0.1);
         }
+        .contact-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-medium); border-color: var(--secondary-color); }
+        .contact-icon { font-size: 1.8rem; color: var(--secondary-color); margin-bottom: 0.5rem; }
+        .contact-text { font-size: 0.95rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem; }
+        .contact-link { color: var(--text-muted); text-decoration: none; transition: var(--transition); }
+        .contact-link:hover { color: var(--secondary-color); }
 
-        /* ===== HOVER CONTACTO: Efecto al pasar el mouse ===== */
-        .contact-card:hover {
-            transform: translateY(-3px);
-            /* Mover hacia arriba - reducido */
-            box-shadow: var(--shadow-medium);
-            /* Sombra más intensa */
-            border-color: var(--secondary-color);
-            /* Borde verde más intenso */
-        }
+        /* ══════════════════════════════════════════════════
+           FOOTER
+        ══════════════════════════════════════════════════ */
+        .footer-content { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+        .footer-logo { font-size: 1.5rem; font-weight: 700; color: var(--secondary-color); margin-bottom: 1rem; text-align: center; display: block; }
+        .footer-logo-img { display: block; max-width: 120px; height: auto; margin-right: 1.5rem; flex-shrink: 0; }
+        .footer-content-center { display: flex; flex-direction: row; align-items: center; justify-content: center; text-align: center; }
+        .footer-text { opacity: 0.8; margin: 0; flex: 1; }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .footer-links a { color: var(--text-light); text-decoration: none; font-size: 1.5rem; transition: var(--transition); }
+        .footer-links a:hover { color: var(--secondary-color); transform: translateY(-2px); }
 
-        /* ===== ICONO DE CONTACTO: Iconos de medios de contacto ===== */
-        .contact-icon {
-            font-size: 1.8rem;
-            /* Tamaño - reducido */
-            color: var(--secondary-color);
-            /* Color verde */
-            margin-bottom: 0.5rem;
-            /* Margen inferior - reducido */
-        }
-
-        /* ===== TEXTO DE CONTACTO: Etiqueta de contacto ===== */
-        .contact-text {
-            font-size: 0.95rem;
-            /* Tamaño ligeramente grande */
-            font-weight: 600;
-            /* Semi-grueso */
-            color: var(--text-dark);
-            /* Color negro */
-            margin-bottom: 0.5rem;
-            /* Margen inferior */
-        }
-
-        /* ===== ENLACE DE CONTACTO: Enlaces clickeables ===== */
-        .contact-link {
-            color: var(--text-muted);
-            /* Color gris */
-            text-decoration: none;
-            /* Sin subrayado */
-            transition: var(--transition);
-            /* Transición suave */
-        }
-
-        /* ===== HOVER ENLACE CONTACTO: Efecto al pasar el mouse ===== */
-        .contact-link:hover {
-            color: var(--secondary-color);
-            /* Cambiar a verde */
-        }
-
-        /* ===== FOOTER: Pie de página ===== */
-        /* Los estilos del footer están definidos en css/styles.css */
-        /* Se mantienen aquí solo los estilos específicos que no están en el CSS externo */
-
-        /* ===== CONTENIDO DEL FOOTER: Wrapper del contenido ===== */
-        .footer-content {
-            max-width: 1200px;
-            /* Ancho máximo */
-            margin: 0 auto;
-            /* Centrado */
-            position: relative;
-            /* Posición relativa para z-index */
-            z-index: 1;
-            /* Por encima del pseudo-elemento */
-        }
-
-        /* ===== LOGO DEL FOOTER: Marca en el pie ===== */
-        .footer-logo {
-            font-size: 1.5rem;
-            /* Tamaño reducido */
-            font-weight: 700;
-            /* Peso medio-grueso (reducido de 800) */
-            color: var(--secondary-color);
-            /* Color verde */
-            margin-bottom: 1rem;
-            /* Margen inferior */
-            text-align: center;
-            /* Centrar texto */
-            display: block;
-            /* Bloque para centrar */
-        }
-
-        /* ===== IMAGEN DEL LOGO DEL FOOTER ===== */
-        .footer-logo-img {
-            display: block;
-            /* Bloque */
-            max-width: 120px;
-            /* Tamaño máximo del logo */
-            height: auto;
-            /* Altura automática */
-            margin-right: 1.5rem;
-            /* Margen derecho para separar del texto */
-            flex-shrink: 0;
-            /* No reducir tamaño */
-        }
-
-        /* ===== CONTENEDOR CENTRADO DEL FOOTER ===== */
-        .footer-content-center {
-            display: flex;
-            /* Layout flexbox */
-            flex-direction: row;
-            /* Fila horizontal */
-            align-items: center;
-            /* Centrar verticalmente */
-            justify-content: center;
-            /* Centrar horizontalmente el conjunto */
-            text-align: center;
-            /* Texto centrado */
-        }
-
-        /* ===== TEXTO DEL FOOTER: Descripción en el pie ===== */
-        .footer-text {
-            opacity: 0.8;
-            /* Ligeramente transparente */
-            margin: 0;
-            /* Sin márgenes */
-            flex: 1;
-            /* Ocupar espacio disponible */
-        }
-
-        /* ===== ENLACES DEL FOOTER: Enlaces sociales ===== */
-        .footer-links {
-            display: flex;
-            /* Layout flexbox */
-            justify-content: center;
-            /* Centrar */
-            gap: 2rem;
-            /* Espacio entre elementos */
-            margin-bottom: 2rem;
-            /* Margen inferior */
-            flex-wrap: wrap;
-            /* Permitir salto de línea */
-        }
-
-        /* ===== ENLACES INDIVIDUALES: Estilo de cada enlace ===== */
-        .footer-links a {
-            color: var(--text-light);
-            /* Color blanco */
-            text-decoration: none;
-            /* Sin subrayado */
-            font-size: 1.5rem;
-            /* Tamaño grande */
-            transition: var(--transition);
-            /* Transición suave */
-        }
-
-        /* ===== HOVER ENLACES FOOTER: Efecto al pasar el mouse ===== */
-        .footer-links a:hover {
-            color: var(--secondary-color);
-            /* Cambiar a verde */
-            transform: translateY(-2px);
-            /* Mover hacia arriba */
-        }
-
-        /* ===== ANIMACIONES: Definición de movimientos ===== */
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            /* Posición inicial */
-            50% {
-                transform: translateY(-10px);
-            }
-
-            /* Posición elevada */
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                /* Invisible */
-                transform: translateY(30px);
-                /* Posición baja */
-            }
-
-            to {
-                opacity: 1;
-                /* Visible */
-                transform: translateY(0);
-                /* Posición normal */
-            }
-        }
-
-        /* ===== CLASE DE ANIMACIÓN: Para aplicar fadeInUp ===== */
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out;
-            /* Aplicar animación */
-        }
-
-        /* ===== BARRA DE PROGRESO: Indicador de scroll ===== */
+        /* ══════════════════════════════════════════════════
+           ANIMATIONS
+        ══════════════════════════════════════════════════ */
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in-up { animation: fadeInUp 0.8s ease-out; }
         .progress-bar {
-            position: fixed;
-            /* Fijo en pantalla */
-            top: 0;
-            /* Pegado arriba */
-            left: 0;
-            /* Desde la izquierda */
-            width: 0%;
-            /* Ancho inicial */
-            height: 4px;
-            /* Alto */
+            position: fixed; top: 0; left: 0; width: 0%; height: 4px;
             background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
-            /* Degradado verde */
-            z-index: 10000;
-            /* Por encima de todo */
-            transition: width 0.1s ease;
-            /* Transición suave */
+            z-index: 10000; transition: width 0.1s ease;
         }
 
-        /* ===== RESPONSIVE: Adaptación para móviles ===== */
-
-        /* ===== TABLETS Y PANTALLAS MEDIANAS ===== */
-        @media (max-width: 1024px) {
-            .nav-container {
-                padding: 0.8rem 1.5rem;
-            }
-
-            .hero-section {
-                padding: 1.5rem;
-            }
-
-            .content-section {
-                padding: 4rem 1.5rem;
-            }
-
-            .section-card {
-                padding: 2.5rem;
-            }
-        }
-
-        /* ===== MÓVILES LARGOS ===== */
-        @media (max-width: 768px) {
-
-            /* Navegación móvil */
-            .nav-container {
-                padding: 0.5rem 1rem;
-                flex-wrap: wrap;
-            }
-
-            .logo-nav {
-                font-size: 1.3rem;
-            }
-
-            .logo-nav i {
-                font-size: 1.8rem;
-            }
-
-            /* Ocultar icono en móvil */
-            .logo-nav iconify-icon {
-                display: none !important;
-            }
-
-            /* Ocultar menú de navegación en móvil */
-            .nav-menu {
-                display: none !important;
-            }
-
-            /* Mostrar botón glow menu en móvil */
-            .glow-menu-trigger {
-                display: flex !important;
-            }
-
-            /* Hero section móvil */
-            .hero-section {
-                padding: 1rem;
-                min-height: 90vh;
-            }
-
-            .hero-content {
-                max-width: 100%;
-            }
-
-            /* Logo y texto principal */
-            .hero-logo {
-                flex-direction: column;
-                gap: 1rem;
-                margin-bottom: 2rem;
-            }
-
-            .hero-section .logo-text {
-                font-size: 2.2rem;
-                line-height: 1.2;
-                margin: 1.5rem 0 0.5rem 0;
-            }
-
-            .logo-wrapper .logo-text {
-                font-size: 1.2rem;
-            }
-
-            .floating-logo {
-                width: 100px;
-            }
-
-            .logo-subtitle {
-                font-size: 1rem;
-                letter-spacing: 2px;
-                margin-bottom: 1.5rem;
-            }
-
-            .hero-tagline {
-                font-size: 1.3rem;
-                margin-bottom: 2rem;
-                line-height: 1.4;
-            }
-
-            .hero-description {
-                font-size: 1.2rem;
-                margin-bottom: 1.5rem;
-            }
-
-            /* Botones móvil */
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-                margin-top: 2rem;
-            }
-
-            .btn {
-                min-width: 200px;
-                padding: 0.9rem 1.8rem;
-                font-size: 1rem;
-            }
-
-            /* Secciones de contenido */
-            .content-section {
-                padding: 3rem 1rem;
-            }
-
-            .section-card {
-                padding: 2rem 1.5rem;
-                margin: 1rem 0;
-            }
-
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 1.5rem;
-            }
-
-            /* Grids responsivos */
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                margin: 2rem 0;
-            }
-
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-                margin: 2rem 0;
-            }
-
-            .contact-info {
-                grid-template-columns: 1fr;
-                gap: 0.8rem;
-                margin: 1rem 0;
-            }
-
-            /* Tarjetas individuales */
-            .feature-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .feature-icon {
-                font-size: 2.5rem;
-                margin-bottom: 1rem;
-            }
-
-            .feature-title {
-                font-size: 1.2rem;
-                margin-bottom: 0.8rem;
-            }
-
-            .stat-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .stat-number {
-                font-size: 2.5rem;
-            }
-
-            .stat-label {
-                font-size: 0.9rem;
-            }
-
-            .contact-card {
-                padding: 0.8rem;
-            }
-
-            .contact-icon {
-                font-size: 1.5rem;
-                margin-bottom: 0.4rem;
-            }
-
-            .contact-text {
-                font-size: 0.9rem;
-            }
-
-            /* Footer móvil */
-            .footer {
-                padding: 1.5rem 1rem 1rem;
-                /* Padding reducido en móvil */
-            }
-
-            .footer-logo {
-                font-size: 1.2rem;
-                margin-bottom: 0.8rem;
-            }
-
-            .footer-content-center {
-                flex-direction: row;
-                /* Mantener horizontal en tablet */
-                gap: 1rem;
-                /* Espacio entre logo y texto */
-            }
-
-            .footer-logo-img {
-                max-width: 100px;
-                /* Logo más pequeño en móvil */
-                margin-right: 1rem;
-                /* Margen reducido */
-            }
-
-            .footer-text {
-                font-size: 0.9rem;
-                /* Sin margin-bottom ya que está en fila */
-            }
-
-            .footer-links {
-                gap: 1.5rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .footer-links a {
-                font-size: 1.3rem;
-            }
-        }
-
-        /* ===== MÓVILES PEQUEÑOS ===== */
-        @media (max-width: 480px) {
-            .nav-container {
-                padding: 0.5rem 0.8rem;
-            }
-
-            .logo-nav {
-                font-size: 1.1rem;
-            }
-
-            .logo-nav i {
-                font-size: 1.5rem;
-            }
-
-            /* Ocultar icono en móvil */
-            .logo-nav iconify-icon {
-                display: none !important;
-            }
-
-            .hero-section {
-                padding: 0.8rem;
-                min-height: 85vh;
-            }
-
-            .hero-section .logo-text {
-                font-size: 1.8rem;
-                margin: 1rem 0 0.5rem 0;
-            }
-
-            .logo-wrapper .logo-text {
-                font-size: 1.1rem;
-            }
-
-            .floating-logo {
-                width: 80px;
-            }
-
-            .logo-subtitle {
-                font-size: 0.9rem;
-                letter-spacing: 1px;
-            }
-
-            .hero-tagline {
-                font-size: 1.1rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .hero-description {
-                font-size: 1rem;
-                margin-bottom: 1.2rem;
-            }
-
-            .btn {
-                min-width: 160px;
-                padding: 0.8rem 1.5rem;
-                font-size: 0.9rem;
-            }
-
-            .content-section {
-                padding: 2rem 0.8rem;
-            }
-
-            .section-card {
-                padding: 1.5rem 1rem;
-                margin: 0.8rem 0;
-            }
-
-            .section-title {
-                font-size: 1.6rem;
-                margin-bottom: 1rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 0.8rem;
-            }
-
-            .feature-card {
-                padding: 1.5rem 1rem;
-            }
-
-            .feature-icon {
-                font-size: 2rem;
-            }
-
-            .feature-title {
-                font-size: 1.1rem;
-            }
-
-            .stat-card {
-                padding: 1.5rem 1rem;
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
-
-            .stat-label {
-                font-size: 0.8rem;
-            }
-
-            .contact-card {
-                padding: 0.7rem;
-            }
-
-            .contact-icon {
-                font-size: 1.4rem;
-            }
-
-            .footer {
-                padding: 1.2rem 0.8rem 0.8rem;
-                /* Padding más compacto en móviles pequeños */
-            }
-
-            .footer-logo {
-                font-size: 1.1rem;
-            }
-
-            .footer-content-center {
-                flex-direction: row;
-                /* Mantener horizontal en móviles pequeños */
-                gap: 0.8rem;
-                /* Espacio reducido */
-            }
-
-            .footer-logo-img {
-                max-width: 80px;
-                /* Logo aún más pequeño en móviles pequeños */
-                margin-right: 0.8rem;
-                /* Margen reducido */
-            }
-
-            .footer-text {
-                font-size: 0.8rem;
-                /* Sin margin-bottom ya que está en fila */
-            }
-
-            .footer-links {
-                gap: 1rem;
-            }
-
-            .footer-links a {
-                font-size: 1.1rem;
-            }
-        }
-
-        /* ===== MÓVILES MUY PEQUEÑOS ===== */
-        @media (max-width: 320px) {
-            .hero-section .logo-text {
-                font-size: 1.5rem;
-            }
-
-            .logo-wrapper .logo-text {
-                font-size: 1rem;
-            }
-
-            /* Ocultar icono en móviles muy pequeños */
-            .logo-nav iconify-icon {
-                display: none !important;
-            }
-
-            .floating-logo {
-                width: 70px;
-            }
-
-            .hero-tagline {
-                font-size: 1rem;
-            }
-
-            .btn {
-                min-width: 140px;
-                padding: 0.7rem 1.2rem;
-                font-size: 0.8rem;
-            }
-
-            .section-title {
-                font-size: 1.4rem;
-            }
-
-            .feature-card,
-            .stat-card,
-            .contact-card {
-                padding: 0.8rem 0.6rem;
-            }
-        }
-        /* ===== FONDO HERO ANIMADO: Reemplaza particles.js con CSS puro ===== */
+        /* ══════════════════════════════════════════════════
+           GRADIENTE HERO ANIMADO (reemplaza particles.js)
+        ══════════════════════════════════════════════════ */
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* ===== WHATSAPP FLOTANTE ===== */
+        /* ══════════════════════════════════════════════════
+           WHATSAPP FLOTANTE
+        ══════════════════════════════════════════════════ */
         .whatsapp-float {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 1000;
-            background: #25D366;
-            border-radius: 50%;
-            width: 56px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
-            text-decoration: none;
-            transition: all 0.3s ease;
+            position: fixed; bottom: 2rem; right: 2rem; z-index: 1000;
+            background: #25D366; border-radius: 50%; width: 56px; height: 56px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5); text-decoration: none; transition: all 0.3s ease;
         }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 28px rgba(37, 211, 102, 0.7);
-        }
+        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37, 211, 102, 0.7); }
         .whatsapp-tooltip {
-            position: absolute;
-            right: 68px;
-            background: rgba(0,0,0,0.8);
-            color: white;
-            font-size: 0.8rem;
-            padding: 0.4rem 0.8rem;
-            border-radius: 8px;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.2s;
-            pointer-events: none;
+            position: absolute; right: 68px; background: rgba(0,0,0,0.8);
+            color: white; font-size: 0.8rem; padding: 0.4rem 0.8rem;
+            border-radius: 8px; white-space: nowrap; opacity: 0;
+            transition: opacity 0.2s; pointer-events: none;
         }
-        .whatsapp-float:hover .whatsapp-tooltip {
-            opacity: 1;
-        }
+        .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
 
-        /* ===== FORMULARIO DE CONTACTO ===== */
-        .contact-form {
-            margin-top: 2rem;
+        /* ══════════════════════════════════════════════════
+           FORMULARIO DE CONTACTO
+        ══════════════════════════════════════════════════ */
+        .contact-form { margin-top: 2rem; }
+        .contact-form-title { font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 1.5rem; text-align: center; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; font-size: 0.9rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 0.8rem 1rem;
+            border: 2px solid rgba(39, 174, 96, 0.25); border-radius: 10px;
+            font-family: inherit; font-size: 0.95rem; color: var(--text-dark);
+            background: rgba(255,255,255,0.9); transition: border-color 0.2s ease; outline: none;
         }
-        .contact-form-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-        .form-group label {
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 0.4rem;
-        }
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 2px solid rgba(39, 174, 96, 0.25);
-            border-radius: 10px;
-            font-family: inherit;
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            background: rgba(255,255,255,0.9);
-            transition: border-color 0.2s ease;
-            outline: none;
-        }
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: var(--secondary-color);
-            background: white;
-        }
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--secondary-color); background: white; }
+        .form-group textarea { resize: vertical; min-height: 100px; }
         .form-submit-btn {
-            width: 100%;
-            padding: 1rem;
+            width: 100%; padding: 1rem;
             background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
-            color: white;
-            border: none;
-            border-radius: 999px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
+            color: white; border: none; border-radius: 999px;
+            font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;
+            display: flex; align-items: center; justify-content: center; gap: 0.5rem;
         }
-        .form-submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
-        }
+        .form-submit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4); }
         .form-success {
-            display: none;
-            text-align: center;
-            padding: 1.5rem;
-            background: rgba(39, 174, 96, 0.1);
-            border: 2px solid var(--secondary-color);
-            border-radius: 12px;
-            color: var(--secondary-color);
-            font-weight: 600;
-            margin-top: 1rem;
+            display: none; text-align: center; padding: 1.5rem;
+            background: rgba(39, 174, 96, 0.1); border: 2px solid var(--secondary-color);
+            border-radius: 12px; color: var(--secondary-color); font-weight: 600; margin-top: 1rem;
         }
-
-        /* ===== CTA SECUNDARIO HERO ===== */
-        .btn-outline-white {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255,255,255,0.7);
-        }
-        .btn-outline-white:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: white;
-            transform: translateY(-2px);
-        }
-
-        /* ===== BADGE CASO DE ESTUDIO ===== */
+        .btn-outline-white { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.7); }
+        .btn-outline-white:hover { background: rgba(255,255,255,0.15); border-color: white; transform: translateY(-2px); }
         .case-study-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(39, 174, 96, 0.15);
-            border: 1px solid rgba(39, 174, 96, 0.4);
-            border-radius: 999px;
-            padding: 0.4rem 1rem;
-            font-size: 0.85rem;
-            color: var(--secondary-color);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(39, 174, 96, 0.15); border: 1px solid rgba(39, 174, 96, 0.4);
+            border-radius: 999px; padding: 0.4rem 1rem; font-size: 0.85rem;
+            color: var(--secondary-color); font-weight: 600; margin-bottom: 1.5rem;
         }
+        .contact-divider { display: flex; align-items: center; gap: 1rem; margin: 2rem 0; color: var(--text-muted); font-size: 0.85rem; }
+        .contact-divider::before, .contact-divider::after { content: ''; flex: 1; height: 1px; background: rgba(0,0,0,0.1); }
 
-        /* ===== SEPARADOR FORMULARIO ===== */
-        .contact-divider {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin: 2rem 0;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-        .contact-divider::before,
-        .contact-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: rgba(0,0,0,0.1);
-        }
-
-        /* DIAGNÓSTICO WIZARD */
+        /* ══════════════════════════════════════════════════
+           DIAGNÓSTICO WIZARD
+        ══════════════════════════════════════════════════ */
         .diag-honeypot{position:absolute;left:-9999px;top:-9999px;width:0;height:0;overflow:hidden;opacity:0;pointer-events:none}
         .diag-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(39,174,96,.12);border:1px solid rgba(39,174,96,.35);border-radius:999px;padding:.35rem 1rem;font-size:.82rem;font-weight:600;color:var(--secondary-color);letter-spacing:.5px}
         .diag-header{text-align:center;margin-bottom:2.5rem}
@@ -1825,40 +543,127 @@
         .diag-error-banner a{color:#c0392b;font-weight:600}
         .required{color:var(--secondary-color)}
         @media(max-width:480px){.diag-math-challenge{flex-direction:column;align-items:flex-start}}
-    </style>
 
-<!-- BODY: Cuerpo principal del documento -->
+        /* ══════════════════════════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .nav-container { padding: 0.8rem 1.5rem; }
+            .hero-section { padding: 1.5rem; }
+            .content-section { padding: 4rem 1.5rem; }
+            .section-card { padding: 2.5rem; }
+        }
+        @media (max-width: 768px) {
+            .nav-container { padding: 0.5rem 1rem; flex-wrap: wrap; }
+            .logo-nav { font-size: 1.3rem; }
+            .logo-nav i { font-size: 1.8rem; }
+            .logo-nav iconify-icon { display: none !important; }
+            .nav-menu { display: none !important; }
+            .glow-menu-trigger { display: flex !important; }
+            .hero-section { padding: 1rem; min-height: 90vh; }
+            .hero-content { max-width: 100%; }
+            .hero-logo { flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+            .hero-section .logo-text { font-size: 2.2rem; line-height: 1.2; margin: 1.5rem 0 0.5rem 0; }
+            .logo-wrapper .logo-text { font-size: 1.2rem; }
+            .floating-logo { width: 100px; }
+            .logo-subtitle { font-size: 1rem; letter-spacing: 2px; margin-bottom: 1.5rem; }
+            .hero-tagline { font-size: 1.3rem; margin-bottom: 2rem; line-height: 1.4; }
+            .hero-description { font-size: 1.2rem; margin-bottom: 1.5rem; }
+            .hero-buttons { flex-direction: column; align-items: center; gap: 1rem; margin-top: 2rem; }
+            .btn { min-width: 200px; padding: 0.9rem 1.8rem; font-size: 1rem; }
+            .content-section { padding: 3rem 1rem; }
+            .section-card { padding: 2rem 1.5rem; margin: 1rem 0; }
+            .section-title { font-size: 2rem; margin-bottom: 1.5rem; }
+            .features-grid { grid-template-columns: 1fr; gap: 1.5rem; margin: 2rem 0; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 2rem 0; }
+            .contact-info { grid-template-columns: 1fr; gap: 0.8rem; margin: 1rem 0; }
+            .feature-card { padding: 2rem 1.5rem; }
+            .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+            .feature-title { font-size: 1.2rem; margin-bottom: 0.8rem; }
+            .stat-card { padding: 2rem 1.5rem; }
+            .stat-number { font-size: 2.5rem; }
+            .stat-label { font-size: 0.9rem; }
+            .contact-card { padding: 0.8rem; }
+            .contact-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+            .contact-text { font-size: 0.9rem; }
+            .footer { padding: 1.5rem 1rem 1rem; }
+            .footer-logo { font-size: 1.2rem; margin-bottom: 0.8rem; }
+            .footer-content-center { flex-direction: row; gap: 1rem; }
+            .footer-logo-img { max-width: 100px; margin-right: 1rem; }
+            .footer-text { font-size: 0.9rem; }
+            .footer-links { gap: 1.5rem; margin-bottom: 1.5rem; }
+            .footer-links a { font-size: 1.3rem; }
+        }
+        @media (max-width: 480px) {
+            .nav-container { padding: 0.5rem 0.8rem; }
+            .logo-nav { font-size: 1.1rem; }
+            .logo-nav i { font-size: 1.5rem; }
+            .hero-section { padding: 0.8rem; min-height: 85vh; }
+            .hero-section .logo-text { font-size: 1.8rem; margin: 1rem 0 0.5rem 0; }
+            .logo-wrapper .logo-text { font-size: 1.1rem; }
+            .floating-logo { width: 80px; }
+            .logo-subtitle { font-size: 0.9rem; letter-spacing: 1px; }
+            .hero-tagline { font-size: 1.1rem; margin-bottom: 1.5rem; }
+            .hero-description { font-size: 1rem; margin-bottom: 1.2rem; }
+            .btn { min-width: 160px; padding: 0.8rem 1.5rem; font-size: 0.9rem; }
+            .content-section { padding: 2rem 0.8rem; }
+            .section-card { padding: 1.5rem 1rem; margin: 0.8rem 0; }
+            .section-title { font-size: 1.6rem; margin-bottom: 1rem; }
+            .stats-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+            .feature-card { padding: 1.5rem 1rem; }
+            .feature-icon { font-size: 2rem; }
+            .feature-title { font-size: 1.1rem; }
+            .stat-card { padding: 1.5rem 1rem; }
+            .stat-number { font-size: 2rem; }
+            .stat-label { font-size: 0.8rem; }
+            .contact-card { padding: 0.7rem; }
+            .contact-icon { font-size: 1.4rem; }
+            .footer { padding: 1.2rem 0.8rem 0.8rem; }
+            .footer-logo { font-size: 1.1rem; }
+            .footer-content-center { flex-direction: row; gap: 0.8rem; }
+            .footer-logo-img { max-width: 80px; margin-right: 0.8rem; }
+            .footer-text { font-size: 0.8rem; }
+            .footer-links { gap: 1rem; }
+            .footer-links a { font-size: 1.1rem; }
+        }
+        @media (max-width: 320px) {
+            .hero-section .logo-text { font-size: 1.5rem; }
+            .logo-wrapper .logo-text { font-size: 1rem; }
+            .logo-nav iconify-icon { display: none !important; }
+            .floating-logo { width: 70px; }
+            .hero-tagline { font-size: 1rem; }
+            .btn { min-width: 140px; padding: 0.7rem 1.2rem; font-size: 0.8rem; }
+            .section-title { font-size: 1.4rem; }
+            .feature-card, .stat-card, .contact-card { padding: 0.8rem 0.6rem; }
+        }
+    </style>
+</head>
 
 <body>
-    <!-- BARRA DE PROGRESO: Indicador visual del scroll -->
+    <!-- BARRA DE PROGRESO DE SCROLL -->
     <div class="progress-bar" id="progressBar"></div>
 
-    <!-- HEADER: Navegación fija superior -->
+    <!-- HEADER -->
     <header class="header">
         <nav class="nav-container">
-            <!-- LOGO DE NAVEGACIÓN: Marca clickeable que lleva al inicio -->
             <div class="logo-wrapper">
                 <a href="#home" class="logo-nav">
-                    <iconify-icon icon="mdi:package-variant" width="32" height="32"
-                        style="color: var(--secondary-color);"></iconify-icon> <!-- Icono empresarial -->
+                    <iconify-icon icon="mdi:package-variant" width="32" height="32" style="color: var(--secondary-color);"></iconify-icon>
                 </a>
-                <span class="logo-text">A&J</span> <!-- Nombre de la empresa (no linkeable) -->
+                <span class="logo-text">A&J</span>
             </div>
-            <!-- MENÚ DE NAVEGACIÓN: Enlaces a secciones -->
             <ul class="nav-menu">
-                <li><a href="#home">Inicio</a></li> <!-- Link al hero -->
-                <li><a href="#rubros-casos">Rubros y Resultados</a></li> <!-- Link a sección rubros y casos unificada -->
-                <li><a href="#proyectos-venta">Proyectos</a></li> <!-- Link a proyectos -->
-                <li><a href="#equipo">Equipo</a></li> <!-- Link a equipo -->
-                <li><a href="#contacto">Contacto</a></li> <!-- Link a contacto -->
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#rubros-casos">Rubros y Resultados</a></li>
+                <li><a href="#proyectos-venta">Proyectos</a></li>
+                <li><a href="#equipo">Equipo</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
-
             <button id="glow-menu-trigger" class="glow-menu-trigger" title="Menú"
                 aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="glow-menu">
                 <iconify-icon icon="mdi:menu" width="22" height="22" aria-hidden="true"></iconify-icon>
             </button>
-
-            <!-- THEME TOGGLE: Selector de tema claro / oscuro / sistema -->
+            <!-- THEME TOGGLE -->
             <div class="theme-toggle" role="group" aria-label="Seleccionar tema de color" id="theme-toggle">
                 <button class="theme-toggle-btn" data-mode="light" title="Tema claro" aria-label="Activar tema claro" aria-pressed="false">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1879,148 +684,95 @@
         </nav>
     </header>
 
-    <!-- PARTÍCULAS DE FONDO: Efecto visual animado -->
-    <div id="particles-js"></div>
-
-    <!-- CONTENEDOR PRINCIPAL: Wrapper de todo el contenido -->
+    <!-- CONTENEDOR PRINCIPAL -->
     <div class="main-container">
-        <!-- SECCIÓN HERO: Pantalla principal de bienvenida -->
+        <!-- HERO -->
         <section id="home" class="hero-section" role="banner" aria-label="Sección principal de bienvenida">
             <div class="hero-content fade-in-up">
-                <!-- CONTENEDOR DEL LOGO: Logo principal flotante -->
                 <div class="hero-logo">
                     <img src="/assets/logo-200x200.png" srcset="/assets/logo-200x200.png 1x, /assets/logo-500x500.png 2x"
-                        alt="A&J Consulting IT Logo" class="floating-logo" width="200" height="200"
-                        fetchpriority="high">
+                        alt="A&J Consulting IT Logo" class="floating-logo" width="200" height="200" fetchpriority="high">
                 </div>
-
-                <!-- BADGE CREDIBILIDAD -->
                 <div style="display:flex; justify-content:center; margin-bottom: 0.5rem;">
                     <span class="case-study-badge">
                         <iconify-icon icon="mdi:check-decagram" width="16" height="16" aria-hidden="true"></iconify-icon>
                         Implementaciones reales en producción
                     </span>
                 </div>
-
-                <!-- H1 SEO OPTIMIZADO: Propuesta de valor con keyword -->
                 <h1 class="logo-text" style="font-size: 2.2rem; letter-spacing: -1px; line-height: 1.2;">
                     Consultoría en Business Intelligence e IA para Clínicas, Obras Viales y Restaurantes
                 </h1>
-
-                <!-- SUBTÍTULO -->
                 <p class="logo-subtitle">A&J Consulting IT</p>
-
-                <!-- ESLOGAN PRINCIPAL: Específico y diferencial -->
                 <h2 class="hero-tagline">KPIs operativos implementados en menos de 4 semanas — adaptados a tu rubro</h2>
-
-                <!-- DESCRIPCIÓN -->
                 <p class="hero-description">
                     Dejá de administrar por intuición. Te implementamos un sistema que muestra cada mañana <strong>qué está funcionando, qué no, y qué decisión tomar</strong>.
                 </p>
-
-                <!-- BOTONES DE ACCIÓN: CTA primario + secundario -->
                 <div class="hero-buttons">
-                    <!-- BOTÓN PRIMARIO: Calendly / Demo -->
                     <a href="https://calendly.com/franciscoaucar-ajconsultingit/consulta-gratuita"
                         target="_blank" rel="noopener noreferrer"
                         class="btn btn-primary btn-shimmer"
                         id="solicitar-demo-btn"
                         aria-label="Agendar consulta gratuita con A&J Consulting IT"
                         onclick="gtag('event', 'cta_click', {event_category: 'hero', event_label: 'agendar_consulta'});">
-                        <iconify-icon icon="mdi:calendar-check" width="20" height="20"
-                            style="vertical-align: middle;" aria-hidden="true"></iconify-icon>
+                        <iconify-icon icon="mdi:calendar-check" width="20" height="20" style="vertical-align: middle;" aria-hidden="true"></iconify-icon>
                         Agendar Consulta Gratuita
                     </a>
-                    <!-- BOTÓN SECUNDARIO: Scroll a metodología -->
                     <a href="#metodologia"
                         class="btn btn-outline-white"
                         id="ver-como-funciona-btn"
                         aria-label="Ver cómo funciona el proceso de trabajo"
                         onclick="gtag('event', 'cta_click', {event_category: 'hero', event_label: 'ver_como_funciona'});">
-                        <iconify-icon icon="mdi:arrow-down-circle" width="20" height="20"
-                            style="vertical-align: middle;" aria-hidden="true"></iconify-icon>
+                        <iconify-icon icon="mdi:arrow-down-circle" width="20" height="20" style="vertical-align: middle;" aria-hidden="true"></iconify-icon>
                         Ver cómo funciona
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN METODOLOGÍA: Cómo trabajamos -->
+        <!-- METODOLOGÍA -->
         <section id="metodologia" class="content-section" aria-labelledby="metodologia-title">
             <div class="section-card">
                 <h2 class="section-title" id="metodologia-title">Cómo Trabajamos</h2>
                 <p class="section-intro">Un proceso claro y transparente para garantizar resultados</p>
-
                 <div class="features-grid" style="margin-top: 3rem;">
                     <div class="feature-card">
-                        <div class="feature-icon">
-                            <iconify-icon icon="mdi:handshake" width="32" height="32"
-                                style="color: currentColor;"></iconify-icon>
-                        </div>
+                        <div class="feature-icon"><iconify-icon icon="mdi:handshake" width="32" height="32" style="color: currentColor;"></iconify-icon></div>
                         <h3 class="feature-title">1. Consulta Inicial</h3>
-                        <p class="feature-description">Analizamos tus necesidades y objetivos para entender tu negocio.
-                        </p>
+                        <p class="feature-description">Analizamos tus necesidades y objetivos para entender tu negocio.</p>
                     </div>
-
                     <div class="feature-card">
-                        <div class="feature-icon">
-                            <iconify-icon icon="mdi:chart-box" width="32" height="32"
-                                style="color: currentColor;"></iconify-icon>
-                        </div>
+                        <div class="feature-icon"><iconify-icon icon="mdi:chart-box" width="32" height="32" style="color: currentColor;"></iconify-icon></div>
                         <h3 class="feature-title">2. Análisis y Propuesta</h3>
-                        <p class="feature-description">Diseñamos una solución personalizada con métricas y alcance
-                            definidos.</p>
+                        <p class="feature-description">Diseñamos una solución personalizada con métricas y alcance definidos.</p>
                     </div>
-
                     <div class="feature-card">
-                        <div class="feature-icon">
-                            <iconify-icon icon="mdi:cog" width="32" height="32"
-                                style="color: currentColor;"></iconify-icon>
-                        </div>
+                        <div class="feature-icon"><iconify-icon icon="mdi:cog" width="32" height="32" style="color: currentColor;"></iconify-icon></div>
                         <h3 class="feature-title">3. Desarrollo</h3>
-                        <p class="feature-description">Implementamos la solución con seguimiento continuo y comunicación
-                            clara.</p>
+                        <p class="feature-description">Implementamos la solución con seguimiento continuo y comunicación clara.</p>
                     </div>
-
                     <div class="feature-card">
-                        <div class="feature-icon">
-                            <iconify-icon icon="mdi:check-circle" width="32" height="32"
-                                style="color: currentColor;"></iconify-icon>
-                        </div>
+                        <div class="feature-icon"><iconify-icon icon="mdi:check-circle" width="32" height="32" style="color: currentColor;"></iconify-icon></div>
                         <h3 class="feature-title">4. Entrega y Seguimiento</h3>
-                        <p class="feature-description">Entregamos la solución funcional y acompañamos en la adopción.
-                        </p>
+                        <p class="feature-description">Entregamos la solución funcional y acompañamos en la adopción.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN RUBROS Y CASOS: Sección unificada integrando rubros con resultados comprobados -->
+        <!-- RUBROS Y CASOS -->
         <section id="rubros-casos" class="content-section" aria-labelledby="rubros-casos-title">
             <div class="section-card">
-                <!-- TÍTULO DE SECCIÓN: Encabezado principal unificado -->
                 <h2 class="section-title" id="rubros-casos-title">Nuestros Rubros y Resultados</h2>
-                <p class="section-intro">
-                    No importa tu rubro, siempre podemos ayudar con procesamiento de datos y análisis predictivo.
-                    Soluciones que generan valor real para nuestros clientes.
-                </p>
-
-                <!-- GRID UNIFICADO: Cards que integran rubro + caso de éxito -->
+                <p class="section-intro">No importa tu rubro, siempre podemos ayudar con procesamiento de datos y análisis predictivo. Soluciones que generan valor real para nuestros clientes.</p>
                 <div class="rubros-casos-grid" style="margin-top: 3rem;">
-                    <!-- CARD 1: Clínicas de Salud -->
+                    <!-- CARD 1: Clínicas -->
                     <article class="rubro-caso-card" aria-labelledby="rubro-clinicas-title">
                         <div class="rubro-caso-header">
-                            <div class="rubro-caso-icon">
-                                <iconify-icon icon="la:heart" width="40" height="40" style="color: white;"></iconify-icon>
-                            </div>
+                            <div class="rubro-caso-icon"><iconify-icon icon="la:heart" width="40" height="40" style="color: white;"></iconify-icon></div>
                             <h3 class="rubro-caso-title" id="rubro-clinicas-title">Clínicas de Salud</h3>
                         </div>
-                        
                         <div class="rubro-caso-content">
-                            <div class="rubro-caso-description">
-                                <p>Dashboards de KPIs médicos, análisis predictivo y gestión clínica inteligente para optimizar la atención y rentabilidad.</p>
-                            </div>
-                            
+                            <div class="rubro-caso-description"><p>Dashboards de KPIs médicos, análisis predictivo y gestión clínica inteligente para optimizar la atención y rentabilidad.</p></div>
                             <div class="rubro-caso-features">
                                 <span class="rubro-caso-feature-tag">KPIs personalizados</span>
                                 <span class="rubro-caso-feature-tag">Análisis predictivo</span>
@@ -2028,46 +780,30 @@
                                 <span class="rubro-caso-feature-tag">Alertas</span>
                                 <span class="rubro-caso-feature-tag">Resumen ejecutivo</span>
                             </div>
-
                             <div class="rubro-caso-resultado">
-                                <div class="rubro-caso-resultado-icon">
-                                    <iconify-icon icon="mdi:chart-line" width="24" height="24" style="color: white;"></iconify-icon>
-                                </div>
-                                <div class="rubro-caso-resultado-text">
-                                    <strong>Mejora en toma de decisiones:</strong> Dashboards de KPIs médicos que reducen tiempo de análisis en un 70%.
-                                </div>
+                                <div class="rubro-caso-resultado-icon"><iconify-icon icon="mdi:chart-line" width="24" height="24" style="color: white;"></iconify-icon></div>
+                                <div class="rubro-caso-resultado-text"><strong>Mejora en toma de decisiones:</strong> Dashboards de KPIs médicos que reducen tiempo de análisis en un 70%.</div>
                             </div>
                         </div>
-
                         <div class="rubro-caso-actions">
-                            <a href="https://calendly.com/franciscoaucar-ajconsultingit/consulta-gratuita"
-                                target="_blank" rel="noopener noreferrer"
+                            <a href="https://calendly.com/franciscoaucar-ajconsultingit/consulta-gratuita" target="_blank" rel="noopener noreferrer"
                                 class="btn btn-primary btn-rubro-caso"
                                 onclick="gtag('event', 'cta_click', {event_category: 'rubros', event_label: 'clinicas_agendar'});"
                                 aria-label="Agendar consulta sobre solución para clínicas">
                                 <iconify-icon icon="mdi:calendar-check" width="16" height="16" aria-hidden="true"></iconify-icon>
                                 Agendar Consulta
                             </a>
-                            <a href="#contacto" class="btn btn-secondary btn-rubro-caso">
-                                Más información
-                            </a>
+                            <a href="#contacto" class="btn btn-secondary btn-rubro-caso">Más información</a>
                         </div>
                     </article>
-
                     <!-- CARD 2: Obras Viales -->
                     <article class="rubro-caso-card" aria-labelledby="rubro-obras-title">
                         <div class="rubro-caso-header">
-                            <div class="rubro-caso-icon">
-                                <iconify-icon icon="la:building" width="40" height="40" style="color: white;"></iconify-icon>
-                            </div>
+                            <div class="rubro-caso-icon"><iconify-icon icon="la:building" width="40" height="40" style="color: white;"></iconify-icon></div>
                             <h3 class="rubro-caso-title" id="rubro-obras-title">Obras Viales</h3>
                         </div>
-                        
                         <div class="rubro-caso-content">
-                            <div class="rubro-caso-description">
-                                <p>Sistema de monitoreo de avance en tiempo real, análisis topográfico y seguimiento de KPIs de construcción.</p>
-                            </div>
-                            
+                            <div class="rubro-caso-description"><p>Sistema de monitoreo de avance en tiempo real, análisis topográfico y seguimiento de KPIs de construcción.</p></div>
                             <div class="rubro-caso-features">
                                 <span class="rubro-caso-feature-tag">Monitoreo en tiempo real</span>
                                 <span class="rubro-caso-feature-tag">Análisis topográfico</span>
@@ -2075,66 +811,43 @@
                                 <span class="rubro-caso-feature-tag">Previsión Meteorológica</span>
                                 <span class="rubro-caso-feature-tag">Gestión de inventario</span>
                             </div>
-
                             <div class="rubro-caso-resultado">
-                                <div class="rubro-caso-resultado-icon">
-                                    <iconify-icon icon="mdi:road" width="24" height="24" style="color: white;"></iconify-icon>
-                                </div>
-                                <div class="rubro-caso-resultado-text">
-                                    <strong>Monitoreo en tiempo real:</strong> Sistemas de seguimiento que optimizan recursos y plazos.
-                                </div>
+                                <div class="rubro-caso-resultado-icon"><iconify-icon icon="mdi:road" width="24" height="24" style="color: white;"></iconify-icon></div>
+                                <div class="rubro-caso-resultado-text"><strong>Monitoreo en tiempo real:</strong> Sistemas de seguimiento que optimizan recursos y plazos.</div>
                             </div>
                         </div>
-
                         <div class="rubro-caso-actions">
-                            <a href="https://calendly.com/franciscoaucar-ajconsultingit/consulta-gratuita"
-                                target="_blank" rel="noopener noreferrer"
+                            <a href="https://calendly.com/franciscoaucar-ajconsultingit/consulta-gratuita" target="_blank" rel="noopener noreferrer"
                                 class="btn btn-primary btn-rubro-caso"
                                 onclick="gtag('event', 'cta_click', {event_category: 'rubros', event_label: 'obras_agendar'});"
                                 aria-label="Agendar consulta sobre solución para obras viales">
                                 <iconify-icon icon="mdi:calendar-check" width="16" height="16" aria-hidden="true"></iconify-icon>
                                 Agendar Consulta
                             </a>
-                            <a href="#contacto" class="btn btn-secondary btn-rubro-caso">
-                                Más información
-                            </a>
+                            <a href="#contacto" class="btn btn-secondary btn-rubro-caso">Más información</a>
                         </div>
                     </article>
-
-                    <!-- CARD 3: Restaurantes y Bares -->
+                    <!-- CARD 3: Restaurantes -->
                     <article class="rubro-caso-card" aria-labelledby="rubro-restaurantes-title">
                         <div class="rubro-caso-header">
-                            <div class="rubro-caso-icon">
-                                <iconify-icon icon="tabler:burger" width="40" height="40" style="color: white;"></iconify-icon>
-                            </div>
+                            <div class="rubro-caso-icon"><iconify-icon icon="tabler:burger" width="40" height="40" style="color: white;"></iconify-icon></div>
                             <h3 class="rubro-caso-title" id="rubro-restaurantes-title">Restaurantes y Bares</h3>
                         </div>
-                        
                         <div class="rubro-caso-content">
-                            <div class="rubro-caso-description">
-                                <p>KPIs de rentabilidad, análisis de menú, optimización de inventario y predicción de demanda para maximizar resultados.</p>
-                            </div>
-                            
+                            <div class="rubro-caso-description"><p>KPIs de rentabilidad, análisis de menú, optimización de inventario y predicción de demanda para maximizar resultados.</p></div>
                             <div class="rubro-caso-features">
                                 <span class="rubro-caso-feature-tag">KPIs de rentabilidad</span>
                                 <span class="rubro-caso-feature-tag">Análisis de menú</span>
                                 <span class="rubro-caso-feature-tag">Optimización de inventario</span>
                                 <span class="rubro-caso-feature-tag">Resumen ejecutivo Inteligente</span>
                             </div>
-
                             <div class="rubro-caso-resultado">
-                                <div class="rubro-caso-resultado-icon">
-                                    <iconify-icon icon="mdi:store" width="24" height="24" style="color: white;"></iconify-icon>
-                                </div>
-                                <div class="rubro-caso-resultado-text">
-                                    <strong>Análisis de rentabilidad:</strong> KPIs de menú e inventario que mejoran márgenes operativos.
-                                </div>
+                                <div class="rubro-caso-resultado-icon"><iconify-icon icon="mdi:store" width="24" height="24" style="color: white;"></iconify-icon></div>
+                                <div class="rubro-caso-resultado-text"><strong>Análisis de rentabilidad:</strong> KPIs de menú e inventario que mejoran márgenes operativos.</div>
                             </div>
                         </div>
-
                         <div class="rubro-caso-actions">
-                            <a href="https://calendly.com/franciscoaucar-ajconsultingit/consulta-gratuita"
-                                target="_blank" rel="noopener noreferrer"
+                            <a href="https://calendly.com/franciscoaucar-ajconsultingit/consulta-gratuita" target="_blank" rel="noopener noreferrer"
                                 class="btn btn-primary btn-rubro-caso"
                                 onclick="gtag('event', 'cta_click', {event_category: 'rubros', event_label: 'restaurantes_agendar'});"
                                 aria-label="Agendar consulta sobre solución para restaurantes">
@@ -2147,85 +860,46 @@
             </div>
         </section>
 
-        <!-- SECCIÓN PROYECTOS DE VENTA: Casos de aplicación real -->
+        <!-- PROYECTOS DE VENTA -->
         <section id="proyectos-venta" class="content-section" aria-labelledby="proyectos-venta-title">
             <div class="section-card">
                 <h2 class="section-title" id="proyectos-venta-title">Proyectos de Aplicación Real</h2>
                 <p class="section-intro">
                     Estos proyectos representan distintos enfoques de creación web según objetivo y dominio.
-                    No se presentan como portfolio estético, sino como <strong>casos de aplicación real según necesidad
-                        de negocio</strong>.
+                    No se presentan como portfolio estético, sino como <strong>casos de aplicación real según necesidad de negocio</strong>.
                     Son landings completos y funcionales, desplegadas y operativas en producción.
                 </p>
-
-                <div id="proyectos-venta-grid" class="proyectos-grid" style="margin-top: 3rem;">
-                    <!-- Proyectos se renderizan dinámicamente con js/proyectos-venta.js -->
-                </div>
+                <div id="proyectos-venta-grid" class="proyectos-grid" style="margin-top: 3rem;"></div>
             </div>
         </section>
 
-        <!-- SECCIÓN EQUIPO: Quiénes Somos - Información del equipo -->
+        <!-- EQUIPO -->
         <section id="equipo" class="content-section" aria-labelledby="equipo-title">
             <div class="section-card">
                 <h2 class="section-title" id="equipo-title">Quiénes Somos</h2>
-                <p class="section-intro">El equipo detrás de las soluciones. Profesionales especializados en Business
-                    Intelligence e Inteligencia Artificial.</p>
-
+                <p class="section-intro">El equipo detrás de las soluciones. Profesionales especializados en Business Intelligence e Inteligencia Artificial.</p>
                 <div class="team-grid" style="margin-top: 3rem;">
-                    <!-- MIEMBRO 1: Francisco -->
                     <article class="team-member-card" aria-label="Miembro del equipo Francisco">
-                        <!-- Foto profesional (descomentar cuando esté disponible) -->
-                        <!-- <div class="team-member-photo">
-                            <img src="/assets/team/francisco.jpg" alt="Francisco" loading="lazy">
-                        </div> -->
-
                         <div class="team-member-info">
-                            <h3 class="team-member-name">
-                                Francisco
-                            </h3>
-                            <p class="team-member-title">
-                                Co-Fundador & Consultor Senior
-                            </p>
-                            <p class="team-member-experience">
-                                Especialista en Business Intelligence, KPIs y análisis predictivo. Desarrollo de
-                                soluciones de datos adaptadas a cada rubro. Especializado en meteorología, aeronáutica e
-                                implementación de soluciones simplificadas.
-                            </p>
+                            <h3 class="team-member-name">Francisco</h3>
+                            <p class="team-member-title">Co-Fundador & Consultor Senior</p>
+                            <p class="team-member-experience">Especialista en Business Intelligence, KPIs y análisis predictivo. Desarrollo de soluciones de datos adaptadas a cada rubro. Especializado en meteorología, aeronáutica e implementación de soluciones simplificadas.</p>
                         </div>
                     </article>
-
-                    <!-- MIEMBRO 2: Andrés -->
                     <article class="team-member-card" aria-label="Miembro del equipo Andrés">
-                        <!-- Foto profesional (descomentar cuando esté disponible) -->
-                        <!-- <div class="team-member-photo">
-                            <img src="/assets/team/andres.jpg" alt="Andrés" loading="lazy">
-                        </div> -->
-
                         <div class="team-member-info">
-                            <h3 class="team-member-name">
-                                Andrés
-                            </h3>
-                            <p class="team-member-title">
-                                Co-Fundador & Especialista en IA
-                            </p>
-                            <p class="team-member-experience">
-                                Ingeniero Aeronáutico y Analista de datos. Especialista en Inteligencia Artificial,
-                                Machine Learning y desarrollo de sistemas. Implementación de soluciones tecnológicas
-                                avanzadas.
-                            </p>
+                            <h3 class="team-member-name">Andrés</h3>
+                            <p class="team-member-title">Co-Fundador & Especialista en IA</p>
+                            <p class="team-member-experience">Ingeniero Aeronáutico y Analista de datos. Especialista en Inteligencia Artificial, Machine Learning y desarrollo de sistemas. Implementación de soluciones tecnológicas avanzadas.</p>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- ═══════════════════════════════════════════════════════════ -->
-        <!-- SECCIÓN DIAGNÓSTICO DE AUTOMATIZACIÓN — Wizard 4 pasos   -->
-        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- DIAGNÓSTICO WIZARD -->
         <section id="diagnostico" class="content-section" aria-labelledby="diagnostico-title">
             <div class="section-card diag-card">
-
-                <!-- ENCABEZADO -->
                 <div class="diag-header">
                     <span class="diag-badge">
                         <iconify-icon icon="mdi:lightning-bolt" width="16" height="16" aria-hidden="true"></iconify-icon>
@@ -2234,567 +908,168 @@
                     <h2 class="section-title" id="diagnostico-title" style="margin-top:1rem;">
                         ¿Cuánto tiempo perdés en tareas que puede hacer una máquina?
                     </h2>
-                    <p class="section-intro">
-                        Completá este formulario. Recibirás un análisis personalizado en menos de 24 horas, sin compromiso.
-                    </p>
+                    <p class="section-intro">Completá este formulario. Recibirás un análisis personalizado en menos de 24 horas, sin compromiso.</p>
                 </div>
-
-                <!-- BARRA DE PROGRESO DEL WIZARD -->
                 <div class="diag-progress" aria-label="Progreso del formulario">
                     <div class="diag-progress-steps">
-                        <div class="diag-step active" data-step="1">
-                            <div class="diag-step-circle">1</div>
-                            <span class="diag-step-label">Tu negocio</span>
-                        </div>
+                        <div class="diag-step active" data-step="1"><div class="diag-step-circle">1</div><span class="diag-step-label">Tu negocio</span></div>
                         <div class="diag-step-line"></div>
-                        <div class="diag-step" data-step="2">
-                            <div class="diag-step-circle">2</div>
-                            <span class="diag-step-label">Tiempo perdido</span>
-                        </div>
+                        <div class="diag-step" data-step="2"><div class="diag-step-circle">2</div><span class="diag-step-label">Tiempo perdido</span></div>
                         <div class="diag-step-line"></div>
-                        <div class="diag-step" data-step="3">
-                            <div class="diag-step-circle">3</div>
-                            <span class="diag-step-label">Situación actual</span>
-                        </div>
+                        <div class="diag-step" data-step="3"><div class="diag-step-circle">3</div><span class="diag-step-label">Situación actual</span></div>
                         <div class="diag-step-line"></div>
-                        <div class="diag-step" data-step="4">
-                            <div class="diag-step-circle">4</div>
-                            <span class="diag-step-label">Contacto</span>
-                        </div>
+                        <div class="diag-step" data-step="4"><div class="diag-step-circle">4</div><span class="diag-step-label">Contacto</span></div>
                     </div>
-                    <div class="diag-progress-bar">
-                        <div class="diag-progress-fill" id="diag-progress-fill" style="width:25%"></div>
-                    </div>
+                    <div class="diag-progress-bar"><div class="diag-progress-fill" id="diag-progress-fill" style="width:25%"></div></div>
                 </div>
-
-                <!-- FORMULARIO PRINCIPAL -->
                 <form id="diag-form" action="https://formspree.io/f/xpwznqgl" method="POST" novalidate>
-
-                    <!-- ANTI-BOT: Honeypot invisible -->
                     <div class="diag-honeypot" aria-hidden="true">
                         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" value="">
                         <input type="text" name="website" tabindex="-1" autocomplete="off" value="">
                     </div>
-                    <!-- ANTI-BOT: Timestamp de inicio (se verifica que no sea demasiado rápido) -->
                     <input type="hidden" name="_form_start" id="diag-form-start">
-                    <!-- ANTI-BOT: Respuesta matemática -->
                     <input type="hidden" name="_math_answer" id="diag-math-answer-hidden">
-                    <!-- Metadata -->
                     <input type="hidden" name="_subject" value="⚡ Diagnóstico de Automatización — A&J Consulting IT">
                     <input type="hidden" name="_type" value="diagnostico_automatizacion">
-
-                    <!-- ── PASO 1: Tu negocio ── -->
+                    <!-- PASO 1 -->
                     <div class="diag-step-panel active" id="diag-panel-1" role="group" aria-labelledby="diag-step1-title">
-                        <h3 class="diag-step-title" id="diag-step1-title">
-                            <iconify-icon icon="mdi:store-outline" width="22" height="22" aria-hidden="true"></iconify-icon>
-                            Tu Negocio
-                        </h3>
-
+                        <h3 class="diag-step-title" id="diag-step1-title"><iconify-icon icon="mdi:store-outline" width="22" height="22" aria-hidden="true"></iconify-icon>Tu Negocio</h3>
                         <div class="diag-grid-2">
-                            <div class="form-group">
-                                <label for="diag-rubro">Rubro / Actividad <span class="required">*</span></label>
-                                <input type="text" id="diag-rubro" name="rubro" required
-                                    placeholder="Ej: Veterinaria, Taller mecánico, Clínica estética"
-                                    autocomplete="organization-title">
-                            </div>
-                            <div class="form-group">
-                                <label for="diag-ciudad">Ciudad <span class="required">*</span></label>
-                                <input type="text" id="diag-ciudad" name="ciudad" required
-                                    placeholder="Ej: Córdoba, Buenos Aires"
-                                    autocomplete="address-level2">
-                            </div>
-                            <div class="form-group">
-                                <label for="diag-equipo">Personas en el equipo <span class="required">*</span></label>
-                                <select id="diag-equipo" name="equipo" required>
-                                    <option value="" disabled selected>Seleccioná</option>
-                                    <option value="Solo yo">Solo yo</option>
-                                    <option value="2-5 personas">2–5 personas</option>
-                                    <option value="6-15 personas">6–15 personas</option>
-                                    <option value="Más de 15">Más de 15</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="diag-operaciones">Operaciones por día</label>
-                                <input type="text" id="diag-operaciones" name="operaciones"
-                                    placeholder="Ej: 15 turnos / 20 ventas / 30 consultas">
-                            </div>
+                            <div class="form-group"><label for="diag-rubro">Rubro / Actividad <span class="required">*</span></label><input type="text" id="diag-rubro" name="rubro" required placeholder="Ej: Veterinaria, Taller mecánico, Clínica estética" autocomplete="organization-title"></div>
+                            <div class="form-group"><label for="diag-ciudad">Ciudad <span class="required">*</span></label><input type="text" id="diag-ciudad" name="ciudad" required placeholder="Ej: Córdoba, Buenos Aires" autocomplete="address-level2"></div>
+                            <div class="form-group"><label for="diag-equipo">Personas en el equipo <span class="required">*</span></label><select id="diag-equipo" name="equipo" required><option value="" disabled selected>Seleccioná</option><option value="Solo yo">Solo yo</option><option value="2-5 personas">2–5 personas</option><option value="6-15 personas">6–15 personas</option><option value="Más de 15">Más de 15</option></select></div>
+                            <div class="form-group"><label for="diag-operaciones">Operaciones por día</label><input type="text" id="diag-operaciones" name="operaciones" placeholder="Ej: 15 turnos / 20 ventas / 30 consultas"></div>
                         </div>
-
-                        <div class="diag-nav">
-                            <span></span>
-                            <button type="button" class="diag-btn-next" data-next="2"
-                                onclick="diagNext(1)">
-                                Siguiente
-                                <iconify-icon icon="mdi:arrow-right" width="18" height="18" aria-hidden="true"></iconify-icon>
-                            </button>
-                        </div>
+                        <div class="diag-nav"><span></span><button type="button" class="diag-btn-next" data-next="2" onclick="diagNext(1)">Siguiente <iconify-icon icon="mdi:arrow-right" width="18" height="18" aria-hidden="true"></iconify-icon></button></div>
                     </div>
-
-                    <!-- ── PASO 2: Dónde se va el tiempo ── -->
+                    <!-- PASO 2 -->
                     <div class="diag-step-panel" id="diag-panel-2" role="group" aria-labelledby="diag-step2-title">
-                        <h3 class="diag-step-title" id="diag-step2-title">
-                            <iconify-icon icon="mdi:clock-alert-outline" width="22" height="22" aria-hidden="true"></iconify-icon>
-                            ¿Dónde Se Va el Tiempo?
-                        </h3>
+                        <h3 class="diag-step-title" id="diag-step2-title"><iconify-icon icon="mdi:clock-alert-outline" width="22" height="22" aria-hidden="true"></iconify-icon>¿Dónde Se Va el Tiempo?</h3>
                         <p class="diag-hint">Marcá hasta 3 opciones que más te afecten hoy.</p>
-
                         <div class="diag-checks-grid">
-                            <label class="diag-check-item">
-                                <input type="checkbox" name="tareas[]" value="Gestión de turnos / agenda">
-                                <span class="diag-check-box"><iconify-icon icon="mdi:calendar-clock" width="18" height="18"></iconify-icon></span>
-                                <span class="diag-check-text">
-                                    <strong>Gestión de turnos / agenda</strong>
-                                    <small>Confirmo por WhatsApp, paso a Excel, las cancelaciones me desordenan el día.</small>
-                                </span>
-                            </label>
-                            <label class="diag-check-item">
-                                <input type="checkbox" name="tareas[]" value="Atención y respuestas a clientes">
-                                <span class="diag-check-box"><iconify-icon icon="mdi:message-reply-text" width="18" height="18"></iconify-icon></span>
-                                <span class="diag-check-text">
-                                    <strong>Atención y respuestas a clientes</strong>
-                                    <small>Respondo los mismos mensajes 20 veces al día en WhatsApp e Instagram.</small>
-                                </span>
-                            </label>
-                            <label class="diag-check-item">
-                                <input type="checkbox" name="tareas[]" value="Historial y datos de clientes">
-                                <span class="diag-check-box"><iconify-icon icon="mdi:account-box-multiple" width="18" height="18"></iconify-icon></span>
-                                <span class="diag-check-text">
-                                    <strong>Historial y datos de clientes</strong>
-                                    <small>Busco en carpetas o en el chat, se pierden datos, dependo de la memoria.</small>
-                                </span>
-                            </label>
-                            <label class="diag-check-item">
-                                <input type="checkbox" name="tareas[]" value="Seguimiento post-venta">
-                                <span class="diag-check-box"><iconify-icon icon="mdi:account-arrow-right" width="18" height="18"></iconify-icon></span>
-                                <span class="diag-check-text">
-                                    <strong>Seguimiento post-venta</strong>
-                                    <small>No sé quién compró hace 3 meses y podría volver. Sin forma de contactarlos.</small>
-                                </span>
-                            </label>
-                            <label class="diag-check-item">
-                                <input type="checkbox" name="tareas[]" value="Facturación y cobros">
-                                <span class="diag-check-box"><iconify-icon icon="mdi:receipt-text" width="18" height="18"></iconify-icon></span>
-                                <span class="diag-check-text">
-                                    <strong>Facturación y cobros</strong>
-                                    <small>Llevo Excel aparte, al mes no cuadra con lo cobrado, cero reportes.</small>
-                                </span>
-                            </label>
-                            <label class="diag-check-item">
-                                <input type="checkbox" name="tareas[]" value="Presupuestos y cotizaciones">
-                                <span class="diag-check-box"><iconify-icon icon="mdi:file-document-edit" width="18" height="18"></iconify-icon></span>
-                                <span class="diag-check-text">
-                                    <strong>Presupuestos y cotizaciones</strong>
-                                    <small>Los armo a mano cada vez, tarda 30 min y la mitad ni responde.</small>
-                                </span>
-                            </label>
-                            <label class="diag-check-item">
-                                <input type="checkbox" name="tareas[]" value="Control de stock / inventario">
-                                <span class="diag-check-box"><iconify-icon icon="mdi:package-variant" width="18" height="18"></iconify-icon></span>
-                                <span class="diag-check-text">
-                                    <strong>Control de stock / inventario</strong>
-                                    <small>Descubro que me falta mercadería cuando ya se acabó. Sin alerta automática.</small>
-                                </span>
-                            </label>
-                            <label class="diag-check-item">
-                                <input type="checkbox" name="tareas[]" value="Recordatorios / avisos automáticos">
-                                <span class="diag-check-box"><iconify-icon icon="mdi:bell-ring" width="18" height="18"></iconify-icon></span>
-                                <span class="diag-check-text">
-                                    <strong>Recordatorios / avisos automáticos</strong>
-                                    <small>Se me escapan clientes que no vuelven, no tengo forma de avisarles.</small>
-                                </span>
-                            </label>
-                            <label class="diag-check-item">
-                                <input type="checkbox" name="tareas[]" value="Coordinación del equipo">
-                                <span class="diag-check-box"><iconify-icon icon="mdi:account-group" width="18" height="18"></iconify-icon></span>
-                                <span class="diag-check-text">
-                                    <strong>Coordinación del equipo</strong>
-                                    <small>Comunico tareas por WhatsApp, se pierden, nadie sabe qué hizo quién.</small>
-                                </span>
-                            </label>
-                            <label class="diag-check-item">
-                                <input type="checkbox" name="tareas[]" value="Reportes internos del negocio">
-                                <span class="diag-check-box"><iconify-icon icon="mdi:chart-bar" width="18" height="18"></iconify-icon></span>
-                                <span class="diag-check-text">
-                                    <strong>Reportes internos del negocio</strong>
-                                    <small>Para saber cómo va el mes tengo que armar tablas a mano. Tarda horas.</small>
-                                </span>
-                            </label>
-                            <label class="diag-check-item">
-                                <input type="checkbox" name="tareas[]" value="Carga manual de datos">
-                                <span class="diag-check-box"><iconify-icon icon="mdi:database-arrow-up" width="18" height="18"></iconify-icon></span>
-                                <span class="diag-check-text">
-                                    <strong>Carga manual de datos</strong>
-                                    <small>Paso info de papel o fotos a la compu. Tarda horas y me genera errores.</small>
-                                </span>
-                            </label>
-                            <label class="diag-check-item">
-                                <input type="checkbox" name="tareas[]" value="Redes sociales / publicaciones">
-                                <span class="diag-check-box"><iconify-icon icon="mdi:instagram" width="18" height="18"></iconify-icon></span>
-                                <span class="diag-check-text">
-                                    <strong>Redes sociales / publicaciones</strong>
-                                    <small>Publico todo a mano sin planificación y se me olvida días enteros.</small>
-                                </span>
-                            </label>
-                            <label class="diag-check-item diag-check-otro">
-                                <input type="checkbox" name="tareas[]" value="Otro" id="diag-check-otro">
-                                <span class="diag-check-box"><iconify-icon icon="mdi:plus-circle" width="18" height="18"></iconify-icon></span>
-                                <span class="diag-check-text">
-                                    <strong>Otro</strong>
-                                    <input type="text" name="tareas_otro" id="diag-otro-text"
-                                        class="diag-otro-input" placeholder="Describí brevemente..."
-                                        tabindex="-1">
-                                </span>
-                            </label>
+                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Gestión de turnos / agenda"><span class="diag-check-box"><iconify-icon icon="mdi:calendar-clock" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Gestión de turnos / agenda</strong><small>Confirmo por WhatsApp, paso a Excel, las cancelaciones me desordenan el día.</small></span></label>
+                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Atención y respuestas a clientes"><span class="diag-check-box"><iconify-icon icon="mdi:message-reply-text" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Atención y respuestas a clientes</strong><small>Respondo los mismos mensajes 20 veces al día en WhatsApp e Instagram.</small></span></label>
+                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Historial y datos de clientes"><span class="diag-check-box"><iconify-icon icon="mdi:account-box-multiple" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Historial y datos de clientes</strong><small>Busco en carpetas o en el chat, se pierden datos, dependo de la memoria.</small></span></label>
+                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Seguimiento post-venta"><span class="diag-check-box"><iconify-icon icon="mdi:account-arrow-right" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Seguimiento post-venta</strong><small>No sé quién compró hace 3 meses y podría volver. Sin forma de contactarlos.</small></span></label>
+                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Facturación y cobros"><span class="diag-check-box"><iconify-icon icon="mdi:receipt-text" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Facturación y cobros</strong><small>Llevo Excel aparte, al mes no cuadra con lo cobrado, cero reportes.</small></span></label>
+                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Presupuestos y cotizaciones"><span class="diag-check-box"><iconify-icon icon="mdi:file-document-edit" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Presupuestos y cotizaciones</strong><small>Los armo a mano cada vez, tarda 30 min y la mitad ni responde.</small></span></label>
+                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Control de stock / inventario"><span class="diag-check-box"><iconify-icon icon="mdi:package-variant" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Control de stock / inventario</strong><small>Descubro que me falta mercadería cuando ya se acabó. Sin alerta automática.</small></span></label>
+                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Recordatorios / avisos automáticos"><span class="diag-check-box"><iconify-icon icon="mdi:bell-ring" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Recordatorios / avisos automáticos</strong><small>Se me escapan clientes que no vuelven, no tengo forma de avisarles.</small></span></label>
+                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Coordinación del equipo"><span class="diag-check-box"><iconify-icon icon="mdi:account-group" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Coordinación del equipo</strong><small>Comunico tareas por WhatsApp, se pierden, nadie sabe qué hizo quién.</small></span></label>
+                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Reportes internos del negocio"><span class="diag-check-box"><iconify-icon icon="mdi:chart-bar" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Reportes internos del negocio</strong><small>Para saber cómo va el mes tengo que armar tablas a mano. Tarda horas.</small></span></label>
+                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Carga manual de datos"><span class="diag-check-box"><iconify-icon icon="mdi:database-arrow-up" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Carga manual de datos</strong><small>Paso info de papel o fotos a la compu. Tarda horas y me genera errores.</small></span></label>
+                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Redes sociales / publicaciones"><span class="diag-check-box"><iconify-icon icon="mdi:instagram" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Redes sociales / publicaciones</strong><small>Publico todo a mano sin planificación y se me olvida días enteros.</small></span></label>
+                            <label class="diag-check-item diag-check-otro"><input type="checkbox" name="tareas[]" value="Otro" id="diag-check-otro"><span class="diag-check-box"><iconify-icon icon="mdi:plus-circle" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Otro</strong><input type="text" name="tareas_otro" id="diag-otro-text" class="diag-otro-input" placeholder="Describí brevemente..." tabindex="-1"></span></label>
                         </div>
                         <div class="diag-check-counter" id="diag-check-counter" aria-live="polite">0 / 3 seleccionadas</div>
-
                         <div class="diag-nav">
-                            <button type="button" class="diag-btn-back" onclick="diagBack(2)">
-                                <iconify-icon icon="mdi:arrow-left" width="18" height="18" aria-hidden="true"></iconify-icon>
-                                Atrás
-                            </button>
-                            <button type="button" class="diag-btn-next" onclick="diagNext(2)">
-                                Siguiente
-                                <iconify-icon icon="mdi:arrow-right" width="18" height="18" aria-hidden="true"></iconify-icon>
-                            </button>
+                            <button type="button" class="diag-btn-back" onclick="diagBack(2)"><iconify-icon icon="mdi:arrow-left" width="18" height="18" aria-hidden="true"></iconify-icon>Atrás</button>
+                            <button type="button" class="diag-btn-next" onclick="diagNext(2)">Siguiente <iconify-icon icon="mdi:arrow-right" width="18" height="18" aria-hidden="true"></iconify-icon></button>
                         </div>
                     </div>
-
-                    <!-- ── PASO 3: Situación actual ── -->
+                    <!-- PASO 3 -->
                     <div class="diag-step-panel" id="diag-panel-3" role="group" aria-labelledby="diag-step3-title">
-                        <h3 class="diag-step-title" id="diag-step3-title">
-                            <iconify-icon icon="mdi:gauge" width="22" height="22" aria-hidden="true"></iconify-icon>
-                            Tu Situación Actual
-                        </h3>
-
-                        <div class="form-group">
-                            <label for="diag-horas">Horas por día en gestión administrativa</label>
-                            <select id="diag-horas" name="horas_admin">
-                                <option value="" disabled selected>Seleccioná</option>
-                                <option value="Menos de 1 hora">Menos de 1 hora</option>
-                                <option value="1-2 horas">1–2 horas</option>
-                                <option value="2-4 horas">2–4 horas</option>
-                                <option value="Más de 4 horas">Más de 4 horas</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>¿Qué herramientas usás hoy?</label>
-                            <div class="diag-radio-group">
-                                <label class="diag-radio-item">
-                                    <input type="radio" name="herramientas" value="Solo WhatsApp">
-                                    <span>Solo WhatsApp</span>
-                                </label>
-                                <label class="diag-radio-item">
-                                    <input type="radio" name="herramientas" value="WhatsApp + Excel">
-                                    <span>WhatsApp + Excel</span>
-                                </label>
-                                <label class="diag-radio-item">
-                                    <input type="radio" name="herramientas" value="Sistema / software">
-                                    <span>Sistema / software</span>
-                                </label>
-                                <label class="diag-radio-item">
-                                    <input type="radio" name="herramientas" value="Papel">
-                                    <span>Papel</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="diag-eliminar">Si pudieras eliminar UNA tarea mañana, ¿cuál sería?</label>
-                            <textarea id="diag-eliminar" name="tarea_eliminar"
-                                placeholder="Escribí la tarea que más tiempo te roba..." rows="2"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label>¿Cuánto pagarías por resolverlo?</label>
-                            <div class="diag-radio-group">
-                                <label class="diag-radio-item">
-                                    <input type="radio" name="presupuesto" value="Menos de USD 50/mes">
-                                    <span>Menos de $50/mes</span>
-                                </label>
-                                <label class="diag-radio-item">
-                                    <input type="radio" name="presupuesto" value="USD 50-150/mes">
-                                    <span>$50–150/mes</span>
-                                </label>
-                                <label class="diag-radio-item">
-                                    <input type="radio" name="presupuesto" value="USD 150-300/mes">
-                                    <span>$150–300/mes</span>
-                                </label>
-                                <label class="diag-radio-item">
-                                    <input type="radio" name="presupuesto" value="Más de USD 300/mes">
-                                    <span>Más de $300/mes</span>
-                                </label>
-                            </div>
-                        </div>
-
+                        <h3 class="diag-step-title" id="diag-step3-title"><iconify-icon icon="mdi:gauge" width="22" height="22" aria-hidden="true"></iconify-icon>Tu Situación Actual</h3>
+                        <div class="form-group"><label for="diag-horas">Horas por día en gestión administrativa</label><select id="diag-horas" name="horas_admin"><option value="" disabled selected>Seleccioná</option><option value="Menos de 1 hora">Menos de 1 hora</option><option value="1-2 horas">1–2 horas</option><option value="2-4 horas">2–4 horas</option><option value="Más de 4 horas">Más de 4 horas</option></select></div>
+                        <div class="form-group"><label>¿Qué herramientas usás hoy?</label><div class="diag-radio-group"><label class="diag-radio-item"><input type="radio" name="herramientas" value="Solo WhatsApp"><span>Solo WhatsApp</span></label><label class="diag-radio-item"><input type="radio" name="herramientas" value="WhatsApp + Excel"><span>WhatsApp + Excel</span></label><label class="diag-radio-item"><input type="radio" name="herramientas" value="Sistema / software"><span>Sistema / software</span></label><label class="diag-radio-item"><input type="radio" name="herramientas" value="Papel"><span>Papel</span></label></div></div>
+                        <div class="form-group"><label for="diag-eliminar">Si pudieras eliminar UNA tarea mañana, ¿cuál sería?</label><textarea id="diag-eliminar" name="tarea_eliminar" placeholder="Escribí la tarea que más tiempo te roba..." rows="2"></textarea></div>
+                        <div class="form-group"><label>¿Cuánto pagarías por resolverlo?</label><div class="diag-radio-group"><label class="diag-radio-item"><input type="radio" name="presupuesto" value="Menos de USD 50/mes"><span>Menos de $50/mes</span></label><label class="diag-radio-item"><input type="radio" name="presupuesto" value="USD 50-150/mes"><span>$50–150/mes</span></label><label class="diag-radio-item"><input type="radio" name="presupuesto" value="USD 150-300/mes"><span>$150–300/mes</span></label><label class="diag-radio-item"><input type="radio" name="presupuesto" value="Más de USD 300/mes"><span>Más de $300/mes</span></label></div></div>
                         <div class="diag-nav">
-                            <button type="button" class="diag-btn-back" onclick="diagBack(3)">
-                                <iconify-icon icon="mdi:arrow-left" width="18" height="18" aria-hidden="true"></iconify-icon>
-                                Atrás
-                            </button>
-                            <button type="button" class="diag-btn-next" onclick="diagNext(3)">
-                                Siguiente
-                                <iconify-icon icon="mdi:arrow-right" width="18" height="18" aria-hidden="true"></iconify-icon>
-                            </button>
+                            <button type="button" class="diag-btn-back" onclick="diagBack(3)"><iconify-icon icon="mdi:arrow-left" width="18" height="18" aria-hidden="true"></iconify-icon>Atrás</button>
+                            <button type="button" class="diag-btn-next" onclick="diagNext(3)">Siguiente <iconify-icon icon="mdi:arrow-right" width="18" height="18" aria-hidden="true"></iconify-icon></button>
                         </div>
                     </div>
-
-                    <!-- ── PASO 4: Contacto + anti-bot ── -->
+                    <!-- PASO 4 -->
                     <div class="diag-step-panel" id="diag-panel-4" role="group" aria-labelledby="diag-step4-title">
-                        <h3 class="diag-step-title" id="diag-step4-title">
-                            <iconify-icon icon="mdi:send-circle-outline" width="22" height="22" aria-hidden="true"></iconify-icon>
-                            Para Mandarte el Análisis
-                        </h3>
-
+                        <h3 class="diag-step-title" id="diag-step4-title"><iconify-icon icon="mdi:send-circle-outline" width="22" height="22" aria-hidden="true"></iconify-icon>Para Mandarte el Análisis</h3>
                         <div class="diag-grid-2">
-                            <div class="form-group">
-                                <label for="diag-nombre">Nombre <span class="required">*</span></label>
-                                <input type="text" id="diag-nombre" name="nombre" required
-                                    placeholder="Tu nombre" autocomplete="given-name">
-                            </div>
-                            <div class="form-group">
-                                <label for="diag-whatsapp">WhatsApp <span class="required">*</span></label>
-                                <input type="tel" id="diag-whatsapp" name="whatsapp" required
-                                    placeholder="Ej: 351 123 4567" autocomplete="tel">
-                            </div>
-                            <div class="form-group">
-                                <label for="diag-email">Email (opcional)</label>
-                                <input type="email" id="diag-email" name="email_opcional"
-                                    placeholder="tu@email.com" autocomplete="email">
-                            </div>
-                            <div class="form-group">
-                                <label>Mejor horario para contactarte</label>
-                                <div class="diag-radio-group diag-radio-compact">
-                                    <label class="diag-radio-item">
-                                        <input type="radio" name="horario" value="Mañana">
-                                        <span>Mañana</span>
-                                    </label>
-                                    <label class="diag-radio-item">
-                                        <input type="radio" name="horario" value="Mediodía">
-                                        <span>Mediodía</span>
-                                    </label>
-                                    <label class="diag-radio-item">
-                                        <input type="radio" name="horario" value="Tarde">
-                                        <span>Tarde</span>
-                                    </label>
-                                    <label class="diag-radio-item">
-                                        <input type="radio" name="horario" value="Cualquier hora" checked>
-                                        <span>Cualquier hora</span>
-                                    </label>
-                                </div>
-                            </div>
+                            <div class="form-group"><label for="diag-nombre">Nombre <span class="required">*</span></label><input type="text" id="diag-nombre" name="nombre" required placeholder="Tu nombre" autocomplete="given-name"></div>
+                            <div class="form-group"><label for="diag-whatsapp">WhatsApp <span class="required">*</span></label><input type="tel" id="diag-whatsapp" name="whatsapp" required placeholder="Ej: 351 123 4567" autocomplete="tel"></div>
+                            <div class="form-group"><label for="diag-email">Email (opcional)</label><input type="email" id="diag-email" name="email_opcional" placeholder="tu@email.com" autocomplete="email"></div>
+                            <div class="form-group"><label>Mejor horario para contactarte</label><div class="diag-radio-group diag-radio-compact"><label class="diag-radio-item"><input type="radio" name="horario" value="Mañana"><span>Mañana</span></label><label class="diag-radio-item"><input type="radio" name="horario" value="Mediodía"><span>Mediodía</span></label><label class="diag-radio-item"><input type="radio" name="horario" value="Tarde"><span>Tarde</span></label><label class="diag-radio-item"><input type="radio" name="horario" value="Cualquier hora" checked><span>Cualquier hora</span></label></div></div>
                         </div>
-
-                        <!-- ANTI-BOT: Pregunta matemática simple -->
                         <div class="diag-math-challenge" id="diag-math-box">
-                            <label for="diag-math-input" class="diag-math-label">
-                                <iconify-icon icon="mdi:shield-check" width="18" height="18" aria-hidden="true"></iconify-icon>
-                                Verificación rápida: <span id="diag-math-question" style="font-weight:700;"></span> = ?
-                            </label>
-                            <input type="number" id="diag-math-input" name="_math_check"
-                                placeholder="Tu respuesta" autocomplete="off" min="0" max="99">
-                            <span class="diag-math-error" id="diag-math-error" aria-live="polite" style="display:none;">
-                                ✗ Respuesta incorrecta
-                            </span>
+                            <label for="diag-math-input" class="diag-math-label"><iconify-icon icon="mdi:shield-check" width="18" height="18" aria-hidden="true"></iconify-icon>Verificación rápida: <span id="diag-math-question" style="font-weight:700;"></span> = ?</label>
+                            <input type="number" id="diag-math-input" name="_math_check" placeholder="Tu respuesta" autocomplete="off" min="0" max="99">
+                            <span class="diag-math-error" id="diag-math-error" aria-live="polite" style="display:none;">✗ Respuesta incorrecta</span>
                         </div>
-
                         <div class="diag-nav">
-                            <button type="button" class="diag-btn-back" onclick="diagBack(4)">
-                                <iconify-icon icon="mdi:arrow-left" width="18" height="18" aria-hidden="true"></iconify-icon>
-                                Atrás
-                            </button>
-                            <button type="submit" class="diag-btn-submit" id="diag-submit-btn">
-                                <iconify-icon icon="mdi:send" width="18" height="18" aria-hidden="true"></iconify-icon>
-                                Enviar diagnóstico
-                            </button>
+                            <button type="button" class="diag-btn-back" onclick="diagBack(4)"><iconify-icon icon="mdi:arrow-left" width="18" height="18" aria-hidden="true"></iconify-icon>Atrás</button>
+                            <button type="submit" class="diag-btn-submit" id="diag-submit-btn"><iconify-icon icon="mdi:send" width="18" height="18" aria-hidden="true"></iconify-icon>Enviar diagnóstico</button>
                         </div>
                     </div>
-
-                    <!-- ── CONFIRMACIÓN ── -->
+                    <!-- CONFIRMACIÓN -->
                     <div class="diag-step-panel diag-success" id="diag-panel-success" style="display:none;" aria-live="polite">
-                        <div class="diag-success-icon">
-                            <iconify-icon icon="mdi:check-circle" width="64" height="64" style="color: var(--secondary-color);"></iconify-icon>
-                        </div>
+                        <div class="diag-success-icon"><iconify-icon icon="mdi:check-circle" width="64" height="64" style="color: var(--secondary-color);"></iconify-icon></div>
                         <h3 class="diag-success-title">¡Diagnóstico recibido!</h3>
-                        <p class="diag-success-text">
-                            Revisaremos tus respuestas y te mandamos un análisis personalizado en menos de 24 horas al WhatsApp que nos dejaste.
-                        </p>
-                        <p style="font-size:0.9rem; color: var(--text-muted); margin-top:1rem;">
-                            <strong>A&J Consulting IT</strong> · franciscoaucar@ajconsultingit.com
-                        </p>
+                        <p class="diag-success-text">Revisaremos tus respuestas y te mandamos un análisis personalizado en menos de 24 horas al WhatsApp que nos dejaste.</p>
+                        <p style="font-size:0.9rem; color: var(--text-muted); margin-top:1rem;"><strong>A&J Consulting IT</strong> · franciscoaucar@ajconsultingit.com</p>
                     </div>
-
-                </form><!-- /diag-form -->
-
-                <!-- ERROR GENERAL -->
+                </form>
                 <div class="diag-error-banner" id="diag-error-banner" style="display:none;" role="alert">
                     ✗ Hubo un error al enviar. Por favor intentá de nuevo o escribinos directamente a
                     <a href="mailto:franciscoaucar@ajconsultingit.com">franciscoaucar@ajconsultingit.com</a>
                 </div>
+            </div>
+        </section>
 
-            </div><!-- /section-card -->
-        </section><!-- /#diagnostico -->
-
-        <!-- SECCIÓN DE CONTACTO: Formulario + canales directos -->
+        <!-- CONTACTO -->
         <section id="contacto" class="content-section" aria-label="Sección de contacto">
             <div class="section-card">
                 <h2 class="section-title">Hablemos</h2>
-                <p class="section-intro" style="text-align:center; margin-bottom: 0.5rem;">
-                    Contanos de tu negocio y en 24hs te respondemos con una propuesta concreta.
-                </p>
-
-                <!-- FORMULARIO DE CONTACTO -->
+                <p class="section-intro" style="text-align:center; margin-bottom: 0.5rem;">Contanos de tu negocio y en 24hs te respondemos con una propuesta concreta.</p>
                 <div class="contact-form">
                     <form id="contact-form" action="https://formspree.io/f/xpwznqgl" method="POST">
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                            <div class="form-group">
-                                <label for="contact-name">Nombre *</label>
-                                <input type="text" id="contact-name" name="name" required placeholder="Tu nombre" autocomplete="name">
-                            </div>
-                            <div class="form-group">
-                                <label for="contact-email">Email *</label>
-                                <input type="email" id="contact-email" name="email" required placeholder="tu@email.com" autocomplete="email">
-                            </div>
+                            <div class="form-group"><label for="contact-name">Nombre *</label><input type="text" id="contact-name" name="name" required placeholder="Tu nombre" autocomplete="name"></div>
+                            <div class="form-group"><label for="contact-email">Email *</label><input type="email" id="contact-email" name="email" required placeholder="tu@email.com" autocomplete="email"></div>
                         </div>
-                        <div class="form-group">
-                            <label for="contact-rubro">Rubro *</label>
-                            <select id="contact-rubro" name="rubro" required>
-                                <option value="" disabled selected>Seleccioná tu rubro</option>
-                                <option value="Clínica de Salud">Clínica de Salud</option>
-                                <option value="Obra Vial">Obra Vial / Construcción</option>
-                                <option value="Restaurante / Bar">Restaurante / Bar</option>
-                                <option value="Otro">Otro</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="contact-message">¿Cuál es tu principal problema con los datos hoy? (opcional)</label>
-                            <textarea id="contact-message" name="message" placeholder="Ej: No sé cuántos pacientes pierdo por mes, no tengo visibilidad del avance de obra..."></textarea>
-                        </div>
+                        <div class="form-group"><label for="contact-rubro">Rubro *</label><select id="contact-rubro" name="rubro" required><option value="" disabled selected>Seleccioná tu rubro</option><option value="Clínica de Salud">Clínica de Salud</option><option value="Obra Vial">Obra Vial / Construcción</option><option value="Restaurante / Bar">Restaurante / Bar</option><option value="Otro">Otro</option></select></div>
+                        <div class="form-group"><label for="contact-message">¿Cuál es tu principal problema con los datos hoy? (opcional)</label><textarea id="contact-message" name="message" placeholder="Ej: No sé cuántos pacientes pierdo por mes, no tengo visibilidad del avance de obra..."></textarea></div>
                         <input type="hidden" name="_subject" value="Nuevo contacto desde ajconsultingit.com">
-                        <button type="submit" class="form-submit-btn"
-                            onclick="gtag('event', 'form_submit', {event_category: 'contacto', event_label: 'formulario_contacto'});">
-                            <iconify-icon icon="mdi:send" width="18" height="18" aria-hidden="true"></iconify-icon>
-                            Enviar consulta
-                        </button>
+                        <button type="submit" class="form-submit-btn" onclick="gtag('event', 'form_submit', {event_category: 'contacto', event_label: 'formulario_contacto'});"><iconify-icon icon="mdi:send" width="18" height="18" aria-hidden="true"></iconify-icon>Enviar consulta</button>
                     </form>
-                    <div class="form-success" id="form-success">
-                        ✅ ¡Mensaje recibido! Te respondemos en menos de 24 horas.
-                    </div>
+                    <div class="form-success" id="form-success">✅ ¡Mensaje recibido! Te respondemos en menos de 24 horas.</div>
                 </div>
-
                 <div class="contact-divider">o contactanos directamente</div>
-
-                <!-- GRID DE CONTACTOS: canales directos -->
                 <div class="contact-info">
-                    <!-- Email -->
-                    <a href="mailto:franciscoaucar@ajconsultingit.com"
-                        class="contact-card contact-card-clickable"
-                        id="email-contact-link"
-                        aria-label="Enviar correo electrónico a A&J Consulting IT"
-                        onclick="gtag('event', 'cta_click', {event_category: 'contacto', event_label: 'email'});">
-                        <div class="contact-icon" aria-hidden="true">
-                            <iconify-icon icon="mdi:email-outline" width="28" height="28"></iconify-icon>
-                        </div>
-                        <div class="contact-text">Email Corporativo</div>
-                    </a>
-
-                    <!-- WhatsApp -->
-                    <a href="https://wa.me/5493513764462"
-                        class="contact-card contact-card-clickable"
-                        id="whatsapp-contact-link"
-                        target="_blank" rel="noopener noreferrer"
-                        aria-label="Contactar por WhatsApp"
-                        onclick="gtag('event', 'cta_click', {event_category: 'contacto', event_label: 'whatsapp'});"
-                        style="background: rgba(37, 211, 102, 0.08); border: 1px solid rgba(37,211,102,0.3);">
-                        <div class="contact-icon" aria-hidden="true" style="color: #25D366;">
-                            <iconify-icon icon="mdi:whatsapp" width="28" height="28"></iconify-icon>
-                        </div>
-                        <div class="contact-text">WhatsApp</div>
-                    </a>
-
-                    <!-- LinkedIn -->
-                    <a href="https://www.linkedin.com/company/a-j-consultingit-software/about/"
-                        class="contact-card contact-card-clickable"
-                        id="linkedin-contact-link"
-                        target="_blank" rel="noopener noreferrer"
-                        aria-label="Visitar perfil de LinkedIn de A&J Consulting IT"
-                        onclick="gtag('event', 'cta_click', {event_category: 'contacto', event_label: 'linkedin'});">
-                        <div class="contact-icon" aria-hidden="true">
-                            <iconify-icon icon="mdi:linkedin" width="28" height="28"></iconify-icon>
-                        </div>
-                        <div class="contact-text">LinkedIn</div>
-                    </a>
+                    <a href="mailto:franciscoaucar@ajconsultingit.com" class="contact-card contact-card-clickable" id="email-contact-link" aria-label="Enviar correo electrónico a A&J Consulting IT" onclick="gtag('event', 'cta_click', {event_category: 'contacto', event_label: 'email'});"><div class="contact-icon" aria-hidden="true"><iconify-icon icon="mdi:email-outline" width="28" height="28"></iconify-icon></div><div class="contact-text">Email Corporativo</div></a>
+                    <a href="https://wa.me/5493513764462" class="contact-card contact-card-clickable" id="whatsapp-contact-link" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" onclick="gtag('event', 'cta_click', {event_category: 'contacto', event_label: 'whatsapp'});" style="background: rgba(37, 211, 102, 0.08); border: 1px solid rgba(37,211,102,0.3);"><div class="contact-icon" aria-hidden="true" style="color: #25D366;"><iconify-icon icon="mdi:whatsapp" width="28" height="28"></iconify-icon></div><div class="contact-text">WhatsApp</div></a>
+                    <a href="https://www.linkedin.com/company/a-j-consultingit-software/about/" class="contact-card contact-card-clickable" id="linkedin-contact-link" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de LinkedIn de A&J Consulting IT" onclick="gtag('event', 'cta_click', {event_category: 'contacto', event_label: 'linkedin'});"><div class="contact-icon" aria-hidden="true"><iconify-icon icon="mdi:linkedin" width="28" height="28"></iconify-icon></div><div class="contact-text">LinkedIn</div></a>
                 </div>
             </div>
         </section>
 
-        <!-- BOTÓN FLOTANTE WHATSAPP -->
-        <a href="https://wa.me/549XXXXXXXXXX?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20sus%20servicios%20de%20Business%20Intelligence"
+        <!-- WHATSAPP FLOTANTE -->
+        <a href="https://wa.me/5493513764462?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20sus%20servicios%20de%20Business%20Intelligence"
             target="_blank" rel="noopener noreferrer"
-            class="whatsapp-float"
-            id="whatsapp-float-btn"
+            class="whatsapp-float" id="whatsapp-float-btn"
             aria-label="Contactar por WhatsApp"
             onclick="gtag('event', 'cta_click', {event_category: 'flotante', event_label: 'whatsapp_float'});">
             <iconify-icon icon="mdi:whatsapp" width="28" height="28" style="color: white;" aria-hidden="true"></iconify-icon>
             <span class="whatsapp-tooltip">Escribinos por WhatsApp</span>
         </a>
 
-        <!-- FOOTER: Pie de página -->
+        <!-- FOOTER -->
         <footer class="footer">
             <div class="footer-content">
-                <!-- CONTENIDO CENTRADO: Logo y texto en una línea -->
                 <div class="footer-content-center">
-                    <!-- LOGO DEL FOOTER: Logo oficial compacto y alineado -->
-                    <img src="/assets/logo-22x22.png" alt="A&J Consulting IT Logo" class="footer-logo-img" loading="lazy"
-                        width="22" height="22" aria-label="Logo A&J Consulting IT">
-
-                    <!-- TEXTO DEL FOOTER: Copyright y información -->
-                    <span class="footer-text" role="contentinfo">
-                        © 2025 A&J Consulting IT | Transformando datos en decisiones inteligentes
-                    </span>
+                    <img src="/assets/logo-22x22.png" alt="A&J Consulting IT Logo" class="footer-logo-img" loading="lazy" width="22" height="22" aria-label="Logo A&J Consulting IT">
+                    <span class="footer-text" role="contentinfo">© 2025 A&J Consulting IT | Transformando datos en decisiones inteligentes</span>
                 </div>
             </div>
         </footer>
     </div>
 
-    <!-- SWIPER: Script principal (cargar solo cuando sea necesario, lazy load) -->
-    <script>
-        // Esperar a que el DOM esté listo
-        function initSwiperLoader() {
-            // Cargar CSS de Swiper primero
-            function loadSwiperCSS() {
-                if (!document.querySelector('link[href*="swiper-bundle.min.css"]')) {
-                    const link = document.createElement('link');
-                    link.rel = 'stylesheet';
-                    link.href = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css';
-                    document.head.appendChild(link);
-                }
-            }
-
-            // Swiper ya no es necesario - sección unificada usa grid
-        }
-    </script>
-
-    <!-- LIBRERÍA PARTICLES.JS: ELIMINADA — reemplazada por gradiente CSS (mejor performance) -->
-    <script defer src="js/main.js?v=2.2.0"></script>
-
-    <!-- SCROLL REVEAL: Animaciones controladas por scroll (diferido) -->
+    <!-- SCRIPTS -->
+    <script defer src="js/main.js?v=2.3.0"></script>
     <script defer src="js/scroll-reveal.js"></script>
-
-    <!-- PROYECTOS DE VENTA: Renderizado dinámico de proyectos (diferido) -->
     <script defer src="js/proyectos-venta.js"></script>
-
-    <!-- ANIME.JS: Librería de animaciones fluidas -->
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-
-    <!-- ANIMACIONES UX/UI: Mejoras de animaciones y micro-interacciones -->
     <script defer src="js/animations.js"></script>
-
-    <!-- GLOW MENU: Componente de menú avanzado con efectos visuales (diferido) -->
     <script defer src="js/glow-menu.js"></script>
 
-    <!-- FORMULARIO DE CONTACTO: Manejo de envío y feedback -->
+    <!-- FORMULARIO CONTACTO -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         const form = document.getElementById('contact-form');
@@ -2803,275 +1078,117 @@
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = form.querySelector('.form-submit-btn');
-            btn.textContent = 'Enviando...';
-            btn.disabled = true;
+            btn.textContent = 'Enviando...'; btn.disabled = true;
             try {
-                const res = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: { 'Accept': 'application/json' }
-                });
+                const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
                 if (res.ok) {
-                    form.style.display = 'none';
-                    successMsg.style.display = 'block';
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'form_success', { event_category: 'contacto', event_label: 'formulario_enviado' });
-                    }
-                } else {
-                    btn.textContent = 'Error al enviar. Intentá de nuevo.';
-                    btn.disabled = false;
-                }
-            } catch(err) {
-                btn.textContent = 'Error de conexión. Intentá de nuevo.';
-                btn.disabled = false;
-            }
+                    form.style.display = 'none'; successMsg.style.display = 'block';
+                    if (typeof gtag !== 'undefined') gtag('event', 'form_success', { event_category: 'contacto', event_label: 'formulario_enviado' });
+                } else { btn.textContent = 'Error al enviar. Intentá de nuevo.'; btn.disabled = false; }
+            } catch(err) { btn.textContent = 'Error de conexión. Intentá de nuevo.'; btn.disabled = false; }
         });
     });
     </script>
 
-    <!-- ═══════════════════════════════════════════════════════════ -->
-    <!-- DIAGNÓSTICO WIZARD — JS: validación, anti-bot, envío      -->
-    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- DIAGNÓSTICO WIZARD JS -->
     <script>
     (function() {
         'use strict';
-
-        // ── Anti-bot: registrar timestamp de cuando el form se cargó ──
         const startEl = document.getElementById('diag-form-start');
         if (startEl) startEl.value = Date.now().toString();
-
-        // ── Anti-bot: pregunta matemática (generada en cliente, verificada en cliente) ──
         let mathA = 0, mathB = 0, mathCorrect = 0;
         function generateMath() {
-            mathA = Math.floor(Math.random() * 9) + 1;
-            mathB = Math.floor(Math.random() * 9) + 1;
-            mathCorrect = mathA + mathB;
-            const q = document.getElementById('diag-math-question');
-            if (q) q.textContent = mathA + ' + ' + mathB;
-            const h = document.getElementById('diag-math-answer-hidden');
-            if (h) h.value = mathCorrect.toString();
+            mathA = Math.floor(Math.random() * 9) + 1; mathB = Math.floor(Math.random() * 9) + 1; mathCorrect = mathA + mathB;
+            const q = document.getElementById('diag-math-question'); if (q) q.textContent = mathA + ' + ' + mathB;
+            const h = document.getElementById('diag-math-answer-hidden'); if (h) h.value = mathCorrect.toString();
         }
-
-        // ── Limit checkboxes to 3 ──
         let checkedCount = 0;
         function updateCheckboxes() {
-            const items = document.querySelectorAll('.diag-check-item');
-            const counter = document.getElementById('diag-check-counter');
+            const items = document.querySelectorAll('.diag-check-item'); const counter = document.getElementById('diag-check-counter');
             checkedCount = document.querySelectorAll('.diag-checks-grid input[type=checkbox]:checked').length;
             if (counter) counter.textContent = checkedCount + ' / 3 seleccionadas';
             items.forEach(function(item) {
-                const cb = item.querySelector('input[type=checkbox]');
-                if (!cb) return;
-                if (checkedCount >= 3 && !cb.checked) {
-                    item.classList.add('maxed');
-                } else {
-                    item.classList.remove('maxed');
-                }
-                if (cb.checked) {
-                    item.classList.add('checked');
-                } else {
-                    item.classList.remove('checked');
-                }
+                const cb = item.querySelector('input[type=checkbox]'); if (!cb) return;
+                item.classList.toggle('maxed', checkedCount >= 3 && !cb.checked);
+                item.classList.toggle('checked', cb.checked);
             });
         }
-
-        // ── Progress bar + step indicators ──
         function updateProgress(step) {
-            const fill = document.getElementById('diag-progress-fill');
-            if (fill) fill.style.width = (step * 25) + '%';
-            const stepEls = document.querySelectorAll('.diag-step');
-            const lines = document.querySelectorAll('.diag-step-line');
-            stepEls.forEach(function(el) {
-                const s = parseInt(el.dataset.step);
-                el.classList.remove('active', 'completed');
-                if (s === step) el.classList.add('active');
-                else if (s < step) el.classList.add('completed');
-            });
-            lines.forEach(function(line, i) {
-                if (i < step - 1) line.classList.add('done');
-                else line.classList.remove('done');
-            });
+            const fill = document.getElementById('diag-progress-fill'); if (fill) fill.style.width = (step * 25) + '%';
+            document.querySelectorAll('.diag-step').forEach(function(el) { const s = parseInt(el.dataset.step); el.classList.remove('active','completed'); if (s === step) el.classList.add('active'); else if (s < step) el.classList.add('completed'); });
+            document.querySelectorAll('.diag-step-line').forEach(function(line, i) { line.classList.toggle('done', i < step - 1); });
         }
-
-        // ── Show panel ──
         function showPanel(step) {
-            document.querySelectorAll('.diag-step-panel').forEach(function(p) {
-                p.classList.remove('active');
-            });
-            const panel = document.getElementById('diag-panel-' + step);
-            if (panel) panel.classList.add('active');
+            document.querySelectorAll('.diag-step-panel').forEach(function(p) { p.classList.remove('active'); });
+            const panel = document.getElementById('diag-panel-' + step); if (panel) panel.classList.add('active');
             updateProgress(step);
-            // Scroll into view
-            const section = document.getElementById('diagnostico');
-            if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const section = document.getElementById('diagnostico'); if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-
-        // ── Validate step 1 ──
         function validateStep1() {
             let ok = true;
-            ['diag-rubro', 'diag-ciudad', 'diag-equipo'].forEach(function(id) {
-                const el = document.getElementById(id);
-                if (!el) return;
+            ['diag-rubro','diag-ciudad','diag-equipo'].forEach(function(id) {
+                const el = document.getElementById(id); if (!el) return;
                 el.classList.remove('diag-field-error');
-                const errId = id + '-err';
-                const existing = document.getElementById(errId);
-                if (existing) existing.remove();
-                if (!el.value.trim()) {
-                    el.classList.add('diag-field-error');
-                    const msg = document.createElement('span');
-                    msg.className = 'diag-field-error-msg';
-                    msg.id = errId;
-                    msg.textContent = 'Este campo es requerido';
-                    el.parentNode.appendChild(msg);
-                    ok = false;
-                }
+                const existing = document.getElementById(id + '-err'); if (existing) existing.remove();
+                if (!el.value.trim()) { el.classList.add('diag-field-error'); const msg = document.createElement('span'); msg.className = 'diag-field-error-msg'; msg.id = id + '-err'; msg.textContent = 'Este campo es requerido'; el.parentNode.appendChild(msg); ok = false; }
             });
             return ok;
         }
-
-        // ── Validate step 4 ──
         function validateStep4() {
             let ok = true;
-            ['diag-nombre', 'diag-whatsapp'].forEach(function(id) {
-                const el = document.getElementById(id);
-                if (!el) return;
+            ['diag-nombre','diag-whatsapp'].forEach(function(id) {
+                const el = document.getElementById(id); if (!el) return;
                 el.classList.remove('diag-field-error');
-                const errId = id + '-err';
-                const existing = document.getElementById(errId);
-                if (existing) existing.remove();
-                if (!el.value.trim()) {
-                    el.classList.add('diag-field-error');
-                    const msg = document.createElement('span');
-                    msg.className = 'diag-field-error-msg';
-                    msg.id = errId;
-                    msg.textContent = 'Este campo es requerido';
-                    el.parentNode.appendChild(msg);
-                    ok = false;
-                }
+                const existing = document.getElementById(id + '-err'); if (existing) existing.remove();
+                if (!el.value.trim()) { el.classList.add('diag-field-error'); const msg = document.createElement('span'); msg.className = 'diag-field-error-msg'; msg.id = id + '-err'; msg.textContent = 'Este campo es requerido'; el.parentNode.appendChild(msg); ok = false; }
             });
-            // Math check
-            const mathInput = document.getElementById('diag-math-input');
-            const mathError = document.getElementById('diag-math-error');
-            if (mathInput) {
-                const val = parseInt(mathInput.value, 10);
-                if (isNaN(val) || val !== mathCorrect) {
-                    mathInput.classList.add('diag-field-error');
-                    if (mathError) mathError.style.display = 'inline';
-                    ok = false;
-                } else {
-                    mathInput.classList.remove('diag-field-error');
-                    if (mathError) mathError.style.display = 'none';
-                }
-            }
+            const mathInput = document.getElementById('diag-math-input'); const mathError = document.getElementById('diag-math-error');
+            if (mathInput) { const val = parseInt(mathInput.value, 10); if (isNaN(val) || val !== mathCorrect) { mathInput.classList.add('diag-field-error'); if (mathError) mathError.style.display = 'inline'; ok = false; } else { mathInput.classList.remove('diag-field-error'); if (mathError) mathError.style.display = 'none'; } }
             return ok;
         }
-
-        // ── Navigation ──
-        window.diagNext = function(currentStep) {
-            if (currentStep === 1 && !validateStep1()) return;
-            if (currentStep === 4) return; // handled by submit
-            showPanel(currentStep + 1);
-        };
-
-        window.diagBack = function(currentStep) {
-            if (currentStep > 1) showPanel(currentStep - 1);
-        };
-
-        // ── Form submit ──
+        window.diagNext = function(currentStep) { if (currentStep === 1 && !validateStep1()) return; if (currentStep === 4) return; showPanel(currentStep + 1); };
+        window.diagBack = function(currentStep) { if (currentStep > 1) showPanel(currentStep - 1); };
         const form = document.getElementById('diag-form');
         if (form) {
             form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-
-                if (!validateStep4()) return;
-
-                // Anti-bot: timing check (< 5s = very likely bot)
+                e.preventDefault(); if (!validateStep4()) return;
                 const startTime = parseInt(document.getElementById('diag-form-start').value || '0', 10);
-                const elapsed = Date.now() - startTime;
-                if (elapsed < 5000) {
-                    // Silent fail — bots never know why
-                    showSuccess();
-                    return;
-                }
-
-                // Anti-bot: honeypot check
-                const hp1 = form.querySelector('input[name="_gotcha"]');
-                const hp2 = form.querySelector('input[name="website"]');
-                if ((hp1 && hp1.value !== '') || (hp2 && hp2.value !== '')) {
-                    showSuccess();
-                    return;
-                }
-
-                const btn = document.getElementById('diag-submit-btn');
-                if (btn) { btn.disabled = true; btn.innerHTML = '<iconify-icon icon="mdi:loading" width="18" height="18"></iconify-icon> Enviando...'; }
-
+                if (Date.now() - startTime < 5000) { showSuccess(); return; }
+                const hp1 = form.querySelector('input[name="_gotcha"]'); const hp2 = form.querySelector('input[name="website"]');
+                if ((hp1 && hp1.value !== '') || (hp2 && hp2.value !== '')) { showSuccess(); return; }
+                const btn = document.getElementById('diag-submit-btn'); if (btn) { btn.disabled = true; btn.innerHTML = 'Enviando...'; }
                 try {
-                    const res = await fetch(form.action, {
-                        method: 'POST',
-                        body: new FormData(form),
-                        headers: { 'Accept': 'application/json' }
-                    });
-                    if (res.ok) {
-                        showSuccess();
-                        if (typeof gtag !== 'undefined') {
-                            gtag('event', 'form_submit', { event_category: 'diagnostico', event_label: 'diagnostico_automatizacion' });
-                        }
-                    } else {
-                        showError();
-                        if (btn) { btn.disabled = false; btn.innerHTML = '<iconify-icon icon="mdi:send" width="18" height="18"></iconify-icon> Enviar diagnóstico'; }
-                    }
-                } catch(err) {
-                    showError();
-                    if (btn) { btn.disabled = false; btn.innerHTML = '<iconify-icon icon="mdi:send" width="18" height="18"></iconify-icon> Enviar diagnóstico'; }
-                }
+                    const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+                    if (res.ok) { showSuccess(); if (typeof gtag !== 'undefined') gtag('event', 'form_submit', { event_category: 'diagnostico', event_label: 'diagnostico_automatizacion' }); }
+                    else { showError(); if (btn) { btn.disabled = false; btn.innerHTML = '<iconify-icon icon="mdi:send" width="18" height="18"></iconify-icon> Enviar diagnóstico'; } }
+                } catch(err) { showError(); if (btn) { btn.disabled = false; btn.innerHTML = '<iconify-icon icon="mdi:send" width="18" height="18"></iconify-icon> Enviar diagnóstico'; } }
             });
         }
-
         function showSuccess() {
             document.querySelectorAll('.diag-step-panel').forEach(function(p) { p.style.display = 'none'; });
-            const s = document.getElementById('diag-panel-success');
-            if (s) { s.style.display = 'block'; }
-            const fill = document.getElementById('diag-progress-fill');
-            if (fill) fill.style.width = '100%';
+            const s = document.getElementById('diag-panel-success'); if (s) s.style.display = 'block';
+            const fill = document.getElementById('diag-progress-fill'); if (fill) fill.style.width = '100%';
             document.querySelectorAll('.diag-step').forEach(function(el) { el.classList.add('completed'); el.classList.remove('active'); });
             document.querySelectorAll('.diag-step-line').forEach(function(l) { l.classList.add('done'); });
         }
-
-        function showError() {
-            const banner = document.getElementById('diag-error-banner');
-            if (banner) banner.style.display = 'block';
-        }
-
-        // ── Init ──
+        function showError() { const banner = document.getElementById('diag-error-banner'); if (banner) banner.style.display = 'block'; }
         document.addEventListener('DOMContentLoaded', function() {
             generateMath();
-
-            // Checkbox listener
             document.querySelectorAll('.diag-checks-grid input[type=checkbox]').forEach(function(cb) {
                 cb.addEventListener('change', function() {
-                    const item = cb.closest('.diag-check-item');
-                    const otherInput = item && item.querySelector('.diag-otro-input');
-                    if (otherInput) {
-                        otherInput.tabIndex = cb.checked ? 0 : -1;
-                    }
+                    const item = cb.closest('.diag-check-item'); const otherInput = item && item.querySelector('.diag-otro-input');
+                    if (otherInput) otherInput.tabIndex = cb.checked ? 0 : -1;
                     updateCheckboxes();
                 });
             });
-
-            // Add diagnostico to nav menu
             const navMenu = document.querySelector('.nav-menu');
             if (navMenu) {
-                const diagLi = document.createElement('li');
-                diagLi.innerHTML = '<a href="#diagnostico">Diagnóstico</a>';
-                const contactoLi = Array.from(navMenu.querySelectorAll('li')).find(function(li) {
-                    return li.querySelector('a[href="#contacto"]');
-                });
-                if (contactoLi) navMenu.insertBefore(diagLi, contactoLi);
-                else navMenu.appendChild(diagLi);
+                const diagLi = document.createElement('li'); diagLi.innerHTML = '<a href="#diagnostico">Diagnóstico</a>';
+                const contactoLi = Array.from(navMenu.querySelectorAll('li')).find(function(li) { return li.querySelector('a[href="#contacto"]'); });
+                if (contactoLi) navMenu.insertBefore(diagLi, contactoLi); else navMenu.appendChild(diagLi);
             }
         });
     })();
     </script>
 </body>
-
 </html>
