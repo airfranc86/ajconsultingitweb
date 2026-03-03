@@ -36,6 +36,18 @@
     <link rel="shortcut icon" href="/assets/logo-22x22.png">
     <link rel="apple-touch-icon" href="/assets/logo-200x200.png">
 
+    <!-- THEME INIT: Bloquea flash de tema incorrecto antes del primer render -->
+    <script>
+        (function() {
+            var stored = localStorage.getItem('aj-theme') || 'dark';
+            var resolved = stored;
+            if (stored === 'system') {
+                resolved = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            }
+            document.documentElement.setAttribute('data-theme', resolved);
+        })();
+    </script>
+
     <!-- OPEN GRAPH OPTIMIZADO -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="A&J Consulting IT - KPIs e IA para tu Negocio">
@@ -1845,6 +1857,25 @@
                 aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="glow-menu">
                 <iconify-icon icon="mdi:menu" width="22" height="22" aria-hidden="true"></iconify-icon>
             </button>
+
+            <!-- THEME TOGGLE: Selector de tema claro / oscuro / sistema -->
+            <div class="theme-toggle" role="group" aria-label="Seleccionar tema de color" id="theme-toggle">
+                <button class="theme-toggle-btn" data-mode="light" title="Tema claro" aria-label="Activar tema claro" aria-pressed="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+                    </svg>
+                </button>
+                <button class="theme-toggle-btn active" data-mode="dark" title="Tema oscuro" aria-label="Activar tema oscuro" aria-pressed="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+                    </svg>
+                </button>
+                <button class="theme-toggle-btn" data-mode="system" title="Seguir sistema" aria-label="Usar preferencia del sistema" aria-pressed="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/>
+                    </svg>
+                </button>
+            </div>
         </nav>
     </header>
 
