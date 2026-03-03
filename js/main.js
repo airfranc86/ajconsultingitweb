@@ -1038,3 +1038,81 @@ document.addEventListener('DOMContentLoaded', function () {
         }, { passive: true });
     }
 });
+/* ===================================================
+   THEME TOGGLE — Light / Dark / System
+   A&J Consulting IT
+   =================================================== */
+(function () {
+    'use strict';
+
+    var STORAGE_KEY = 'aj-theme';
+    var html = document.documentElement;
+
+    /* ---- Resolución de tema ---- */
+    function getSystemTheme() {
+        return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+
+    function resolveTheme(mode) {
+        return mode === 'system' ? getSystemTheme() : mode;
+    }
+
+    function applyTheme(mode) {
+        var resolved = resolveTheme(mode);
+        html.setAttribute('data-theme', resolved);
+        localStorage.setItem(STORAGE_KEY, mode);
+        updateButtons(mode);
+        updateParticlesColor(resolved);
+    }
+
+    /* ---- Actualizar estado visual de botones ---- */
+    function updateButtons(activeMode) {
+        var btns = document.querySelectorAll('.theme-toggle-btn');
+        btns.forEach(function (btn) {
+            var isActive = btn.getAttribute('data-mode') === activeMode;
+            btn.classList.toggle('active', isActive);
+            btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+    }
+
+    /* ---- Adaptar color de partículas si existe el canvas ---- */
+    function updateParticlesColor(resolved) {
+        var canvas = document.querySelector('#particles-js canvas');
+        if (!canvas) return;
+        if (resolved === 'light') {
+            canvas.style.filter = 'brightness(1.8) saturate(0.6)';
+        } else {
+            canvas.style.filter = '';
+        }
+    }
+
+    /* ---- Inicialización ---- */
+    function init() {
+        var toggle = document.getElementById('theme-toggle');
+        if (!toggle) return;
+
+        var stored = localStorage.getItem(STORAGE_KEY) || 'dark';
+        applyTheme(stored);
+
+        /* Eventos en cada botón del grupo */
+        toggle.addEventListener('click', function (e) {
+            var btn = e.target.closest('.theme-toggle-btn');
+            if (!btn) return;
+            var mode = btn.getAttribute('data-mode');
+            if (mode) applyTheme(mode);
+        });
+
+        /* Escuchar cambio de preferencia del sistema */
+        window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function () {
+            var current = localStorage.getItem(STORAGE_KEY) || 'dark';
+            if (current === 'system') applyTheme('system');
+        });
+    }
+
+    /* Esperar DOM listo */
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
