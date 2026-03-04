@@ -88,8 +88,10 @@
 }
 
 /* ===== APLICAR VARIABLES DE TEMA ===== */
-[data-theme="light"] #particles-js {
+body {
     background: var(--theme-bg-particles);
+    background-attachment: fixed;
+    min-height: 100vh;
 }
 
 [data-theme="light"] body {
