@@ -95,7 +95,6 @@
 
     <!-- PRELOAD IMÁGENES CRÍTICAS -->
     <link rel="preload" as="image" href="/assets/logo-200x200.png" type="image/png">
-    <link rel="preload" as="image" href="/assets/AJLOGO-80x80.png" type="image/png">
 
     <!-- VERCEL ANALYTICS -->
     <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
@@ -106,10 +105,6 @@
     <!-- ICONIFY -->
     <script defer src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
-    <!-- SWIPER CSS -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"></noscript>
 
     <style>
         /* ══════════════════════════════════════════════════
@@ -657,6 +652,7 @@
                 <li><a href="#rubros-casos">Rubros y Resultados</a></li>
                 <li><a href="#proyectos-venta">Proyectos</a></li>
                 <li><a href="#equipo">Equipo</a></li>
+                <li><a href="#diagnostico">Diagnóstico</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
             <button id="glow-menu-trigger" class="glow-menu-trigger" title="Menú"
@@ -708,14 +704,13 @@
                     Dejá de administrar por intuición. Te implementamos un sistema que muestra cada mañana <strong>qué está funcionando, qué no, y qué decisión tomar</strong>.
                 </p>
                 <div class="hero-buttons">
-                    <a href="https://calendly.com/franciscoaucar-ajconsultingit/consulta-gratuita"
-                        target="_blank" rel="noopener noreferrer"
+                    <a href="#diagnostico"
                         class="btn btn-primary btn-shimmer"
                         id="solicitar-demo-btn"
-                        aria-label="Agendar consulta gratuita con A&J Consulting IT"
-                        onclick="gtag('event', 'cta_click', {event_category: 'hero', event_label: 'agendar_consulta'});">
-                        <iconify-icon icon="mdi:calendar-check" width="20" height="20" style="vertical-align: middle;" aria-hidden="true"></iconify-icon>
-                        Agendar Consulta Gratuita
+                        aria-label="Pedí tu diagnóstico gratuito"
+                        onclick="gtag('event', 'cta_click', {event_category: 'hero', event_label: 'diagnostico'});">
+                        <iconify-icon icon="mdi:lightning-bolt" width="20" height="20" style="vertical-align: middle;" aria-hidden="true"></iconify-icon>
+                        Pedí tu diagnóstico gratuito
                     </a>
                     <a href="#metodologia"
                         class="btn btn-outline-white"
@@ -786,14 +781,12 @@
                             </div>
                         </div>
                         <div class="rubro-caso-actions">
-                            <a href="https://calendly.com/franciscoaucar-ajconsultingit/consulta-gratuita" target="_blank" rel="noopener noreferrer"
-                                class="btn btn-primary btn-rubro-caso"
-                                onclick="gtag('event', 'cta_click', {event_category: 'rubros', event_label: 'clinicas_agendar'});"
-                                aria-label="Agendar consulta sobre solución para clínicas">
-                                <iconify-icon icon="mdi:calendar-check" width="16" height="16" aria-hidden="true"></iconify-icon>
-                                Agendar Consulta
+                            <a href="#contacto" class="btn btn-primary btn-rubro-caso"
+                                onclick="gtag('event', 'cta_click', {event_category: 'rubros', event_label: 'clinicas_contacto'});"
+                                aria-label="Contactar sobre solución para clínicas">
+                                <iconify-icon icon="mdi:message-outline" width="16" height="16" aria-hidden="true"></iconify-icon>
+                                Consultanos
                             </a>
-                            <a href="#contacto" class="btn btn-secondary btn-rubro-caso">Más información</a>
                         </div>
                     </article>
                     <!-- CARD 2: Obras Viales -->
@@ -817,14 +810,12 @@
                             </div>
                         </div>
                         <div class="rubro-caso-actions">
-                            <a href="https://calendly.com/franciscoaucar-ajconsultingit/consulta-gratuita" target="_blank" rel="noopener noreferrer"
-                                class="btn btn-primary btn-rubro-caso"
-                                onclick="gtag('event', 'cta_click', {event_category: 'rubros', event_label: 'obras_agendar'});"
-                                aria-label="Agendar consulta sobre solución para obras viales">
-                                <iconify-icon icon="mdi:calendar-check" width="16" height="16" aria-hidden="true"></iconify-icon>
-                                Agendar Consulta
+                            <a href="#contacto" class="btn btn-primary btn-rubro-caso"
+                                onclick="gtag('event', 'cta_click', {event_category: 'rubros', event_label: 'obras_contacto'});"
+                                aria-label="Contactar sobre solución para obras viales">
+                                <iconify-icon icon="mdi:message-outline" width="16" height="16" aria-hidden="true"></iconify-icon>
+                                Consultanos
                             </a>
-                            <a href="#contacto" class="btn btn-secondary btn-rubro-caso">Más información</a>
                         </div>
                     </article>
                     <!-- CARD 3: Restaurantes -->
@@ -847,12 +838,11 @@
                             </div>
                         </div>
                         <div class="rubro-caso-actions">
-                            <a href="https://calendly.com/franciscoaucar-ajconsultingit/consulta-gratuita" target="_blank" rel="noopener noreferrer"
-                                class="btn btn-primary btn-rubro-caso"
-                                onclick="gtag('event', 'cta_click', {event_category: 'rubros', event_label: 'restaurantes_agendar'});"
-                                aria-label="Agendar consulta sobre solución para restaurantes">
-                                <iconify-icon icon="mdi:calendar-check" width="16" height="16" aria-hidden="true"></iconify-icon>
-                                Agendar Consulta
+                            <a href="#contacto" class="btn btn-primary btn-rubro-caso"
+                                onclick="gtag('event', 'cta_click', {event_category: 'rubros', event_label: 'restaurantes_contacto'});"
+                                aria-label="Contactar sobre solución para restaurantes">
+                                <iconify-icon icon="mdi:message-outline" width="16" height="16" aria-hidden="true"></iconify-icon>
+                                Consultanos
                             </a>
                         </div>
                     </article>
@@ -910,102 +900,38 @@
                     </h2>
                     <p class="section-intro">Completá este formulario. Recibirás un análisis personalizado en menos de 24 horas, sin compromiso.</p>
                 </div>
-                <div class="diag-progress" aria-label="Progreso del formulario">
-                    <div class="diag-progress-steps">
-                        <div class="diag-step active" data-step="1"><div class="diag-step-circle">1</div><span class="diag-step-label">Tu negocio</span></div>
-                        <div class="diag-step-line"></div>
-                        <div class="diag-step" data-step="2"><div class="diag-step-circle">2</div><span class="diag-step-label">Tiempo perdido</span></div>
-                        <div class="diag-step-line"></div>
-                        <div class="diag-step" data-step="3"><div class="diag-step-circle">3</div><span class="diag-step-label">Situación actual</span></div>
-                        <div class="diag-step-line"></div>
-                        <div class="diag-step" data-step="4"><div class="diag-step-circle">4</div><span class="diag-step-label">Contacto</span></div>
-                    </div>
-                    <div class="diag-progress-bar"><div class="diag-progress-fill" id="diag-progress-fill" style="width:25%"></div></div>
-                </div>
                 <form id="diag-form" action="https://formspree.io/f/xpwznqgl" method="POST" novalidate>
-                    <div class="diag-honeypot" aria-hidden="true">
-                        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" value="">
-                        <input type="text" name="website" tabindex="-1" autocomplete="off" value="">
-                    </div>
-                    <input type="hidden" name="_form_start" id="diag-form-start">
-                    <input type="hidden" name="_math_answer" id="diag-math-answer-hidden">
                     <input type="hidden" name="_subject" value="⚡ Diagnóstico de Automatización — A&J Consulting IT">
                     <input type="hidden" name="_type" value="diagnostico_automatizacion">
-                    <!-- PASO 1 -->
-                    <div class="diag-step-panel active" id="diag-panel-1" role="group" aria-labelledby="diag-step1-title">
-                        <h3 class="diag-step-title" id="diag-step1-title"><iconify-icon icon="mdi:store-outline" width="22" height="22" aria-hidden="true"></iconify-icon>Tu Negocio</h3>
-                        <div class="diag-grid-2">
-                            <div class="form-group"><label for="diag-rubro">Rubro / Actividad <span class="required">*</span></label><input type="text" id="diag-rubro" name="rubro" required placeholder="Ej: Veterinaria, Taller mecánico, Clínica estética" autocomplete="organization-title"></div>
-                            <div class="form-group"><label for="diag-ciudad">Ciudad <span class="required">*</span></label><input type="text" id="diag-ciudad" name="ciudad" required placeholder="Ej: Córdoba, Buenos Aires" autocomplete="address-level2"></div>
-                            <div class="form-group"><label for="diag-equipo">Personas en el equipo <span class="required">*</span></label><select id="diag-equipo" name="equipo" required><option value="" disabled selected>Seleccioná</option><option value="Solo yo">Solo yo</option><option value="2-5 personas">2–5 personas</option><option value="6-15 personas">6–15 personas</option><option value="Más de 15">Más de 15</option></select></div>
-                            <div class="form-group"><label for="diag-operaciones">Operaciones por día</label><input type="text" id="diag-operaciones" name="operaciones" placeholder="Ej: 15 turnos / 20 ventas / 30 consultas"></div>
+                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label for="diag-nombre">Nombre <span class="required">*</span></label>
+                            <input type="text" id="diag-nombre" name="nombre" required placeholder="Tu nombre" autocomplete="given-name">
                         </div>
-                        <div class="diag-nav"><span></span><button type="button" class="diag-btn-next" data-next="2" onclick="diagNext(1)">Siguiente <iconify-icon icon="mdi:arrow-right" width="18" height="18" aria-hidden="true"></iconify-icon></button></div>
-                    </div>
-                    <!-- PASO 2 -->
-                    <div class="diag-step-panel" id="diag-panel-2" role="group" aria-labelledby="diag-step2-title">
-                        <h3 class="diag-step-title" id="diag-step2-title"><iconify-icon icon="mdi:clock-alert-outline" width="22" height="22" aria-hidden="true"></iconify-icon>¿Dónde Se Va el Tiempo?</h3>
-                        <p class="diag-hint">Marcá hasta 3 opciones que más te afecten hoy.</p>
-                        <div class="diag-checks-grid">
-                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Gestión de turnos / agenda"><span class="diag-check-box"><iconify-icon icon="mdi:calendar-clock" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Gestión de turnos / agenda</strong><small>Confirmo por WhatsApp, paso a Excel, las cancelaciones me desordenan el día.</small></span></label>
-                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Atención y respuestas a clientes"><span class="diag-check-box"><iconify-icon icon="mdi:message-reply-text" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Atención y respuestas a clientes</strong><small>Respondo los mismos mensajes 20 veces al día en WhatsApp e Instagram.</small></span></label>
-                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Historial y datos de clientes"><span class="diag-check-box"><iconify-icon icon="mdi:account-box-multiple" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Historial y datos de clientes</strong><small>Busco en carpetas o en el chat, se pierden datos, dependo de la memoria.</small></span></label>
-                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Seguimiento post-venta"><span class="diag-check-box"><iconify-icon icon="mdi:account-arrow-right" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Seguimiento post-venta</strong><small>No sé quién compró hace 3 meses y podría volver. Sin forma de contactarlos.</small></span></label>
-                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Facturación y cobros"><span class="diag-check-box"><iconify-icon icon="mdi:receipt-text" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Facturación y cobros</strong><small>Llevo Excel aparte, al mes no cuadra con lo cobrado, cero reportes.</small></span></label>
-                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Presupuestos y cotizaciones"><span class="diag-check-box"><iconify-icon icon="mdi:file-document-edit" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Presupuestos y cotizaciones</strong><small>Los armo a mano cada vez, tarda 30 min y la mitad ni responde.</small></span></label>
-                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Control de stock / inventario"><span class="diag-check-box"><iconify-icon icon="mdi:package-variant" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Control de stock / inventario</strong><small>Descubro que me falta mercadería cuando ya se acabó. Sin alerta automática.</small></span></label>
-                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Recordatorios / avisos automáticos"><span class="diag-check-box"><iconify-icon icon="mdi:bell-ring" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Recordatorios / avisos automáticos</strong><small>Se me escapan clientes que no vuelven, no tengo forma de avisarles.</small></span></label>
-                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Coordinación del equipo"><span class="diag-check-box"><iconify-icon icon="mdi:account-group" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Coordinación del equipo</strong><small>Comunico tareas por WhatsApp, se pierden, nadie sabe qué hizo quién.</small></span></label>
-                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Reportes internos del negocio"><span class="diag-check-box"><iconify-icon icon="mdi:chart-bar" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Reportes internos del negocio</strong><small>Para saber cómo va el mes tengo que armar tablas a mano. Tarda horas.</small></span></label>
-                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Carga manual de datos"><span class="diag-check-box"><iconify-icon icon="mdi:database-arrow-up" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Carga manual de datos</strong><small>Paso info de papel o fotos a la compu. Tarda horas y me genera errores.</small></span></label>
-                            <label class="diag-check-item"><input type="checkbox" name="tareas[]" value="Redes sociales / publicaciones"><span class="diag-check-box"><iconify-icon icon="mdi:instagram" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Redes sociales / publicaciones</strong><small>Publico todo a mano sin planificación y se me olvida días enteros.</small></span></label>
-                            <label class="diag-check-item diag-check-otro"><input type="checkbox" name="tareas[]" value="Otro" id="diag-check-otro"><span class="diag-check-box"><iconify-icon icon="mdi:plus-circle" width="18" height="18"></iconify-icon></span><span class="diag-check-text"><strong>Otro</strong><input type="text" name="tareas_otro" id="diag-otro-text" class="diag-otro-input" placeholder="Describí brevemente..." tabindex="-1"></span></label>
-                        </div>
-                        <div class="diag-check-counter" id="diag-check-counter" aria-live="polite">0 / 3 seleccionadas</div>
-                        <div class="diag-nav">
-                            <button type="button" class="diag-btn-back" onclick="diagBack(2)"><iconify-icon icon="mdi:arrow-left" width="18" height="18" aria-hidden="true"></iconify-icon>Atrás</button>
-                            <button type="button" class="diag-btn-next" onclick="diagNext(2)">Siguiente <iconify-icon icon="mdi:arrow-right" width="18" height="18" aria-hidden="true"></iconify-icon></button>
+                        <div class="form-group">
+                            <label for="diag-whatsapp">WhatsApp <span class="required">*</span></label>
+                            <input type="tel" id="diag-whatsapp" name="whatsapp" required placeholder="Ej: 351 123 4567" autocomplete="tel">
                         </div>
                     </div>
-                    <!-- PASO 3 -->
-                    <div class="diag-step-panel" id="diag-panel-3" role="group" aria-labelledby="diag-step3-title">
-                        <h3 class="diag-step-title" id="diag-step3-title"><iconify-icon icon="mdi:gauge" width="22" height="22" aria-hidden="true"></iconify-icon>Tu Situación Actual</h3>
-                        <div class="form-group"><label for="diag-horas">Horas por día en gestión administrativa</label><select id="diag-horas" name="horas_admin"><option value="" disabled selected>Seleccioná</option><option value="Menos de 1 hora">Menos de 1 hora</option><option value="1-2 horas">1–2 horas</option><option value="2-4 horas">2–4 horas</option><option value="Más de 4 horas">Más de 4 horas</option></select></div>
-                        <div class="form-group"><label>¿Qué herramientas usás hoy?</label><div class="diag-radio-group"><label class="diag-radio-item"><input type="radio" name="herramientas" value="Solo WhatsApp"><span>Solo WhatsApp</span></label><label class="diag-radio-item"><input type="radio" name="herramientas" value="WhatsApp + Excel"><span>WhatsApp + Excel</span></label><label class="diag-radio-item"><input type="radio" name="herramientas" value="Sistema / software"><span>Sistema / software</span></label><label class="diag-radio-item"><input type="radio" name="herramientas" value="Papel"><span>Papel</span></label></div></div>
-                        <div class="form-group"><label for="diag-eliminar">Si pudieras eliminar UNA tarea mañana, ¿cuál sería?</label><textarea id="diag-eliminar" name="tarea_eliminar" placeholder="Escribí la tarea que más tiempo te roba..." rows="2"></textarea></div>
-                        <div class="form-group"><label>¿Cuánto pagarías por resolverlo?</label><div class="diag-radio-group"><label class="diag-radio-item"><input type="radio" name="presupuesto" value="Menos de USD 50/mes"><span>Menos de $50/mes</span></label><label class="diag-radio-item"><input type="radio" name="presupuesto" value="USD 50-150/mes"><span>$50–150/mes</span></label><label class="diag-radio-item"><input type="radio" name="presupuesto" value="USD 150-300/mes"><span>$150–300/mes</span></label><label class="diag-radio-item"><input type="radio" name="presupuesto" value="Más de USD 300/mes"><span>Más de $300/mes</span></label></div></div>
-                        <div class="diag-nav">
-                            <button type="button" class="diag-btn-back" onclick="diagBack(3)"><iconify-icon icon="mdi:arrow-left" width="18" height="18" aria-hidden="true"></iconify-icon>Atrás</button>
-                            <button type="button" class="diag-btn-next" onclick="diagNext(3)">Siguiente <iconify-icon icon="mdi:arrow-right" width="18" height="18" aria-hidden="true"></iconify-icon></button>
-                        </div>
+                    <div class="form-group">
+                        <label for="diag-rubro">Rubro / Actividad <span class="required">*</span></label>
+                        <input type="text" id="diag-rubro" name="rubro" required placeholder="Ej: Clínica, Obra vial, Restaurante...">
                     </div>
-                    <!-- PASO 4 -->
-                    <div class="diag-step-panel" id="diag-panel-4" role="group" aria-labelledby="diag-step4-title">
-                        <h3 class="diag-step-title" id="diag-step4-title"><iconify-icon icon="mdi:send-circle-outline" width="22" height="22" aria-hidden="true"></iconify-icon>Para Mandarte el Análisis</h3>
-                        <div class="diag-grid-2">
-                            <div class="form-group"><label for="diag-nombre">Nombre <span class="required">*</span></label><input type="text" id="diag-nombre" name="nombre" required placeholder="Tu nombre" autocomplete="given-name"></div>
-                            <div class="form-group"><label for="diag-whatsapp">WhatsApp <span class="required">*</span></label><input type="tel" id="diag-whatsapp" name="whatsapp" required placeholder="Ej: 351 123 4567" autocomplete="tel"></div>
-                            <div class="form-group"><label for="diag-email">Email (opcional)</label><input type="email" id="diag-email" name="email_opcional" placeholder="tu@email.com" autocomplete="email"></div>
-                            <div class="form-group"><label>Mejor horario para contactarte</label><div class="diag-radio-group diag-radio-compact"><label class="diag-radio-item"><input type="radio" name="horario" value="Mañana"><span>Mañana</span></label><label class="diag-radio-item"><input type="radio" name="horario" value="Mediodía"><span>Mediodía</span></label><label class="diag-radio-item"><input type="radio" name="horario" value="Tarde"><span>Tarde</span></label><label class="diag-radio-item"><input type="radio" name="horario" value="Cualquier hora" checked><span>Cualquier hora</span></label></div></div>
-                        </div>
-                        <div class="diag-math-challenge" id="diag-math-box">
-                            <label for="diag-math-input" class="diag-math-label"><iconify-icon icon="mdi:shield-check" width="18" height="18" aria-hidden="true"></iconify-icon>Verificación rápida: <span id="diag-math-question" style="font-weight:700;"></span> = ?</label>
-                            <input type="number" id="diag-math-input" name="_math_check" placeholder="Tu respuesta" autocomplete="off" min="0" max="99">
-                            <span class="diag-math-error" id="diag-math-error" aria-live="polite" style="display:none;">✗ Respuesta incorrecta</span>
-                        </div>
-                        <div class="diag-nav">
-                            <button type="button" class="diag-btn-back" onclick="diagBack(4)"><iconify-icon icon="mdi:arrow-left" width="18" height="18" aria-hidden="true"></iconify-icon>Atrás</button>
-                            <button type="submit" class="diag-btn-submit" id="diag-submit-btn"><iconify-icon icon="mdi:send" width="18" height="18" aria-hidden="true"></iconify-icon>Enviar diagnóstico</button>
-                        </div>
+                    <div class="form-group">
+                        <label for="diag-problema">¿Cuál es tu mayor desafío operativo hoy?</label>
+                        <textarea id="diag-problema" name="mensaje" rows="3" placeholder="Ej: No tengo visibilidad del avance de obra, pierdo pacientes sin saber por qué..."></textarea>
                     </div>
-                    <!-- CONFIRMACIÓN -->
-                    <div class="diag-step-panel diag-success" id="diag-panel-success" style="display:none;" aria-live="polite">
-                        <div class="diag-success-icon"><iconify-icon icon="mdi:check-circle" width="64" height="64" style="color: var(--secondary-color);"></iconify-icon></div>
-                        <h3 class="diag-success-title">¡Diagnóstico recibido!</h3>
-                        <p class="diag-success-text">Revisaremos tus respuestas y te mandamos un análisis personalizado en menos de 24 horas al WhatsApp que nos dejaste.</p>
-                        <p style="font-size:0.9rem; color: var(--text-muted); margin-top:1rem;"><strong>A&J Consulting IT</strong> · franciscoaucar@ajconsultingit.com</p>
-                    </div>
+                    <button type="submit" class="form-submit-btn" id="diag-submit-btn">
+                        <iconify-icon icon="mdi:send" width="18" height="18" aria-hidden="true"></iconify-icon>
+                        Enviar diagnóstico
+                    </button>
                 </form>
+                <div class="diag-success" id="diag-success" style="display:none;" aria-live="polite">
+                    <div class="diag-success-icon"><iconify-icon icon="mdi:check-circle" width="64" height="64" style="color: var(--secondary-color);"></iconify-icon></div>
+                    <h3 class="diag-success-title">¡Diagnóstico recibido!</h3>
+                    <p class="diag-success-text">Revisaremos tus respuestas y te mandamos un análisis personalizado en menos de 24 horas al WhatsApp que nos dejaste.</p>
+                </div>
                 <div class="diag-error-banner" id="diag-error-banner" style="display:none;" role="alert">
                     ✗ Hubo un error al enviar. Por favor intentá de nuevo o escribinos directamente a
                     <a href="mailto:franciscoaucar@ajconsultingit.com">franciscoaucar@ajconsultingit.com</a>
@@ -1063,10 +989,7 @@
 
     <!-- SCRIPTS -->
     <script defer src="js/main.js?v=2.3.0"></script>
-    <script defer src="js/scroll-reveal.js"></script>
     <script defer src="js/proyectos-venta.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-    <script defer src="js/animations.js"></script>
     <script defer src="js/glow-menu.js"></script>
 
     <!-- FORMULARIO CONTACTO -->
@@ -1090,105 +1013,36 @@
     });
     </script>
 
-    <!-- DIAGNÓSTICO WIZARD JS -->
+    <!-- DIAGNÓSTICO JS -->
     <script>
-    (function() {
-        'use strict';
-        const startEl = document.getElementById('diag-form-start');
-        if (startEl) startEl.value = Date.now().toString();
-        let mathA = 0, mathB = 0, mathCorrect = 0;
-        function generateMath() {
-            mathA = Math.floor(Math.random() * 9) + 1; mathB = Math.floor(Math.random() * 9) + 1; mathCorrect = mathA + mathB;
-            const q = document.getElementById('diag-math-question'); if (q) q.textContent = mathA + ' + ' + mathB;
-            const h = document.getElementById('diag-math-answer-hidden'); if (h) h.value = mathCorrect.toString();
-        }
-        let checkedCount = 0;
-        function updateCheckboxes() {
-            const items = document.querySelectorAll('.diag-check-item'); const counter = document.getElementById('diag-check-counter');
-            checkedCount = document.querySelectorAll('.diag-checks-grid input[type=checkbox]:checked').length;
-            if (counter) counter.textContent = checkedCount + ' / 3 seleccionadas';
-            items.forEach(function(item) {
-                const cb = item.querySelector('input[type=checkbox]'); if (!cb) return;
-                item.classList.toggle('maxed', checkedCount >= 3 && !cb.checked);
-                item.classList.toggle('checked', cb.checked);
-            });
-        }
-        function updateProgress(step) {
-            const fill = document.getElementById('diag-progress-fill'); if (fill) fill.style.width = (step * 25) + '%';
-            document.querySelectorAll('.diag-step').forEach(function(el) { const s = parseInt(el.dataset.step); el.classList.remove('active','completed'); if (s === step) el.classList.add('active'); else if (s < step) el.classList.add('completed'); });
-            document.querySelectorAll('.diag-step-line').forEach(function(line, i) { line.classList.toggle('done', i < step - 1); });
-        }
-        function showPanel(step) {
-            document.querySelectorAll('.diag-step-panel').forEach(function(p) { p.classList.remove('active'); });
-            const panel = document.getElementById('diag-panel-' + step); if (panel) panel.classList.add('active');
-            updateProgress(step);
-            const section = document.getElementById('diagnostico'); if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-        function validateStep1() {
-            let ok = true;
-            ['diag-rubro','diag-ciudad','diag-equipo'].forEach(function(id) {
-                const el = document.getElementById(id); if (!el) return;
-                el.classList.remove('diag-field-error');
-                const existing = document.getElementById(id + '-err'); if (existing) existing.remove();
-                if (!el.value.trim()) { el.classList.add('diag-field-error'); const msg = document.createElement('span'); msg.className = 'diag-field-error-msg'; msg.id = id + '-err'; msg.textContent = 'Este campo es requerido'; el.parentNode.appendChild(msg); ok = false; }
-            });
-            return ok;
-        }
-        function validateStep4() {
-            let ok = true;
-            ['diag-nombre','diag-whatsapp'].forEach(function(id) {
-                const el = document.getElementById(id); if (!el) return;
-                el.classList.remove('diag-field-error');
-                const existing = document.getElementById(id + '-err'); if (existing) existing.remove();
-                if (!el.value.trim()) { el.classList.add('diag-field-error'); const msg = document.createElement('span'); msg.className = 'diag-field-error-msg'; msg.id = id + '-err'; msg.textContent = 'Este campo es requerido'; el.parentNode.appendChild(msg); ok = false; }
-            });
-            const mathInput = document.getElementById('diag-math-input'); const mathError = document.getElementById('diag-math-error');
-            if (mathInput) { const val = parseInt(mathInput.value, 10); if (isNaN(val) || val !== mathCorrect) { mathInput.classList.add('diag-field-error'); if (mathError) mathError.style.display = 'inline'; ok = false; } else { mathInput.classList.remove('diag-field-error'); if (mathError) mathError.style.display = 'none'; } }
-            return ok;
-        }
-        window.diagNext = function(currentStep) { if (currentStep === 1 && !validateStep1()) return; if (currentStep === 4) return; showPanel(currentStep + 1); };
-        window.diagBack = function(currentStep) { if (currentStep > 1) showPanel(currentStep - 1); };
+    document.addEventListener('DOMContentLoaded', function() {
         const form = document.getElementById('diag-form');
-        if (form) {
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault(); if (!validateStep4()) return;
-                const startTime = parseInt(document.getElementById('diag-form-start').value || '0', 10);
-                if (Date.now() - startTime < 5000) { showSuccess(); return; }
-                const hp1 = form.querySelector('input[name="_gotcha"]'); const hp2 = form.querySelector('input[name="website"]');
-                if ((hp1 && hp1.value !== '') || (hp2 && hp2.value !== '')) { showSuccess(); return; }
-                const btn = document.getElementById('diag-submit-btn'); if (btn) { btn.disabled = true; btn.innerHTML = 'Enviando...'; }
-                try {
-                    const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-                    if (res.ok) { showSuccess(); if (typeof gtag !== 'undefined') gtag('event', 'form_submit', { event_category: 'diagnostico', event_label: 'diagnostico_automatizacion' }); }
-                    else { showError(); if (btn) { btn.disabled = false; btn.innerHTML = '<iconify-icon icon="mdi:send" width="18" height="18"></iconify-icon> Enviar diagnóstico'; } }
-                } catch(err) { showError(); if (btn) { btn.disabled = false; btn.innerHTML = '<iconify-icon icon="mdi:send" width="18" height="18"></iconify-icon> Enviar diagnóstico'; } }
-            });
-        }
-        function showSuccess() {
-            document.querySelectorAll('.diag-step-panel').forEach(function(p) { p.style.display = 'none'; });
-            const s = document.getElementById('diag-panel-success'); if (s) s.style.display = 'block';
-            const fill = document.getElementById('diag-progress-fill'); if (fill) fill.style.width = '100%';
-            document.querySelectorAll('.diag-step').forEach(function(el) { el.classList.add('completed'); el.classList.remove('active'); });
-            document.querySelectorAll('.diag-step-line').forEach(function(l) { l.classList.add('done'); });
-        }
-        function showError() { const banner = document.getElementById('diag-error-banner'); if (banner) banner.style.display = 'block'; }
-        document.addEventListener('DOMContentLoaded', function() {
-            generateMath();
-            document.querySelectorAll('.diag-checks-grid input[type=checkbox]').forEach(function(cb) {
-                cb.addEventListener('change', function() {
-                    const item = cb.closest('.diag-check-item'); const otherInput = item && item.querySelector('.diag-otro-input');
-                    if (otherInput) otherInput.tabIndex = cb.checked ? 0 : -1;
-                    updateCheckboxes();
-                });
-            });
-            const navMenu = document.querySelector('.nav-menu');
-            if (navMenu) {
-                const diagLi = document.createElement('li'); diagLi.innerHTML = '<a href="#diagnostico">Diagnóstico</a>';
-                const contactoLi = Array.from(navMenu.querySelectorAll('li')).find(function(li) { return li.querySelector('a[href="#contacto"]'); });
-                if (contactoLi) navMenu.insertBefore(diagLi, contactoLi); else navMenu.appendChild(diagLi);
+        const success = document.getElementById('diag-success');
+        const errorBanner = document.getElementById('diag-error-banner');
+        if (!form) return;
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('diag-submit-btn');
+            btn.disabled = true;
+            btn.innerHTML = 'Enviando...';
+            try {
+                const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+                if (res.ok) {
+                    form.style.display = 'none';
+                    if (success) success.style.display = 'block';
+                    if (typeof gtag !== 'undefined') gtag('event', 'form_submit', { event_category: 'diagnostico', event_label: 'diagnostico_automatizacion' });
+                } else {
+                    if (errorBanner) errorBanner.style.display = 'block';
+                    btn.disabled = false;
+                    btn.innerHTML = '<iconify-icon icon="mdi:send" width="18" height="18" aria-hidden="true"></iconify-icon> Enviar diagnóstico';
+                }
+            } catch(err) {
+                if (errorBanner) errorBanner.style.display = 'block';
+                btn.disabled = false;
+                btn.innerHTML = '<iconify-icon icon="mdi:send" width="18" height="18" aria-hidden="true"></iconify-icon> Enviar diagnóstico';
             }
         });
-    })();
+    });
     </script>
 </body>
 </html>
