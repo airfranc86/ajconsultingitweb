@@ -1202,12 +1202,10 @@ body {
 
 /* ===== TARJETA DE CARACTERÍSTICA: Tarjeta individual ===== */
 .feature-card {
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.6), rgba(248, 249, 250, 0.6));
-    /* Fondo semi-transparente igual que rubro-card */
-    backdrop-filter: blur(2px) saturate(80%);
-    /* Efecto glass sutil con blur mínimo y saturación moderada */
-    -webkit-backdrop-filter: blur(2px) saturate(80%);
-    /* Soporte para Safari */
+    background: linear-gradient(145deg, rgba(30, 35, 40, 0.96), rgba(20, 25, 30, 0.96));
+    /* Dark por defecto: bg oscuro sólido elegante */
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
     padding: 2.75rem 2.5rem;
     /* Espaciado interno mejorado */
     border-radius: var(--border-radius);
@@ -1316,8 +1314,8 @@ body {
     /* Grueso */
     margin-bottom: 1rem;
     /* Margen inferior */
-    color: var(--text-dark);
-    /* Color negro */
+    color: var(--theme-text-heading);
+    /* Theme-aware */
     line-height: 1.3;
     /* Line height mejorado */
     letter-spacing: -0.01em;
@@ -1327,8 +1325,8 @@ body {
 
 /* ===== DESCRIPCIÓN DE CARACTERÍSTICA: Texto descriptivo ===== */
 .feature-description {
-    color: var(--text-muted);
-    /* Color gris */
+    color: var(--theme-text-secondary);
+    /* Theme-aware */
     line-height: 1.7;
     /* Espaciado entre líneas mejorado */
 }
@@ -1368,12 +1366,10 @@ body {
 
 /* ===== TARJETA RUBRO Y CASO: Card unificada que integra rubro + caso de éxito ===== */
 .rubro-caso-card {
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.6), rgba(248, 249, 250, 0.6));
-    /* Fondo semi-transparente con efecto glass */
-    backdrop-filter: blur(2px) saturate(80%);
-    /* Efecto glass sutil */
-    -webkit-backdrop-filter: blur(2px) saturate(80%);
-    /* Soporte para Safari */
+    background: linear-gradient(145deg, rgba(30, 35, 40, 0.96), rgba(20, 25, 30, 0.96));
+    /* Dark por defecto: bg oscuro sólido elegante */
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
     padding: 2.5rem 2rem;
     /* Espaciado interno generoso */
     border-radius: var(--border-radius);
@@ -1483,8 +1479,8 @@ body {
     /* Tamaño grande */
     font-weight: 700;
     /* Grueso */
-    color: var(--text-dark);
-    /* Color negro */
+    color: var(--theme-text-heading);
+    /* Theme-aware: blanco en dark, negro en light */
     margin: 0;
     /* Sin margen */
     line-height: 1.3;
@@ -1508,8 +1504,8 @@ body {
 
 /* ===== DESCRIPCIÓN DE RUBRO Y CASO: Texto descriptivo ===== */
 .rubro-caso-description {
-    color: var(--text-muted);
-    /* Color gris */
+    color: var(--theme-text-secondary);
+    /* Theme-aware: gris claro en dark, gris oscuro en light */
     line-height: 1.7;
     /* Espaciado entre líneas */
     font-size: 1rem;
@@ -1604,8 +1600,8 @@ body {
 
 /* ===== TEXTO DE RESULTADO: Texto del caso de éxito ===== */
 .rubro-caso-resultado-text {
-    color: var(--text-dark);
-    /* Color negro */
+    color: var(--theme-text-primary);
+    /* Theme-aware: blanco en dark, negro en light */
     line-height: 1.6;
     /* Espaciado entre líneas */
     font-size: 0.95rem;
@@ -1627,8 +1623,9 @@ body {
     /* Flexbox */
     gap: 1rem;
     /* Espacio entre botones */
-    margin-top: 1.5rem;
-    /* Margen superior */
+    margin-top: auto;
+    /* Empuja al fondo para mantener paridad de altura entre cards con distinto número de CTAs */
+    padding-top: 1.5rem;
     flex-wrap: wrap;
     /* Permitir salto de línea */
 }
@@ -2788,12 +2785,13 @@ select:focus-visible {
 
 /* Card de proyecto */
 .proyecto-card {
-    background: var(--card-bg);
+    background: linear-gradient(145deg, rgba(30, 35, 40, 0.96), rgba(20, 25, 30, 0.96));
+    /* Dark por defecto, theme-aware override en bloque consolidado */
     border-radius: var(--border-radius);
     padding: var(--spacing-lg);
     /* 24px padding */
     box-shadow: var(--shadow-light);
-    border: 1px solid rgba(39, 174, 96, 0.1);
+    border: 1px solid rgba(39, 174, 96, 0.2);
     transition: var(--transition);
     display: flex;
     flex-direction: column;
@@ -2851,7 +2849,7 @@ select:focus-visible {
 .proyecto-title {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--text-dark);
+    color: var(--theme-text-heading);
     margin: 0;
     line-height: 1.3;
 }
@@ -2868,7 +2866,7 @@ select:focus-visible {
 }
 
 .proyecto-description {
-    color: var(--text-muted);
+    color: var(--theme-text-secondary);
     font-size: 1rem;
     line-height: 1.6;
     margin: 0;
@@ -2888,9 +2886,10 @@ select:focus-visible {
 
 .proyecto-caracteristicas li {
     font-size: 0.875rem;
-    color: var(--text-muted);
+    color: var(--theme-text-secondary);
     padding: 0.25rem 0.5rem;
-    background: rgba(0, 0, 0, 0.05);
+    background: var(--theme-card-bg);
+    border: 1px solid var(--theme-card-border);
     border-radius: 4px;
 }
 
@@ -3171,5 +3170,335 @@ select:focus-visible {
     100% {
         box-shadow: 0 0 0 0 rgba(39, 174, 96, 0);
         /* Sombra final */
+    }
+}
+
+/* ===== Swiper overrides (theme-aware) ===== */
+
+/* Rubros — effect cards (apilado 3D estilo Layer Stack) */
+.rubros-swiper {
+    width: 100%;
+    max-width: 520px;
+    height: 700px;
+    margin: 3rem auto 1rem;
+    padding: 0;
+}
+
+.rubros-swiper .swiper-slide {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    display: flex;
+}
+
+.rubros-swiper .swiper-slide > .rubro-caso-card {
+    width: 100%;
+    height: 100%;
+}
+
+[data-theme="light"] .rubro-caso-card,
+[data-theme="light"] .feature-card,
+[data-theme="light"] .proyecto-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.97), rgba(248, 249, 250, 0.97));
+}
+
+@media (max-width: 540px) {
+    .rubros-swiper {
+        max-width: calc(100% - 2rem);
+        height: 740px;
+    }
+}
+
+/* Metodología — effect cards (consistencia con rubros) */
+.metodologia-swiper {
+    width: 100%;
+    max-width: 480px;
+    height: 380px;
+    margin: 3rem auto 1rem;
+    padding: 0;
+}
+
+.metodologia-swiper .swiper-slide {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    display: flex;
+}
+
+.metodologia-swiper .swiper-slide > .feature-card {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+@media (max-width: 540px) {
+    .metodologia-swiper {
+        max-width: calc(100% - 2rem);
+        height: 420px;
+    }
+}
+
+/* Proyectos — slider clásico */
+.proyectos-swiper {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 64px var(--spacing-2xl);
+    box-sizing: border-box;
+}
+
+.proyectos-swiper .swiper-slide {
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.proyectos-swiper .swiper-slide > .proyecto-card {
+    width: 100%;
+}
+
+.proyectos-swiper .swiper-button-prev,
+.proyectos-swiper .swiper-button-next {
+    width: 44px;
+    height: 44px;
+    color: var(--text-light);
+    background: var(--secondary-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 50%;
+    box-shadow: var(--shadow-medium);
+    margin-top: 0;
+    transform: translateY(-50%);
+    top: 50%;
+    transition: var(--transition);
+}
+
+.proyectos-swiper .swiper-button-prev {
+    left: 8px;
+}
+
+.proyectos-swiper .swiper-button-next {
+    right: 8px;
+}
+
+.proyectos-swiper .swiper-button-prev:hover,
+.proyectos-swiper .swiper-button-next:hover {
+    background: var(--accent-color);
+}
+
+.proyectos-swiper .swiper-button-prev::after,
+.proyectos-swiper .swiper-button-next::after {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.proyectos-swiper .swiper-button-disabled {
+    opacity: 0.35;
+}
+
+.proyectos-swiper .swiper-pagination {
+    position: relative;
+    margin-top: var(--spacing-md);
+    bottom: 0;
+}
+
+.proyectos-swiper .swiper-pagination-bullet {
+    background: var(--theme-text-secondary, rgba(255, 255, 255, 0.4));
+    opacity: 0.5;
+    transition: var(--transition);
+}
+
+.proyectos-swiper .swiper-pagination-bullet-active {
+    background: var(--secondary-color);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .proyectos-swiper {
+        padding: 0 48px var(--spacing-2xl);
+    }
+
+    .proyectos-swiper .swiper-button-prev,
+    .proyectos-swiper .swiper-button-next {
+        width: 36px;
+        height: 36px;
+    }
+
+    .proyectos-swiper .swiper-button-prev {
+        left: 4px;
+    }
+
+    .proyectos-swiper .swiper-button-next {
+        right: 4px;
+    }
+
+    .proyectos-swiper .swiper-button-prev::after,
+    .proyectos-swiper .swiper-button-next::after {
+        font-size: 14px;
+    }
+}
+
+/* ===== Screenshots Modal (lightbox accesible) ===== */
+.screenshots-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+}
+
+.screenshots-modal[hidden] {
+    display: none;
+}
+
+.screenshots-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    cursor: pointer;
+}
+
+.screenshots-modal__content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1100px;
+    max-height: 90vh;
+    background: var(--theme-card-bg, rgba(255, 255, 255, 0.08));
+    border: 1px solid var(--theme-card-border, rgba(255, 255, 255, 0.15));
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.screenshots-modal__close {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--text-light);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.screenshots-modal__close:hover,
+.screenshots-modal__close:focus-visible {
+    background: var(--secondary-color);
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+.screenshots-modal__title {
+    margin: 0;
+    padding-right: 56px;
+    color: var(--theme-text-heading, var(--text-light));
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.screenshots-modal__image-wrapper {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: calc(var(--border-radius) / 2);
+    overflow: hidden;
+}
+
+.screenshots-modal__image {
+    max-width: 100%;
+    max-height: 70vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.screenshots-modal__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    color: var(--theme-text-primary, var(--text-light));
+}
+
+.screenshots-modal__btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--theme-text-primary, var(--text-light));
+    border: 1px solid var(--theme-card-border, rgba(255, 255, 255, 0.15));
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.screenshots-modal__btn:hover,
+.screenshots-modal__btn:focus-visible {
+    background: var(--secondary-color);
+    border-color: var(--accent-color);
+    color: var(--text-light);
+    outline: none;
+    transform: scale(1.05);
+}
+
+.screenshots-modal__counter {
+    font-variant-numeric: tabular-nums;
+    font-size: 0.95rem;
+    min-width: 64px;
+    text-align: center;
+    color: var(--theme-text-secondary, rgba(255, 255, 255, 0.85));
+}
+
+@media (max-width: 480px) {
+    .screenshots-modal {
+        padding: var(--spacing-sm);
+    }
+
+    .screenshots-modal__content {
+        padding: var(--spacing-md);
+        max-height: 95vh;
+    }
+
+    .screenshots-modal__title {
+        font-size: 1rem;
+        padding-right: 48px;
+    }
+
+    .screenshots-modal__image {
+        max-height: 60vh;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .screenshots-modal__close,
+    .screenshots-modal__btn {
+        transition: none;
+    }
+
+    .screenshots-modal__btn:hover,
+    .screenshots-modal__btn:focus-visible {
+        transform: none;
     }
 }
