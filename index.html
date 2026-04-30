@@ -15,7 +15,7 @@
     <title>A&J Consulting IT - KPIs e IA para tu Negocio</title>
     <meta name="description" content="Transformamos datos en decisiones inteligentes. Consultora especializada en KPIs, Inteligencia Artificial y Business Intelligence para Clínicas, Obras Viales, Restaurantes y más. Soluciones adaptadas a cada rubro.">
     <meta name="author" content="A&J Consulting IT">
-    <meta name="copyright" content="© 2025 A&J Consulting IT">
+    <meta name="copyright" content="© 2026 A&J Consulting IT">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://ajconsultingit.com/">
     <link rel="icon" type="image/png" href="/assets/logo-22x22.png">
@@ -104,6 +104,10 @@
 
     <!-- ICONIFY -->
     <script defer src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+
+    <!-- SWIPER (CDN) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 
     <style>
@@ -696,12 +700,12 @@
                     </span>
                 </div>
                 <h1 class="logo-text" style="font-size: 2.2rem; letter-spacing: -1px; line-height: 1.2;">
-                    Consultoría en Business Intelligence e IA para Clínicas, Obras Viales y Restaurantes
+                    Consultora IT de BI e IA para todos los rubros profesionales
                 </h1>
                 <p class="logo-subtitle">A&J Consulting IT</p>
                 <h2 class="hero-tagline">KPIs operativos implementados en menos de 4 semanas — adaptados a tu rubro</h2>
                 <p class="hero-description">
-                    Dejá de administrar por intuición. Te implementamos un sistema que muestra cada mañana <strong>qué está funcionando, qué no, y qué decisión tomar</strong>.
+                    Desarrollamos <strong>landings web, sistemas de turnos, control de stock, automatización de planillas Excel, contabilidad digital y dashboards de KPIs</strong>. Soluciones concretas que reemplazan procesos manuales y decisiones a ojo.
                 </p>
                 <div class="hero-buttons">
                     <a href="#diagnostico"
@@ -728,27 +732,37 @@
         <section id="metodologia" class="content-section" aria-labelledby="metodologia-title">
             <div class="section-card">
                 <h2 class="section-title" id="metodologia-title">Cómo Trabajamos</h2>
-                <p class="section-intro">Un proceso claro y transparente para garantizar resultados</p>
-                <div class="features-grid" style="margin-top: 3rem;">
-                    <div class="feature-card">
-                        <div class="feature-icon"><iconify-icon icon="mdi:handshake" width="32" height="32" style="color: currentColor;"></iconify-icon></div>
-                        <h3 class="feature-title">1. Consulta Inicial</h3>
-                        <p class="feature-description">Analizamos tus necesidades y objetivos para entender tu negocio.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><iconify-icon icon="mdi:chart-box" width="32" height="32" style="color: currentColor;"></iconify-icon></div>
-                        <h3 class="feature-title">2. Análisis y Propuesta</h3>
-                        <p class="feature-description">Diseñamos una solución personalizada con métricas y alcance definidos.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><iconify-icon icon="mdi:cog" width="32" height="32" style="color: currentColor;"></iconify-icon></div>
-                        <h3 class="feature-title">3. Desarrollo</h3>
-                        <p class="feature-description">Implementamos la solución con seguimiento continuo y comunicación clara.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><iconify-icon icon="mdi:check-circle" width="32" height="32" style="color: currentColor;"></iconify-icon></div>
-                        <h3 class="feature-title">4. Entrega y Seguimiento</h3>
-                        <p class="feature-description">Entregamos la solución funcional y acompañamos en la adopción.</p>
+                <p class="section-intro">Proceso claro y transparente, en 4 pasos.</p>
+                <div class="swiper metodologia-swiper" id="metodologia-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="feature-card">
+                                <div class="feature-icon"><iconify-icon icon="mdi:handshake" width="32" height="32" style="color: currentColor;"></iconify-icon></div>
+                                <h3 class="feature-title">1. Consulta inicial</h3>
+                                <p class="feature-description">Entendemos tu negocio y definimos objetivos.</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="feature-card">
+                                <div class="feature-icon"><iconify-icon icon="mdi:chart-box" width="32" height="32" style="color: currentColor;"></iconify-icon></div>
+                                <h3 class="feature-title">2. Análisis y propuesta</h3>
+                                <p class="feature-description">Solución personalizada con métricas y alcance.</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="feature-card">
+                                <div class="feature-icon"><iconify-icon icon="mdi:cog" width="32" height="32" style="color: currentColor;"></iconify-icon></div>
+                                <h3 class="feature-title">3. Desarrollo</h3>
+                                <p class="feature-description">Implementación con seguimiento continuo.</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="feature-card">
+                                <div class="feature-icon"><iconify-icon icon="mdi:check-circle" width="32" height="32" style="color: currentColor;"></iconify-icon></div>
+                                <h3 class="feature-title">4. Entrega y seguimiento</h3>
+                                <p class="feature-description">Entrega funcional y acompañamiento en la adopción.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -758,8 +772,10 @@
         <section id="rubros-casos" class="content-section" aria-labelledby="rubros-casos-title">
             <div class="section-card">
                 <h2 class="section-title" id="rubros-casos-title">Nuestros Rubros y Resultados</h2>
-                <p class="section-intro">No importa tu rubro, siempre podemos ayudar con procesamiento de datos y análisis predictivo. Soluciones que generan valor real para nuestros clientes.</p>
-                <div class="rubros-casos-grid" style="margin-top: 3rem;">
+                <p class="section-intro">Soluciones que generan valor real, adaptadas a cada rubro.</p>
+                <div class="swiper rubros-swiper" id="rubros-swiper">
+                    <div class="swiper-wrapper">
+                    <div class="swiper-slide">
                     <!-- CARD 1: Clínicas -->
                     <article class="rubro-caso-card" aria-labelledby="rubro-clinicas-title">
                         <div class="rubro-caso-header">
@@ -767,7 +783,7 @@
                             <h3 class="rubro-caso-title" id="rubro-clinicas-title">Clínicas de Salud</h3>
                         </div>
                         <div class="rubro-caso-content">
-                            <div class="rubro-caso-description"><p>Dashboards de KPIs médicos, análisis predictivo y gestión clínica inteligente para optimizar la atención y rentabilidad.</p></div>
+                            <div class="rubro-caso-description"><p>Dashboards médicos con análisis predictivo y alertas clínicas.</p></div>
                             <div class="rubro-caso-features">
                                 <span class="rubro-caso-feature-tag">KPIs personalizados</span>
                                 <span class="rubro-caso-feature-tag">Análisis predictivo</span>
@@ -777,7 +793,7 @@
                             </div>
                             <div class="rubro-caso-resultado">
                                 <div class="rubro-caso-resultado-icon"><iconify-icon icon="mdi:chart-line" width="24" height="24" style="color: white;"></iconify-icon></div>
-                                <div class="rubro-caso-resultado-text"><strong>Mejora en toma de decisiones:</strong> Dashboards de KPIs médicos que reducen tiempo de análisis en un 70%.</div>
+                                <div class="rubro-caso-resultado-text"><strong>−70% en tiempo de análisis</strong> de KPIs médicos.</div>
                             </div>
                         </div>
                         <div class="rubro-caso-actions">
@@ -789,6 +805,8 @@
                             </a>
                         </div>
                     </article>
+                    </div>
+                    <div class="swiper-slide">
                     <!-- CARD 2: Obras Viales -->
                     <article class="rubro-caso-card" aria-labelledby="rubro-obras-title">
                         <div class="rubro-caso-header">
@@ -796,7 +814,7 @@
                             <h3 class="rubro-caso-title" id="rubro-obras-title">Obras Viales</h3>
                         </div>
                         <div class="rubro-caso-content">
-                            <div class="rubro-caso-description"><p>Sistema de monitoreo de avance en tiempo real, análisis topográfico y seguimiento de KPIs de construcción.</p></div>
+                            <div class="rubro-caso-description"><p>Monitoreo de avance en tiempo real y análisis topográfico de obra.</p></div>
                             <div class="rubro-caso-features">
                                 <span class="rubro-caso-feature-tag">Monitoreo en tiempo real</span>
                                 <span class="rubro-caso-feature-tag">Análisis topográfico</span>
@@ -806,7 +824,7 @@
                             </div>
                             <div class="rubro-caso-resultado">
                                 <div class="rubro-caso-resultado-icon"><iconify-icon icon="mdi:road" width="24" height="24" style="color: white;"></iconify-icon></div>
-                                <div class="rubro-caso-resultado-text"><strong>Monitoreo en tiempo real:</strong> Sistemas de seguimiento que optimizan recursos y plazos.</div>
+                                <div class="rubro-caso-resultado-text"><strong>Optimización de recursos y plazos</strong> en obra.</div>
                             </div>
                         </div>
                         <div class="rubro-caso-actions">
@@ -818,6 +836,8 @@
                             </a>
                         </div>
                     </article>
+                    </div>
+                    <div class="swiper-slide">
                     <!-- CARD 3: Restaurantes -->
                     <article class="rubro-caso-card" aria-labelledby="rubro-restaurantes-title">
                         <div class="rubro-caso-header">
@@ -825,19 +845,26 @@
                             <h3 class="rubro-caso-title" id="rubro-restaurantes-title">Restaurantes y Bares</h3>
                         </div>
                         <div class="rubro-caso-content">
-                            <div class="rubro-caso-description"><p>KPIs de rentabilidad, análisis de menú, optimización de inventario y predicción de demanda para maximizar resultados.</p></div>
+                            <div class="rubro-caso-description"><p>App4Bar: stock con alertas, OCR de tickets, recetas y reportes.</p></div>
                             <div class="rubro-caso-features">
-                                <span class="rubro-caso-feature-tag">KPIs de rentabilidad</span>
-                                <span class="rubro-caso-feature-tag">Análisis de menú</span>
-                                <span class="rubro-caso-feature-tag">Optimización de inventario</span>
-                                <span class="rubro-caso-feature-tag">Resumen ejecutivo Inteligente</span>
+                                <span class="rubro-caso-feature-tag">Stock con alertas WhatsApp</span>
+                                <span class="rubro-caso-feature-tag">OCR de tickets</span>
+                                <span class="rubro-caso-feature-tag">Recetas y costos</span>
+                                <span class="rubro-caso-feature-tag">Gestión por sectores</span>
+                                <span class="rubro-caso-feature-tag">Reportes Excel y PDF</span>
                             </div>
                             <div class="rubro-caso-resultado">
                                 <div class="rubro-caso-resultado-icon"><iconify-icon icon="mdi:store" width="24" height="24" style="color: white;"></iconify-icon></div>
-                                <div class="rubro-caso-resultado-text"><strong>Análisis de rentabilidad:</strong> KPIs de menú e inventario que mejoran márgenes operativos.</div>
+                                <div class="rubro-caso-resultado-text"><strong>Menos rotura de stock</strong> y digitalización de tickets en tiempo real.</div>
                             </div>
                         </div>
                         <div class="rubro-caso-actions">
+                            <button type="button" class="btn btn-secondary btn-rubro-caso"
+                                data-screenshots-trigger="app4bar"
+                                aria-label="Ver capturas de App4Bar">
+                                <iconify-icon icon="mdi:image-multiple-outline" width="16" height="16" aria-hidden="true"></iconify-icon>
+                                Ver capturas
+                            </button>
                             <a href="#contacto" class="btn btn-primary btn-rubro-caso"
                                 onclick="gtag('event', 'cta_click', {event_category: 'rubros', event_label: 'restaurantes_contacto'});"
                                 aria-label="Contactar sobre solución para restaurantes">
@@ -846,6 +873,8 @@
                             </a>
                         </div>
                     </article>
+                    </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -855,11 +884,19 @@
             <div class="section-card">
                 <h2 class="section-title" id="proyectos-venta-title">Proyectos de Aplicación Real</h2>
                 <p class="section-intro">
-                    Estos proyectos representan distintos enfoques de creación web según objetivo y dominio.
-                    No se presentan como portfolio estético, sino como <strong>casos de aplicación real según necesidad de negocio</strong>.
-                    Son landings completos y funcionales, desplegadas y operativas en producción.
+                    <strong>Casos reales en producción</strong>, no portfolio estético. Cada proyecto resuelve una necesidad de negocio concreta.
                 </p>
-                <div id="proyectos-venta-grid" class="proyectos-grid" style="margin-top: 3rem;"></div>
+                <div class="proyectos-showcase" id="proyectos-showcase">
+                    <div class="proyectos-showcase__feature" id="proyectos-feature" aria-live="polite">
+                        <!-- Renderizado dinámico desde proyectos-venta.js -->
+                    </div>
+                    <ol class="proyectos-showcase__index" id="proyectos-index" role="tablist" aria-label="Lista de proyectos">
+                        <!-- Renderizado dinámico desde proyectos-venta.js -->
+                    </ol>
+                    <div class="proyectos-showcase__progress" aria-hidden="true">
+                        <span class="proyectos-showcase__progress-bar" id="proyectos-progress-bar"></span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -943,25 +980,8 @@
         <section id="contacto" class="content-section" aria-label="Sección de contacto">
             <div class="section-card">
                 <h2 class="section-title">Hablemos</h2>
-                <p class="section-intro" style="text-align:center; margin-bottom: 0.5rem;">Contanos de tu negocio y en 24hs te respondemos con una propuesta concreta.</p>
-                <div class="contact-form">
-                    <form id="contact-form" action="https://formspree.io/f/xpwznqgl" method="POST">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                            <div class="form-group"><label for="contact-name">Nombre *</label><input type="text" id="contact-name" name="name" required placeholder="Tu nombre" autocomplete="name"></div>
-                            <div class="form-group"><label for="contact-email">Email *</label><input type="email" id="contact-email" name="email" required placeholder="tu@email.com" autocomplete="email"></div>
-                        </div>
-                        <div class="form-group"><label for="contact-rubro">Rubro *</label><select id="contact-rubro" name="rubro" required><option value="" disabled selected>Seleccioná tu rubro</option><option value="Clínica de Salud">Clínica de Salud</option><option value="Obra Vial">Obra Vial / Construcción</option><option value="Restaurante / Bar">Restaurante / Bar</option><option value="Otro">Otro</option></select></div>
-                        <div class="form-group"><label for="contact-message">¿Cuál es tu principal problema con los datos hoy? (opcional)</label><textarea id="contact-message" name="message" placeholder="Ej: No sé cuántos pacientes pierdo por mes, no tengo visibilidad del avance de obra..."></textarea></div>
-                        <input type="hidden" name="_subject" value="Nuevo contacto desde ajconsultingit.com">
-                        <button type="submit" class="form-submit-btn" onclick="gtag('event', 'form_submit', {event_category: 'contacto', event_label: 'formulario_contacto'});"><iconify-icon icon="mdi:send" width="18" height="18" aria-hidden="true"></iconify-icon>Enviar consulta</button>
-                    </form>
-                    <div class="form-success" id="form-success">✅ ¡Mensaje recibido! Te respondemos en menos de 24 horas.</div>
-                </div>
-                <div class="contact-divider">o contactanos directamente</div>
                 <div class="contact-info">
-                    <a href="mailto:franciscoaucar@ajconsultingit.com" class="contact-card contact-card-clickable" id="email-contact-link" aria-label="Enviar correo electrónico a A&J Consulting IT" onclick="gtag('event', 'cta_click', {event_category: 'contacto', event_label: 'email'});"><div class="contact-icon" aria-hidden="true"><iconify-icon icon="mdi:email-outline" width="28" height="28"></iconify-icon></div><div class="contact-text">Email Corporativo</div></a>
-                    <a href="https://wa.me/5493513764462" class="contact-card contact-card-clickable" id="whatsapp-contact-link" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" onclick="gtag('event', 'cta_click', {event_category: 'contacto', event_label: 'whatsapp'});" style="background: rgba(37, 211, 102, 0.08); border: 1px solid rgba(37,211,102,0.3);"><div class="contact-icon" aria-hidden="true" style="color: #25D366;"><iconify-icon icon="mdi:whatsapp" width="28" height="28"></iconify-icon></div><div class="contact-text">WhatsApp</div></a>
-                    <a href="https://www.linkedin.com/company/a-j-consultingit-software/about/" class="contact-card contact-card-clickable" id="linkedin-contact-link" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de LinkedIn de A&J Consulting IT" onclick="gtag('event', 'cta_click', {event_category: 'contacto', event_label: 'linkedin'});"><div class="contact-icon" aria-hidden="true"><iconify-icon icon="mdi:linkedin" width="28" height="28"></iconify-icon></div><div class="contact-text">LinkedIn</div></a>
+                    <a href="https://www.linkedin.com/company/a-j-consultingit-software/about/" class="contact-card contact-card-clickable" id="linkedin-contact-link" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de LinkedIn de A&J Consulting IT" onclick="gtag('event', 'cta_click', {event_category: 'contacto', event_label: 'linkedin'});"><div class="contact-icon" aria-hidden="true"><iconify-icon icon="mdi:linkedin" width="28" height="28"></iconify-icon></div><div class="contact-text">Me interesa el LinkedIn</div></a>
                 </div>
             </div>
         </section>
@@ -981,7 +1001,7 @@
             <div class="footer-content">
                 <div class="footer-content-center">
                     <img src="/assets/logo-22x22.png" alt="A&J Consulting IT Logo" class="footer-logo-img" loading="lazy" width="22" height="22" aria-label="Logo A&J Consulting IT">
-                    <span class="footer-text" role="contentinfo">© 2025 A&J Consulting IT | Transformando datos en decisiones inteligentes</span>
+                    <span class="footer-text" role="contentinfo">© 2026 A&J Consulting IT | Transformando datos en decisiones inteligentes</span>
                 </div>
             </div>
         </footer>
@@ -991,6 +1011,8 @@
     <script defer src="js/main.js?v=2.3.0"></script>
     <script defer src="js/proyectos-venta.js"></script>
     <script defer src="js/glow-menu.js"></script>
+    <script defer src="js/screenshots-modal.js"></script>
+    <script defer src="js/swiper-init.js"></script>
 
     <!-- FORMULARIO CONTACTO -->
     <script>
