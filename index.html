@@ -886,11 +886,16 @@
                 <p class="section-intro">
                     <strong>Casos reales en producción</strong>, no portfolio estético. Cada proyecto resuelve una necesidad de negocio concreta.
                 </p>
-                <div class="swiper proyectos-swiper" id="proyectos-swiper" style="margin-top: 3rem;">
-                    <div id="proyectos-venta-grid" class="swiper-wrapper"></div>
-                    <div class="swiper-pagination" id="proyectos-pagination"></div>
-                    <button type="button" class="swiper-button-prev" id="proyectos-prev" aria-label="Proyecto anterior"></button>
-                    <button type="button" class="swiper-button-next" id="proyectos-next" aria-label="Proyecto siguiente"></button>
+                <div class="proyectos-showcase" id="proyectos-showcase">
+                    <div class="proyectos-showcase__feature" id="proyectos-feature" aria-live="polite">
+                        <!-- Renderizado dinámico desde proyectos-venta.js -->
+                    </div>
+                    <ol class="proyectos-showcase__index" id="proyectos-index" role="tablist" aria-label="Lista de proyectos">
+                        <!-- Renderizado dinámico desde proyectos-venta.js -->
+                    </ol>
+                    <div class="proyectos-showcase__progress" aria-hidden="true">
+                        <span class="proyectos-showcase__progress-bar" id="proyectos-progress-bar"></span>
+                    </div>
                 </div>
             </div>
         </section>
