@@ -1,11 +1,6 @@
 {
-  "version": 2,
-  "functions": {
-    "api/send-demo-request.js": {
-      "maxDuration": 60
-    }
-  },
-  "env": {
-    "NODE_ENV": "production"
-  }
+  "framework": "nextjs",
+  "buildCommand": "pnpm build",
+  "installCommand": "pnpm install",
+  "regions": ["iad1"]
 }
