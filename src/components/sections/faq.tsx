@@ -15,8 +15,8 @@ export function FAQ() {
 
         <div className="mx-auto mt-12 max-w-2xl">
           <Accordion type="single" collapsible className="w-full">
-            {faqs.map((f, i) => (
-              <AccordionItem key={i} value={`item-${i}`}>
+            {faqs.map((f) => (
+              <AccordionItem key={f.pregunta} value={f.pregunta}>
                 <AccordionTrigger>{f.pregunta}</AccordionTrigger>
                 <AccordionContent>{f.respuesta}</AccordionContent>
               </AccordionItem>

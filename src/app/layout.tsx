@@ -9,7 +9,12 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
-const SITE_URL = 'https://ajconsultingitwebv2.vercel.app';
+/**
+ * URL canónica del sitio para metadata y Open Graph.
+ * Configurable vía `NEXT_PUBLIC_SITE_URL` en Vercel → Settings → Environment Variables.
+ * Fallback: dominio corporativo. Cambiar acá si el dominio definitivo difiere.
+ */
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://ajconsultingit.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

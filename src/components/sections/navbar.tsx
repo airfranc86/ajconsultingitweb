@@ -1,8 +1,8 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { BrandMark } from '@/components/ui/brand-mark';
 import { Button } from '@/components/ui/button';
 import { WhatsAppIcon } from '@/components/ui/whatsapp-icon';
 import { WhatsAppLink } from '@/components/ui/whatsapp-link';
@@ -35,17 +35,7 @@ export function Navbar() {
       )}
     >
       <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
-          <Image
-            src="/aj-logo.png"
-            alt="A&J Consulting IT"
-            width={32}
-            height={32}
-            priority
-            className="h-8 w-8 object-contain"
-          />
-          <span className="hidden sm:inline">A&amp;J Consulting IT</span>
-        </Link>
+        <BrandMark priority hideTextOnMobile />
 
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((l) => (

@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { Linkedin, Mail } from 'lucide-react';
+import { BrandMark } from '@/components/ui/brand-mark';
 import { WhatsAppIcon } from '@/components/ui/whatsapp-icon';
 import { WhatsAppLink } from '@/components/ui/whatsapp-link';
 import { contact } from '@/data/contact';
@@ -13,16 +13,7 @@ export function Footer() {
       <div className="container">
         <div className="grid gap-8 md:grid-cols-3">
           <div>
-            <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
-              <Image
-                src="/aj-logo.png"
-                alt="A&J Consulting IT"
-                width={32}
-                height={32}
-                className="h-8 w-8 object-contain"
-              />
-              A&amp;J Consulting IT
-            </Link>
+            <BrandMark hideTextOnMobile={false} />
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
               BI, IA y automatización para PyMEs y profesionales. Soluciones reales en
               producción.
