@@ -22,5 +22,5 @@ export const contact = {
     francisco: 'franciscoaucar@ajconsultingit.com',
     andres: 'andresnj11@ajconsultingit.com',
   },
-  linkedin: 'https://www.linkedin.com/company/aj-consulting-it', // TODO: confirmar URL real
+  linkedin: 'https://www.linkedin.com/company/a-j-consultingit-software',
 } as const;
