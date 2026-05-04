@@ -35,10 +35,10 @@ export function Navbar() {
           : 'border-b border-transparent bg-transparent'
       )}
     >
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-16 items-center justify-between gap-4 px-4 sm:px-6 lg:gap-8">
         <BrandMark priority hideTextOnMobile />
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-6 lg:flex lg:gap-8">
           {links.map((l) => (
             <Link
               key={l.href}
