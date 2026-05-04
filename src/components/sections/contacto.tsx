@@ -50,10 +50,6 @@ export function Contacto() {
                     <ArrowUpRight className="h-4 w-4" />
                   </Link>
                 </Button>
-
-                <p className="font-mono text-xs text-muted-foreground">
-                  {contact.whatsapp.display}
-                </p>
               </div>
             </CardContent>
           </Card>

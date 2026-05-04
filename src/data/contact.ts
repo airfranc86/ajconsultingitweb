@@ -9,10 +9,10 @@ const DEFAULT_WA_MESSAGE =
 
 export const contact = {
   whatsapp: {
-    number: WHATSAPP_NUMBER,
-    display: '+54 9 351 376-4462',
     /**
      * Construye un link de WhatsApp con mensaje pre-cargado opcional.
+     * El número crudo se mantiene local a este módulo (no se exporta como
+     * `display` ni `number`) para reducir superficie de scraping anti-bot.
      * Doc: https://faq.whatsapp.com/5913398998672934
      */
     link: (message: string = DEFAULT_WA_MESSAGE): string =>
