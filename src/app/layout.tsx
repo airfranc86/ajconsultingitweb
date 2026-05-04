@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { GeistSans } from 'geist/font/sans';
 import { JetBrains_Mono } from 'next/font/google';
+import { ThemeProvider } from '@/components/theme-provider';
 import './globals.css';
 
 const jetbrainsMono = JetBrains_Mono({
@@ -61,8 +62,16 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`dark ${GeistSans.variable} ${jetbrainsMono.variable}`}>
-      <body className="font-sans">{children}</body>
+    <html
+      lang="es"
+      suppressHydrationWarning
+      className={`${GeistSans.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className="font-sans">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

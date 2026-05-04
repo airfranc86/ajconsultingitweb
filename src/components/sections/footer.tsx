@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Linkedin, Mail } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 import { BrandMark } from '@/components/ui/brand-mark';
 import { WhatsAppIcon } from '@/components/ui/whatsapp-icon';
 import { WhatsAppLink } from '@/components/ui/whatsapp-link';
@@ -39,24 +39,6 @@ export function Footer() {
                   <WhatsAppIcon className="h-3.5 w-3.5" />
                   WhatsApp
                 </WhatsAppLink>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${contact.emails.francisco}`}
-                  className="flex items-center gap-2 hover:text-foreground"
-                >
-                  <Mail className="h-3.5 w-3.5" />
-                  {contact.emails.francisco}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${contact.emails.andres}`}
-                  className="flex items-center gap-2 hover:text-foreground"
-                >
-                  <Mail className="h-3.5 w-3.5" />
-                  {contact.emails.andres}
-                </a>
               </li>
               <li>
                 <a

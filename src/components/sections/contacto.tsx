@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import { Mail, Linkedin, ArrowUpRight } from 'lucide-react';
+import { Linkedin, ArrowUpRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -55,14 +55,8 @@ export function Contacto() {
             </CardContent>
           </Card>
 
-          {/* Canales alternativos */}
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            <ContactLink
-              href={`mailto:${contact.emails.francisco}`}
-              icon={<Mail className="h-4 w-4" />}
-              label="Email"
-              value={contact.emails.francisco}
-            />
+          {/* Canal alternativo: LinkedIn */}
+          <div className="mt-6">
             <ContactLink
               href={contact.linkedin}
               external

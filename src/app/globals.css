@@ -3,8 +3,42 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    /* Dark por defecto - paleta dark puro con acento verde corporativo (#27ae60) */
+  /* Light (claro) — usado cuando next-themes setea html.light */
+  :root,
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 145 63% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 222 14% 40%;
+
+    --accent: 145 63% 38%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 90%;
+    --input: 220 13% 90%;
+    --ring: 145 63% 38%;
+
+    --radius: 0.75rem;
+  }
+
+  /* Dark (oscuro, default) — paleta con acento verde corporativo (#27ae60) */
+  .dark {
     --background: 222 47% 4%;
     --foreground: 210 20% 98%;
 
@@ -32,8 +66,6 @@
     --border: 222 32% 14%;
     --input: 222 32% 14%;
     --ring: 145 63% 42%;
-
-    --radius: 0.75rem;
   }
 }
 

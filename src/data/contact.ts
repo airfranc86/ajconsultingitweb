@@ -18,9 +18,5 @@ export const contact = {
     link: (message: string = DEFAULT_WA_MESSAGE): string =>
       `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
   },
-  emails: {
-    francisco: 'franciscoaucar@ajconsultingit.com',
-    andres: 'andresnj11@ajconsultingit.com',
-  },
   linkedin: 'https://www.linkedin.com/company/a-j-consultingit-software',
 } as const;

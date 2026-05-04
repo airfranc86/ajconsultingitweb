@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { BrandMark } from '@/components/ui/brand-mark';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { WhatsAppIcon } from '@/components/ui/whatsapp-icon';
 import { WhatsAppLink } from '@/components/ui/whatsapp-link';
 import { cn } from '@/lib/utils';
@@ -49,13 +50,16 @@ export function Navbar() {
           ))}
         </nav>
 
-        <Button asChild size="sm" className="glow-primary">
-          <WhatsAppLink ariaLabel="Pedí tu diagnóstico gratuito por WhatsApp">
-            <WhatsAppIcon className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">Diagnóstico gratuito</span>
-            <span className="sm:hidden">WhatsApp</span>
-          </WhatsAppLink>
-        </Button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Button asChild size="sm" className="glow-primary">
+            <WhatsAppLink ariaLabel="Pedí tu diagnóstico gratuito por WhatsApp">
+              <WhatsAppIcon className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">Diagnóstico gratuito</span>
+              <span className="sm:hidden">WhatsApp</span>
+            </WhatsAppLink>
+          </Button>
+        </div>
       </div>
     </header>
   );
