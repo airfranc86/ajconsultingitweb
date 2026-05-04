@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { WhatsAppIcon } from '@/components/ui/whatsapp-icon';
 import { WhatsAppLink } from '@/components/ui/whatsapp-link';
 import { cn } from '@/lib/utils';
 
@@ -61,7 +61,7 @@ export function Navbar() {
 
         <Button asChild size="sm" className="glow-primary">
           <WhatsAppLink ariaLabel="Pedí tu diagnóstico gratuito por WhatsApp">
-            <MessageCircle className="h-3.5 w-3.5" />
+            <WhatsAppIcon className="h-3.5 w-3.5" />
             <span className="hidden sm:inline">Diagnóstico gratuito</span>
             <span className="sm:hidden">WhatsApp</span>
           </WhatsAppLink>

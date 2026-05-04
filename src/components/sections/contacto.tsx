@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import { MessageCircle, Mail, Linkedin, ArrowUpRight } from 'lucide-react';
+import { Mail, Linkedin, ArrowUpRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { WhatsAppIcon } from '@/components/ui/whatsapp-icon';
 import { WhatsAppLink } from '@/components/ui/whatsapp-link';
 import { contact } from '@/data/contact';
 
@@ -30,7 +31,7 @@ export function Contacto() {
             <CardContent className="p-8 md:p-10">
               <div className="flex flex-col items-center gap-6 text-center">
                 <div className="grid h-14 w-14 place-items-center rounded-xl bg-primary/15 text-primary">
-                  <MessageCircle className="h-6 w-6" />
+                  <WhatsAppIcon className="h-6 w-6" />
                 </div>
 
                 <div className="space-y-2">
@@ -45,7 +46,7 @@ export function Contacto() {
 
                 <Button asChild size="lg" className="glow-primary">
                   <WhatsAppLink ariaLabel="Escribir por WhatsApp">
-                    <MessageCircle className="h-4 w-4" />
+                    <WhatsAppIcon className="h-4 w-4" />
                     Escribir por WhatsApp
                     <ArrowUpRight className="h-4 w-4" />
                   </WhatsAppLink>

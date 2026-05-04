@@ -3,9 +3,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, MessageCircle, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { WhatsAppIcon } from '@/components/ui/whatsapp-icon';
 import { WhatsAppLink } from '@/components/ui/whatsapp-link';
 import { metricas } from '@/data/content';
 
@@ -70,7 +71,7 @@ export function Hero() {
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button asChild size="lg" className="glow-primary">
               <WhatsAppLink ariaLabel="Pedí tu diagnóstico gratuito por WhatsApp">
-                <MessageCircle className="h-4 w-4" />
+                <WhatsAppIcon className="h-4 w-4" />
                 Pedí tu diagnóstico gratuito
                 <ArrowRight className="h-4 w-4" />
               </WhatsAppLink>
