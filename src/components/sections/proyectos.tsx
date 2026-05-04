@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
+import { LayerStack, Card as StackCard } from '@/components/ui/layer-stack';
 import type { Proyecto } from '@/data/content';
 import { proyectos } from '@/data/content';
 
@@ -18,92 +18,75 @@ export function Proyectos() {
             Casos en producción, no portfolio estético
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Cada proyecto resuelve una necesidad de negocio concreta.
+            Cada proyecto resuelve una necesidad de negocio concreta. Arrastrá o usá la
+            rueda del mouse para recorrer.
           </p>
         </div>
 
-        <div className="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {proyectos.map((p) => (
-            <ProyectoCardWrapper key={p.slug} proyecto={p} />
-          ))}
+        <div className="mt-16">
+          <LayerStack cardWidth={360} cardGap={20} stageHeight={460}>
+            {proyectos.map((p) => (
+              <StackCard key={p.slug}>
+                <ProyectoFeature proyecto={p} />
+              </StackCard>
+            ))}
+          </LayerStack>
         </div>
       </div>
     </section>
   );
 }
 
-interface ProyectoCardWrapperProps {
+interface ProyectoFeatureProps {
   proyecto: Proyecto;
 }
 
-function ProyectoCardWrapper({ proyecto }: ProyectoCardWrapperProps) {
-  if (proyecto.url) {
-    return (
-      <Link
-        href={proyecto.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Ver proyecto ${proyecto.nombre} en nueva ventana`}
-        className="group block"
-      >
-        <ProyectoCard proyecto={proyecto} clickable />
-      </Link>
-    );
-  }
+function ProyectoFeature({ proyecto }: ProyectoFeatureProps) {
   return (
-    <div className="block">
-      <ProyectoCard proyecto={proyecto} clickable={false} />
-    </div>
-  );
-}
-
-interface ProyectoCardProps {
-  proyecto: Proyecto;
-  clickable: boolean;
-}
-
-function ProyectoCard({ proyecto, clickable }: ProyectoCardProps) {
-  return (
-    <Card className="relative h-full overflow-hidden transition-all hover:border-primary/40">
-      <CardContent className="flex h-full flex-col p-6">
-        <div className="flex items-start justify-between">
-          <div className="grid h-14 w-14 place-items-center overflow-hidden rounded-md bg-white/95 p-1.5">
-            <Image
-              src={proyecto.logo}
-              alt={`Logo ${proyecto.nombre}`}
-              width={56}
-              height={56}
-              className="h-full w-full object-contain"
-            />
-          </div>
-          <span className="font-mono text-xs text-muted-foreground">{proyecto.numero}</span>
+    <article className="group flex h-full flex-col gap-5 rounded-xl border border-border/60 bg-card p-7">
+      <div className="flex items-start justify-between">
+        <div className="grid h-16 w-16 place-items-center overflow-hidden rounded-lg bg-white/95 p-2">
+          <Image
+            src={proyecto.logo}
+            alt={`Logo ${proyecto.nombre}`}
+            width={64}
+            height={64}
+            className="h-full w-full object-contain"
+          />
         </div>
+        <span className="font-mono text-xs text-muted-foreground">{proyecto.numero}</span>
+      </div>
 
-        <div className="mt-6">
-          <Badge variant="outline" className="mb-3 text-[10px]">
-            {proyecto.categoria}
-          </Badge>
-          <h3 className="text-lg font-semibold tracking-tight">{proyecto.nombre}</h3>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            {proyecto.descripcion}
-          </p>
-        </div>
+      <div>
+        <Badge variant="outline" className="mb-3 text-[10px]">
+          {proyecto.categoria}
+        </Badge>
+        <h3 className="text-xl font-semibold tracking-tight">{proyecto.nombre}</h3>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          {proyecto.descripcion}
+        </p>
+      </div>
 
-        <ul className="mt-4 space-y-1.5">
-          {proyecto.features.map((f) => (
-            <li key={f} className="text-xs text-muted-foreground">
-              · {f}
-            </li>
-          ))}
-        </ul>
+      <ul className="space-y-1.5">
+        {proyecto.features.map((f) => (
+          <li key={f} className="text-xs text-muted-foreground">
+            · {f}
+          </li>
+        ))}
+      </ul>
 
-        {clickable && (
-          <div className="mt-auto flex items-center gap-1 pt-6 text-sm text-primary opacity-0 transition-opacity group-hover:opacity-100">
-            Ver proyecto
-            <ArrowUpRight className="h-3.5 w-3.5" />
-          </div>
-        )}
-      </CardContent>
-    </Card>
+      {proyecto.url && (
+        <Link
+          href={proyecto.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Ver proyecto ${proyecto.nombre} en nueva ventana`}
+          className="mt-auto inline-flex items-center gap-1.5 self-start rounded-md border border-primary/30 bg-primary/5 px-3 py-2 text-sm font-medium text-primary transition-colors hover:border-primary/60 hover:bg-primary/10"
+        >
+          Ver proyecto
+          <ArrowUpRight className="h-3.5 w-3.5" />
+        </Link>
+      )}
+    </article>
   );
 }
