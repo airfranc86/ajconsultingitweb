@@ -1,120 +1,112 @@
-#  A&J Consulting IT - Business Intelligence para Clínicas
+# A&J Consulting IT — v3
 
-## 📋 Descripción del Proyecto
+Landing page comercial de A&J Consulting IT. Reemplazo de la v2 con foco en SEO real, performance y mantenibilidad. **100% estático, sin backend.**
 
-**A&J Consulting IT** es una empresa especializada en **Business Intelligence para clínicas médicas**. Nuestro sitio web corporativo presenta nuestras soluciones de dashboard de KPIs en tiempo real, análisis predictivo y gestión clínica inteligente.
+**Stack:** Next.js 14 (App Router) · TypeScript · Tailwind CSS · shadcn/ui · Vercel
 
-### 🎯 Propuesta de Valor
+## Por qué v3
 
-Transformamos datos médicos en decisiones estratégicas mediante:
-- **Dashboard Inteligente**: Visualización avanzada de KPIs clínicos
-- **Análisis Predictivo**: IA para predecir tendencias y optimizar rentabilidad
-- **Seguridad Empresarial**: Encriptación bancaria y cumplimiento normativo
+La v2 era HTML/CSS/JS estático con render del lado cliente vía Particles.js y Swiper. Funcionaba, pero tenía limitaciones:
 
-## 🚀 Características Principales
+1. **No indexable por crawlers**: el contenido se inyectaba con JS, lo que penalizaba SEO. Resuelto con SSG de Next.js.
+2. **Dependencias muertas**: `nodemailer`, `googleapis`, `@supabase/supabase-js` declaradas pero sin runtime real.
+3. **Sin sistema de diseño**: cada sección estilada a mano. Reemplazado por shadcn/ui + tokens en CSS.
 
-### ✨ Diseño y UX
-- **Diseño moderno** con efectos de partículas animadas
-- **Responsive design** optimizado para todos los dispositivos
-- **Navegación intuitiva** con scroll suave
-- **Animaciones fluidas** y transiciones elegantes
+## Filosofía v3
 
-### 📱 Responsividad
-- **4 breakpoints** optimizados: 1024px, 768px, 480px, 320px
-- **Mobile-first** approach
-- **Touch-friendly** para dispositivos táctiles
-- **Performance optimizado** en móviles
+**Sitio público sin formularios, sin captura de datos, sin backend.** Todo CTA va a WhatsApp directo. Justificación:
 
-### 🔍 SEO Optimizado
-- **Meta tags** completos y optimizados
-- **Schema.org** structured data
-- **Open Graph** para redes sociales
-- **Twitter Cards** configuradas
-- **Keywords** relevantes para el sector salud
+- PyMEs locales prefieren WhatsApp por amplio margen sobre formularios web
+- Sin formulario → sin necesidad de DB, sin RLS, sin endpoints, sin rate limit
+- Conversión más alta: el usuario ya está acostumbrado a chatear, no a llenar inputs
+- Cero costo operativo, cero superficie de ataque
 
-### 📊 Analytics Integrado
-- **Vercel Analytics** para métricas de uso
-- **Speed Insights** para monitoreo de rendimiento
-- **Event tracking** personalizado
-- **Google Analytics** preparado (opcional)
+Si en el futuro aparece la necesidad de capturar leads vía form, ver `docs/REINTEGRATION.md` con el camino para reincorporar Supabase.
 
-## 🛠️ Tecnologías Utilizadas
+## Setup local
 
-### Frontend
-- **HTML5** - Estructura semántica
-- **CSS3** - Estilos avanzados con variables CSS
-- **JavaScript ES6+** - Interactividad y animaciones
-- **Particles.js** - Efectos visuales de fondo
-- **Font Awesome** - Iconografía
-- **Google Fonts** - Tipografía Inter
+```bash
+git clone https://github.com/airfranc86/ajconsultingit-v3.git
+cd ajconsultingit-v3
+pnpm install
+pnpm dev
+```
 
-### Herramientas de Desarrollo
-- **Vercel** - Hosting y despliegue
-- **Git** - Control de versiones
-- **Responsive Design** - Mobile-first approach
+Abrir `http://localhost:3000`. **No hay variables de entorno necesarias.**
 
-## 📱 Secciones del Sitio
+## Estructura
 
-### 🏠 **Hero Section**
-- Logo animado con efecto flotante
-- Título principal y propuesta de valor
-- Botones de llamada a la acción
-- Efecto de partículas de fondo
+```
+src/
+├── app/
+│   ├── globals.css          # Tokens shadcn dark
+│   ├── layout.tsx           # Metadata, fonts, dark mode forzado
+│   └── page.tsx             # Composición de secciones
+├── components/
+│   ├── sections/            # Hero, Rubros, Proyectos, FAQ, Contacto, etc.
+│   └── ui/                  # shadcn primitives
+├── data/
+│   ├── content.ts           # Datos tipados (rubros, proyectos, FAQs)
+│   └── contact.ts           # Fuente única de datos de contacto
+└── lib/
+    └── utils.ts             # cn() helper
+docs/
+├── architecture.md          # Diagrama Mermaid
+├── DECISIONS.md             # Log de decisiones (ADR)
+└── REINTEGRATION.md         # Cómo reincorporar Supabase si hace falta
+```
 
-### 💼 **Business Intelligence**
-- 3 características principales
-- Iconos descriptivos
-- Tarjetas con hover effects
+## Cambiar datos de contacto
 
-### 📊 **Resultados Comprobados**
-- Diseño de tarjetas con gradientes
-- Animaciones de aparición
+Todo está centralizado en `src/data/contact.ts`. Cambiar el número de WhatsApp o los emails ahí impacta en Hero, Navbar, Footer y sección de Contacto.
 
-### 📞 **Contacto**
-- Información de contacto profesional
-- Enlaces directos a email y LinkedIn
-- Diseño centrado en conversión
+## Comandos
 
+```bash
+pnpm dev          # dev server con HMR
+pnpm build        # build de producción
+pnpm start        # servir el build
+pnpm lint         # ESLint
+pnpm type-check   # TypeScript sin emit
+```
 
-### Eventos Personalizados
-- Clicks en botones de demo
-- Enlaces de contacto
-- Tiempo en página
-- Visualización de secciones
+## Deploy
 
-## 📈 SEO Features
+GitHub → Vercel automático. **No requiere variables de entorno.**
 
-- **Título optimizado**: "A&J Consulting IT - Business Intelligence para Clínicas | Dashboard KPIs Médicos"
-- **Meta descripción**: 160 caracteres optimizados
-- **Keywords**: business intelligence clínicas, dashboard médico, KPIs clínicos
-- **Schema.org**: Datos estructurados para Google
-- **Open Graph**: Compartir en redes sociales
+```bash
+# Manual (opcional)
+vercel --prod
+```
 
-## 📝 Licencia
+## Performance
 
-Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+Objetivos:
+- LCP < 1.5s
+- CLS < 0.1
+- TTI < 2s
+- Lighthouse SEO ≥ 95
 
-## 📞 Contacto
+Optimizaciones aplicadas:
+- SSG completo, sin server runtime
+- Fonts via `next/font` (Geist Sans + JetBrains Mono, sin layout shift)
+- `framer-motion` solo en Hero y Navbar
+- Headers de seguridad en `next.config.mjs`
+- Sin imágenes pesadas en above-the-fold
 
-**A&J Consulting IT**
-- 📧 Email: [franciscoaucar@ajconsultingit.com]
-- 📧 Email: [andresnj11@ajconsultingit.com]
-- 💼 LinkedIn: [A&J Consulting IT](https://www.linkedin.com/company/a-j-consultingit-software/about/)
+## Seguridad
 
+- Cero formularios públicos → cero superficie de XSS/injection
+- Cero secrets, cero API keys
+- Headers HTTP seguros (X-Frame-Options, Referrer-Policy, etc.)
+- Links externos con `rel="noopener noreferrer"`
 
-## 🙏 Agradecimientos
+## Roadmap
 
-- [Particles.js](https://vincentgarreau.com/particles.js/) - Efectos de partículas
-- [Font Awesome](https://fontawesome.com/) - Iconografía
-- [Google Fonts](https://fonts.google.com/) - Tipografía
-- [Vercel](https://vercel.com/) - Hosting y despliegue
+**v3.1** — Página de blog con MDX para contenido SEO
+**v3.2** — Casos de éxito detallados por proyecto
+**v3.3** — Integración con Calendly o similar para agendar (sin DB propia)
 
----
+## Licencia
 
-<div align="center">
-
-**Desarrollado con ❤️ por A&J Consulting IT**
-
-*Transformando datos médicos en decisiones inteligentes*
-
-</div>
+MIT

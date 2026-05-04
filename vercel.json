@@ -1,11 +1,7 @@
 {
-  "version": 2,
-  "functions": {
-    "api/send-demo-request.js": {
-      "maxDuration": 60
-    }
-  },
-  "env": {
-    "NODE_ENV": "production"
-  }
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "outputDirectory": ".next",
+  "regions": ["iad1"]
 }
