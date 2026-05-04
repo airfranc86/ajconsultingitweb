@@ -72,6 +72,7 @@ export type Proyecto = {
   descripcion: string;
   features: string[];
   url?: string;
+  logo: string;
   icon: LucideIcon;
 };
 
@@ -83,6 +84,8 @@ export const proyectos: Proyecto[] = [
     categoria: 'Servicios Locales',
     descripcion: 'Web comercial con contacto directo.',
     features: ['Responsive', 'Formulario de contacto', 'Optimizado SEO'],
+    url: 'https://santa-barba-cba.vercel.app/',
+    logo: '/projects/santa-barba.png',
     icon: Globe,
   },
   {
@@ -90,8 +93,10 @@ export const proyectos: Proyecto[] = [
     numero: '02',
     nombre: 'VineWatch Consulting',
     categoria: 'Consultoría',
-    descripcion: 'Plataforma de consultoría con análisis de datos vitivinícolas.',
-    features: ['Dashboard analítico', 'Reportes técnicos', 'Integración multi-fuente'],
+    descripcion: 'Presentación profesional de servicios.',
+    features: ['Diseño profesional', 'Navegación clara', 'Responsive'],
+    url: 'https://vinewatchconsulting.vercel.app/',
+    logo: '/projects/vinewatch.png',
     icon: Wine,
   },
   {
@@ -99,8 +104,10 @@ export const proyectos: Proyecto[] = [
     numero: '03',
     nombre: 'AeroMet ARG',
     categoria: 'Educativo',
-    descripcion: 'Sistema meteorológico con interpretación visual y proyección aeronáutica.',
-    features: ['Datos meteorológicos en tiempo real', 'Visualización avanzada', 'Foco aeronáutico'],
+    descripcion: 'Contenido educativo especializado en meteorología aeronáutica.',
+    features: ['Contenido especializado', 'Estructura clara', 'SEO optimizado'],
+    url: 'https://aerometarg.vercel.app/',
+    logo: '/projects/aeromet.png',
     icon: Cloud,
   },
   {
@@ -108,8 +115,10 @@ export const proyectos: Proyecto[] = [
     numero: '04',
     nombre: 'Fenix CBA',
     categoria: 'Sistema Operativo',
-    descripcion: 'Sistema operacional para gestión interna.',
-    features: ['Gestión integral', 'Workflows operativos', 'Reportes ejecutivos'],
+    descripcion: 'Plataforma operativa integrada.',
+    features: ['Lógica funcional', 'Sistema integrado', 'Operativo'],
+    url: 'https://fenixcba.vercel.app/',
+    logo: '/projects/fenix.png',
     icon: Settings2,
   },
   {
@@ -117,8 +126,10 @@ export const proyectos: Proyecto[] = [
     numero: '05',
     nombre: 'App4Bar',
     categoria: 'Sistema de Gestión',
-    descripcion: 'Stock con alertas WhatsApp, OCR de tickets, recetas y reportes.',
-    features: ['OCR de tickets', 'Alertas WhatsApp', 'Reportes Excel/PDF'],
+    descripcion: 'Gestión integral para bares: stock, OCR y reportes.',
+    features: ['Stock con alertas WhatsApp', 'OCR de tickets financieros', 'Reportes Excel y PDF'],
+    url: 'https://app4bar.onrender.com/#/login',
+    logo: '/projects/app4bar.jpg',
     icon: UtensilsCrossed,
   },
 ];

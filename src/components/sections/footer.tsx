@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Linkedin, Mail, MessageCircle } from 'lucide-react';
 import { contact } from '@/data/contact';
@@ -11,9 +12,13 @@ export function Footer() {
         <div className="grid gap-8 md:grid-cols-3">
           <div>
             <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
-              <span className="grid h-8 w-8 place-items-center rounded-md bg-primary/20 text-primary">
-                AJ
-              </span>
+              <Image
+                src="/aj-logo.png"
+                alt="A&J Consulting IT"
+                width={32}
+                height={32}
+                className="h-8 w-8 object-contain"
+              />
               A&amp;J Consulting IT
             </Link>
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
@@ -42,9 +47,10 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 hover:text-foreground"
+                  aria-label="Contactar por WhatsApp"
                 >
                   <MessageCircle className="h-3.5 w-3.5" />
-                  WhatsApp · {contact.whatsapp.display}
+                  WhatsApp
                 </a>
               </li>
               <li>
@@ -80,9 +86,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-2 border-t border-border/40 pt-6 text-xs text-muted-foreground sm:flex-row">
+        <div className="mt-12 border-t border-border/40 pt-6 text-center text-xs text-muted-foreground">
           <p>© {year} A&amp;J Consulting IT · Todos los derechos reservados</p>
-          <p className="font-mono">Built with Next.js · shadcn/ui · Vercel</p>
         </div>
       </div>
     </footer>

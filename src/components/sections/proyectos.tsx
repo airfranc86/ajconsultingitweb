@@ -1,3 +1,5 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { proyectos } from '@/data/content';
@@ -19,16 +21,18 @@ export function Proyectos() {
 
         <div className="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {proyectos.map((p) => {
-            const Icon = p.icon;
-            return (
-              <Card
-                key={p.slug}
-                className="group relative overflow-hidden transition-all hover:border-primary/40"
-              >
-                <CardContent className="p-6">
+            const cardInner = (
+              <Card className="group relative h-full overflow-hidden transition-all hover:border-primary/40">
+                <CardContent className="flex h-full flex-col p-6">
                   <div className="flex items-start justify-between">
-                    <div className="grid h-10 w-10 place-items-center rounded-md bg-secondary text-foreground">
-                      <Icon className="h-4 w-4" />
+                    <div className="grid h-14 w-14 place-items-center overflow-hidden rounded-md bg-white/95 p-1.5">
+                      <Image
+                        src={p.logo}
+                        alt={`Logo ${p.nombre}`}
+                        width={48}
+                        height={48}
+                        className="h-full w-full object-contain"
+                      />
                     </div>
                     <span className="font-mono text-xs text-muted-foreground">{p.numero}</span>
                   </div>
@@ -51,12 +55,29 @@ export function Proyectos() {
                     ))}
                   </ul>
 
-                  <div className="mt-6 flex items-center gap-1 text-sm text-primary opacity-0 transition-opacity group-hover:opacity-100">
-                    Ver proyecto
-                    <ArrowUpRight className="h-3.5 w-3.5" />
-                  </div>
+                  {p.url && (
+                    <div className="mt-auto flex items-center gap-1 pt-6 text-sm text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                      Ver proyecto
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    </div>
+                  )}
                 </CardContent>
               </Card>
+            );
+
+            return p.url ? (
+              <Link
+                key={p.slug}
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Ver proyecto ${p.nombre} en nueva ventana`}
+                className="group block"
+              >
+                {cardInner}
+              </Link>
+            ) : (
+              <div key={p.slug}>{cardInner}</div>
             );
           })}
         </div>

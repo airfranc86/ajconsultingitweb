@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, MessageCircle, Sparkles } from 'lucide-react';
@@ -22,9 +23,31 @@ export function Hero() {
 
       <div className="container relative">
         <motion.div
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
+          className="mx-auto mb-10 grid h-32 w-32 place-items-center md:h-40 md:w-40"
+        >
+          <motion.div
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            className="relative h-full w-full"
+          >
+            <Image
+              src="/aj-logo.png"
+              alt="A&J Consulting IT"
+              fill
+              priority
+              sizes="(min-width: 768px) 160px, 128px"
+              className="object-contain drop-shadow-[0_0_30px_rgba(34,197,94,0.35)]"
+            />
+          </motion.div>
+        </motion.div>
+
+        <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
           className="mx-auto max-w-3xl text-center"
         >
           <Badge variant="outline" className="mb-6 gap-1.5 px-3 py-1">
