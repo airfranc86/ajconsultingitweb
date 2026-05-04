@@ -42,18 +42,25 @@ interface ProyectoFeatureProps {
 }
 
 function ProyectoFeature({ proyecto }: ProyectoFeatureProps) {
+  const Icon = proyecto.icon;
   return (
     <article className="group flex h-full flex-col gap-5 rounded-xl border border-border/60 bg-card p-7">
       <div className="flex items-start justify-between">
-        <div className="grid h-16 w-16 place-items-center overflow-hidden rounded-lg bg-white/95 p-2">
-          <Image
-            src={proyecto.logo}
-            alt={`Logo ${proyecto.nombre}`}
-            width={64}
-            height={64}
-            className="h-full w-full object-contain"
-          />
-        </div>
+        {proyecto.logo ? (
+          <div className="grid h-16 w-16 place-items-center overflow-hidden rounded-lg bg-white/95 p-2">
+            <Image
+              src={proyecto.logo}
+              alt={`Logo ${proyecto.nombre}`}
+              width={64}
+              height={64}
+              className="h-full w-full object-contain"
+            />
+          </div>
+        ) : Icon ? (
+          <div className="grid h-16 w-16 place-items-center rounded-lg bg-primary/10 text-primary">
+            <Icon className="h-7 w-7" />
+          </div>
+        ) : null}
         <span className="font-mono text-xs text-muted-foreground">{proyecto.numero}</span>
       </div>
 

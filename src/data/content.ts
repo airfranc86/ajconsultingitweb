@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import { Stethoscope, HardHat, UtensilsCrossed } from 'lucide-react';
+import { Stethoscope, HardHat, UtensilsCrossed, Database } from 'lucide-react';
 
 export type Rubro = {
   slug: string;
@@ -63,7 +63,10 @@ export type Proyecto = {
   descripcion: string;
   features: string[];
   url?: string;
-  logo: string;
+  /** Path del logo (proyectos públicos). Excluyente con `icon`. */
+  logo?: string;
+  /** Icono lucide (para casos internos/anonimizados sin logo público). */
+  icon?: LucideIcon;
 };
 
 export const proyectos: Proyecto[] = [
@@ -116,6 +119,21 @@ export const proyectos: Proyecto[] = [
     features: ['Stock con alertas WhatsApp', 'OCR de tickets financieros', 'Reportes Excel y PDF'],
     url: 'https://app4bar.onrender.com/#/login',
     logo: '/projects/app4bar.jpg',
+  },
+  {
+    slug: 'pipeline-etl-contable',
+    numero: '06',
+    nombre: 'Pipeline ETL Contable',
+    categoria: 'API · Pipeline · Dashboards',
+    descripcion:
+      'Automatización contable end-to-end: API de gestión + ARCA + Google Sheets + dashboards de KPIs financieros, actualizados a diario.',
+    features: [
+      'API contable + e-commerce',
+      'Pipeline Python automático',
+      'Google Sheets sincronizado',
+      'Dashboards Streamlit + Plotly',
+    ],
+    icon: Database,
   },
 ];
 
