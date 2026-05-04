@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { WhatsAppLink } from '@/components/ui/whatsapp-link';
 import { cn } from '@/lib/utils';
-import { contact } from '@/data/contact';
 
 const links = [
   { href: '#rubros', label: 'Rubros' },
@@ -60,11 +60,11 @@ export function Navbar() {
         </nav>
 
         <Button asChild size="sm" className="glow-primary">
-          <Link href={contact.whatsapp.link()} target="_blank" rel="noopener noreferrer">
+          <WhatsAppLink ariaLabel="Pedí tu diagnóstico gratuito por WhatsApp">
             <MessageCircle className="h-3.5 w-3.5" />
             <span className="hidden sm:inline">Diagnóstico gratuito</span>
             <span className="sm:hidden">WhatsApp</span>
-          </Link>
+          </WhatsAppLink>
         </Button>
       </div>
     </header>

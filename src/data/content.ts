@@ -1,14 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import {
-  Stethoscope,
-  HardHat,
-  UtensilsCrossed,
-  Globe,
-  GraduationCap,
-  Wine,
-  Cloud,
-  Settings2,
-} from 'lucide-react';
+import { Stethoscope, HardHat, UtensilsCrossed } from 'lucide-react';
 
 export type Rubro = {
   slug: string;
@@ -73,7 +64,6 @@ export type Proyecto = {
   features: string[];
   url?: string;
   logo: string;
-  icon: LucideIcon;
 };
 
 export const proyectos: Proyecto[] = [
@@ -86,7 +76,6 @@ export const proyectos: Proyecto[] = [
     features: ['Responsive', 'Formulario de contacto', 'Optimizado SEO'],
     url: 'https://santa-barba-cba.vercel.app/',
     logo: '/projects/santa-barba.png',
-    icon: Globe,
   },
   {
     slug: 'vinewatch',
@@ -97,7 +86,6 @@ export const proyectos: Proyecto[] = [
     features: ['Diseño profesional', 'Navegación clara', 'Responsive'],
     url: 'https://vinewatchconsulting.vercel.app/',
     logo: '/projects/vinewatch.png',
-    icon: Wine,
   },
   {
     slug: 'aeromet',
@@ -108,7 +96,6 @@ export const proyectos: Proyecto[] = [
     features: ['Contenido especializado', 'Estructura clara', 'SEO optimizado'],
     url: 'https://aerometarg.vercel.app/',
     logo: '/projects/aeromet.png',
-    icon: Cloud,
   },
   {
     slug: 'fenix',
@@ -119,7 +106,6 @@ export const proyectos: Proyecto[] = [
     features: ['Lógica funcional', 'Sistema integrado', 'Operativo'],
     url: 'https://fenixcba.vercel.app/',
     logo: '/projects/fenix.png',
-    icon: Settings2,
   },
   {
     slug: 'app4bar',
@@ -130,7 +116,6 @@ export const proyectos: Proyecto[] = [
     features: ['Stock con alertas WhatsApp', 'OCR de tickets financieros', 'Reportes Excel y PDF'],
     url: 'https://app4bar.onrender.com/#/login',
     logo: '/projects/app4bar.jpg',
-    icon: UtensilsCrossed,
   },
 ];
 

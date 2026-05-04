@@ -1,13 +1,13 @@
 import Link from 'next/link';
+import type { ReactNode } from 'react';
 import { MessageCircle, Mail, Linkedin, ArrowUpRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { WhatsAppLink } from '@/components/ui/whatsapp-link';
 import { contact } from '@/data/contact';
 
 export function Contacto() {
-  const waLink = contact.whatsapp.link();
-
   return (
     <section id="contacto" className="border-t border-border/40 py-24">
       <div className="container">
@@ -44,11 +44,11 @@ export function Contacto() {
                 </div>
 
                 <Button asChild size="lg" className="glow-primary">
-                  <Link href={waLink} target="_blank" rel="noopener noreferrer">
+                  <WhatsAppLink ariaLabel="Escribir por WhatsApp">
                     <MessageCircle className="h-4 w-4" />
                     Escribir por WhatsApp
                     <ArrowUpRight className="h-4 w-4" />
-                  </Link>
+                  </WhatsAppLink>
                 </Button>
               </div>
             </CardContent>
@@ -76,19 +76,21 @@ export function Contacto() {
   );
 }
 
+interface ContactLinkProps {
+  href: string;
+  icon: ReactNode;
+  label: string;
+  value: string;
+  external?: boolean;
+}
+
 function ContactLink({
   href,
   icon,
   label,
   value,
   external = false,
-}: {
-  href: string;
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-  external?: boolean;
-}) {
+}: ContactLinkProps) {
   const externalProps = external ? { target: '_blank', rel: 'noopener noreferrer' } : {};
   return (
     <Link

@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* Forzamos dark por defecto - paleta dark puro con acento azul-violeta */
+    /* Dark por defecto - paleta dark puro con acento verde corporativo (#27ae60) */
     --background: 222 47% 4%;
     --foreground: 210 20% 98%;
 
@@ -14,7 +14,7 @@
     --popover: 222 47% 6%;
     --popover-foreground: 210 20% 98%;
 
-    --primary: 250 84% 64%;
+    --primary: 145 63% 42%;
     --primary-foreground: 210 20% 98%;
 
     --secondary: 222 32% 12%;
@@ -23,7 +23,7 @@
     --muted: 222 32% 10%;
     --muted-foreground: 215 16% 60%;
 
-    --accent: 250 84% 64%;
+    --accent: 145 63% 42%;
     --accent-foreground: 210 20% 98%;
 
     --destructive: 0 72% 51%;
@@ -31,7 +31,7 @@
 
     --border: 222 32% 14%;
     --input: 222 32% 14%;
-    --ring: 250 84% 64%;
+    --ring: 145 63% 42%;
 
     --radius: 0.75rem;
   }

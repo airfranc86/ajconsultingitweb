@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Linkedin, Mail, MessageCircle } from 'lucide-react';
+import { WhatsAppLink } from '@/components/ui/whatsapp-link';
 import { contact } from '@/data/contact';
 
 export function Footer() {
@@ -42,16 +43,10 @@ export function Footer() {
             <h3 className="mb-4 text-sm font-medium">Contacto</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a
-                  href={contact.whatsapp.link()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:text-foreground"
-                  aria-label="Contactar por WhatsApp"
-                >
+                <WhatsAppLink className="flex items-center gap-2 hover:text-foreground">
                   <MessageCircle className="h-3.5 w-3.5" />
                   WhatsApp
-                </a>
+                </WhatsAppLink>
               </li>
               <li>
                 <a

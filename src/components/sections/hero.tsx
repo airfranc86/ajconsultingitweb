@@ -6,8 +6,8 @@ import { motion } from 'framer-motion';
 import { ArrowRight, MessageCircle, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { WhatsAppLink } from '@/components/ui/whatsapp-link';
 import { metricas } from '@/data/content';
-import { contact } from '@/data/contact';
 
 export function Hero() {
   return (
@@ -39,7 +39,7 @@ export function Hero() {
               fill
               priority
               sizes="(min-width: 768px) 160px, 128px"
-              className="object-contain drop-shadow-[0_0_30px_rgba(34,197,94,0.35)]"
+              className="object-contain drop-shadow-[0_0_30px_hsl(var(--primary)/0.4)]"
             />
           </motion.div>
         </motion.div>
@@ -69,15 +69,11 @@ export function Hero() {
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button asChild size="lg" className="glow-primary">
-              <Link
-                href={contact.whatsapp.link()}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <WhatsAppLink ariaLabel="Pedí tu diagnóstico gratuito por WhatsApp">
                 <MessageCircle className="h-4 w-4" />
                 Pedí tu diagnóstico gratuito
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </WhatsAppLink>
             </Button>
             <Button asChild size="lg" variant="outline">
               <Link href="#proyectos">Ver proyectos reales</Link>
