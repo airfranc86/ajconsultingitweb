@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { DashboardPreviewModal } from '@/components/ui/dashboard-preview-modal';
 import { LayerStack, Card as StackCard } from '@/components/ui/layer-stack';
 import type { Proyecto } from '@/data/content';
 import { proyectos } from '@/data/content';
@@ -82,7 +83,9 @@ function ProyectoFeature({ proyecto }: ProyectoFeatureProps) {
         ))}
       </ul>
 
-      {proyecto.url && (
+      {proyecto.slug === 'pipeline-etl-contable' ? (
+        <DashboardPreviewModal />
+      ) : proyecto.url ? (
         <Link
           href={proyecto.url}
           target="_blank"
@@ -93,7 +96,7 @@ function ProyectoFeature({ proyecto }: ProyectoFeatureProps) {
           Ver proyecto
           <ArrowUpRight className="h-3.5 w-3.5" />
         </Link>
-      )}
+      ) : null}
     </article>
   );
 }
