@@ -175,27 +175,27 @@ export const faqs: Faq[] = [
   {
     pregunta: '¿Cuánto tiempo lleva implementar una solución?',
     respuesta:
-      'Depende del alcance. Una landing comercial: 1–2 semanas. Un dashboard de KPIs con integración de datos: 3–6 semanas. Siempre arrancamos con un MVP funcional en menos de 15 días.',
+      'Depende del alcance. Una landing web de presentación o portfolio: 1–2 semanas. Un panel de métricas de indicadores clave para finanzas o reestructuración de reportes financieros: 3–6 semanas. La primera versión funcional siempre la entregamos en menos de 15 días.',
   },
   {
-    pregunta: '¿Qué pasa si ya tengo sistemas existentes?',
+    pregunta: '¿Y si todavía no tengo claro el proyecto?',
     respuesta:
-      'Nos integramos con tu stack actual. Trabajamos con APIs, planillas Excel, bases de datos legadas y servicios cloud. No te obligamos a migrar todo de golpe.',
+      'Asistimos el proyecto que tengas en mente — esté apenas esbozado o ya en marcha. En la primera consulta devolvemos un feedback concreto para encauzar la idea, coordinar el alcance y acompañar la ejecución en el mundo de la tecnología.',
   },
   {
     pregunta: '¿La solución es propia o me lockean a una plataforma?',
     respuesta:
-      'Todo el código y los datos son tuyos. Usamos stack open source y servicios estándar (Supabase, Vercel, Render). Si querés migrar el día de mañana, podés.',
+      'Todo el código y los datos son tuyos. Trabajamos sobre infraestructura con estándares de seguridad internacional. Tenés libertad total para mantenerlo con nosotros o migrarlo cuando lo decidas.',
   },
   {
     pregunta: '¿Hacen mantenimiento post-entrega?',
     respuesta:
-      'Sí. Ofrecemos planes de soporte mensual y SLA de respuesta. La entrega no es el final del proyecto, es el inicio de la operación.',
+      'Sí. Ofrecemos planes de soporte mensual con contrato claro y alcance acordado. El acompañamiento es de principio a fin: la entrega no es el cierre del proyecto sino el inicio de la operación.',
   },
   {
-    pregunta: '¿Trabajan con clientes fuera de Argentina?',
+    pregunta: '¿Quién valida las decisiones técnicas detrás de cada proyecto?',
     respuesta:
-      'Sí. Trabajamos remoto con clientes de LATAM y España. Toda la comunicación es en español y la facturación se ajusta al país del cliente.',
+      'Contamos con asesores externos que validan cada decisión clave antes de avanzar: un ingeniero profesional especializado en planificación con metodología Kanban, y un consultor externo del área de salud experto en indicadores clave (KPIs). No improvisamos: consultamos antes de cada paso.',
   },
 ];
 
