@@ -289,7 +289,7 @@ export const metricas: Metrica[] = [
 export const rubrosAdicionales: string[] = [
   'Vitivinicultura',
   'Meteorología aeronáutica',
-  'Telcos',
+  'Telecomunicaciones',
   'Finanzas y contable',
 ];
 
