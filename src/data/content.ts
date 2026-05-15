@@ -7,6 +7,7 @@ import {
   Library,
   Layers,
   ShieldCheck,
+  CloudSun,
 } from 'lucide-react';
 
 export type Rubro = {
@@ -142,6 +143,22 @@ export const proyectos: Proyecto[] = [
       'Dashboards Streamlit + Plotly',
     ],
     icon: Database,
+  },
+  {
+    slug: 'skypulse',
+    numero: '07',
+    nombre: 'SkyPulse',
+    categoria: 'Meteorología aeronáutica',
+    descripcion:
+      'Panel informativo de nubosidades y fenómenos meteorológicos relevantes para operaciones aéreas, con datos actualizados de APIs oficiales.',
+    features: [
+      'Visualización de nubosidades',
+      'Fenómenos meteo en tiempo real',
+      'APIs meteorológicas oficiales',
+      'Diseñado para operación aérea',
+    ],
+    url: 'https://skypulseinfo.vercel.app/',
+    icon: CloudSun,
   },
 ];
 
