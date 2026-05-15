@@ -21,6 +21,38 @@ const jetbrainsMono = JetBrains_Mono({
  */
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://ajconsultingit.com';
 
+/**
+ * JSON-LD `ProfessionalService` schema para reforzar identidad corporativa
+ * en Google (Knowledge Panel, rich results, búsquedas de marca).
+ *
+ * Validación: https://search.google.com/test/rich-results
+ */
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'A&J Consulting IT',
+  alternateName: 'AJ Consulting IT',
+  description:
+    'I+D embebido para PyMEs que ya tienen sistemas y necesitan que conversen. Business Intelligence, IA y automatización con investigación previa al deploy.',
+  url: SITE_URL,
+  areaServed: { '@type': 'Country', name: 'Argentina' },
+  knowsAbout: [
+    'Business Intelligence',
+    'Inteligencia Artificial',
+    'Automatización de procesos',
+    'Dashboards de KPIs',
+    'OCR y Document AI',
+    'ETL y pipelines de datos',
+    'Desarrollo de software a medida',
+  ],
+  serviceType: [
+    'Consultoría IT',
+    'Business Intelligence',
+    'Automatización',
+    'Desarrollo de software',
+  ],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -72,6 +104,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${GeistSans.variable} ${jetbrainsMono.variable}`}
     >
       <body className="font-sans">
+        {/* SEO: ProfessionalService schema (Knowledge Panel + brand SERPs) */}
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
           <WhatsAppFab />

@@ -1,5 +1,13 @@
 import type { LucideIcon } from 'lucide-react';
-import { Stethoscope, HardHat, UtensilsCrossed, Database } from 'lucide-react';
+import {
+  Stethoscope,
+  HardHat,
+  UtensilsCrossed,
+  Database,
+  Library,
+  Layers,
+  ShieldCheck,
+} from 'lucide-react';
 
 export type Rubro = {
   slug: string;
@@ -140,29 +148,75 @@ export const proyectos: Proyecto[] = [
 export type MetodologiaPaso = {
   numero: string;
   titulo: string;
+  duracion: string;
   descripcion: string;
 };
 
 export const metodologia: MetodologiaPaso[] = [
   {
     numero: '01',
-    titulo: 'Consulta inicial',
-    descripcion: 'Entendemos tu negocio y definimos objetivos.',
+    titulo: 'Sprint diagnóstico',
+    duracion: '3–5 días',
+    descripcion:
+      'Mapeamos los procesos y devolvemos un documento con alcance, stack propuesto y referencias técnicas citadas. No improvisamos arquitectura.',
   },
   {
     numero: '02',
-    titulo: 'Análisis y propuesta',
-    descripcion: 'Solución personalizada con métricas y alcance.',
+    titulo: 'Primera versión funcional',
+    duracion: '≤ 15 días',
+    descripcion:
+      'Producto navegable con el flujo crítico operando, no maqueta estática. Iterás sobre algo real desde la primera semana.',
   },
   {
     numero: '03',
-    titulo: 'Desarrollo',
-    descripcion: 'Implementación con seguimiento continuo.',
+    titulo: 'Iteración a producción',
+    duracion: '3–6 semanas',
+    descripcion:
+      'Despliegue real, integraciones reales, datos del cliente. Acompañamiento técnico durante toda la rampa hasta la operación estable.',
   },
   {
     numero: '04',
-    titulo: 'Entrega y seguimiento',
-    descripcion: 'Entrega funcional y acompañamiento en la adopción.',
+    titulo: 'Operación + acompañamiento',
+    duracion: 'Mensual',
+    descripcion:
+      'Soporte con contrato claro y alcance acordado. La entrega no es el cierre del proyecto sino el inicio de la operación.',
+  },
+];
+
+export type Pillar = {
+  numero: string;
+  titulo: string;
+  descripcion: string;
+  prueba: string;
+  icon: LucideIcon;
+};
+
+export const pillars: Pillar[] = [
+  {
+    numero: '01',
+    titulo: 'Investigamos antes de cotizar',
+    descripcion:
+      'Operamos sobre una base de conocimiento técnica propia con 700+ fuentes indexadas en 36 dominios — frameworks, hosting, autenticación, OCR, pagos, LLMs y más.',
+    prueba:
+      'Por eso entregamos en 15 días lo que otras consultoras cotizan en meses, sin reinventar arquitectura.',
+    icon: Library,
+  },
+  {
+    numero: '02',
+    titulo: 'Verticales con piso, no demos',
+    descripcion:
+      'Lo que ves en proyectos ya corre en producción: salud, obras viales, gastronomía, vitivinicultura, meteorología, telcos.',
+    prueba: 'No vendemos "podríamos hacer". Vendemos "esto ya está andando".',
+    icon: Layers,
+  },
+  {
+    numero: '03',
+    titulo: 'Decisiones validadas por especialistas',
+    descripcion:
+      'Board asesor: un ingeniero profesional senior en planificación con metodología Kanban y un consultor externo experto en indicadores clave (KPIs) del área de salud.',
+    prueba:
+      'No improvisamos: consultamos antes de cada paso crítico del proyecto.',
+    icon: ShieldCheck,
   },
 ];
 
@@ -205,8 +259,54 @@ export type Metrica = {
 };
 
 export const metricas: Metrica[] = [
-  { valor: '5+', label: 'Proyectos en producción' },
-  { valor: '3', label: 'Rubros especializados' },
+  { valor: '7+', label: 'Verticales con casos' },
+  { valor: '700+', label: 'Fuentes técnicas indexadas' },
   { valor: '−70%', label: 'Tiempo en análisis de KPIs' },
-  { valor: '15d', label: 'Tiempo a MVP funcional' },
+  { valor: '15d', label: 'Primera versión funcional' },
+];
+
+/**
+ * Rubros adicionales con evidencia (no protagónicos en home, pero visibles).
+ * Aparecen como nota al pie de la grilla principal de Rubros.
+ */
+export const rubrosAdicionales: string[] = [
+  'Vitivinicultura',
+  'Meteorología aeronáutica',
+  'Telcos',
+  'Finanzas y contable',
+];
+
+export type AntiFitItem = {
+  texto: string;
+};
+
+export const antiFitNo: AntiFitItem[] = [
+  { texto: 'Buscás una landing en 48 horas sin diagnóstico previo.' },
+  { texto: 'Necesitás integrar más de 5 sistemas legados sin etapa de discovery.' },
+  { texto: 'Esperás que cotice sin entender tu operación primero.' },
+];
+
+export const antiFitSi: AntiFitItem[] = [
+  { texto: 'Ya tenés sistemas funcionando y necesitás que conversen entre sí.' },
+  { texto: 'Querés métricas reales sobre tu operación, no dashboards decorativos.' },
+  { texto: 'Valorás que te digan "esto no" cuando corresponde — antes de gastar.' },
+];
+
+/**
+ * Stack técnico mostrado como prueba de profundidad, no como venta de herramientas.
+ * Tomado del ecosistema real en producción + Evolvionexus (base de conocimiento interna).
+ */
+export const stack: string[] = [
+  'Next.js',
+  'Streamlit',
+  'NiceGUI',
+  'FastAPI',
+  'Supabase',
+  'Google Cloud',
+  'Vercel',
+  'Render',
+  'Docker',
+  'OCR / Document AI',
+  'LLM APIs',
+  'GA4',
 ];

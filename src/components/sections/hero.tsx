@@ -51,19 +51,18 @@ export function Hero() {
         >
           <Badge variant="outline" className="mb-6 gap-1.5 px-3 py-1">
             <Sparkles className="h-3 w-3 text-primary" />
-            <span className="text-muted-foreground">BI · IA · Automatización</span>
+            <span className="text-muted-foreground">I+D embebido · BI · IA · Automatización</span>
           </Badge>
 
           <h1 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
-            Consultora IT de{' '}
-            <span className="gradient-text">Business Intelligence</span> para todos los
-            rubros profesionales
+            Sistemas que funcionan{' '}
+            <span className="gradient-text">como uno solo</span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-balance text-lg text-muted-foreground md:text-xl">
-            Desarrollamos landings, sistemas de turnos, control de stock, dashboards de
-            KPIs y automatización. Soluciones concretas que reemplazan procesos manuales y
-            decisiones a ojo.
+            I+D embebido para PyMEs que ya tienen sistemas y necesitan que conversen.
+            Investigamos antes de cotizar, entregamos en semanas — no en meses — y el
+            código y los datos siempre son tuyos.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">

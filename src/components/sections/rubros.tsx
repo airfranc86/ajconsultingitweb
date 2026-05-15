@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Check } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -9,7 +10,7 @@ import {
   CardFlipHeader,
   CardFlipTitle,
 } from '@/components/ui/card-flip';
-import { rubros } from '@/data/content';
+import { rubros, rubrosAdicionales } from '@/data/content';
 
 export function Rubros() {
   return (
@@ -76,6 +77,17 @@ export function Rubros() {
             );
           })}
         </div>
+
+        <p className="mx-auto mt-12 max-w-3xl text-center text-sm text-muted-foreground">
+          También tenemos casos en producción en{' '}
+          <span className="text-foreground">{rubrosAdicionales.join(' · ')}</span>.{' '}
+          <Link
+            href="#proyectos"
+            className="font-medium text-primary underline-offset-4 hover:underline"
+          >
+            Ver proyectos
+          </Link>
+        </p>
       </div>
     </section>
   );
