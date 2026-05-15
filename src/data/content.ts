@@ -8,6 +8,7 @@ import {
   Layers,
   ShieldCheck,
   CloudSun,
+  Radio,
 } from 'lucide-react';
 
 export type Rubro = {
@@ -160,6 +161,21 @@ export const proyectos: Proyecto[] = [
     url: 'https://skypulseinfo.vercel.app/',
     icon: CloudSun,
   },
+  {
+    slug: 'techcom-view',
+    numero: '08',
+    nombre: 'Techcom View',
+    categoria: 'Análisis de datos · Streamlit',
+    descripcion:
+      'Showcase técnico: panel interactivo de análisis de datos sobre infraestructura de telecomunicaciones a nivel mundial. Ejemplo de capacidad de exploración y visualización con Streamlit sobre datasets reales.',
+    features: [
+      'Streamlit + Python',
+      'Visualización geoespacial',
+      'Filtros interactivos',
+      'Dataset público mundial',
+    ],
+    icon: Radio,
+  },
 ];
 
 export type MetodologiaPaso = {
@@ -289,7 +305,6 @@ export const metricas: Metrica[] = [
 export const rubrosAdicionales: string[] = [
   'Vitivinicultura',
   'Meteorología aeronáutica',
-  'Telecomunicaciones',
   'Finanzas y contable',
 ];
 
