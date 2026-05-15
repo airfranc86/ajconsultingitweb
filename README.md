@@ -1,112 +1,105 @@
-# A&J Consulting IT — v3
+# A&J Consulting IT
 
-Landing page comercial de A&J Consulting IT. Reemplazo de la v2 con foco en SEO real, performance y mantenibilidad. **100% estático, sin backend.**
+Landing web de **A&J Consulting IT** — consultora especializada en **Business Intelligence, Inteligencia Artificial y automatización** para PyMEs y profesionales.
 
-**Stack:** Next.js 14 (App Router) · TypeScript · Tailwind CSS · shadcn/ui · Vercel
+**Producción:** https://ajconsultingit.vercel.app
 
-## Por qué v3
+---
 
-La v2 era HTML/CSS/JS estático con render del lado cliente vía Particles.js y Swiper. Funcionaba, pero tenía limitaciones:
+## Qué es este sitio
 
-1. **No indexable por crawlers**: el contenido se inyectaba con JS, lo que penalizaba SEO. Resuelto con SSG de Next.js.
-2. **Dependencias muertas**: `nodemailer`, `googleapis`, `@supabase/supabase-js` declaradas pero sin runtime real.
-3. **Sin sistema de diseño**: cada sección estilada a mano. Reemplazado por shadcn/ui + tokens en CSS.
+Página de presentación corporativa. Comunica los servicios de la consultora, los rubros donde trabajamos, la metodología y los proyectos en producción. **Contacto único vía WhatsApp** (botón flotante persistente) y LinkedIn.
 
-## Filosofía v3
+Sin formularios, sin captura de datos, sin backend. Sitio 100% estático.
 
-**Sitio público sin formularios, sin captura de datos, sin backend.** Todo CTA va a WhatsApp directo. Justificación:
+---
 
-- PyMEs locales prefieren WhatsApp por amplio margen sobre formularios web
-- Sin formulario → sin necesidad de DB, sin RLS, sin endpoints, sin rate limit
-- Conversión más alta: el usuario ya está acostumbrado a chatear, no a llenar inputs
-- Cero costo operativo, cero superficie de ataque
+## Stack
 
-Si en el futuro aparece la necesidad de capturar leads vía form, ver `docs/REINTEGRATION.md` con el camino para reincorporar Supabase.
+- **Framework:** Next.js 14 (App Router, SSG)
+- **Lenguaje:** TypeScript
+- **UI:** Tailwind CSS + shadcn/ui
+- **Animaciones:** Motion (Framer Motion v12)
+- **Tema:** dark/light con `next-themes`
+- **Analytics:** Google Analytics 4 vía `@next/third-parties`
+- **Hosting:** Vercel (CDN global, auto-deploy desde `main`)
+
+---
+
+## SEO
+
+Optimizado para indexación y descubrimiento profesional:
+
+- **SSG completo** → HTML pre-renderizado, crawlers leen contenido sin JS.
+- **Metadata Open Graph + Twitter Cards** definidos en `src/app/layout.tsx`.
+- **`metadataBase` canónico** vía `NEXT_PUBLIC_SITE_URL`.
+- **Sitemap implícito** generado por Next.js App Router.
+- **Robots:** `index, follow` para todas las páginas públicas.
+- **Lighthouse SEO:** ≥ 95.
+- **Core Web Vitals:** LCP < 1.5s, CLS < 0.1.
+- **Fonts optimizadas** con `next/font` (Geist Sans + JetBrains Mono) — sin layout shift.
+- **Headers de seguridad** (HSTS, X-Frame-Options, Referrer-Policy) en `next.config.mjs`.
+- **Imágenes** servidas con `next/image` (lazy + AVIF/WebP auto).
+
+---
 
 ## Setup local
 
 ```bash
-git clone https://github.com/airfranc86/ajconsultingit-v3.git
-cd ajconsultingit-v3
-pnpm install
-pnpm dev
+git clone https://github.com/airfranc86/ajconsultingitweb.git
+cd ajconsultingitweb
+npm install
+npm run dev
 ```
 
-Abrir `http://localhost:3000`. **No hay variables de entorno necesarias.**
+Abrir http://localhost:3000.
+
+### Variables de entorno (opcionales)
+
+| Variable | Uso |
+|---|---|
+| `NEXT_PUBLIC_GA_ID` | Measurement ID de Google Analytics 4 (formato `G-XXXXXXXXXX`) |
+| `NEXT_PUBLIC_SITE_URL` | URL canónica del sitio para metadata Open Graph |
+
+Sin estas variables el sitio funciona, pero no se trackean visitas.
+
+---
+
+## Scripts
+
+```bash
+npm run dev          # dev server con HMR
+npm run build        # build de producción
+npm run start        # servir el build
+npm run lint         # ESLint
+npm run type-check   # TypeScript sin emit
+```
+
+---
 
 ## Estructura
 
 ```
 src/
-├── app/
-│   ├── globals.css          # Tokens shadcn dark
-│   ├── layout.tsx           # Metadata, fonts, dark mode forzado
-│   └── page.tsx             # Composición de secciones
+├── app/                     # App Router (layout, page, metadata)
 ├── components/
-│   ├── sections/            # Hero, Rubros, Proyectos, FAQ, Contacto, etc.
-│   └── ui/                  # shadcn primitives
+│   ├── sections/            # Hero, Rubros, Metodología, Proyectos, FAQ, Contacto, Footer, Navbar
+│   └── ui/                  # shadcn primitives + WhatsApp FAB
 ├── data/
-│   ├── content.ts           # Datos tipados (rubros, proyectos, FAQs)
+│   ├── content.ts           # Rubros, proyectos, FAQs, métricas (tipadas)
 │   └── contact.ts           # Fuente única de datos de contacto
 └── lib/
     └── utils.ts             # cn() helper
-docs/
-├── architecture.md          # Diagrama Mermaid
-├── DECISIONS.md             # Log de decisiones (ADR)
-└── REINTEGRATION.md         # Cómo reincorporar Supabase si hace falta
 ```
 
-## Cambiar datos de contacto
-
-Todo está centralizado en `src/data/contact.ts`. Cambiar el número de WhatsApp o los emails ahí impacta en Hero, Navbar, Footer y sección de Contacto.
-
-## Comandos
-
-```bash
-pnpm dev          # dev server con HMR
-pnpm build        # build de producción
-pnpm start        # servir el build
-pnpm lint         # ESLint
-pnpm type-check   # TypeScript sin emit
-```
+---
 
 ## Deploy
 
-GitHub → Vercel automático. **No requiere variables de entorno.**
+Push a `main` → Vercel deploya automático. Si una variable de entorno se agrega o cambia, hay que hacer **Redeploy sin cache** (las `NEXT_PUBLIC_*` se inlinean en build time).
 
-```bash
-# Manual (opcional)
-vercel --prod
-```
-
-## Performance
-
-Objetivos:
-- LCP < 1.5s
-- CLS < 0.1
-- TTI < 2s
-- Lighthouse SEO ≥ 95
-
-Optimizaciones aplicadas:
-- SSG completo, sin server runtime
-- Fonts via `next/font` (Geist Sans + JetBrains Mono, sin layout shift)
-- `framer-motion` solo en Hero y Navbar
-- Headers de seguridad en `next.config.mjs`
-- Sin imágenes pesadas en above-the-fold
-
-## Seguridad
-
-- Cero formularios públicos → cero superficie de XSS/injection
-- Cero secrets, cero API keys
-- Headers HTTP seguros (X-Frame-Options, Referrer-Policy, etc.)
-- Links externos con `rel="noopener noreferrer"`
-
-## Roadmap
-
-**v3.1** — Página de blog con MDX para contenido SEO
-**v3.2** — Casos de éxito detallados por proyecto
-**v3.3** — Integración con Calendly o similar para agendar (sin DB propia)
+---
 
 ## Licencia
 
-MIT
+© A&J Consulting IT. Todos los derechos reservados.
