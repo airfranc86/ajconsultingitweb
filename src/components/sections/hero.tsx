@@ -6,8 +6,6 @@ import { motion } from 'motion/react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { WhatsAppIcon } from '@/components/ui/whatsapp-icon';
-import { WhatsAppLink } from '@/components/ui/whatsapp-link';
 import { metricas } from '@/data/content';
 
 export function Hero() {
@@ -70,14 +68,13 @@ export function Hero() {
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button asChild size="lg" className="glow-primary">
-              <WhatsAppLink ariaLabel="Pedí tu diagnóstico gratuito por WhatsApp">
-                <WhatsAppIcon className="h-4 w-4" />
-                Pedí tu diagnóstico gratuito
+              <Link href="#proyectos">
+                Ver proyectos reales
                 <ArrowRight className="h-4 w-4" />
-              </WhatsAppLink>
+              </Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link href="#proyectos">Ver proyectos reales</Link>
+              <Link href="#metodologia">Conocé la metodología</Link>
             </Button>
           </div>
         </motion.div>

@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import { Linkedin } from 'lucide-react';
 import { BrandMark } from '@/components/ui/brand-mark';
-import { WhatsAppIcon } from '@/components/ui/whatsapp-icon';
-import { WhatsAppLink } from '@/components/ui/whatsapp-link';
 import { contact } from '@/data/contact';
 
 export function Footer() {
@@ -34,12 +32,6 @@ export function Footer() {
           <div>
             <h3 className="mb-4 text-sm font-medium">Contacto</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>
-                <WhatsAppLink className="flex items-center gap-2 hover:text-foreground">
-                  <WhatsAppIcon className="h-3.5 w-3.5" />
-                  WhatsApp
-                </WhatsAppLink>
-              </li>
               <li>
                 <a
                   href={contact.linkedin}

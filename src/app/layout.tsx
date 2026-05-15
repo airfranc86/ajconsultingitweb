@@ -3,6 +3,7 @@ import { GeistSans } from 'geist/font/sans';
 import { JetBrains_Mono } from 'next/font/google';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { ThemeProvider } from '@/components/theme-provider';
+import { WhatsAppFab } from '@/components/ui/whatsapp-fab';
 import './globals.css';
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID;
@@ -73,6 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="font-sans">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
+          <WhatsAppFab />
         </ThemeProvider>
       </body>
       {GA_MEASUREMENT_ID ? <GoogleAnalytics gaId={GA_MEASUREMENT_ID} /> : null}

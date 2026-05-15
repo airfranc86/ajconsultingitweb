@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useState, type MouseEvent, type ReactNode } from 'react';
 import { contact } from '@/data/contact';
 
 interface WhatsAppLinkProps {
@@ -11,6 +11,8 @@ interface WhatsAppLinkProps {
   className?: string;
   /** Atributo aria-label. Default: "Contactar por WhatsApp". */
   ariaLabel?: string;
+  /** Callback opcional al click (después del guard de hydration). Útil para tracking. */
+  onClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
   /** Contenido del link. */
   children: ReactNode;
 }
@@ -29,6 +31,7 @@ export function WhatsAppLink({
   message,
   className,
   ariaLabel = 'Contactar por WhatsApp',
+  onClick,
   children,
 }: WhatsAppLinkProps): JSX.Element {
   const [href, setHref] = useState<string>('#');
@@ -48,7 +51,9 @@ export function WhatsAppLink({
       onClick={(e) => {
         if (!ready) {
           e.preventDefault();
+          return;
         }
+        onClick?.(e);
       }}
       className={className}
     >
