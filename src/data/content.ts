@@ -143,7 +143,7 @@ export const proyectos: Proyecto[] = [
       'Google Sheets sincronizado',
       'Dashboards Streamlit + Plotly',
     ],
-    icon: Database,
+    logo: '/projects/etl-dashboard.png',
   },
   {
     slug: 'skypulse',
@@ -159,7 +159,7 @@ export const proyectos: Proyecto[] = [
       'Diseñado para operación aérea',
     ],
     url: 'https://skypulse-ar.vercel.app/',
-    logo: '/projects/Logo.png',
+    logo: '/projects/skypulse.png',
   },
   {
     slug: 'techcom-view',
