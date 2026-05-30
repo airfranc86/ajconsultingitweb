@@ -158,8 +158,8 @@ export const proyectos: Proyecto[] = [
       'APIs meteorológicas oficiales',
       'Diseñado para operación aérea',
     ],
-    url: 'https://skypulseinfo.vercel.app/',
-    icon: CloudSun,
+    url: 'https://skypulse-ar.vercel.app/',
+    logo: '/projects/Logo.png',
   },
   {
     slug: 'techcom-view',
