@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { GeistSans } from 'geist/font/sans';
 import { JetBrains_Mono } from 'next/font/google';
-import { GoogleAnalytics } from '@next/third-parties/google';
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { WhatsAppFab } from '@/components/ui/whatsapp-fab';
 import './globals.css';
@@ -103,6 +103,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
       className={`${GeistSans.variable} ${jetbrainsMono.variable}`}
     >
+      <GoogleTagManager gtmId="GTM-KK2JW23L" />
       <body className="font-sans">
         {/* SEO: ProfessionalService schema (Knowledge Panel + brand SERPs) */}
         <script
