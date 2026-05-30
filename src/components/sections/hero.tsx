@@ -7,6 +7,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { metricas } from '@/data/content';
+import { trackCTA } from '@/lib/gtag';
 
 export function Hero() {
   return (
@@ -66,13 +67,23 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button asChild size="lg" className="glow-primary">
+            <Button
+              asChild
+              size="lg"
+              className="glow-primary"
+              onClick={() => trackCTA('Ver proyectos reales')}
+            >
               <Link href="#proyectos">
                 Ver proyectos reales
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline">
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              onClick={() => trackCTA('Conocé la metodología')}
+            >
               <Link href="#metodologia">Conocé la metodología</Link>
             </Button>
           </div>

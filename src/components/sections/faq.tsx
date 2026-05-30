@@ -1,6 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { faqs } from '@/data/content';
+import { trackFAQOpen } from '@/lib/gtag';
 
 /**
  * JSON-LD `FAQPage` schema para habilitar rich results en Google.
@@ -40,7 +41,14 @@ export function FAQ() {
         </div>
 
         <div className="mx-auto mt-12 max-w-2xl">
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full"
+            onValueChange={(value) => {
+              if (value) trackFAQOpen(value);
+            }}
+          >
             {faqs.map((f) => (
               <AccordionItem key={f.pregunta} value={f.pregunta}>
                 <AccordionTrigger>{f.pregunta}</AccordionTrigger>

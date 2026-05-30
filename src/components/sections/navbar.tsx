@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { BrandMark } from '@/components/ui/brand-mark';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
+import { trackCTA } from '@/lib/gtag';
 import { cn } from '@/lib/utils';
 
 const links = [
@@ -41,6 +42,7 @@ export function Navbar() {
             <Link
               key={l.href}
               href={l.href}
+              onClick={() => trackCTA(l.label)}
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               {l.label}
@@ -50,7 +52,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <Button asChild size="sm" variant="outline">
+          <Button asChild size="sm" variant="outline" onClick={() => trackCTA('Contacto')}>
             <Link href="#contacto">Contacto</Link>
           </Button>
         </div>

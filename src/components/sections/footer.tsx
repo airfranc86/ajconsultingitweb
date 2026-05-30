@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Linkedin } from 'lucide-react';
 import { BrandMark } from '@/components/ui/brand-mark';
 import { contact } from '@/data/contact';
+import { trackCTA } from '@/lib/gtag';
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -21,11 +22,43 @@ export function Footer() {
           <div>
             <h3 className="mb-4 text-sm font-medium">Navegación</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link href="#rubros" className="hover:text-foreground">Rubros</Link></li>
-              <li><Link href="#metodologia" className="hover:text-foreground">Metodología</Link></li>
-              <li><Link href="#proyectos" className="hover:text-foreground">Proyectos</Link></li>
-              <li><Link href="#faq" className="hover:text-foreground">FAQ</Link></li>
-              <li><Link href="#contacto" className="hover:text-foreground">Contacto</Link></li>
+              <li>
+                <Link href="#rubros" className="hover:text-foreground" onClick={() => trackCTA('Rubros')}>
+                  Rubros
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#metodologia"
+                  className="hover:text-foreground"
+                  onClick={() => trackCTA('Metodología')}
+                >
+                  Metodología
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#proyectos"
+                  className="hover:text-foreground"
+                  onClick={() => trackCTA('Proyectos')}
+                >
+                  Proyectos
+                </Link>
+              </li>
+              <li>
+                <Link href="#faq" className="hover:text-foreground" onClick={() => trackCTA('FAQ')}>
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#contacto"
+                  className="hover:text-foreground"
+                  onClick={() => trackCTA('Contacto')}
+                >
+                  Contacto
+                </Link>
+              </li>
             </ul>
           </div>
 
