@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { Linkedin } from 'lucide-react';
 import { BrandMark } from '@/components/ui/brand-mark';
