@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   CloudSun,
   Radio,
+  Dumbbell,
 } from 'lucide-react';
 
 export type Rubro = {
@@ -175,6 +176,22 @@ export const proyectos: Proyecto[] = [
       'Dataset público mundial',
     ],
     icon: Radio,
+  },
+  {
+    slug: 'kineopass',
+    numero: '09',
+    nombre: 'KineoPass CBA',
+    categoria: 'Turnos · Pagos · Estudios de Movimiento',
+    descripcion:
+      'Turnero inteligente para estudios de movimiento: cupos, pagos y recordatorios automáticos.',
+    features: [
+      'Reservas con cupo y lista de espera',
+      'Pagos nativos con MercadoPago',
+      'Recordatorios automáticos por WhatsApp',
+      'Multi-sede con dashboard unificado',
+    ],
+    url: 'https://kineopasscba.vercel.app/',
+    icon: Dumbbell,
   },
 ];
 
