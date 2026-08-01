@@ -6,6 +6,11 @@ const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
   },
+  async rewrites() {
+    return [
+      { source: '/santa-barba', destination: '/santa-barba/index.html' },
+    ];
+  },
   async headers() {
     return [
       {

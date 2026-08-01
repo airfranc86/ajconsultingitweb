@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Comercial Atelier Noir - E-commerce & Chatbot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        noir: {
+                            950: '#09090b',
+                            900: '#121215',
+                            800: '#1c1c21',
+                            700: '#27272e',
+                            600: '#3f3f46'
+                        },
+                        gold: {
+                            300: '#f3e5ab',
+                            400: '#e5c158',
+                            500: '#d4a853',
+                            600: '#b88933',
+                            700: '#946820'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'Georgia', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #09090b;
+            color: #f4f4f5;
+            scroll-behavior: smooth;
+        }
+
+        .noir-glass {
+            background: rgba(18, 18, 21, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 168, 83, 0.15);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .noir-glass-glow {
+            background: rgba(24, 24, 29, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 168, 83, 0.35);
+            box-shadow: 0 0 35px rgba(212, 168, 83, 0.12);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #f3e5ab 0%, #d4a853 50%, #b88933 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(212, 168, 83, 0.25);
+        }
+
+        .nav-link.active {
+            color: #d4a853;
+            border-bottom: 2px solid #d4a853;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 360px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold-500 selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-noir-950/90 backdrop-blur-md border-b border-gold-500/20 py-4 px-6">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="https://ajconsultingitwebv2.vercel.app/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 group">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-gold-600 to-gold-400 p-0.5 flex items-center justify-center">
+                    <div class="w-full h-full bg-noir-950 rounded-full flex items-center justify-center">
+                        <span class="text-gold-400 font-bold text-xs">AJ</span>
+                    </div>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-white group-hover:text-gold-400 transition-colors">
+                    AJCONSULTING<span class="gold-gradient-text">IT</span>
+                </span>
+            </a>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-zinc-400">
+                <a href="#proyecto" class="nav-link hover:text-gold-400 transition-colors py-1">El Proyecto</a>
+                <a href="#simulador" class="nav-link hover:text-gold-400 transition-colors py-1">Proyecciones</a>
+                <a href="#timeline" class="nav-link hover:text-gold-400 transition-colors py-1">Tiempos</a>
+                <a href="#inversion" class="nav-link hover:text-gold-400 transition-colors py-1">Inversión</a>
+            </div>
+            <a href="#inversion" class="bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-noir-950 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:opacity-95 transition-all shadow-lg shadow-gold-500/10">
+                Aprobar Ahora
+            </a>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 pt-8 pb-20">
+
+        <!-- Hero Section -->
+        <header id="proyecto" class="mb-20 text-center relative pt-6">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest text-gold-400 uppercase bg-gold-500/10 border border-gold-500/20 rounded-full">
+                <span class="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+                Propuesta de Transformación Digital • Francisco — ajconsultingit
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+                Ventas 24/7 para <br>
+                <span class="font-serif italic gold-gradient-text font-normal">Cuidado Capilar & Barba</span>
+            </h1>
+            <p class="text-base md:text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed font-light">
+                Pasamos de la atención manual por mensajes a un sistema e-commerce automatizado que vende mientras duermes y responde por WhatsApp con inteligencia artificial en milisegundos.
+            </p>
+        </header>
+
+        <!-- Intro Paragraph -->
+        <section class="mb-20">
+            <div class="noir-glass p-8 md:p-10 rounded-3xl relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 w-60 h-60 bg-gold-500/5 rounded-full blur-2xl"></div>
+
+                <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                    <span class="text-gold-400 font-serif italic text-3xl">01.</span> ¿Por qué este sistema?
+                </h2>
+                <p class="text-zinc-300 leading-relaxed text-sm md:text-base font-light">
+                    Esta solución elimina el trabajo manual operativo: no más envío de CBU uno por uno ni verificación tardía de capturas de pantalla. El cliente entra a la web, selecciona sus productos de tratamiento o máquinas de barbería y paga directo en Mercado Pago.
+                </p>
+                <div class="grid md:grid-cols-3 gap-6 mt-8">
+                    <div class="p-6 bg-noir-900/90 rounded-2xl border border-zinc-800 hover:border-gold-500/40 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">⚡</div>
+                        <h3 class="font-bold text-white mb-2 text-base">Velocidad Web</h3>
+                        <p class="text-xs text-zinc-400 leading-relaxed">Tienda optimizada para celulares en Next.js, con carga instantánea y catálogo interactivo.</p>
+                    </div>
+                    <div class="p-6 bg-noir-900/90 rounded-2xl border border-zinc-800 hover:border-gold-500/40 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">🤖</div>
+                        <h3 class="font-bold text-white mb-2 text-base">Bot Inteligente Groq</h3>
+                        <p class="text-xs text-zinc-400 leading-relaxed">Responde dudas sobre productos capilares por WhatsApp en &lt;500ms con Llama 3.</p>
+                    </div>
+                    <div class="p-6 bg-noir-900/90 rounded-2xl border border-zinc-800 hover:border-gold-500/40 transition-all group">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">💳</div>
+                        <h3 class="font-bold text-white mb-2 text-base">Pago Directo MP</h3>
+                        <p class="text-xs text-zinc-400 leading-relaxed">Integración con tu Mercado Pago. El dinero ingresa 100% directo a tu cuenta bancaria.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Financial Simulator -->
+        <section id="simulador" class="mb-20">
+            <div class="mb-8">
+                <span class="text-xs font-bold tracking-widest text-gold-400 uppercase">Simulador de Retorno Atelier Noir</span>
+                <h2 class="text-3xl font-bold text-white mt-1">Proyecciones de Rentabilidad</h2>
+                <p class="text-zinc-400 text-sm mt-2">Seleccioná un escenario para comparar el volumen de ventas, deducciones automáticas y la ganancia limpia.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-5 gap-8 items-stretch">
+                <!-- Selectors -->
+                <div class="lg:col-span-2 flex flex-col justify-between space-y-4">
+                    <div class="space-y-4">
+                        <div id="btn-50" onclick="updateChart(50)" class="cursor-pointer p-6 rounded-2xl border-2 border-zinc-800 hover:border-gold-500/50 transition-all bg-noir-900">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-base text-white">50 Ventas / Mes</span>
+                                <span class="w-3 h-3 rounded-full bg-zinc-600" id="dot-50"></span>
+                            </div>
+                            <p class="text-xs text-zinc-400">Facturación bruta est. <span class="text-zinc-200 font-semibold">$600 USD</span> (~$12 USD / producto)</p>
+                        </div>
+
+                        <div id="btn-100" onclick="updateChart(100)" class="cursor-pointer p-6 rounded-2xl border-2 border-gold-500/80 bg-noir-900/90 noir-glass-glow transition-all">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-base text-gold-400">100 Ventas / Mes</span>
+                                <span class="w-3 h-3 rounded-full bg-gold-400 animate-pulse" id="dot-100"></span>
+                            </div>
+                            <p class="text-xs text-zinc-400">Facturación bruta est. <span class="text-zinc-200 font-semibold">$1.200 USD</span> (~$12 USD / producto)</p>
+                        </div>
+                    </div>
+
+                    <!-- Net Result Display Card -->
+                    <div class="p-6 bg-gradient-to-br from-noir-900 via-noir-950 to-noir-900 border border-gold-500/30 rounded-2xl relative overflow-hidden">
+                        <div class="absolute -right-6 -top-6 w-24 h-24 bg-gold-500/10 rounded-full blur-xl"></div>
+                        <h4 class="text-gold-400 text-xs font-bold uppercase tracking-widest mb-2">Ganancia Limpia para Gustavo</h4>
+                        <div class="text-4xl font-bold text-white mb-2 font-serif gold-gradient-text" id="val-ganancia">$1.020 USD</div>
+                        <p class="text-zinc-400 text-xs leading-relaxed">
+                            Dinero neto en tu mano después de comisiones de pasarela (~5%) y abono de soporte técnico.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Comparison Bar Chart Card -->
+                <div class="lg:col-span-3 noir-glass p-6 rounded-3xl flex flex-col justify-between">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xs font-bold uppercase tracking-widest text-zinc-400">Desglose de Flujo de Caja (USD)</h3>
+                        <span class="text-xs text-gold-400 bg-gold-500/10 px-2.5 py-1 rounded-full border border-gold-500/20">Barras Comparativas</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="projectionsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap -->
+        <section id="timeline" class="mb-20">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-bold tracking-widest text-gold-400 uppercase">Ejecución Acelerada</span>
+                <h2 class="text-3xl font-bold text-white mt-1">Hoja de Ruta en 3 Semanas</h2>
+                <p class="text-zinc-400 text-sm mt-2">
+                    Proceso ágil y estructurado para lanzar tu tienda digital con certezas en cada hito.
+                </p>
+            </div>
+
+            <div class="space-y-6 max-w-3xl mx-auto">
+                <div class="flex gap-6 items-start relative">
+                    <div class="absolute left-[1.35rem] top-12 w-0.5 h-full bg-zinc-800"></div>
+                    <div class="w-11 h-11 rounded-full bg-gold-500/10 border border-gold-500/40 text-gold-400 font-bold flex items-center justify-center shrink-0 z-10 text-sm">01</div>
+                    <div class="noir-glass p-6 rounded-2xl grow hover:border-gold-500/30 transition-colors">
+                        <h3 class="font-bold text-white text-base mb-1">Fase 1: Catálogo y Pasarela</h3>
+                        <p class="text-zinc-400 text-xs leading-relaxed">
+                            Diseñamos la estructura e-commerce en Next.js, realizamos la <strong>carga inicial de hasta 40 productos</strong> de tus líneas capilares/barba y vinculamos tu cuenta de Mercado Pago.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex gap-6 items-start relative">
+                    <div class="absolute left-[1.35rem] top-12 w-0.5 h-full bg-zinc-800"></div>
+                    <div class="w-11 h-11 rounded-full bg-gold-500/10 border border-gold-500/40 text-gold-400 font-bold flex items-center justify-center shrink-0 z-10 text-sm">02</div>
+                    <div class="noir-glass p-6 rounded-2xl grow hover:border-gold-500/30 transition-colors">
+                        <h3 class="font-bold text-white text-base mb-1">Fase 2: Motor de IA en WhatsApp</h3>
+                        <p class="text-zinc-400 text-xs leading-relaxed">
+                            Configuramos el agente conversacional en tu WhatsApp oficial alimentado por <strong>Groq (Llama 3)</strong>. Recomienda rutinas capilares y deriva links de compra directos.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex gap-6 items-start">
+                    <div class="w-11 h-11 rounded-full bg-gold-500 border border-gold-400 text-noir-950 font-bold flex items-center justify-center shrink-0 z-10 text-sm">03</div>
+                    <div class="noir-glass p-6 rounded-2xl grow hover:border-gold-500/50 transition-colors">
+                        <h3 class="font-bold text-white text-base mb-1">Fase 3: Pruebas y Lanzamiento</h3>
+                        <p class="text-zinc-400 text-xs leading-relaxed">
+                            Validación de flujo completo de compras, pruebas con clientes reales y puesta en marcha en producción 24/7.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support & Investment -->
+        <section id="inversion" class="mb-16">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Support Box -->
+                <div class="noir-glass p-8 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-bold tracking-widest text-gold-400 uppercase">Tranquilidad Operativa</span>
+                        <h2 class="text-2xl font-bold text-white mt-1 mb-4">Soporte y Mantenimiento</h2>
+                        <p class="text-zinc-400 text-xs leading-relaxed mb-6">
+                            Abono de <strong class="text-zinc-200">$120 USD/mes</strong> para mantener tu tienda e inteligencia artificial funcionando sin interrupciones.
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 text-xs text-zinc-300">
+                                <span class="text-gold-400 mt-0.5">✔</span>
+                                <span><strong>SLA Crítico &lt;4 horas:</strong> Respuesta garantizada si la tienda o la integración de pagos presenta algún inconveniente.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-xs text-zinc-300">
+                                <span class="text-gold-400 mt-0.5">✔</span>
+                                <span><strong>Infraestructura Incluida:</strong> Costos de servidores, nube y APIs cubiertos.</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-xs text-zinc-300">
+                                <span class="text-gold-400 mt-0.5">✔</span>
+                                <span><strong>Actualizaciones:</strong> Modificación de precios y nuevos productos dentro del abono.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-zinc-800 text-xs text-zinc-500">
+                        Atención prioritaria y directa vía WhatsApp técnico.
+                    </div>
+                </div>
+
+                <!-- Investment Box -->
+                <div class="bg-gradient-to-b from-noir-900 to-noir-950 border-2 border-gold-500/60 p-8 rounded-3xl relative overflow-hidden shadow-2xl flex flex-col justify-between">
+                    <div class="absolute -right-10 -top-10 bg-gold-500 text-noir-950 text-xs font-bold px-12 py-8 rotate-45 uppercase tracking-wider">
+                        Especial
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold tracking-widest text-gold-400 uppercase">Puesta en Marcha</span>
+                        <h2 class="text-2xl font-bold text-white mt-1 mb-1">Inversión Inicial</h2>
+                        <p class="text-zinc-400 text-xs font-semibold uppercase tracking-wider mb-6">Onboarding Profesional</p>
+
+                        <div class="text-5xl font-bold text-white mb-6 font-serif gold-gradient-text">
+                            $600 <span class="text-base text-zinc-400 font-sans font-normal">USD</span>
+                        </div>
+
+                        <div class="space-y-3 mb-8 p-4 bg-noir-950/60 rounded-xl border border-zinc-800/80">
+                            <div class="flex justify-between text-xs text-zinc-300">
+                                <span>Al Inicio (50%)</span>
+                                <span class="font-bold text-gold-400">$300 USD</span>
+                            </div>
+                            <div class="flex justify-between text-xs text-zinc-300">
+                                <span>Contra Entrega y Verificación (50%)</span>
+                                <span class="font-bold text-gold-400">$300 USD</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://ajconsultingitwebv2.vercel.app/" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-noir-950 py-4 rounded-xl font-bold text-sm hover:opacity-95 transition-all flex items-center justify-center gap-2 shadow-lg shadow-gold-500/20">
+                        <span>Aprobar e Iniciar Proyecto</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-noir-950 border-t border-zinc-800/80 py-12 px-6">
+        <div class="max-w-6xl mx-auto text-center space-y-3">
+            <p class="text-sm font-semibold text-zinc-300">
+                Francisco — Instructora y Creadora de Servicios Digitales
+            </p>
+            <p class="text-xs text-zinc-500">
+                <a href="https://ajconsultingitwebv2.vercel.app/" target="_blank" class="hover:underline font-bold gold-gradient-text">
+                    ajconsultingit • https://ajconsultingitwebv2.vercel.app/
+                </a>
+            </p>
+            <p class="text-xs text-zinc-600 pt-2">Propuesta preparada para Gustavo • Agosto de 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        let myChart;
+
+        function initChart() {
+            const ctx = document.getElementById('projectionsChart').getContext('2d');
+
+            // Custom gradients for comparison bars
+            const grossGradient = ctx.createLinearGradient(0, 0, 0, 300);
+            grossGradient.addColorStop(0, '#e4e4e7');
+            grossGradient.addColorStop(1, '#a1a1aa');
+
+            const netGradient = ctx.createLinearGradient(0, 0, 0, 300);
+            netGradient.addColorStop(0, '#f3e5ab');
+            netGradient.addColorStop(1, '#d4a853');
+
+            const costGradient = ctx.createLinearGradient(0, 0, 0, 300);
+            costGradient.addColorStop(0, '#f87171');
+            costGradient.addColorStop(1, '#ef4444');
+
+            myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Ingreso Bruto', 'Comisiones MP', 'Abono Dev', 'Ganancia Neta'],
+                    datasets: [{
+                        label: 'Dólares (USD)',
+                        data: [1200, -60, -120, 1020],
+                        backgroundColor: [
+                            grossGradient,
+                            costGradient,
+                            costGradient,
+                            netGradient
+                        ],
+                        borderRadius: 8,
+                        borderSkipped: false,
+                        barThickness: 38
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#18181b',
+                            titleColor: '#f3e5ab',
+                            bodyColor: '#ffffff',
+                            borderColor: 'rgba(212, 168, 83, 0.3)',
+                            borderWidth: 1,
+                            padding: 12,
+                            displayColors: false,
+                            callbacks: {
+                                label: function(context) {
+                                    const val = context.raw;
+                                    return (val < 0 ? 'Deducción: -$' : 'Monto: $') + Math.abs(val) + ' USD';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)'
+                            },
+                            ticks: {
+                                color: '#a1a1aa',
+                                font: { size: 11 }
+                            }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: {
+                                color: '#f4f4f5',
+                                font: { size: 11, weight: '600' }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateChart(scenario) {
+            const btn50 = document.getElementById('btn-50');
+            const btn100 = document.getElementById('btn-100');
+            const dot50 = document.getElementById('dot-50');
+            const dot100 = document.getElementById('dot-100');
+            const valGanancia = document.getElementById('val-ganancia');
+
+            if (scenario === 50) {
+                myChart.data.datasets[0].data = [600, -30, -120, 450];
+
+                btn50.className = 'cursor-pointer p-6 rounded-2xl border-2 border-gold-500/80 bg-noir-900/90 noir-glass-glow transition-all';
+                btn100.className = 'cursor-pointer p-6 rounded-2xl border-2 border-zinc-800 hover:border-gold-500/50 transition-all bg-noir-900';
+
+                dot50.className = 'w-3 h-3 rounded-full bg-gold-400 animate-pulse';
+                dot100.className = 'w-3 h-3 rounded-full bg-zinc-600';
+
+                valGanancia.innerText = '$450 USD';
+            } else {
+                myChart.data.datasets[0].data = [1200, -60, -120, 1020];
+
+                btn100.className = 'cursor-pointer p-6 rounded-2xl border-2 border-gold-500/80 bg-noir-900/90 noir-glass-glow transition-all';
+                btn50.className = 'cursor-pointer p-6 rounded-2xl border-2 border-zinc-800 hover:border-gold-500/50 transition-all bg-noir-900';
+
+                dot100.className = 'w-3 h-3 rounded-full bg-gold-400 animate-pulse';
+                dot50.className = 'w-3 h-3 rounded-full bg-zinc-600';
+
+                valGanancia.innerText = '$1.020 USD';
+            }
+            myChart.update();
+        }
+
+        // Active Nav Link Tracking on Scroll
+        window.addEventListener('scroll', () => {
+            let current = "";
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".nav-link");
+
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 140) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href").includes(current)) {
+                    link.classList.add("active");
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', initChart);
+    </script>
+</body>
+</html>
