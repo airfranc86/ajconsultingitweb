@@ -11,6 +11,7 @@ import {
   Radio,
   Dumbbell,
   ShoppingCart,
+  Heart,
 } from 'lucide-react';
 
 export type Rubro = {
@@ -138,9 +139,10 @@ export const proyectos: Proyecto[] = [
     slug: 'fenix',
     numero: '04',
     nombre: 'Fenix CBA',
-    categoria: 'Sistemas de Gestión',
-    descripcion: 'Plataforma operativa integrada.',
-    features: ['Lógica funcional', 'Sistema integrado', 'Operativo'],
+    categoria: 'Sitios Web & E-commerce',
+    descripcion:
+      'Sitio comercial para servicio de reparación de abolladuras por granizo (destapado sin pintura) en Córdoba.',
+    features: ['Responsive', 'Presentación de servicio', 'SEO local'],
     url: 'https://fenixcba.vercel.app/',
     logo: '/projects/fenix.png',
   },
@@ -215,6 +217,21 @@ export const proyectos: Proyecto[] = [
     ],
     url: 'https://kineopasscba.vercel.app/',
     icon: Dumbbell,
+  },
+  {
+    slug: 'atelier-boda',
+    numero: '10',
+    nombre: 'Atelier Boda',
+    categoria: 'Sitios Web & E-commerce',
+    descripcion:
+      'Invitación digital privada para bodas: acceso con contraseña, cuenta regresiva, cronograma y RSVP con confirmación en tiempo real.',
+    features: [
+      'Acceso privado con contraseña',
+      'RSVP con backend propio',
+      'Mesa de regalos con Mercado Pago',
+      'Galería, música y cronograma del evento',
+    ],
+    icon: Heart,
   },
 ];
 
