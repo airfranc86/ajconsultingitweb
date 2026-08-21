@@ -10,6 +10,7 @@ import {
   CloudSun,
   Radio,
   Dumbbell,
+  ShoppingCart,
 } from 'lucide-react';
 
 export type Rubro = {
@@ -64,13 +65,35 @@ export const rubros: Rubro[] = [
     metric: 'Menos rotura de stock y digitalización de tickets en tiempo real',
     icon: UtensilsCrossed,
   },
+  {
+    slug: 'sitios-web-ecommerce',
+    title: 'Sitios Web & E-commerce',
+    description:
+      'Landing pages, sitios corporativos y tiendas online a medida, con foco en velocidad de carga y conversión.',
+    features: [
+      'Diseño a medida, sin templates genéricos',
+      'E-commerce con pasarela de pagos',
+      'SEO técnico y Core Web Vitals',
+      'Hosting y despliegue incluido',
+      'Sitios de eventos (bodas, lanzamientos)',
+    ],
+    metric: 'Lighthouse SEO ≥ 95 en sitios propios en producción',
+    icon: ShoppingCart,
+  },
 ];
+
+/** Taxonomía fija: toda categoría nueva debe entrar en una de estas 4. */
+export type CategoriaProyecto =
+  | 'BI & Dashboards'
+  | 'Automatización & Pipelines'
+  | 'Sistemas de Gestión'
+  | 'Sitios Web & E-commerce';
 
 export type Proyecto = {
   slug: string;
   numero: string;
   nombre: string;
-  categoria: string;
+  categoria: CategoriaProyecto;
   descripcion: string;
   features: string[];
   url?: string;
@@ -85,7 +108,7 @@ export const proyectos: Proyecto[] = [
     slug: 'santa-barba',
     numero: '01',
     nombre: 'Santa Barba CBA',
-    categoria: 'Servicios Locales',
+    categoria: 'Sitios Web & E-commerce',
     descripcion: 'Web comercial con contacto directo.',
     features: ['Responsive', 'Formulario de contacto', 'Optimizado SEO'],
     url: 'https://santa-barba-cba.vercel.app/',
@@ -95,7 +118,7 @@ export const proyectos: Proyecto[] = [
     slug: 'vinewatch',
     numero: '02',
     nombre: 'VineWatch Consulting',
-    categoria: 'Consultoría',
+    categoria: 'Sitios Web & E-commerce',
     descripcion: 'Presentación profesional de servicios.',
     features: ['Diseño profesional', 'Navegación clara', 'Responsive'],
     url: 'https://vinewatchconsulting.vercel.app/',
@@ -105,7 +128,7 @@ export const proyectos: Proyecto[] = [
     slug: 'aeromet',
     numero: '03',
     nombre: 'AeroMet ARG',
-    categoria: 'Educativo',
+    categoria: 'Sitios Web & E-commerce',
     descripcion: 'Contenido educativo especializado en meteorología aeronáutica.',
     features: ['Contenido especializado', 'Estructura clara', 'SEO optimizado'],
     url: 'https://aerometarg.vercel.app/',
@@ -115,7 +138,7 @@ export const proyectos: Proyecto[] = [
     slug: 'fenix',
     numero: '04',
     nombre: 'Fenix CBA',
-    categoria: 'Sistema Operativo',
+    categoria: 'Sistemas de Gestión',
     descripcion: 'Plataforma operativa integrada.',
     features: ['Lógica funcional', 'Sistema integrado', 'Operativo'],
     url: 'https://fenixcba.vercel.app/',
@@ -125,7 +148,7 @@ export const proyectos: Proyecto[] = [
     slug: 'app4bar',
     numero: '05',
     nombre: 'App4Bar',
-    categoria: 'Sistema de Gestión',
+    categoria: 'Sistemas de Gestión',
     descripcion: 'Gestión integral para bares: stock, OCR y reportes.',
     features: ['Stock con alertas WhatsApp', 'OCR de tickets financieros', 'Reportes Excel y PDF'],
     url: 'https://app4bar.onrender.com/#/login',
@@ -135,7 +158,7 @@ export const proyectos: Proyecto[] = [
     slug: 'pipeline-etl-contable',
     numero: '06',
     nombre: 'Pipeline ETL Contable',
-    categoria: 'API · Pipeline · Dashboards',
+    categoria: 'Automatización & Pipelines',
     descripcion:
       'Automatización contable end-to-end: API de gestión + ARCA + Google Sheets + dashboards de KPIs financieros, actualizados a diario.',
     features: [
@@ -150,7 +173,7 @@ export const proyectos: Proyecto[] = [
     slug: 'skypulse',
     numero: '07',
     nombre: 'SkyPulse',
-    categoria: 'Meteorología aeronáutica',
+    categoria: 'BI & Dashboards',
     descripcion:
       'Panel informativo de nubosidades y fenómenos meteorológicos relevantes para operaciones aéreas, con datos actualizados de APIs oficiales.',
     features: [
@@ -166,7 +189,7 @@ export const proyectos: Proyecto[] = [
     slug: 'techcom-view',
     numero: '08',
     nombre: 'Techcom View',
-    categoria: 'Análisis de datos · Streamlit',
+    categoria: 'BI & Dashboards',
     descripcion:
       'Showcase técnico: panel interactivo de análisis de datos sobre infraestructura de telecomunicaciones a nivel mundial. Ejemplo de capacidad de exploración y visualización con Streamlit sobre datasets reales.',
     features: [
@@ -181,7 +204,7 @@ export const proyectos: Proyecto[] = [
     slug: 'kineopass',
     numero: '09',
     nombre: 'KineoPass CBA',
-    categoria: 'Turnos · Pagos · Estudios de Movimiento',
+    categoria: 'Sistemas de Gestión',
     descripcion:
       'Turnero inteligente para estudios de movimiento: cupos, pagos y recordatorios automáticos.',
     features: [
@@ -255,7 +278,7 @@ export const pillars: Pillar[] = [
     numero: '02',
     titulo: 'Verticales con piso, no demos',
     descripcion:
-      'Lo que ves en proyectos ya corre en producción: salud, obras viales, gastronomía, vitivinicultura, meteorología, telcos.',
+      'Lo que ves en proyectos ya corre en producción: salud, obras viales, gastronomía, vitivinicultura, meteorología, telcos, sitios web y e-commerce.',
     prueba: 'No vendemos "podríamos hacer". Vendemos "esto ya está andando".',
     icon: Layers,
   },
