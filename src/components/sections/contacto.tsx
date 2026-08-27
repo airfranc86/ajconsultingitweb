@@ -1,59 +1,108 @@
+'use client';
+
+import { useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { Linkedin, ArrowUpRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { contact } from '@/data/contact';
+import { trackCTA } from '@/lib/gtag';
 
 export function Contacto() {
+  const [nombre, setNombre] = useState('');
+  const [rubro, setRubro] = useState('');
+  const [necesidad, setNecesidad] = useState('');
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    trackCTA('Contacto WhatsApp');
+
+    const mensaje = [
+      `¡Hola! Soy ${nombre || 'un visitante de la web'}`,
+      rubro && `, del rubro ${rubro}`,
+      '.',
+      necesidad && ` Necesito ayuda con: ${necesidad}.`,
+    ]
+      .filter(Boolean)
+      .join('');
+
+    window.open(contact.whatsapp.link(mensaje), '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <section id="contacto" className="border-t border-border/40 py-24">
       <div className="container">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-lg">
           <div className="text-center">
-            <Badge variant="muted" className="mb-4">
-              Diagnóstico gratuito
-            </Badge>
             <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
-              Hablemos sin compromiso
+              Contanos qué querés resolver
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Conectá por LinkedIn o usá el botón de WhatsApp en la esquina inferior
-              derecha. Te respondemos en el día, sin formularios.
+              Sin formularios eternos. 3 datos y hablamos por WhatsApp.
             </p>
           </div>
 
-          {/* CTA principal: LinkedIn */}
-          <Card className="mt-12 overflow-hidden border-primary/30 bg-gradient-to-br from-card to-primary/5">
-            <CardContent className="p-8 md:p-10">
-              <div className="flex flex-col items-center gap-6 text-center">
-                <div className="grid h-14 w-14 place-items-center rounded-xl bg-primary/15 text-primary">
-                  <Linkedin className="h-6 w-6" />
+          <Card className="mt-10 overflow-hidden border-primary/30 bg-gradient-to-br from-card to-primary/5">
+            <CardContent className="p-6 md:p-8">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="contacto-nombre" className="sr-only">
+                    Nombre
+                  </label>
+                  <input
+                    id="contacto-nombre"
+                    type="text"
+                    placeholder="Nombre"
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value)}
+                    className="w-full rounded-md border border-border/60 bg-background px-4 py-2.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="contacto-rubro" className="sr-only">
+                    Rubro
+                  </label>
+                  <input
+                    id="contacto-rubro"
+                    type="text"
+                    placeholder="Rubro (ej: gastronomía, salud, e-commerce)"
+                    value={rubro}
+                    onChange={(e) => setRubro(e.target.value)}
+                    className="w-full rounded-md border border-border/60 bg-background px-4 py-2.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="contacto-necesidad" className="sr-only">
+                    Qué necesitás resolver
+                  </label>
+                  <textarea
+                    id="contacto-necesidad"
+                    placeholder="¿Qué necesitás resolver?"
+                    value={necesidad}
+                    onChange={(e) => setNecesidad(e.target.value)}
+                    rows={3}
+                    className="w-full resize-none rounded-md border border-border/60 bg-background px-4 py-2.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                  />
                 </div>
 
-                <div className="space-y-2">
-                  <h3 className="text-xl font-semibold tracking-tight md:text-2xl">
-                    Conectemos en LinkedIn
-                  </h3>
-                  <p className="text-sm text-muted-foreground md:text-base">
-                    Contanos brevemente tu rubro y qué procesos querés mejorar. Volvemos
-                    con una propuesta concreta — sin compromiso.
-                  </p>
-                </div>
-
-                <Button asChild size="lg" className="glow-primary">
-                  <Link
-                    href={contact.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Conectar en LinkedIn con A&J Consulting IT"
-                  >
-                    <Linkedin className="h-4 w-4" />
-                    Conectar en LinkedIn
-                    <ArrowUpRight className="h-4 w-4" />
-                  </Link>
+                <Button type="submit" size="lg" className="glow-primary w-full">
+                  Enviar por WhatsApp
                 </Button>
-              </div>
+              </form>
+
+              <Link
+                href={contact.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackCTA('LinkedIn')}
+                aria-label="Conectar en LinkedIn con A&J Consulting IT"
+                className="mt-4 flex items-center justify-center gap-1.5 text-xs text-muted-foreground hover:text-foreground"
+              >
+                <Linkedin className="h-3.5 w-3.5" />
+                o conectá en LinkedIn
+                <ArrowUpRight className="h-3 w-3" />
+              </Link>
             </CardContent>
           </Card>
         </div>

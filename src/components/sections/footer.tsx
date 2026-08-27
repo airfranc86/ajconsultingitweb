@@ -25,17 +25,12 @@ export function Footer() {
             <h3 className="mb-4 text-sm font-medium">Navegación</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <Link href="#rubros" className="hover:text-foreground" onClick={() => trackCTA('Rubros')}>
-                  Rubros
-                </Link>
-              </li>
-              <li>
                 <Link
-                  href="#metodologia"
+                  href="#servicios"
                   className="hover:text-foreground"
-                  onClick={() => trackCTA('Metodología')}
+                  onClick={() => trackCTA('Servicios')}
                 >
-                  Metodología
+                  Servicios
                 </Link>
               </li>
               <li>

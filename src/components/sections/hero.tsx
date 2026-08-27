@@ -56,14 +56,13 @@ export function Hero() {
           </Badge>
 
           <h1 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
-            Sistemas que funcionan{' '}
-            <span className="gradient-text">como uno solo</span>
+            Conectamos los sistemas que ya tenés.{' '}
+            <span className="gradient-text">En días, no en meses.</span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-balance text-lg text-muted-foreground md:text-xl">
-            I+D embebido para PyMEs que ya tienen sistemas y necesitan que conversen.
-            Investigamos antes de cotizar, entregamos en semanas — no en meses — y el
-            código y los datos siempre son tuyos.
+            I+D embebido para PyMEs: investigamos antes de cotizar y el código y los datos
+            siempre son tuyos.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -82,9 +81,9 @@ export function Hero() {
               asChild
               size="lg"
               variant="outline"
-              onClick={() => trackCTA('Conocé la metodología')}
+              onClick={() => trackCTA('Diagnóstico gratuito')}
             >
-              <Link href="#metodologia">Conocé la metodología</Link>
+              <Link href="#contacto">Diagnóstico gratuito</Link>
             </Button>
           </div>
         </motion.div>

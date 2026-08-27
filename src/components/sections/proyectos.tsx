@@ -12,15 +12,12 @@ export function Proyectos() {
     <section id="proyectos" className="border-t border-border/40 py-24">
       <div className="container">
         <div className="mx-auto max-w-2xl text-center">
-          <Badge variant="muted" className="mb-4">
-            Proyectos reales
-          </Badge>
           <h2 className="text-balance text-3xl font-semibold tracking-tight md:text-4xl">
-            Casos en producción, no portfolio estético
+            10 proyectos reales en producción, no portfolio estético
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Cada proyecto resuelve una necesidad de negocio concreta. Arrastrá o usá la
-            rueda del mouse para recorrer.
+            Cada uno resuelve una necesidad de negocio concreta. Arrastrá o usá la rueda del
+            mouse para recorrer, y tocá cualquiera para ver el código y el resultado.
           </p>
         </div>
 

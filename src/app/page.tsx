@@ -1,9 +1,9 @@
 import { Navbar } from '@/components/sections/navbar';
 import { Hero } from '@/components/sections/hero';
-import { Pillars } from '@/components/sections/pillars';
-import { Rubros } from '@/components/sections/rubros';
-import { Metodologia } from '@/components/sections/metodologia';
 import { Proyectos } from '@/components/sections/proyectos';
+import { PropuestaValor } from '@/components/sections/propuesta-valor';
+import { Servicios } from '@/components/sections/servicios';
+import { Sobre } from '@/components/sections/sobre';
 import { AntiFit } from '@/components/sections/anti-fit';
 import { FAQ } from '@/components/sections/faq';
 import { Stack } from '@/components/sections/stack';
@@ -16,10 +16,10 @@ export default function HomePage() {
       <Navbar />
       <main>
         <Hero />
-        <Pillars />
-        <Rubros />
-        <Metodologia />
         <Proyectos />
+        <PropuestaValor />
+        <Servicios />
+        <Sobre />
         <AntiFit />
         <FAQ />
         <Stack />

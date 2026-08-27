@@ -1,87 +1,16 @@
 import type { LucideIcon } from 'lucide-react';
 import {
-  Stethoscope,
-  HardHat,
-  UtensilsCrossed,
   Database,
+  Workflow,
+  ClipboardList,
+  ShoppingCart,
   Library,
-  Layers,
   ShieldCheck,
-  CloudSun,
+  Unlock,
   Radio,
   Dumbbell,
-  ShoppingCart,
   Heart,
 } from 'lucide-react';
-
-export type Rubro = {
-  slug: string;
-  title: string;
-  description: string;
-  features: string[];
-  metric: string;
-  icon: LucideIcon;
-};
-
-export const rubros: Rubro[] = [
-  {
-    slug: 'clinicas',
-    title: 'Clínicas de Salud',
-    description: 'Dashboards médicos con análisis predictivo y alertas clínicas.',
-    features: [
-      'KPIs personalizados',
-      'Análisis predictivo',
-      'Dashboard inteligente',
-      'Alertas clínicas',
-      'Resumen ejecutivo',
-    ],
-    metric: '−70% en tiempo de análisis de KPIs médicos',
-    icon: Stethoscope,
-  },
-  {
-    slug: 'obras',
-    title: 'Obras Viales',
-    description: 'Monitoreo de avance en tiempo real y análisis topográfico de obra.',
-    features: [
-      'Monitoreo en tiempo real',
-      'Análisis topográfico',
-      'KPIs de construcción',
-      'Previsión meteorológica',
-      'Gestión de inventario',
-    ],
-    metric: 'Optimización de recursos y plazos en obra',
-    icon: HardHat,
-  },
-  {
-    slug: 'gastronomia',
-    title: 'Restaurantes y Bares',
-    description: 'App4Bar: stock con alertas, OCR de tickets, recetas y reportes.',
-    features: [
-      'Stock con alertas WhatsApp',
-      'OCR de tickets',
-      'Recetas y costos',
-      'Gestión por sectores',
-      'Reportes Excel y PDF',
-    ],
-    metric: 'Menos rotura de stock y digitalización de tickets en tiempo real',
-    icon: UtensilsCrossed,
-  },
-  {
-    slug: 'sitios-web-ecommerce',
-    title: 'Sitios Web & E-commerce',
-    description:
-      'Landing pages, sitios corporativos y tiendas online a medida, con foco en velocidad de carga y conversión.',
-    features: [
-      'Diseño a medida, sin templates genéricos',
-      'E-commerce con pasarela de pagos',
-      'SEO técnico y Core Web Vitals',
-      'Hosting y despliegue incluido',
-      'Sitios de eventos (bodas, lanzamientos)',
-    ],
-    metric: 'Lighthouse SEO ≥ 95 en sitios propios en producción',
-    icon: ShoppingCart,
-  },
-];
 
 /** Taxonomía fija: toda categoría nueva debe entrar en una de estas 4. */
 export type CategoriaProyecto =
@@ -242,78 +171,84 @@ export const proyectos: Proyecto[] = [
   },
 ];
 
-export type MetodologiaPaso = {
+export type PropuestaValor = {
   numero: string;
-  titulo: string;
-  duracion: string;
-  descripcion: string;
-};
-
-export const metodologia: MetodologiaPaso[] = [
-  {
-    numero: '01',
-    titulo: 'Sprint diagnóstico',
-    duracion: '3–5 días',
-    descripcion:
-      'Mapeamos los procesos y devolvemos un documento con alcance, stack propuesto y referencias técnicas citadas. No improvisamos arquitectura.',
-  },
-  {
-    numero: '02',
-    titulo: 'Primera versión funcional',
-    duracion: '≤ 15 días',
-    descripcion:
-      'Producto navegable con el flujo crítico operando, no maqueta estática. Iterás sobre algo real desde la primera semana.',
-  },
-  {
-    numero: '03',
-    titulo: 'Iteración a producción',
-    duracion: '3–6 semanas',
-    descripcion:
-      'Despliegue real, integraciones reales, datos del cliente. Acompañamiento técnico durante toda la rampa hasta la operación estable.',
-  },
-  {
-    numero: '04',
-    titulo: 'Operación + acompañamiento',
-    duracion: 'Mensual',
-    descripcion:
-      'Soporte con contrato claro y alcance acordado. La entrega no es el cierre del proyecto sino el inicio de la operación.',
-  },
-];
-
-export type Pillar = {
-  numero: string;
-  titulo: string;
-  descripcion: string;
-  prueba: string;
+  problema: string;
+  solucion: string;
   icon: LucideIcon;
 };
 
-export const pillars: Pillar[] = [
+/** Problema → Solución. Reemplaza los ex-"pillars"; cada solución cita evidencia real, no adjetivos. */
+export const propuestaValor: PropuestaValor[] = [
   {
     numero: '01',
-    titulo: 'Investigamos antes de cotizar',
-    descripcion:
-      'Operamos sobre una base de conocimiento técnica propia con 700+ fuentes indexadas en 36 dominios — frameworks, hosting, autenticación, OCR, pagos, LLMs y más.',
-    prueba:
-      'Por eso entregamos en 15 días lo que otras consultoras cotizan en meses, sin reinventar arquitectura.',
+    problema: 'Un freelancer suelto: no sabés con qué stack vas a terminar.',
+    solucion:
+      'Investigamos sobre 700+ fuentes técnicas en 36 dominios antes de cotizar. Cero arquitectura improvisada.',
     icon: Library,
   },
   {
     numero: '02',
-    titulo: 'Verticales con piso, no demos',
-    descripcion:
-      'Lo que ves en proyectos ya corre en producción: salud, obras viales, gastronomía, vitivinicultura, meteorología, telcos, sitios web y e-commerce.',
-    prueba: 'No vendemos "podríamos hacer". Vendemos "esto ya está andando".',
-    icon: Layers,
+    problema: 'Una consultora grande: cobra como si fueran meses y tarda lo mismo.',
+    solucion:
+      'Primera versión funcional en 15 días, con decisiones técnicas validadas por un board asesor externo.',
+    icon: ShieldCheck,
   },
   {
     numero: '03',
-    titulo: 'Decisiones validadas por especialistas',
-    descripcion:
-      'Board asesor: un ingeniero profesional senior en planificación con metodología Kanban y un consultor externo experto en indicadores clave (KPIs) del área de salud.',
-    prueba:
-      'No improvisamos: consultamos antes de cada paso crítico del proyecto.',
-    icon: ShieldCheck,
+    problema: 'Una plataforma cerrada: te deja atado a su sistema, no podés tocar nada.',
+    solucion: 'El código y los datos son tuyos desde el día uno. 7+ verticales ya operando, no demos.',
+    icon: Unlock,
+  },
+];
+
+export type Servicio = {
+  categoria: CategoriaProyecto;
+  parrafo: string;
+  bullets: string[];
+  metrica: string;
+  proyectoNombre: string;
+  proyectoUrl: string;
+  icon: LucideIcon;
+};
+
+/** Grid de servicios: 1 tarjeta por categoría fija, fusiona ex-Rubros + ex-Metodología + evidencia de Proyectos. */
+export const servicios: Servicio[] = [
+  {
+    categoria: 'BI & Dashboards',
+    parrafo: 'Paneles que convierten datos dispersos en decisiones, no en más planillas para revisar.',
+    bullets: ['KPIs personalizados', 'Alertas automáticas', 'Análisis predictivo'],
+    metrica: '−70% en tiempo de análisis de KPIs',
+    proyectoNombre: 'SkyPulse',
+    proyectoUrl: 'https://skypulse-ar.vercel.app/',
+    icon: Database,
+  },
+  {
+    categoria: 'Automatización & Pipelines',
+    parrafo: 'Procesos que hoy hacés a mano — carga de datos, reportes, conciliaciones — corriendo solos.',
+    bullets: ['ETL e integraciones', 'OCR y lectura de documentos', 'Reportes automáticos'],
+    metrica: 'Actualización diaria sin intervención manual',
+    proyectoNombre: 'Pipeline ETL Contable',
+    proyectoUrl: '#proyectos',
+    icon: Workflow,
+  },
+  {
+    categoria: 'Sistemas de Gestión',
+    parrafo: 'Turnero, caja, stock y seguimiento de clientes en un solo lugar, no en tres apps distintas.',
+    bullets: ['Turnero online', 'Control financiero y de caja', 'Seguimiento de clientes'],
+    metrica: 'Menos rotura de stock, cero doble carga',
+    proyectoNombre: 'App4Bar',
+    proyectoUrl: 'https://app4bar.onrender.com/#/login',
+    icon: ClipboardList,
+  },
+  {
+    categoria: 'Sitios Web & E-commerce',
+    parrafo: 'Sitios a medida, rápidos y pensados para convertir — sin templates genéricos.',
+    bullets: ['Diseño a medida', 'Pasarela de pagos', 'SEO técnico (Lighthouse ≥ 95)'],
+    metrica: 'Lighthouse SEO ≥ 95 en producción',
+    proyectoNombre: 'Fenix CBA',
+    proyectoUrl: 'https://fenixcba.vercel.app/',
+    icon: ShoppingCart,
   },
 ];
 
@@ -360,16 +295,6 @@ export const metricas: Metrica[] = [
   { valor: '700+', label: 'Fuentes técnicas indexadas' },
   { valor: '−70%', label: 'Tiempo en análisis de KPIs' },
   { valor: '15d', label: 'Primera versión funcional' },
-];
-
-/**
- * Rubros adicionales con evidencia (no protagónicos en home, pero visibles).
- * Aparecen como nota al pie de la grilla principal de Rubros.
- */
-export const rubrosAdicionales: string[] = [
-  'Vitivinicultura',
-  'Meteorología aeronáutica',
-  'Finanzas y contable',
 ];
 
 export type AntiFitItem = {

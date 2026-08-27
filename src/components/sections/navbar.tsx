@@ -9,9 +9,8 @@ import { trackCTA } from '@/lib/gtag';
 import { cn } from '@/lib/utils';
 
 const links = [
-  { href: '#rubros', label: 'Rubros' },
-  { href: '#metodologia', label: 'Metodología' },
   { href: '#proyectos', label: 'Proyectos' },
+  { href: '#servicios', label: 'Servicios' },
   { href: '#faq', label: 'FAQ' },
 ];
 
