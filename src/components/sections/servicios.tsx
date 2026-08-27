@@ -1,6 +1,20 @@
+'use client';
+
 import Link from 'next/link';
+import { ThinkingOrb } from 'thinking-orbs';
 import { ArrowUpRight, Check } from 'lucide-react';
+import { MatrixDotLoader } from '@/components/ui/matrix-dot-loader';
 import { servicios } from '@/data/content';
+
+function ServicioAccent({ categoria }: { categoria: string }): JSX.Element | null {
+  if (categoria === 'Automatización & Pipelines') {
+    return <ThinkingOrb state="connecting" size={20} aria-label="Automatizando" />;
+  }
+  if (categoria === 'BI & Dashboards') {
+    return <MatrixDotLoader variant="scan" aria-label="Analizando datos" />;
+  }
+  return null;
+}
 
 export function Servicios() {
   return (
@@ -28,6 +42,9 @@ export function Servicios() {
                     <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="font-semibold tracking-tight">{s.categoria}</h3>
+                  <div className="ml-auto">
+                    <ServicioAccent categoria={s.categoria} />
+                  </div>
                 </div>
 
                 <p className="text-sm leading-relaxed text-muted-foreground">{s.parrafo}</p>

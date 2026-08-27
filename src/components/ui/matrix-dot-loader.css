@@ -1,0 +1,31 @@
+.aj-matrix {
+  display: inline-grid;
+  grid-template-columns: repeat(4, 6px);
+  grid-auto-rows: 6px;
+  gap: 2px;
+}
+
+.aj-matrix i {
+  display: block;
+  border-radius: 1px;
+  background: hsl(var(--primary) / 0.3);
+  animation: aj-matrix-pulse 1200ms ease-in-out infinite;
+  animation-delay: calc(var(--d, 0) * 1ms);
+}
+
+@keyframes aj-matrix-pulse {
+  0%,
+  45%,
+  100% {
+    background-color: hsl(var(--primary) / 0.3);
+  }
+  15% {
+    background-color: hsl(var(--primary));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aj-matrix i {
+    animation: none !important;
+  }
+}

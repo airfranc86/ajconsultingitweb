@@ -17,6 +17,8 @@ const MagicRings = dynamic(
   { ssr: false }
 );
 
+const MetalFx = dynamic(() => import('metal-fx').then((m) => m.MetalFx), { ssr: false });
+
 const HERO_HOOKS = [
   '¿Freelancer suelto?',
   '¿Consultora que tarda meses?',
@@ -111,17 +113,19 @@ export function Hero() {
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button
-              asChild
-              size="lg"
-              className="glow-primary"
-              onClick={() => trackCTA('Ver proyectos reales')}
-            >
-              <Link href="#proyectos">
-                Ver proyectos reales
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
+            <MetalFx variant="button" preset="silver">
+              <Button
+                asChild
+                size="lg"
+                className="glow-primary"
+                onClick={() => trackCTA('Ver proyectos reales')}
+              >
+                <Link href="#proyectos">
+                  Ver proyectos reales
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
+            </MetalFx>
             <Button
               asChild
               size="lg"
