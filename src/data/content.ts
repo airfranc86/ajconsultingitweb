@@ -1,16 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import {
-  Database,
-  Workflow,
-  ClipboardList,
-  ShoppingCart,
-  Library,
-  ShieldCheck,
-  Unlock,
-  Radio,
-  Dumbbell,
-  Heart,
-} from 'lucide-react';
+import { Database, Workflow, ClipboardList, ShoppingCart, Radio, Dumbbell, Heart } from 'lucide-react';
 
 /** Taxonomía fija: toda categoría nueva debe entrar en una de estas 4. */
 export type CategoriaProyecto =
@@ -168,37 +157,6 @@ export const proyectos: Proyecto[] = [
       'Galería, música y cronograma del evento',
     ],
     icon: Heart,
-  },
-];
-
-export type PropuestaValor = {
-  numero: string;
-  problema: string;
-  solucion: string;
-  icon: LucideIcon;
-};
-
-/** Problema → Solución. Reemplaza los ex-"pillars"; cada solución cita evidencia real, no adjetivos. */
-export const propuestaValor: PropuestaValor[] = [
-  {
-    numero: '01',
-    problema: 'Un freelancer suelto: no sabés con qué stack vas a terminar.',
-    solucion:
-      'Investigamos sobre 700+ fuentes técnicas en 36 dominios antes de cotizar. Cero arquitectura improvisada.',
-    icon: Library,
-  },
-  {
-    numero: '02',
-    problema: 'Una consultora grande: cobra como si fueran meses y tarda lo mismo.',
-    solucion:
-      'Primera versión funcional en 15 días, con decisiones técnicas validadas por un board asesor externo.',
-    icon: ShieldCheck,
-  },
-  {
-    numero: '03',
-    problema: 'Una plataforma cerrada: te deja atado a su sistema, no podés tocar nada.',
-    solucion: 'El código y los datos son tuyos desde el día uno. 7+ verticales ya operando, no demos.',
-    icon: Unlock,
   },
 ];
 

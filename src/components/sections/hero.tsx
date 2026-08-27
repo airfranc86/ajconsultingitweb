@@ -2,12 +2,26 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { motion } from 'motion/react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { StrokeText } from '@/components/ui/stroke-text';
+import { TextType } from '@/components/ui/text-type';
 import { metricas } from '@/data/content';
 import { trackCTA } from '@/lib/gtag';
+
+const MagicRings = dynamic(
+  () => import('@/components/ui/magic-rings').then((m) => m.MagicRings),
+  { ssr: false }
+);
+
+const HERO_HOOKS = [
+  '¿Freelancer suelto?',
+  '¿Consultora que tarda meses?',
+  '¿Plataforma que no podés tocar?',
+];
 
 export function Hero() {
   return (
@@ -26,8 +40,18 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="mx-auto mb-10 grid h-32 w-32 place-items-center md:h-40 md:w-40"
+          className="relative mx-auto mb-10 grid h-32 w-32 place-items-center md:h-40 md:w-40"
         >
+          <div className="pointer-events-none absolute -inset-10 -z-10" aria-hidden="true">
+            <MagicRings
+              color="#1fae63"
+              colorTwo="#34d399"
+              ringCount={4}
+              opacity={0.5}
+              speed={0.6}
+            />
+          </div>
+
           <motion.div
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
@@ -55,10 +79,31 @@ export function Hero() {
             <span className="text-muted-foreground">I+D embebido · BI · IA · Automatización</span>
           </Badge>
 
+          <div className="mb-4 flex min-h-6 items-center justify-center">
+            <TextType
+              as="p"
+              text={HERO_HOOKS}
+              typingSpeed={45}
+              pauseDuration={1400}
+              deletingSpeed={25}
+              className="text-sm font-medium text-muted-foreground"
+              cursorClassName="text-primary"
+            />
+          </div>
+
           <h1 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
-            Conectamos los sistemas que ya tenés.{' '}
-            <span className="gradient-text">En días, no en meses.</span>
+            Conectamos los sistemas que ya tenés.
           </h1>
+          <StrokeText
+            text="En días, no en meses."
+            trigger="mount"
+            fontSize={48}
+            fontWeight={600}
+            letterSpacing={-1}
+            strokeColor="hsl(var(--primary))"
+            fillColor="hsl(var(--foreground))"
+            className="mx-auto mt-1 max-w-xl"
+          />
 
           <p className="mx-auto mt-6 max-w-2xl text-balance text-lg text-muted-foreground md:text-xl">
             I+D embebido para PyMEs: investigamos antes de cotizar y el código y los datos

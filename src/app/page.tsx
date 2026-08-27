@@ -1,7 +1,6 @@
 import { Navbar } from '@/components/sections/navbar';
 import { Hero } from '@/components/sections/hero';
 import { Proyectos } from '@/components/sections/proyectos';
-import { PropuestaValor } from '@/components/sections/propuesta-valor';
 import { Servicios } from '@/components/sections/servicios';
 import { Sobre } from '@/components/sections/sobre';
 import { AntiFit } from '@/components/sections/anti-fit';
@@ -17,7 +16,6 @@ export default function HomePage() {
       <main>
         <Hero />
         <Proyectos />
-        <PropuestaValor />
         <Servicios />
         <Sobre />
         <AntiFit />
