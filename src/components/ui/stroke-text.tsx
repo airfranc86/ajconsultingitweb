@@ -33,6 +33,7 @@ export interface StrokeTextProps {
   fillMode?: FillMode;
   fontSize?: number;
   fontWeight?: number;
+  fontFamily?: string;
   letterSpacing?: number;
   reverse?: boolean;
   className?: string;
@@ -61,6 +62,7 @@ export function StrokeText({
   fillMode = 'wipe',
   fontSize = 128,
   fontWeight = 800,
+  fontFamily = 'inherit',
   letterSpacing = -4,
   reverse = false,
   className = '',
@@ -83,9 +85,10 @@ export function StrokeText({
     (): CSSProperties => ({
       fontSize: `${fontSize}px`,
       fontWeight,
+      fontFamily,
       letterSpacing: `${letterSpacing}px`,
     }),
-    [fontSize, fontWeight, letterSpacing]
+    [fontSize, fontWeight, fontFamily, letterSpacing]
   );
 
   useLayoutEffect(() => {

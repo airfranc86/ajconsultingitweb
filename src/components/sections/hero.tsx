@@ -81,14 +81,14 @@ export function Hero() {
             <span className="text-muted-foreground">I+D embebido · BI · IA · Automatización</span>
           </Badge>
 
-          <div className="mb-4 flex min-h-6 items-center justify-center">
+          <div className="mb-5 flex min-h-7 items-center justify-center md:min-h-8">
             <TextType
               as="p"
               text={HERO_HOOKS}
               typingSpeed={45}
               pauseDuration={1400}
               deletingSpeed={25}
-              className="text-sm font-medium text-muted-foreground"
+              className="text-base font-medium text-muted-foreground md:text-lg"
               cursorClassName="text-primary"
             />
           </div>
@@ -96,16 +96,32 @@ export function Hero() {
           <h1 className="text-balance text-4xl font-semibold tracking-tight md:text-6xl">
             Conectamos los sistemas que ya tenés.
           </h1>
-          <StrokeText
-            text="En días, no en meses."
-            trigger="mount"
-            fontSize={48}
-            fontWeight={600}
-            letterSpacing={-1}
-            strokeColor="hsl(var(--primary))"
-            fillColor="hsl(var(--foreground))"
-            className="mx-auto mt-1 max-w-xl"
-          />
+          <div className="md:hidden">
+            <StrokeText
+              text="En días, no en meses."
+              trigger="mount"
+              fontSize={34}
+              fontWeight={600}
+              fontFamily="var(--font-geist-sans), ui-sans-serif, system-ui"
+              letterSpacing={-0.9}
+              strokeColor="hsl(var(--primary))"
+              fillColor="hsl(var(--foreground))"
+              className="mx-auto mt-1 max-w-sm"
+            />
+          </div>
+          <div className="hidden md:block">
+            <StrokeText
+              text="En días, no en meses."
+              trigger="mount"
+              fontSize={58}
+              fontWeight={600}
+              fontFamily="var(--font-geist-sans), ui-sans-serif, system-ui"
+              letterSpacing={-1.5}
+              strokeColor="hsl(var(--primary))"
+              fillColor="hsl(var(--foreground))"
+              className="mx-auto mt-1 max-w-2xl"
+            />
+          </div>
 
           <p className="mx-auto mt-6 max-w-2xl text-balance text-lg text-muted-foreground md:text-xl">
             I+D embebido para PyMEs: investigamos antes de cotizar y el código y los datos
