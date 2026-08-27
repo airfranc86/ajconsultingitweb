@@ -108,10 +108,16 @@ export const proyectos: Proyecto[] = [
   {
     slug: 'santa-barba',
     numero: '01',
-    nombre: 'Santa Barba CBA',
-    categoria: 'Sitios Web & E-commerce',
-    descripcion: 'Web comercial con contacto directo.',
-    features: ['Responsive', 'Formulario de contacto', 'Optimizado SEO'],
+    nombre: 'Web (Estilistas, Peluquerías, Barberías)',
+    categoria: 'Sistemas de Gestión',
+    descripcion:
+      'Sistema de gestión integral para peluquerías, barberías y centros de estética: turnero online, control financiero y seguimiento de clientes en una interfaz moderna y profesional.',
+    features: [
+      'Turnero online',
+      'Gestión financiera y de caja',
+      'Seguimiento y fidelización de clientes',
+      'Panel de tendencias y reportes',
+    ],
     url: 'https://santa-barba-cba.vercel.app/',
     logo: '/projects/santa-barba.png',
   },
@@ -200,6 +206,7 @@ export const proyectos: Proyecto[] = [
       'Filtros interactivos',
       'Dataset público mundial',
     ],
+    url: 'https://techcomview.streamlit.app/',
     icon: Radio,
   },
   {
@@ -224,10 +231,10 @@ export const proyectos: Proyecto[] = [
     nombre: 'Atelier Boda',
     categoria: 'Sitios Web & E-commerce',
     descripcion:
-      'Invitación digital privada para bodas: acceso con contraseña, cuenta regresiva, cronograma y RSVP con confirmación en tiempo real.',
+      'Invitación digital privada para bodas: acceso con contraseña, cuenta regresiva, cronograma y confirmación de asistencia en tiempo real.',
     features: [
       'Acceso privado con contraseña',
-      'RSVP con backend propio',
+      'Confirmación de asistencia con backend propio',
       'Mesa de regalos con Mercado Pago',
       'Galería, música y cronograma del evento',
     ],
