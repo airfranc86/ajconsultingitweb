@@ -325,6 +325,7 @@ function LayerStack({
 
     const onMouseDown = (e: MouseEvent) => {
       if (e.button !== 0) return;
+      if ((e.target as HTMLElement).closest('button, a')) return;
       isDragging = true;
       dragStartX = e.clientX;
       dragStartScroll = rawScroll.current;
