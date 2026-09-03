@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import { Database, Workflow, ClipboardList, ShoppingCart, Radio, Dumbbell, Heart } from 'lucide-react';
+import { Database, Workflow, ClipboardList, ShoppingCart, Radio, Heart } from 'lucide-react';
 
 /** Taxonomía fija: toda categoría nueva debe entrar en una de estas 4. */
 export type CategoriaProyecto =
@@ -141,7 +141,7 @@ export const proyectos: Proyecto[] = [
       'Multi-sede con dashboard unificado',
     ],
     url: 'https://kineopasscba.vercel.app/',
-    icon: Dumbbell,
+    logo: '/projects/kineopass.png',
   },
   {
     slug: 'atelier-boda',
@@ -157,6 +157,38 @@ export const proyectos: Proyecto[] = [
       'Galería, música y cronograma del evento',
     ],
     icon: Heart,
+  },
+  {
+    slug: 'arqui-ops',
+    numero: '11',
+    nombre: 'ArquiOps',
+    categoria: 'Automatización & Pipelines',
+    descripcion:
+      'Control financiero de obra por voz e IA: dictás gastos en lenguaje de obra, la app escanea comprobantes y proyecta el presupuesto bimoneda en tiempo real.',
+    features: [
+      'Carga de gastos por voz (lenguaje de obra)',
+      'Escaneo de comprobantes con IA',
+      'Control bimoneda ARS/USD con cotización en vivo',
+      'Rendición semanal de cuadrilla a WhatsApp',
+    ],
+    url: 'https://arqui-ops.vercel.app/',
+    logo: '/projects/arqui-ops.jpg',
+  },
+  {
+    slug: 'inspecco',
+    numero: '12',
+    nombre: 'Inspecco',
+    categoria: 'Sistemas de Gestión',
+    descripcion:
+      'Peritaje vehicular asistido por IA: checklist de 24 puntos, inspector fotográfico y score de riesgo para auditar un auto usado antes de comprarlo.',
+    features: [
+      'Checklist pericial de 24 puntos',
+      'Inspector fotográfico con IA',
+      'Score de riesgo 0–100 con costos estimados',
+      'Asistente mecánico IA integrado',
+    ],
+    url: 'https://inspecco.vercel.app/',
+    logo: '/projects/inspecco.png',
   },
 ];
 
