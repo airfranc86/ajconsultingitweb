@@ -171,7 +171,7 @@ export const proyectos: Proyecto[] = [
       'Control bimoneda ARS/USD con cotización en vivo',
       'Rendición semanal de cuadrilla a WhatsApp',
     ],
-    url: 'https://arqui-ops.vercel.app/bienvenida/',
+    url: 'https://arquiops-bienvenida.vercel.app',
     logo: '/projects/arqui-ops.jpg',
   },
   {
